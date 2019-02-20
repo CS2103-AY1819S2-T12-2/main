@@ -20,7 +20,7 @@ Responsibilities: Scheduling + Tracking
 '''
 
 === Luca Triglia
-image::luca_photo.png[width="150", align="left"]
+image::lucatriglia.png[width="150", align="left"]
 {empty}[http://github.com/lucatriglia[github]] [<<johndoe#, portfolio>>]
 
 Role: Developer +
