@@ -1,10 +1,10 @@
 package seedu.address.logic.commands;
 
+import static java.util.Objects.requireNonNull;
+
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
-
-import static java.util.Objects.requireNonNull;
 
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -48,7 +48,7 @@ public class UploadCommand extends Command {
                 AddCommand command = parser.parse(flashcardToAdd);
                 command.execute(model, history);
             }
-        } catch(Exception exception) {
+        } catch (Exception exception) {
             throw new CommandException(MESSAGE_UPLOAD_ERROR);
         }
 
