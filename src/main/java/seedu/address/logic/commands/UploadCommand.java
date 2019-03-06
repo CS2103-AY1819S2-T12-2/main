@@ -20,7 +20,7 @@ public class UploadCommand extends Command {
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Uploads flashcards from a data file. "
             + "Parameters: "
-            + "FILE PATH "
+            + "FILE PATH \n"
             + "Example: " + COMMAND_WORD + " "
             + "C:\\Users\\Alice\\Downloads\\spanishCards.txt";
 
