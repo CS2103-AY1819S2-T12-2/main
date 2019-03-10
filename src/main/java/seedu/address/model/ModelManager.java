@@ -195,7 +195,7 @@ public class ModelManager implements Model {
 
             boolean wasSelectedFlashcardReplaced =
                 change.wasReplaced() && change.getAddedSize() == change.getRemovedSize()
-                && change.getRemoved().contains(selectedFlashcard.getValue());
+                    && change.getRemoved().contains(selectedFlashcard.getValue());
             if (wasSelectedFlashcardReplaced) {
                 // Update selectedFlashcard to its new value.
                 int index = change.getRemoved().indexOf(selectedFlashcard.getValue());

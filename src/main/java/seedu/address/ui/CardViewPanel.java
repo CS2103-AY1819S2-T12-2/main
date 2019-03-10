@@ -43,6 +43,7 @@ public class CardViewPanel extends UiPart<Region> {
 
     /**
      * Loads page given uiPart
+     *
      * @param uiPart the uiPart to show
      */
     public void loadPage(UiPart<Region> uiPart) {

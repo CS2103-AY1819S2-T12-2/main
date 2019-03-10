@@ -18,7 +18,7 @@ import seedu.address.model.tag.Tag;
  */
 public class SampleDataUtil {
     public static Flashcard[] getSampleFlashcards() {
-        return new Flashcard[]{
+        return new Flashcard[] {
             new Flashcard(new Name("Alex Yeoh"), new Phone("87438807"), new Email("alexyeoh@example.com"),
                 new Address("Blk 30 Geylang Street 29, #06-40"),
                 getTagSet("friends")),
