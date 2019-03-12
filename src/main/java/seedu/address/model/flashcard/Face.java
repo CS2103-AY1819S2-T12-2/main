@@ -1,8 +1,8 @@
 package seedu.address.model.flashcard;
 
-import java.util.Objects;
-
 import static java.util.Objects.requireNonNull;
+
+import java.util.Objects;
 
 /**
  * Represents a Flashcard's face in the card collection.
@@ -23,9 +23,8 @@ public class Face {
 
     @Override
     public String toString() {
-        return "Face{" +
-            "text='" + text + '\'' +
-            '}';
+        return "Face{"
+            + "text='" + text + "'}";
     }
 
     @Override
