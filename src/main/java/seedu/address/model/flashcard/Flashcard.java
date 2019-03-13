@@ -16,39 +16,51 @@ import seedu.address.model.tag.Tag;
 public class Flashcard {
 
     // Identity fields
-    private final Name name;
-    private final Phone phone;
-    private final Email email;
+    private final Face frontFace;
+    private final Face backFace;
 
     // Data fields
-    private final Address address;
     private final Set<Tag> tags = new HashSet<>();
     private final Statistics statistics;
 
     /**
      * Every field must be present and not null.
      */
-    public Flashcard(Name name, Phone phone, Email email, Address address, Set<Tag> tags) {
-        this(name, phone, email, address, tags, new Statistics());
+    public Flashcard(Face frontFace, Face backFace, Set<Tag> tags) {
+        this(frontFace, backFace, new Statistics(), tags);
     }
 
-    public Flashcard(Name name, Phone phone, Email email, Address address, Set<Tag> tags, Statistics statistics) {
-        requireAllNonNull(name, phone, email, address, tags, statistics);
-        this.name = name;
-        this.phone = phone;
-        this.email = email;
-        this.address = address;
-        this.tags.addAll(tags);
+    public Flashcard(Face frontFace, Face backFace, Statistics statistics, Set<Tag> tags) {
+        requireAllNonNull(frontFace, backFace, statistics, tags);
+        this.frontFace = frontFace;
+        this.backFace = backFace;
         this.statistics = statistics;
+        this.tags.addAll(tags);
     }
 
     public Statistics getStatistics() {
         return statistics;
     }
 
+    public Face getFrontFace() {
+        return frontFace;
+    }
+
+    public Face getBackFace() {
+        return backFace;
+    }
+
     /**
-     * Returns true if both flashcards of the same name have at least one other identity field that is the same. This
-     * defines a weaker notion of equality between two flashcards.
+     * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
+     * if modification is attempted.
+     */
+    public Set<Tag> getTags() {
+        return Collections.unmodifiableSet(tags);
+    }
+
+    /**
+     * Returns true if both flashcards of the same name have at least one other identity field that is the same.
+     * This defines a weaker notion of equality between two flashcards.
      */
     public boolean isSameFlashcard(Flashcard otherFlashcard) {
         if (otherFlashcard == this) {
@@ -56,26 +68,8 @@ public class Flashcard {
         }
 
         return otherFlashcard != null
-                && otherFlashcard.getName().equals(getName())
-                && (otherFlashcard.getPhone().equals(getPhone()) || otherFlashcard.getEmail().equals(getEmail()));
-    }
-
-    public Name getName() {
-        return name;
-    }
-
-    public Phone getPhone() {
-        return phone;
-    }
-
-    public Email getEmail() {
-        return email;
-    }
-
-    @Override
-    public int hashCode() {
-        // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, tags);
+                && otherFlashcard.getFrontFace().equals(getFrontFace())
+                && otherFlashcard.getBackFace().equals(getBackFace());
     }
 
     /**
@@ -83,44 +77,31 @@ public class Flashcard {
      * equality between two flashcards.
      */
     @Override
-    public boolean equals(Object other) {
-        if (other == this) {
+    public boolean equals(Object o) {
+        if (this == o) {
             return true;
         }
-
-        if (!(other instanceof Flashcard)) {
+        if (!(o instanceof Flashcard)) {
             return false;
         }
-
-        Flashcard otherFlashcard = (Flashcard) other;
-        return otherFlashcard.getName().equals(getName())
-                && otherFlashcard.getPhone().equals(getPhone())
-                && otherFlashcard.getEmail().equals(getEmail())
-                && otherFlashcard.getAddress().equals(getAddress())
-                && otherFlashcard.getTags().equals(getTags());
+        Flashcard flashcard = (Flashcard) o;
+        return getFrontFace().equals(flashcard.getFrontFace())
+                && getBackFace().equals(flashcard.getBackFace())
+                && getTags().equals(flashcard.getTags());
     }
 
-    public Address getAddress() {
-        return address;
-    }
-
-    /**
-     * Returns an immutable tag set, which throws {@code UnsupportedOperationException} if modification is attempted.
-     */
-    public Set<Tag> getTags() {
-        return Collections.unmodifiableSet(tags);
+    @Override
+    public int hashCode() {
+        return Objects.hash(getFrontFace(), getBackFace(), getTags());
     }
 
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append(getName())
-                .append(" Phone: ")
-                .append(getPhone())
-                .append(" Email: ")
-                .append(getEmail())
-                .append(" Address: ")
-                .append(getAddress())
+        builder.append("Front: ")
+                .append(getFrontFace().text)
+                .append(" Back: ")
+                .append(getBackFace().text)
                 .append(" Tags: ");
         getTags().forEach(builder::append);
         return builder.toString();
