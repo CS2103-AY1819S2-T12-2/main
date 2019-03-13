@@ -9,16 +9,30 @@ import java.util.Objects;
  * Guarantees: immutable
  */
 public class Face {
+
+    public static final String MESSAGE_CONSTRAINTS = "Face can take any values, and it should not be blank";
+
+    /*
+     * The first character of the address must not be a whitespace,
+     * otherwise " " (a blank string) becomes a valid input.
+     */
+    public static final String VALIDATION_REGEX = "[^\\s].*";
+
     public final String text;
+
 
     /**
      * Constructs a {@code Face}.
      *
      * @param text A valid text.
      */
-    Face(String text) {
+    public Face(String text) {
         requireNonNull(text);
         this.text = text;
+    }
+
+    public static boolean isValidFace(String trimmedFace) {
+        return trimmedFace.matches(VALIDATION_REGEX);
     }
 
     @Override

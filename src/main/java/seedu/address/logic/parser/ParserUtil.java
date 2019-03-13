@@ -11,6 +11,7 @@ import seedu.address.commons.util.StringUtil;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.flashcard.Address;
 import seedu.address.model.flashcard.Email;
+import seedu.address.model.flashcard.Face;
 import seedu.address.model.flashcard.Name;
 import seedu.address.model.flashcard.Phone;
 import seedu.address.model.tag.Tag;
@@ -121,5 +122,20 @@ public class ParserUtil {
             tagSet.add(parseTag(tagName));
         }
         return tagSet;
+    }
+
+    /**
+     * Parses a {@code String face} into an {@code Face}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     * @throws ParseException if the given {@code face} is invalid.
+     */
+    public static Face parseFace(String face) throws ParseException {
+        requireNonNull(face);
+        String trimmedFace = face.trim();
+        if (!Face.isValidFace(trimmedFace)) {
+            throw new ParseException(Email.MESSAGE_CONSTRAINTS);
+        }
+        return new Face(trimmedFace);
     }
 }
