@@ -1,15 +1,15 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.commands.CommandTestUtil.BACKFACE_DESC_HELLO;
-import static seedu.address.logic.commands.CommandTestUtil.FRONTFACE_DESC_EAT;
-import static seedu.address.logic.commands.CommandTestUtil.FRONTFACE_DESC_HELLO;
+import static seedu.address.logic.commands.CommandTestUtil.BACKFACE_DESC_GOOD;
+import static seedu.address.logic.commands.CommandTestUtil.FRONTFACE_DESC_GOOD;
+import static seedu.address.logic.commands.CommandTestUtil.FRONTFACE_DESC_HITBAG;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_BACKFACE_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_FRONTFACE_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_TAG_DESC;
 import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_INDONESIAN;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_BACKFACE_HELLO;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_FRONTFACE_HELLO;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_BACKFACE_GOOD;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_FRONTFACE_GOOD;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_INDONESIAN;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
@@ -38,7 +38,7 @@ public class EditCommandParserTest {
     @Test
     public void parse_missingParts_failure() {
         // no index specified
-        assertParseFailure(parser, VALID_FRONTFACE_HELLO, MESSAGE_INVALID_FORMAT);
+        assertParseFailure(parser, VALID_FRONTFACE_GOOD, MESSAGE_INVALID_FORMAT);
 
         // no field specified
         assertParseFailure(parser, "1", EditCommand.MESSAGE_NOT_EDITED);
@@ -50,10 +50,10 @@ public class EditCommandParserTest {
     @Test
     public void parse_invalidPreamble_failure() {
         // negative index
-        assertParseFailure(parser, "-5" + FRONTFACE_DESC_HELLO, MESSAGE_INVALID_FORMAT);
+        assertParseFailure(parser, "-5" + FRONTFACE_DESC_GOOD, MESSAGE_INVALID_FORMAT);
 
         // zero index
-        assertParseFailure(parser, "0" + FRONTFACE_DESC_HELLO, MESSAGE_INVALID_FORMAT);
+        assertParseFailure(parser, "0" + FRONTFACE_DESC_GOOD, MESSAGE_INVALID_FORMAT);
 
         // invalid arguments being parsed as preamble
         assertParseFailure(parser, "1 some random string", MESSAGE_INVALID_FORMAT);
@@ -72,10 +72,11 @@ public class EditCommandParserTest {
     @Test
     public void parse_allFieldsSpecified_success() {
         Index targetIndex = INDEX_SECOND_FLASHCARD;
-        String userInput = targetIndex.getOneBased() + FRONTFACE_DESC_HELLO + BACKFACE_DESC_HELLO + TAG_DESC_INDONESIAN;
+        String userInput = targetIndex.getOneBased() + FRONTFACE_DESC_GOOD + BACKFACE_DESC_GOOD + TAG_DESC_INDONESIAN;
 
-        EditCommand.EditFlashcardDescriptor descriptor = new EditFlashcardDescriptorBuilder().withFrontFace(VALID_FRONTFACE_HELLO)
-            .withBackFace(VALID_BACKFACE_HELLO).withTags(VALID_TAG_INDONESIAN).build();
+        EditCommand.EditFlashcardDescriptor descriptor = new EditFlashcardDescriptorBuilder()
+            .withFrontFace(VALID_FRONTFACE_GOOD).withBackFace(VALID_BACKFACE_GOOD)
+            .withTags(VALID_TAG_INDONESIAN).build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
 
         assertParseSuccess(parser, userInput, expectedCommand);
@@ -84,10 +85,10 @@ public class EditCommandParserTest {
     @Test
     public void parse_someFieldsSpecified_success() {
         Index targetIndex = INDEX_FIRST_FLASHCARD;
-        String userInput = targetIndex.getOneBased() + FRONTFACE_DESC_HELLO;
+        String userInput = targetIndex.getOneBased() + FRONTFACE_DESC_GOOD;
 
         EditCommand.EditFlashcardDescriptor descriptor = new EditFlashcardDescriptorBuilder()
-            .withFrontFace(VALID_FRONTFACE_HELLO).build();
+            .withFrontFace(VALID_FRONTFACE_GOOD).build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
 
         assertParseSuccess(parser, userInput, expectedCommand);
@@ -96,10 +97,10 @@ public class EditCommandParserTest {
     @Test
     public void parse_oneFieldSpecified_success() {
         Index targetIndex = INDEX_FIRST_FLASHCARD;
-        String userInput = targetIndex.getOneBased() + FRONTFACE_DESC_HELLO;
+        String userInput = targetIndex.getOneBased() + FRONTFACE_DESC_GOOD;
 
         EditCommand.EditFlashcardDescriptor descriptor = new EditFlashcardDescriptorBuilder()
-            .withFrontFace(VALID_FRONTFACE_HELLO).build();
+            .withFrontFace(VALID_FRONTFACE_GOOD).build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
 
         assertParseSuccess(parser, userInput, expectedCommand);
@@ -108,10 +109,10 @@ public class EditCommandParserTest {
     @Test
     public void parse_multipleRepeatedFields_acceptsLast() {
         Index targetIndex = INDEX_FIRST_FLASHCARD;
-        String userInput = targetIndex.getOneBased() + FRONTFACE_DESC_EAT + FRONTFACE_DESC_HELLO;
+        String userInput = targetIndex.getOneBased() + FRONTFACE_DESC_HITBAG + FRONTFACE_DESC_GOOD;
 
         EditCommand.EditFlashcardDescriptor descriptor = new EditFlashcardDescriptorBuilder()
-            .withFrontFace(VALID_FRONTFACE_HELLO).build();
+            .withFrontFace(VALID_FRONTFACE_GOOD).build();
         EditCommand expectedCommand = new EditCommand(targetIndex, descriptor);
 
         assertParseSuccess(parser, userInput, expectedCommand);

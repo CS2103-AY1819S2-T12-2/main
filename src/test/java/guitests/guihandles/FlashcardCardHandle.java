@@ -48,7 +48,7 @@ public class FlashcardCardHandle extends NodeHandle<Node> {
     }
 
     public String getBackFace() {
-        return frontFaceLabel.getText();
+        return backFaceLabel.getText();
     }
 
     public List<String> getTags() {

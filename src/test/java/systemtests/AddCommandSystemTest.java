@@ -1,35 +1,27 @@
 package systemtests;
 
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.commands.CommandTestUtil.BACKFACE_DESC_EAT;
-import static seedu.address.logic.commands.CommandTestUtil.BACKFACE_DESC_HELLO;
-import static seedu.address.logic.commands.CommandTestUtil.FRONTFACE_DESC_EAT;
-import static seedu.address.logic.commands.CommandTestUtil.FRONTFACE_DESC_HELLO;
-import static seedu.address.logic.commands.CommandTestUtil.INVALID_TAG_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.BACKFACE_DESC_GOOD;
+import static seedu.address.logic.commands.CommandTestUtil.BACKFACE_DESC_HITBAG;
+import static seedu.address.logic.commands.CommandTestUtil.FRONTFACE_DESC_GOOD;
+import static seedu.address.logic.commands.CommandTestUtil.FRONTFACE_DESC_HITBAG;
 import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_CHINESE;
 import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_INDONESIAN;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_FRONTFACE_EAT;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
-import static seedu.address.testutil.TypicalFlashcards.EAT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_FRONTFACE_HITBAG;
+import static seedu.address.testutil.TypicalFlashcards.GOOD;
 import static seedu.address.testutil.TypicalFlashcards.HELLO;
+import static seedu.address.testutil.TypicalFlashcards.HITBAG;
 import static seedu.address.testutil.TypicalFlashcards.HOLA;
-import static seedu.address.testutil.TypicalFlashcards.KEYWORD_MATCHING_HELLO;
+import static seedu.address.testutil.TypicalFlashcards.KEYWORD_MATCHING_GOOD;
 import static seedu.address.testutil.TypicalFlashcards.NEWTON;
 
 import org.junit.Test;
 
-import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.AddCommand;
 import seedu.address.logic.commands.RedoCommand;
 import seedu.address.logic.commands.UndoCommand;
 import seedu.address.model.Model;
-import seedu.address.model.flashcard.Address;
-import seedu.address.model.flashcard.Email;
 import seedu.address.model.flashcard.Flashcard;
-import seedu.address.model.flashcard.Name;
-import seedu.address.model.flashcard.Phone;
-import seedu.address.model.tag.Tag;
 import seedu.address.testutil.FlashcardBuilder;
 import seedu.address.testutil.FlashcardUtil;
 
@@ -45,18 +37,18 @@ public class AddCommandSystemTest extends CardCollectionSystemTest {
          * spaces
          * -> added
          */
-        Flashcard toAdd = HELLO;
+        Flashcard toAdd = GOOD;
         String command =
-            "   " + AddCommand.COMMAND_WORD + "  " + FRONTFACE_DESC_HELLO + "  " + BACKFACE_DESC_HELLO + " "
+            "   " + AddCommand.COMMAND_WORD + "  " + FRONTFACE_DESC_GOOD + "  " + BACKFACE_DESC_GOOD + " "
                 + TAG_DESC_INDONESIAN + " ";
         assertCommandSuccess(command, toAdd);
 
-        /* Case: undo adding Amy to the list -> Amy deleted */
+        /* Case: undo adding Good to the list -> Good deleted */
         command = UndoCommand.COMMAND_WORD;
         String expectedResultMessage = UndoCommand.MESSAGE_SUCCESS;
         assertCommandSuccess(command, model, expectedResultMessage);
 
-        /* Case: redo adding Amy to the list -> Amy added again */
+        /* Case: redo adding Good to the list -> Good added again */
         command = RedoCommand.COMMAND_WORD;
         model.addFlashcard(toAdd);
         expectedResultMessage = RedoCommand.MESSAGE_SUCCESS;
@@ -64,23 +56,23 @@ public class AddCommandSystemTest extends CardCollectionSystemTest {
 
         /* Case: add a flashcard with all fields same as another flashcard in the card collection except name ->
         added */
-        toAdd = new FlashcardBuilder(HELLO).withFrontFace(VALID_FRONTFACE_EAT).build();
-        command = AddCommand.COMMAND_WORD + FRONTFACE_DESC_EAT + BACKFACE_DESC_HELLO + TAG_DESC_INDONESIAN;
+        toAdd = new FlashcardBuilder(GOOD).withFrontFace(VALID_FRONTFACE_HITBAG).build();
+        command = AddCommand.COMMAND_WORD + FRONTFACE_DESC_HITBAG + BACKFACE_DESC_GOOD + TAG_DESC_INDONESIAN;
         assertCommandSuccess(command, toAdd);
 
         /* Case: add to empty card collection -> added */
         deleteAllFlashcards();
-        assertCommandSuccess(HELLO);
+        assertCommandSuccess(GOOD);
 
         /* Case: add a flashcard with tags, command with parameters in random order -> added */
-        toAdd = EAT;
-        command = AddCommand.COMMAND_WORD + TAG_DESC_CHINESE + BACKFACE_DESC_EAT + FRONTFACE_DESC_EAT;
+        toAdd = HITBAG;
+        command = AddCommand.COMMAND_WORD + TAG_DESC_CHINESE + BACKFACE_DESC_HITBAG + FRONTFACE_DESC_HITBAG;
         assertCommandSuccess(command, toAdd);
 
         /* -------------------------- Perform add operation on the shown filtered list ------------------------------ */
 
         /* Case: filters the flashcard list before adding -> added */
-        showFlashcardsWithName(KEYWORD_MATCHING_HELLO);
+        showFlashcardsWithName(KEYWORD_MATCHING_GOOD);
         assertCommandSuccess(HOLA);
 
         /* ------------------------ Perform add operation while a flashcard card is selected
@@ -93,7 +85,7 @@ public class AddCommandSystemTest extends CardCollectionSystemTest {
         /* ----------------------------------- Perform invalid add operations --------------------------------------- */
 
         /* Case: add a duplicate flashcard -> rejected */
-        command = FlashcardUtil.getAddCommand(HELLO);
+        command = FlashcardUtil.getAddCommand(GOOD);
         assertCommandFailure(command, AddCommand.MESSAGE_DUPLICATE_FLASHCARD);
 
     }

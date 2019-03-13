@@ -4,9 +4,9 @@ import static org.junit.Assert.assertFalse;
 import static seedu.address.commons.core.Messages.MESSAGE_FLASHCARDS_LISTED_OVERVIEW;
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static seedu.address.testutil.TypicalFlashcards.EAT;
+import static seedu.address.testutil.TypicalFlashcards.GOOD;
 import static seedu.address.testutil.TypicalFlashcards.HELLO;
-import static seedu.address.testutil.TypicalFlashcards.HOLA;
-import static seedu.address.testutil.TypicalFlashcards.KEYWORD_MATCHING_HELLO;
+import static seedu.address.testutil.TypicalFlashcards.KEYWORD_MATCHING_GOOD;
 import static seedu.address.testutil.TypicalFlashcards.NEWTON;
 
 import java.util.ArrayList;
@@ -29,16 +29,16 @@ public class FindCommandSystemTest extends CardCollectionSystemTest {
         /* Case: find multiple flashcards in card collection, command with leading spaces and trailing spaces
          * -> 2 flashcards found
          */
-        String command = "   " + FindCommand.COMMAND_WORD + " " + KEYWORD_MATCHING_HELLO + "   ";
+        String command = "   " + FindCommand.COMMAND_WORD + " " + KEYWORD_MATCHING_GOOD + "   ";
         Model expectedModel = getModel();
-        ModelHelper.setFilteredList(expectedModel, HELLO);
+        ModelHelper.setFilteredList(expectedModel, GOOD);
         assertCommandSuccess(command, expectedModel);
         assertSelectedCardUnchanged();
 
         /* Case: repeat previous find command where flashcard list is displaying the flashcards we are finding
          * -> 2 flashcards found
          */
-        command = FindCommand.COMMAND_WORD + " " + KEYWORD_MATCHING_HELLO;
+        command = FindCommand.COMMAND_WORD + " " + KEYWORD_MATCHING_GOOD;
         assertCommandSuccess(command, expectedModel);
         assertSelectedCardUnchanged();
 
@@ -50,25 +50,25 @@ public class FindCommandSystemTest extends CardCollectionSystemTest {
         assertSelectedCardUnchanged();
 
         /* Case: find multiple flashcards in card collection, 2 keywords -> 2 flashcards found */
-        command = FindCommand.COMMAND_WORD + " Eat Newton";
+        command = FindCommand.COMMAND_WORD + " Eat Newton's";
         ModelHelper.setFilteredList(expectedModel, EAT, NEWTON);
         assertCommandSuccess(command, expectedModel);
         assertSelectedCardUnchanged();
 
         /* Case: find multiple flashcards in card collection, 2 keywords in reversed order -> 2 flashcards found */
-        command = FindCommand.COMMAND_WORD + " Newton Eat";
+        command = FindCommand.COMMAND_WORD + " Newton's Eat";
         assertCommandSuccess(command, expectedModel);
         assertSelectedCardUnchanged();
 
         /* Case: find multiple flashcards in card collection, 2 keywords with 1 repeat -> 2 flashcards found */
-        command = FindCommand.COMMAND_WORD + " Newton Eat Newton";
+        command = FindCommand.COMMAND_WORD + " Newton's Eat Newton's";
         assertCommandSuccess(command, expectedModel);
         assertSelectedCardUnchanged();
 
         /* Case: find multiple flashcards in card collection, 2 matching keywords and 1 non-matching keyword
          * -> 2 flashcards found
          */
-        command = FindCommand.COMMAND_WORD + " Newton Eat Cow";
+        command = FindCommand.COMMAND_WORD + " Newton's Eat Cow";
         assertCommandSuccess(command, expectedModel);
         assertSelectedCardUnchanged();
 
@@ -83,18 +83,18 @@ public class FindCommandSystemTest extends CardCollectionSystemTest {
         assertCommandFailure(command, expectedResultMessage);
 
         /* Case: find same flashcards in card collection after deleting 1 of them -> 1 flashcard found */
-        executeCommand(FindCommand.COMMAND_WORD + " Newton");
+        executeCommand(FindCommand.COMMAND_WORD + " Newton's");
         executeCommand(DeleteCommand.COMMAND_WORD + " 1");
         assertFalse(getModel().getCardCollection().getFlashcardList().contains(NEWTON));
-        command = FindCommand.COMMAND_WORD + " " + KEYWORD_MATCHING_HELLO;
+        command = FindCommand.COMMAND_WORD + " " + KEYWORD_MATCHING_GOOD;
         expectedModel = getModel();
-        ModelHelper.setFilteredList(expectedModel, HELLO);
+        ModelHelper.setFilteredList(expectedModel, GOOD);
         assertCommandSuccess(command, expectedModel);
         assertSelectedCardUnchanged();
 
         /* Case: find flashcard in card collection, keyword is same as name but of different case -> 1 flashcard
         found */
-        command = FindCommand.COMMAND_WORD + " HelLo";
+        command = FindCommand.COMMAND_WORD + " GoOd";
         assertCommandSuccess(command, expectedModel);
         assertSelectedCardUnchanged();
 
@@ -124,17 +124,17 @@ public class FindCommandSystemTest extends CardCollectionSystemTest {
         /* Case: find while a flashcard is selected -> selected card deselected */
         showAllFlashcards();
         selectFlashcard(Index.fromOneBased(1));
-        assertFalse(getFlashcardListPanel().getHandleToSelectedCard().getFrontFace().equals(HELLO.getFrontFace().text));
-        command = FindCommand.COMMAND_WORD + " Hello";
-        ModelHelper.setFilteredList(expectedModel, HELLO);
+        assertFalse(getFlashcardListPanel().getHandleToSelectedCard().getFrontFace().equals(GOOD.getFrontFace().text));
+        command = FindCommand.COMMAND_WORD + " Good";
+        ModelHelper.setFilteredList(expectedModel, GOOD);
         assertCommandSuccess(command, expectedModel);
         assertSelectedCardDeselected();
 
         /* Case: find flashcard in empty card collection -> 0 flashcards found */
         deleteAllFlashcards();
-        command = FindCommand.COMMAND_WORD + " " + KEYWORD_MATCHING_HELLO;
+        command = FindCommand.COMMAND_WORD + " " + KEYWORD_MATCHING_GOOD;
         expectedModel = getModel();
-        ModelHelper.setFilteredList(expectedModel, HELLO);
+        ModelHelper.setFilteredList(expectedModel, GOOD);
         assertCommandSuccess(command, expectedModel);
         assertSelectedCardUnchanged();
 

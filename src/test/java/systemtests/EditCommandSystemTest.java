@@ -1,40 +1,32 @@
 package systemtests;
 
-import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertTrue;
-import static seedu.address.logic.commands.CommandTestUtil.BACKFACE_DESC_HELLO;
-import static seedu.address.logic.commands.CommandTestUtil.FRONTFACE_DESC_EAT;
-import static seedu.address.logic.commands.CommandTestUtil.FRONTFACE_DESC_HELLO;
-import static seedu.address.logic.commands.CommandTestUtil.INVALID_TAG_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.BACKFACE_DESC_GOOD;
+import static seedu.address.logic.commands.CommandTestUtil.FRONTFACE_DESC_GOOD;
+import static seedu.address.logic.commands.CommandTestUtil.FRONTFACE_DESC_HITBAG;
 import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_CHINESE;
 import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_INDONESIAN;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_FRONTFACE_EAT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_FRONTFACE_HITBAG;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_CHINESE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_INDONESIAN;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_FLASHCARDS;
 import static seedu.address.testutil.TypicalFlashcards.EAT;
+import static seedu.address.testutil.TypicalFlashcards.GOOD;
 import static seedu.address.testutil.TypicalFlashcards.HELLO;
-import static seedu.address.testutil.TypicalFlashcards.KEYWORD_MATCHING_HELLO;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_FLASHCARD;
 import static seedu.address.testutil.TypicalIndexes.INDEX_SECOND_FLASHCARD;
 
 import org.junit.Test;
 
-import seedu.address.commons.core.Messages;
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.EditCommand;
 import seedu.address.logic.commands.RedoCommand;
 import seedu.address.logic.commands.UndoCommand;
 import seedu.address.model.Model;
-import seedu.address.model.flashcard.Address;
-import seedu.address.model.flashcard.Email;
 import seedu.address.model.flashcard.Flashcard;
-import seedu.address.model.flashcard.Name;
-import seedu.address.model.flashcard.Phone;
-import seedu.address.model.tag.Tag;
 import seedu.address.testutil.FlashcardBuilder;
-import seedu.address.testutil.FlashcardUtil;
 
 public class EditCommandSystemTest extends CardCollectionSystemTest {
 
@@ -49,9 +41,9 @@ public class EditCommandSystemTest extends CardCollectionSystemTest {
          */
         Index index = INDEX_FIRST_FLASHCARD;
         String command =
-            " " + EditCommand.COMMAND_WORD + "  " + index.getOneBased() + "  " + FRONTFACE_DESC_HELLO + "  "
-                + BACKFACE_DESC_HELLO + " " + TAG_DESC_CHINESE + " ";
-        Flashcard editedFlashcard = new FlashcardBuilder(EAT).withTags(VALID_TAG_INDONESIAN).build();
+            " " + EditCommand.COMMAND_WORD + "  " + index.getOneBased() + "  " + FRONTFACE_DESC_GOOD + "  "
+                + BACKFACE_DESC_GOOD + " " + TAG_DESC_CHINESE + " ";
+        Flashcard editedFlashcard = new FlashcardBuilder(GOOD).withTags(VALID_TAG_CHINESE).build();
         assertCommandSuccess(command, index, editedFlashcard);
 
         /* Case: undo editing the last flashcard in the list -> last flashcard restored */
@@ -67,17 +59,18 @@ public class EditCommandSystemTest extends CardCollectionSystemTest {
         assertCommandSuccess(command, model, expectedResultMessage);
 
         /* Case: edit a flashcard with new values same as existing values -> edited */
-        command = EditCommand.COMMAND_WORD + " " + index.getOneBased() + FRONTFACE_DESC_HELLO + BACKFACE_DESC_HELLO
+        command = EditCommand.COMMAND_WORD + " " + index.getOneBased() + FRONTFACE_DESC_GOOD + BACKFACE_DESC_GOOD
             + TAG_DESC_INDONESIAN;
-        assertCommandSuccess(command, index, HELLO);
+        assertCommandSuccess(command, index, GOOD);
 
         /* Case: edit a flashcard with new values same as another flashcard's values but with different name ->
         edited */
-        assertTrue(getModel().getCardCollection().getFlashcardList().contains(HELLO));
+        assertTrue(getModel().getCardCollection().getFlashcardList().contains(GOOD));
         index = INDEX_SECOND_FLASHCARD;
-        assertNotEquals(getModel().getFilteredFlashcardList().get(index.getZeroBased()), HELLO);
-        command = EditCommand.COMMAND_WORD + " " + index.getOneBased() + FRONTFACE_DESC_EAT + BACKFACE_DESC_HELLO + TAG_DESC_INDONESIAN;
-        editedFlashcard = new FlashcardBuilder(EAT).withFrontFace(VALID_FRONTFACE_EAT).build();
+        assertNotEquals(getModel().getFilteredFlashcardList().get(index.getZeroBased()), GOOD);
+        command = EditCommand.COMMAND_WORD + " " + index.getOneBased() + FRONTFACE_DESC_HITBAG + BACKFACE_DESC_GOOD
+            + TAG_DESC_INDONESIAN;
+        editedFlashcard = new FlashcardBuilder(GOOD).withFrontFace(VALID_FRONTFACE_HITBAG).build();
         assertCommandSuccess(command, index, editedFlashcard);
 
         /* Case: clear tags -> cleared */

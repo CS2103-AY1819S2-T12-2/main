@@ -90,7 +90,7 @@ public class Flashcard {
         final StringBuilder builder = new StringBuilder();
         builder.append("Front: ")
             .append(getFrontFace().text)
-            .append("Back: ")
+            .append(" Back: ")
             .append(getBackFace().text)
             .append(" Tags: ");
         getTags().forEach(builder::append);

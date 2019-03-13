@@ -1,28 +1,19 @@
 package seedu.address.logic.parser;
 
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.commands.CommandTestUtil.BACKFACE_DESC_HELLO;
-import static seedu.address.logic.commands.CommandTestUtil.FRONTFACE_DESC_HELLO;
-import static seedu.address.logic.commands.CommandTestUtil.INVALID_TAG_DESC;
-import static seedu.address.logic.commands.CommandTestUtil.PREAMBLE_NON_EMPTY;
+import static seedu.address.logic.commands.CommandTestUtil.BACKFACE_DESC_GOOD;
+import static seedu.address.logic.commands.CommandTestUtil.FRONTFACE_DESC_GOOD;
 import static seedu.address.logic.commands.CommandTestUtil.PREAMBLE_WHITESPACE;
 import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_CHINESE;
 import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_INDONESIAN;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_CHINESE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_INDONESIAN;
-import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
-import static seedu.address.testutil.TypicalFlashcards.HELLO;
+import static seedu.address.testutil.TypicalFlashcards.GOOD;
 
 import org.junit.Test;
 
 import seedu.address.logic.commands.AddCommand;
-import seedu.address.model.flashcard.Address;
-import seedu.address.model.flashcard.Email;
 import seedu.address.model.flashcard.Flashcard;
-import seedu.address.model.flashcard.Name;
-import seedu.address.model.flashcard.Phone;
-import seedu.address.model.tag.Tag;
 import seedu.address.testutil.FlashcardBuilder;
 
 public class AddCommandParserTest {
@@ -30,24 +21,24 @@ public class AddCommandParserTest {
 
     @Test
     public void parse_allFieldsPresent_success() {
-        Flashcard expectedFlashcard = new FlashcardBuilder(HELLO).withTags(VALID_TAG_INDONESIAN).build();
+        Flashcard expectedFlashcard = new FlashcardBuilder(GOOD).withTags(VALID_TAG_CHINESE).build();
 
         // whitespace only preamble
-        assertParseSuccess(parser, PREAMBLE_WHITESPACE + FRONTFACE_DESC_HELLO + BACKFACE_DESC_HELLO
-            + TAG_DESC_INDONESIAN, new AddCommand(expectedFlashcard));
+        assertParseSuccess(parser, PREAMBLE_WHITESPACE + FRONTFACE_DESC_GOOD + BACKFACE_DESC_GOOD
+            + TAG_DESC_CHINESE, new AddCommand(expectedFlashcard));
 
         // multiple tags - all accepted
-        Flashcard expectedFlashcardMultipleTags = new FlashcardBuilder(HELLO).withTags(VALID_TAG_INDONESIAN,
+        Flashcard expectedFlashcardMultipleTags = new FlashcardBuilder(GOOD).withTags(VALID_TAG_INDONESIAN,
             VALID_TAG_CHINESE).build();
-        assertParseSuccess(parser, FRONTFACE_DESC_HELLO + BACKFACE_DESC_HELLO + TAG_DESC_CHINESE
+        assertParseSuccess(parser, FRONTFACE_DESC_GOOD + BACKFACE_DESC_GOOD + TAG_DESC_CHINESE
             + TAG_DESC_INDONESIAN, new AddCommand(expectedFlashcardMultipleTags));
     }
 
     @Test
     public void parse_optionalFieldsMissing_success() {
         // zero tags
-        Flashcard expectedFlashcard = new FlashcardBuilder(HELLO).withTags().build();
-        assertParseSuccess(parser, FRONTFACE_DESC_HELLO + BACKFACE_DESC_HELLO,
+        Flashcard expectedFlashcard = new FlashcardBuilder(GOOD).withTags().build();
+        assertParseSuccess(parser, FRONTFACE_DESC_GOOD + BACKFACE_DESC_GOOD,
             new AddCommand(expectedFlashcard));
     }
 

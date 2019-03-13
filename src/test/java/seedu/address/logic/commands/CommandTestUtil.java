@@ -24,17 +24,17 @@ import seedu.address.testutil.EditFlashcardDescriptorBuilder;
  */
 public class CommandTestUtil {
 
-    public static final String VALID_FRONTFACE_HELLO = "Hello";
-    public static final String VALID_BACKFACE_HELLO = "Halo";
-    public static final String VALID_FRONTFACE_EAT = "Eat";
-    public static final String VALID_BACKFACE_EAT = "吃";
+    public static final String VALID_FRONTFACE_GOOD = "Good";
+    public static final String VALID_BACKFACE_GOOD = "Anjir";
+    public static final String VALID_FRONTFACE_HITBAG = "Hit Bag";
+    public static final String VALID_BACKFACE_HITBAG = "打包";
     public static final String VALID_TAG_INDONESIAN = "indonesian";
     public static final String VALID_TAG_CHINESE = "chinese";
 
-    public static final String FRONTFACE_DESC_HELLO = " " + PREFIX_FRONT_FACE + VALID_FRONTFACE_HELLO;
-    public static final String BACKFACE_DESC_HELLO = " " + PREFIX_BACK_FACE + VALID_BACKFACE_HELLO;
-    public static final String FRONTFACE_DESC_EAT = " " + PREFIX_FRONT_FACE + VALID_FRONTFACE_EAT;
-    public static final String BACKFACE_DESC_EAT = " " + PREFIX_BACK_FACE + VALID_BACKFACE_EAT;
+    public static final String FRONTFACE_DESC_GOOD = " " + PREFIX_FRONT_FACE + VALID_FRONTFACE_GOOD;
+    public static final String BACKFACE_DESC_GOOD = " " + PREFIX_BACK_FACE + VALID_BACKFACE_GOOD;
+    public static final String FRONTFACE_DESC_HITBAG = " " + PREFIX_FRONT_FACE + VALID_FRONTFACE_HITBAG;
+    public static final String BACKFACE_DESC_HITBAG = " " + PREFIX_BACK_FACE + VALID_BACKFACE_HITBAG;
 
     public static final String TAG_DESC_INDONESIAN = " " + PREFIX_TAG + VALID_TAG_INDONESIAN;
     public static final String TAG_DESC_CHINESE = " " + PREFIX_TAG + VALID_TAG_CHINESE;
@@ -51,14 +51,14 @@ public class CommandTestUtil {
     public static final String PREAMBLE_WHITESPACE = "\t  \r  \n";
     public static final String PREAMBLE_NON_EMPTY = "NonEmptyPreamble";
 
-    public static final EditCommand.EditFlashcardDescriptor DESC_HELLO;
-    public static final EditCommand.EditFlashcardDescriptor DESC_EAT;
+    public static final EditCommand.EditFlashcardDescriptor DESC_GOOD;
+    public static final EditCommand.EditFlashcardDescriptor DESC_HITBAG;
 
     static {
-        DESC_HELLO = new EditFlashcardDescriptorBuilder().withFrontFace(VALID_FRONTFACE_HELLO)
-            .withBackFace(VALID_BACKFACE_HELLO).withTags(VALID_TAG_INDONESIAN).build();
-        DESC_EAT = new EditFlashcardDescriptorBuilder().withFrontFace(VALID_FRONTFACE_EAT)
-            .withBackFace(VALID_BACKFACE_EAT).withTags(VALID_TAG_CHINESE).build();
+        DESC_GOOD = new EditFlashcardDescriptorBuilder().withFrontFace(VALID_FRONTFACE_GOOD)
+            .withBackFace(VALID_BACKFACE_GOOD).withTags(VALID_TAG_INDONESIAN).build();
+        DESC_HITBAG = new EditFlashcardDescriptorBuilder().withFrontFace(VALID_FRONTFACE_HITBAG)
+            .withBackFace(VALID_BACKFACE_HITBAG).withTags(VALID_TAG_CHINESE).build();
     }
 
     /**
@@ -128,8 +128,10 @@ public class CommandTestUtil {
         assertTrue(targetIndex.getZeroBased() < model.getFilteredFlashcardList().size());
 
         Flashcard flashcard = model.getFilteredFlashcardList().get(targetIndex.getZeroBased());
-        final String[] splitName = flashcard.getFrontFace().text.split("\\s+");
-        model.updateFilteredFlashcardList(new NameContainsKeywordsPredicate(Arrays.asList(splitName[0])));
+        final String[] splitFront = flashcard.getFrontFace().text.split("\\s+");
+        final String[] splitBack = flashcard.getBackFace().text.split("\\s+");
+        model.updateFilteredFlashcardList(
+            new NameContainsKeywordsPredicate(Arrays.asList(splitFront[0], splitBack[0])));
 
         assertEquals(1, model.getFilteredFlashcardList().size());
     }
