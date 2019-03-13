@@ -24,14 +24,14 @@ public class StatsCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Display the success rate from quiz mode. "
             + "Parameters: ";
 
-    private final Set<Tag> tags = new HashSet<>();
+    private final Set<Tag> tags;
 
 
     /**
      * Creates a StatsCommand to display the success rate
      */
     public StatsCommand() {
-
+        tags = new HashSet<>();
     }
 
 
