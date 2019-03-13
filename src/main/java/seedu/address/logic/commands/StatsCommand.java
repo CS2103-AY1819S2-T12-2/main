@@ -2,7 +2,6 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 
-import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -11,7 +10,6 @@ import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.flashcard.Flashcard;
-import seedu.address.model.flashcard.NameContainsKeywordsPredicate;
 import seedu.address.model.flashcard.Statistics;
 import seedu.address.model.tag.Tag;
 
@@ -28,13 +26,12 @@ public class StatsCommand extends Command {
 
     private final Set<Tag> tags = new HashSet<>();
 
-    private final NameContainsKeywordsPredicate predicate;
 
     /**
      * Creates a StatsCommand to display the success rate
      */
     public StatsCommand() {
-        predicate = new NameContainsKeywordsPredicate(Collections.emptyList());
+
     }
 
 

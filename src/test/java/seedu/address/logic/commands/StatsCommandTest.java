@@ -19,7 +19,6 @@ public class StatsCommandTest {
     public ExpectedException thrown = ExpectedException.none();
 
     private Model model = new ModelManager(getTypicalCardCollection(), new UserPrefs());
-    private Model expectedModel = new ModelManager(getTypicalCardCollection(), new UserPrefs());
     private CommandHistory commandHistory = new CommandHistory();
 
     @Test
