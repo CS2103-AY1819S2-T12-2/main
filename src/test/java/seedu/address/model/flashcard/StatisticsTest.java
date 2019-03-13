@@ -34,4 +34,15 @@ public class StatisticsTest {
         stats.quizAttempt(false);
         assertEquals(new Statistics(2, 5), stats);
     }
+
+    @Test
+    public void merge() {
+        Statistics stats1 = new Statistics(11, 30);
+        Statistics stats2 = new Statistics(101, 301);
+        Statistics stats3 = new Statistics();
+
+        assertEquals(new Statistics(101 + 11, 301 + 30), stats1.merge(stats2));
+        assertEquals(new Statistics(101, 301), stats2.merge(stats3));
+        assertEquals(new Statistics(11, 30), stats1.merge(stats3));
+    }
 }

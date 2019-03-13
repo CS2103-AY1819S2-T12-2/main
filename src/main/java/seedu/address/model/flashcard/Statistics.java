@@ -2,8 +2,6 @@ package seedu.address.model.flashcard;
 
 import java.util.Objects;
 
-import seedu.address.model.flashcard.exceptions.ZeroAttemptException;
-
 /**
  * Represents a Flashcard's statistics on how well the user does in the quiz mode.
  */
@@ -28,7 +26,7 @@ public class Statistics {
     /**
      * @return The success rate of a quiz on a particular card. Return 0 if there hasn't any attempt in quiz.
      */
-    public double getSuccessRate() throws ZeroAttemptException {
+    public double getSuccessRate() {
         if (attemptNumber == 0) {
             return 0;
         }
