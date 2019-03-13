@@ -1,6 +1,6 @@
 package seedu.address.logic.commands;
 
-import static seedu.address.testutil.TypicalPersons.getTypicalAddressBook;
+import static seedu.address.testutil.TypicalFlashcards.getTypicalCardCollection;
 
 import org.junit.Rule;
 import org.junit.Test;
@@ -16,8 +16,8 @@ public class StatsCommandTest {
     @Rule
     public ExpectedException thrown = ExpectedException.none();
 
-    private Model model = new ModelManager(getTypicalAddressBook(), new UserPrefs());
-    private Model expectedModel = new ModelManager(getTypicalAddressBook(), new UserPrefs());
+    private Model model = new ModelManager(getTypicalCardCollection(), new UserPrefs());
+    private Model expectedModel = new ModelManager(getTypicalCardCollection(), new UserPrefs());
     private CommandHistory commandHistory = new CommandHistory();
 
     @Test
