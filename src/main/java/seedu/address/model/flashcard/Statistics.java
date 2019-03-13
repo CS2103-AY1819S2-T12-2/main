@@ -1,11 +1,13 @@
 package seedu.address.model.flashcard;
 
 import java.util.Objects;
+import java.util.Scanner;
 
 /**
  * Represents a Flashcard's statistics on how well the user does in the quiz mode.
  */
 public class Statistics {
+    public static final String VALIDATION_REGEX = "\\d+ success out of \\d+ attempts.$";
 
     private int attemptNumber;
     private int successAttempt;
@@ -23,6 +25,27 @@ public class Statistics {
         this.successAttempt = 0;
     }
 
+    public Statistics(String fromString) {
+        Scanner sc = new Scanner(fromString);
+        successAttempt = sc.nextInt();
+        sc.next(); // string: success
+        sc.next(); // string: out
+        sc.next(); // string: of
+        attemptNumber = sc.nextInt();
+    }
+
+    /**
+     * Returns if a given string is a valid statistics format.
+     */
+    public static boolean isValidStatistics(String test) {
+        if (!test.matches(VALIDATION_REGEX)) {
+            return false;
+        }
+
+        Statistics dummy = new Statistics(test);
+        return dummy.successAttempt <= dummy.attemptNumber;
+    }
+
     /**
      * @return The success rate of a quiz on a particular card. Return 0 if there hasn't any attempt in quiz.
      */
@@ -35,6 +58,7 @@ public class Statistics {
 
     /**
      * update the statistics after a quiz is finished.
+     *
      * @param isSuccess does the user guess the card from the quiz correctly.
      */
     public void quizAttempt(boolean isSuccess) {
@@ -46,6 +70,7 @@ public class Statistics {
 
     /**
      * merge two statistics by combining the attempt and success number.
+     *
      * @param oth
      * @return new Statistics.
      */
@@ -54,16 +79,6 @@ public class Statistics {
         merged.attemptNumber = this.attemptNumber + oth.attemptNumber;
         merged.successAttempt = this.successAttempt + oth.successAttempt;
         return merged;
-    }
-
-    @Override
-    public String toString() {
-        final StringBuilder builder = new StringBuilder();
-        builder.append(this.successAttempt)
-                .append(" success out of ")
-                .append(this.attemptNumber)
-                .append(" attempts.");
-        return builder.toString();
     }
 
     @Override
@@ -78,5 +93,10 @@ public class Statistics {
                 || (other instanceof Statistics // instanceof handles nulls
                 && attemptNumber == ((Statistics) other).attemptNumber
                 && successAttempt == ((Statistics) other).successAttempt); // state check
+    }
+
+    @Override
+    public String toString() {
+        return String.format("%d success out of %d attempts.", successAttempt, attemptNumber);
     }
 }

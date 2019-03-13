@@ -1,6 +1,8 @@
 package seedu.address.model.flashcard;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
@@ -44,5 +46,40 @@ public class StatisticsTest {
         assertEquals(new Statistics(101 + 11, 301 + 30), stats1.merge(stats2));
         assertEquals(new Statistics(101, 301), stats2.merge(stats3));
         assertEquals(new Statistics(11, 30), stats1.merge(stats3));
+    }
+
+    @Test
+    public void isValidStatistics() {
+        // null statistics
+        Assert.assertThrows(NullPointerException.class, () -> Statistics.isValidStatistics(null));
+
+        // blank statistics
+        assertFalse(Statistics.isValidStatistics("")); // empty string
+        assertFalse(Statistics.isValidStatistics(" ")); // spaces only
+
+        // missing parts
+        assertFalse(Statistics.isValidStatistics("2 success out 3 attempts."));
+        assertFalse(Statistics.isValidStatistics("2 success of 3 attempts."));
+        assertFalse(Statistics.isValidStatistics("2 out of 3 attempts."));
+        assertFalse(Statistics.isValidStatistics("out of 3 attempts."));
+        assertFalse(Statistics.isValidStatistics("out of attempts."));
+        assertFalse(Statistics.isValidStatistics("2 success out of 3 attempt."));
+        assertFalse(Statistics.isValidStatistics("2 success out of 3 attempts"));
+        assertFalse(Statistics.isValidStatistics("2 success out of 3 "));
+
+        // success greater than attempt
+        assertFalse(Statistics.isValidStatistics("5 success out of 3 attempts."));
+
+        // extra character(s)
+        assertFalse(Statistics.isValidStatistics("2 success out of 3 attempts. "));
+        assertFalse(Statistics.isValidStatistics("2 success out of 3 attempts.   "));
+        assertFalse(Statistics.isValidStatistics("2 success out of 3 attempts. I am good at this."));
+
+        // valid Statistics
+        assertTrue(Statistics.isValidStatistics("2 success out of 3 attempts."));
+        assertTrue(Statistics.isValidStatistics("100 success out of 100 attempts."));
+        assertTrue(Statistics.isValidStatistics("20 success out of 30 attempts."));
+        assertTrue(Statistics.isValidStatistics("1238 success out of 3392 attempts."));
+        assertTrue(Statistics.isValidStatistics("1238 success out of 3392 attempts."));
     }
 }
