@@ -2,40 +2,55 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 
+import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
+import seedu.address.model.flashcard.Flashcard;
+import seedu.address.model.flashcard.NameContainsKeywordsPredicate;
+import seedu.address.model.flashcard.Statistics;
 import seedu.address.model.tag.Tag;
 
 /**
- * Display the success rate of the past quiz mode.
- * Keyword matching is case insensitive.
+ * Display the success rate of the past quiz mode. Keyword matching is case insensitive.
  */
 public class StatsCommand extends Command {
     public static final String COMMAND_WORD = "stats";
 
+    public static final String MESSAGE_STATISTICS_FORMAT = "Success rate: %.2f %%.";
     public static final String MESSAGE_WIP = "Not Yet Implemented";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Display the success rate from quiz mode. "
             + "Parameters: ";
 
     private final Set<Tag> tags = new HashSet<>();
 
+    private final NameContainsKeywordsPredicate predicate;
+
     /**
      * Creates a StatsCommand to display the success rate
      */
     public StatsCommand() {
-
+        predicate = new NameContainsKeywordsPredicate(Collections.emptyList());
     }
 
 
     @Override
     public CommandResult execute(Model model, CommandHistory history) throws CommandException {
         requireNonNull(model);
-        throw new CommandException(StatsCommand.MESSAGE_WIP);
-        // return new CommandResult(String.format("[WIP] display statistics here"));
+        List<Flashcard> filteredPersonList = model.getFilteredFlashcardList();
+        Statistics cumulativeStats = new Statistics();
+
+        for (Flashcard flashcard : filteredPersonList) {
+            cumulativeStats = cumulativeStats.merge(flashcard.getStatistics());
+        }
+
+        double percentageSuccessRate = cumulativeStats.getSuccessRate() * 100;
+
+        return new CommandResult(String.format(MESSAGE_STATISTICS_FORMAT, percentageSuccessRate));
     }
 
     @Override
