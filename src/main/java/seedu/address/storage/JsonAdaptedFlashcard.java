@@ -12,7 +12,6 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import seedu.address.commons.exceptions.IllegalValueException;
 import seedu.address.model.flashcard.Face;
 import seedu.address.model.flashcard.Flashcard;
-import seedu.address.model.flashcard.Name;
 import seedu.address.model.tag.Tag;
 
 /**
