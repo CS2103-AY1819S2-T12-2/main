@@ -2,12 +2,14 @@ package seedu.address.logic.commands;
 
 import static seedu.address.testutil.TypicalFlashcards.getTypicalCardCollection;
 
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import seedu.address.logic.CommandHistory;
-import seedu.address.logic.commands.exceptions.CommandException;
+
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
@@ -21,11 +23,11 @@ public class StatsCommandTest {
     private CommandHistory commandHistory = new CommandHistory();
 
     @Test
-    public void execute_notImplemented_throwsException() throws Exception {
+    public void execute() throws Exception {
         StatsCommand command = new StatsCommand();
 
-        thrown.expect(CommandException.class);
-        thrown.expectMessage(StatsCommand.MESSAGE_WIP);
-        command.execute(model, commandHistory);
+        CommandResult result = command.execute(model, commandHistory);
+
+        assertEquals(result, new CommandResult("Success rate: 0.00 %."));
     }
 }
