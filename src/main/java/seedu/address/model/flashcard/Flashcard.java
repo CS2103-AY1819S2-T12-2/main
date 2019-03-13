@@ -75,9 +75,9 @@ public class Flashcard {
             return false;
         }
         Flashcard flashcard = (Flashcard) o;
-        return getFrontFace().equals(flashcard.getFrontFace()) &&
-            getBackFace().equals(flashcard.getBackFace()) &&
-            getTags().equals(flashcard.getTags());
+        return getFrontFace().equals(flashcard.getFrontFace())
+            && getBackFace().equals(flashcard.getBackFace())
+            && getTags().equals(flashcard.getTags());
     }
 
     @Override

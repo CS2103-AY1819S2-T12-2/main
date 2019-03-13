@@ -60,6 +60,21 @@ public class EditCommand extends Command {
         this.editFlashcardDescriptor = new EditFlashcardDescriptor(editFlashcardDescriptor);
     }
 
+    /**
+     * Creates and returns a {@code Flashcard} with the details of {@code flashcardToEdit}
+     * edited with {@code editFlashcardDescriptor}.
+     */
+    private static Flashcard createEditedFlashcard(Flashcard flashcardToEdit,
+                                                   EditFlashcardDescriptor editFlashcardDescriptor) {
+        assert flashcardToEdit != null;
+
+        Face updatedFrontFace = editFlashcardDescriptor.getFrontFace().orElse(flashcardToEdit.getFrontFace());
+        Face updatedBackFace = editFlashcardDescriptor.getBackFace().orElse(flashcardToEdit.getBackFace());
+        Set<Tag> updatedTags = editFlashcardDescriptor.getTags().orElse(flashcardToEdit.getTags());
+
+        return new Flashcard(updatedFrontFace, updatedBackFace, updatedTags);
+    }
+
     @Override
     public CommandResult execute(Model model, CommandHistory history) throws CommandException {
         requireNonNull(model);
@@ -80,21 +95,6 @@ public class EditCommand extends Command {
         model.updateFilteredFlashcardList(PREDICATE_SHOW_ALL_FLASHCARDS);
         model.commitCardCollection();
         return new CommandResult(String.format(MESSAGE_EDIT_FLASHCARD_SUCCESS, editedFlashcard));
-    }
-
-    /**
-     * Creates and returns a {@code Flashcard} with the details of {@code flashcardToEdit}
-     * edited with {@code editFlashcardDescriptor}.
-     */
-    private static Flashcard createEditedFlashcard(Flashcard flashcardToEdit,
-                                                   EditFlashcardDescriptor editFlashcardDescriptor) {
-        assert flashcardToEdit != null;
-
-        Face updatedFrontFace = editFlashcardDescriptor.getFrontFace().orElse(flashcardToEdit.getFrontFace());
-        Face updatedBackFace = editFlashcardDescriptor.getBackFace().orElse(flashcardToEdit.getBackFace());
-        Set<Tag> updatedTags = editFlashcardDescriptor.getTags().orElse(flashcardToEdit.getTags());
-
-        return new Flashcard(updatedFrontFace, updatedBackFace, updatedTags);
     }
 
     @Override
@@ -161,20 +161,20 @@ public class EditCommand extends Command {
         }
 
         /**
-         * Sets {@code tags} to this object's {@code tags}.
-         * A defensive copy of {@code tags} is used internally.
-         */
-        public void setTags(Set<Tag> tags) {
-            this.tags = (tags != null) ? new HashSet<>(tags) : null;
-        }
-
-        /**
          * Returns an unmodifiable tag set, which throws {@code UnsupportedOperationException}
          * if modification is attempted.
          * Returns {@code Optional#empty()} if {@code tags} is null.
          */
         public Optional<Set<Tag>> getTags() {
             return (tags != null) ? Optional.of(Collections.unmodifiableSet(tags)) : Optional.empty();
+        }
+
+        /**
+         * Sets {@code tags} to this object's {@code tags}.
+         * A defensive copy of {@code tags} is used internally.
+         */
+        public void setTags(Set<Tag> tags) {
+            this.tags = (tags != null) ? new HashSet<>(tags) : null;
         }
 
         @Override
@@ -186,9 +186,9 @@ public class EditCommand extends Command {
                 return false;
             }
             EditFlashcardDescriptor that = (EditFlashcardDescriptor) o;
-            return getFrontFace().equals(that.getFrontFace()) &&
-                getBackFace().equals(that.getBackFace()) &&
-                getTags().equals(that.getTags());
+            return getFrontFace().equals(that.getFrontFace())
+                && getBackFace().equals(that.getBackFace())
+                && getTags().equals(that.getTags());
         }
 
         @Override
