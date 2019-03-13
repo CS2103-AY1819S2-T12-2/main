@@ -17,12 +17,8 @@ import guitests.guihandles.FlashcardListPanelHandle;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import seedu.address.model.flashcard.Address;
-import seedu.address.model.flashcard.Email;
 import seedu.address.model.flashcard.Face;
 import seedu.address.model.flashcard.Flashcard;
-import seedu.address.model.flashcard.Name;
-import seedu.address.model.flashcard.Phone;
 
 public class FlashcardListPanelTest extends GuiUnitTest {
     private static final ObservableList<Flashcard> TYPICAL_FLASHCARDS =

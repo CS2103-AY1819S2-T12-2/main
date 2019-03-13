@@ -44,7 +44,7 @@ public class CommandTestUtil {
         + PREFIX_FRONT_FACE
         + " "; // empty string not allowed for face
     public static final String INVALID_BACKFACE_DESC = " "
-        + PREFIX_FRONT_FACE
+        + PREFIX_BACK_FACE
         + " "; // empty string not allowed for face
     public static final String INVALID_TAG_DESC = " " + PREFIX_TAG + "physics*"; // '*' not allowed in tags
 

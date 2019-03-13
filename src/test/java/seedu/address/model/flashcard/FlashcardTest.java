@@ -1,7 +1,15 @@
 package seedu.address.model.flashcard;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_BACKFACE_GOOD;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_FRONTFACE_GOOD;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_FRONTFACE_HITBAG;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_CHINESE;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_INDONESIAN;
+import static seedu.address.testutil.TypicalFlashcards.EMAIL;
+import static seedu.address.testutil.TypicalFlashcards.HELLO;
 
 import org.junit.Rule;
 import org.junit.Test;
@@ -22,72 +30,54 @@ public class FlashcardTest {
 
     @Test
     public void isSameFlashcard() {
-//        // same object -> returns true
-//        assertTrue(ALICE.isSameFlashcard(ALICE));
-//
-//        // null -> returns false
-//        assertFalse(ALICE.isSameFlashcard(null));
-//
-//        // different phone and email -> returns false
-//        Flashcard editedAlice =
-//            new FlashcardBuilder(ALICE).withPhone(VALID_PHONE_BOB).withEmail(VALID_EMAIL_BOB).build();
-//        assertFalse(ALICE.isSameFlashcard(editedAlice));
-//
-//        // different name -> returns false
-//        editedAlice = new FlashcardBuilder(ALICE).withName(VALID_NAME_BOB).build();
-//        assertFalse(ALICE.isSameFlashcard(editedAlice));
-//
-//        // same name, same phone, different attributes -> returns true
-//        editedAlice = new FlashcardBuilder(ALICE).withEmail(VALID_EMAIL_BOB).withAddress(VALID_ADDRESS_BOB)
-//            .withTags(VALID_TAG_HUSBAND).build();
-//        assertTrue(ALICE.isSameFlashcard(editedAlice));
-//
-//        // same name, same email, different attributes -> returns true
-//        editedAlice = new FlashcardBuilder(ALICE).withPhone(VALID_PHONE_BOB).withAddress(VALID_ADDRESS_BOB)
-//            .withTags(VALID_TAG_HUSBAND).build();
-//        assertTrue(ALICE.isSameFlashcard(editedAlice));
-//
-//        // same name, same phone, same email, different attributes -> returns true
-//        editedAlice = new FlashcardBuilder(ALICE).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND).build();
-//        assertTrue(ALICE.isSameFlashcard(editedAlice));
+        // same object -> returns true
+        assertTrue(HELLO.isSameFlashcard(HELLO));
+
+        // null -> returns false
+        assertFalse(HELLO.isSameFlashcard(null));
+
+        // different frontFace -> returns false
+        Flashcard editedHello =
+            new FlashcardBuilder(HELLO).withFrontFace(VALID_FRONTFACE_GOOD).build();
+        assertFalse(HELLO.isSameFlashcard(editedHello));
+
+        // different backFace -> returns false
+        editedHello = new FlashcardBuilder(HELLO).withBackFace(VALID_BACKFACE_GOOD).build();
+        assertFalse(HELLO.isSameFlashcard(editedHello));
+
+        // same face, different tags -> returns true
+        editedHello = new FlashcardBuilder(HELLO).withTags(VALID_TAG_INDONESIAN, VALID_TAG_CHINESE).build();
+        assertTrue(HELLO.isSameFlashcard(editedHello));
     }
 
     @Test
     public void equals() {
-//        // same values -> returns true
-//        Flashcard aliceCopy = new FlashcardBuilder(ALICE).build();
-//        assertTrue(ALICE.equals(aliceCopy));
-//
-//        // same object -> returns true
-//        assertTrue(ALICE.equals(ALICE));
-//
-//        // null -> returns false
-//        assertFalse(ALICE.equals(null));
-//
-//        // different type -> returns false
-//        assertFalse(ALICE.equals(5));
-//
-//        // different flashcard -> returns false
-//        assertFalse(ALICE.equals(BOB));
-//
-//        // different name -> returns false
-//        Flashcard editedAlice = new FlashcardBuilder(ALICE).withName(VALID_NAME_BOB).build();
-//        assertFalse(ALICE.equals(editedAlice));
-//
-//        // different phone -> returns false
-//        editedAlice = new FlashcardBuilder(ALICE).withPhone(VALID_PHONE_BOB).build();
-//        assertFalse(ALICE.equals(editedAlice));
-//
-//        // different email -> returns false
-//        editedAlice = new FlashcardBuilder(ALICE).withEmail(VALID_EMAIL_BOB).build();
-//        assertFalse(ALICE.equals(editedAlice));
-//
-//        // different address -> returns false
-//        editedAlice = new FlashcardBuilder(ALICE).withAddress(VALID_ADDRESS_BOB).build();
-//        assertFalse(ALICE.equals(editedAlice));
-//
-//        // different tags -> returns false
-//        editedAlice = new FlashcardBuilder(ALICE).withTags(VALID_TAG_HUSBAND).build();
-//        assertFalse(ALICE.equals(editedAlice));
+        // same values -> returns true
+        Flashcard helloCopy = new FlashcardBuilder(HELLO).build();
+        assertEquals(HELLO, helloCopy);
+
+        // same object -> returns true
+        assertEquals(HELLO, HELLO);
+
+        // null -> returns false
+        assertFalse(HELLO.equals(null));
+
+        // different type -> returns false
+        assertFalse(HELLO.equals(5));
+
+        // different flashcard -> returns false
+        assertFalse(HELLO.equals(EMAIL));
+
+        // different frontFace -> returns false
+        Flashcard editedHello = new FlashcardBuilder(HELLO).withFrontFace(VALID_FRONTFACE_HITBAG).build();
+        assertFalse(HELLO.equals(editedHello));
+
+        // different backFace -> returns false
+        editedHello = new FlashcardBuilder(HELLO).withBackFace(VALID_BACKFACE_GOOD).build();
+        assertFalse(HELLO.equals(editedHello));
+
+        // different tags -> returns false
+        editedHello = new FlashcardBuilder(HELLO).withTags(VALID_TAG_CHINESE, VALID_TAG_INDONESIAN).build();
+        assertFalse(HELLO.equals(editedHello));
     }
 }

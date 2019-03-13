@@ -8,7 +8,6 @@ import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_CHINESE;
 import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_INDONESIAN;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_FRONTFACE_HITBAG;
 import static seedu.address.testutil.TypicalFlashcards.GOOD;
-import static seedu.address.testutil.TypicalFlashcards.HELLO;
 import static seedu.address.testutil.TypicalFlashcards.HITBAG;
 import static seedu.address.testutil.TypicalFlashcards.HOLA;
 import static seedu.address.testutil.TypicalFlashcards.KEYWORD_MATCHING_GOOD;

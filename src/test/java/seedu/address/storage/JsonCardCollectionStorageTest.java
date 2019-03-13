@@ -2,7 +2,6 @@ package seedu.address.storage;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
-import static seedu.address.testutil.TypicalFlashcards.EAT;
 import static seedu.address.testutil.TypicalFlashcards.HELLO;
 import static seedu.address.testutil.TypicalFlashcards.getTypicalCardCollection;
 
