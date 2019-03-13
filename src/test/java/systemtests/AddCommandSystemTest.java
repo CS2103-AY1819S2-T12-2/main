@@ -1,33 +1,20 @@
 package systemtests;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.commands.CommandTestUtil.ADDRESS_DESC_AMY;
-import static seedu.address.logic.commands.CommandTestUtil.ADDRESS_DESC_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.EMAIL_DESC_AMY;
-import static seedu.address.logic.commands.CommandTestUtil.EMAIL_DESC_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.INVALID_ADDRESS_DESC;
-import static seedu.address.logic.commands.CommandTestUtil.INVALID_EMAIL_DESC;
-import static seedu.address.logic.commands.CommandTestUtil.INVALID_NAME_DESC;
-import static seedu.address.logic.commands.CommandTestUtil.INVALID_PHONE_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.BACKFACE_DESC_EAT;
+import static seedu.address.logic.commands.CommandTestUtil.BACKFACE_DESC_HELLO;
+import static seedu.address.logic.commands.CommandTestUtil.FRONTFACE_DESC_EAT;
+import static seedu.address.logic.commands.CommandTestUtil.FRONTFACE_DESC_HELLO;
 import static seedu.address.logic.commands.CommandTestUtil.INVALID_TAG_DESC;
-import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_AMY;
-import static seedu.address.logic.commands.CommandTestUtil.NAME_DESC_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.PHONE_DESC_AMY;
-import static seedu.address.logic.commands.CommandTestUtil.PHONE_DESC_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_FRIEND;
-import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_HUSBAND;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_ADDRESS_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_EMAIL_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_NAME_BOB;
-import static seedu.address.logic.commands.CommandTestUtil.VALID_PHONE_BOB;
+import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_CHINESE;
+import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_INDONESIAN;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_FRONTFACE_EAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
-import static seedu.address.testutil.TypicalFlashcards.ALICE;
-import static seedu.address.testutil.TypicalFlashcards.AMY;
-import static seedu.address.testutil.TypicalFlashcards.BOB;
-import static seedu.address.testutil.TypicalFlashcards.CARL;
-import static seedu.address.testutil.TypicalFlashcards.HOON;
-import static seedu.address.testutil.TypicalFlashcards.IDA;
-import static seedu.address.testutil.TypicalFlashcards.KEYWORD_MATCHING_MEIER;
+import static seedu.address.testutil.TypicalFlashcards.EAT;
+import static seedu.address.testutil.TypicalFlashcards.HELLO;
+import static seedu.address.testutil.TypicalFlashcards.HOLA;
+import static seedu.address.testutil.TypicalFlashcards.KEYWORD_MATCHING_HELLO;
+import static seedu.address.testutil.TypicalFlashcards.NEWTON;
 
 import org.junit.Test;
 
@@ -58,9 +45,10 @@ public class AddCommandSystemTest extends CardCollectionSystemTest {
          * spaces
          * -> added
          */
-        Flashcard toAdd = AMY;
-        String command = "   " + AddCommand.COMMAND_WORD + "  " + NAME_DESC_AMY + "  " + PHONE_DESC_AMY + " "
-            + EMAIL_DESC_AMY + "   " + ADDRESS_DESC_AMY + "   " + TAG_DESC_FRIEND + " ";
+        Flashcard toAdd = HELLO;
+        String command =
+            "   " + AddCommand.COMMAND_WORD + "  " + FRONTFACE_DESC_HELLO + "  " + BACKFACE_DESC_HELLO + " "
+                + TAG_DESC_INDONESIAN + " ";
         assertCommandSuccess(command, toAdd);
 
         /* Case: undo adding Amy to the list -> Amy deleted */
@@ -76,109 +64,38 @@ public class AddCommandSystemTest extends CardCollectionSystemTest {
 
         /* Case: add a flashcard with all fields same as another flashcard in the card collection except name ->
         added */
-        toAdd = new FlashcardBuilder(AMY).withName(VALID_NAME_BOB).build();
-        command = AddCommand.COMMAND_WORD + NAME_DESC_BOB + PHONE_DESC_AMY + EMAIL_DESC_AMY + ADDRESS_DESC_AMY
-            + TAG_DESC_FRIEND;
-        assertCommandSuccess(command, toAdd);
-
-        /* Case: add a flashcard with all fields same as another flashcard in the card collection except phone and email
-         * -> added
-         */
-        toAdd = new FlashcardBuilder(AMY).withPhone(VALID_PHONE_BOB).withEmail(VALID_EMAIL_BOB).build();
-        command = FlashcardUtil.getAddCommand(toAdd);
+        toAdd = new FlashcardBuilder(HELLO).withFrontFace(VALID_FRONTFACE_EAT).build();
+        command = AddCommand.COMMAND_WORD + FRONTFACE_DESC_EAT + BACKFACE_DESC_HELLO + TAG_DESC_INDONESIAN;
         assertCommandSuccess(command, toAdd);
 
         /* Case: add to empty card collection -> added */
         deleteAllFlashcards();
-        assertCommandSuccess(ALICE);
+        assertCommandSuccess(HELLO);
 
         /* Case: add a flashcard with tags, command with parameters in random order -> added */
-        toAdd = BOB;
-        command = AddCommand.COMMAND_WORD + TAG_DESC_FRIEND + PHONE_DESC_BOB + ADDRESS_DESC_BOB + NAME_DESC_BOB
-            + TAG_DESC_HUSBAND + EMAIL_DESC_BOB;
+        toAdd = EAT;
+        command = AddCommand.COMMAND_WORD + TAG_DESC_CHINESE + BACKFACE_DESC_EAT + FRONTFACE_DESC_EAT;
         assertCommandSuccess(command, toAdd);
-
-        /* Case: add a flashcard, missing tags -> added */
-        assertCommandSuccess(HOON);
 
         /* -------------------------- Perform add operation on the shown filtered list ------------------------------ */
 
         /* Case: filters the flashcard list before adding -> added */
-        showFlashcardsWithName(KEYWORD_MATCHING_MEIER);
-        assertCommandSuccess(IDA);
+        showFlashcardsWithName(KEYWORD_MATCHING_HELLO);
+        assertCommandSuccess(HOLA);
 
         /* ------------------------ Perform add operation while a flashcard card is selected
         --------------------------- */
 
         /* Case: selects first card in the flashcard list, add a flashcard -> added, card selection remains unchanged */
         selectFlashcard(Index.fromOneBased(1));
-        assertCommandSuccess(CARL);
+        assertCommandSuccess(NEWTON);
 
         /* ----------------------------------- Perform invalid add operations --------------------------------------- */
 
         /* Case: add a duplicate flashcard -> rejected */
-        command = FlashcardUtil.getAddCommand(HOON);
+        command = FlashcardUtil.getAddCommand(HELLO);
         assertCommandFailure(command, AddCommand.MESSAGE_DUPLICATE_FLASHCARD);
 
-        /* Case: add a duplicate flashcard except with different phone -> rejected */
-        toAdd = new FlashcardBuilder(HOON).withPhone(VALID_PHONE_BOB).build();
-        command = FlashcardUtil.getAddCommand(toAdd);
-        assertCommandFailure(command, AddCommand.MESSAGE_DUPLICATE_FLASHCARD);
-
-        /* Case: add a duplicate flashcard except with different email -> rejected */
-        toAdd = new FlashcardBuilder(HOON).withEmail(VALID_EMAIL_BOB).build();
-        command = FlashcardUtil.getAddCommand(toAdd);
-        assertCommandFailure(command, AddCommand.MESSAGE_DUPLICATE_FLASHCARD);
-
-        /* Case: add a duplicate flashcard except with different address -> rejected */
-        toAdd = new FlashcardBuilder(HOON).withAddress(VALID_ADDRESS_BOB).build();
-        command = FlashcardUtil.getAddCommand(toAdd);
-        assertCommandFailure(command, AddCommand.MESSAGE_DUPLICATE_FLASHCARD);
-
-        /* Case: add a duplicate flashcard except with different tags -> rejected */
-        command = FlashcardUtil.getAddCommand(HOON) + " " + PREFIX_TAG.getPrefix() + "friends";
-        assertCommandFailure(command, AddCommand.MESSAGE_DUPLICATE_FLASHCARD);
-
-        /* Case: missing name -> rejected */
-        command = AddCommand.COMMAND_WORD + PHONE_DESC_AMY + EMAIL_DESC_AMY + ADDRESS_DESC_AMY;
-        assertCommandFailure(command, String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
-
-        /* Case: missing phone -> rejected */
-        command = AddCommand.COMMAND_WORD + NAME_DESC_AMY + EMAIL_DESC_AMY + ADDRESS_DESC_AMY;
-        assertCommandFailure(command, String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
-
-        /* Case: missing email -> rejected */
-        command = AddCommand.COMMAND_WORD + NAME_DESC_AMY + PHONE_DESC_AMY + ADDRESS_DESC_AMY;
-        assertCommandFailure(command, String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
-
-        /* Case: missing address -> rejected */
-        command = AddCommand.COMMAND_WORD + NAME_DESC_AMY + PHONE_DESC_AMY + EMAIL_DESC_AMY;
-        assertCommandFailure(command, String.format(MESSAGE_INVALID_COMMAND_FORMAT, AddCommand.MESSAGE_USAGE));
-
-        /* Case: invalid keyword -> rejected */
-        command = "adds " + FlashcardUtil.getFlashcardDetails(toAdd);
-        assertCommandFailure(command, Messages.MESSAGE_UNKNOWN_COMMAND);
-
-        /* Case: invalid name -> rejected */
-        command = AddCommand.COMMAND_WORD + INVALID_NAME_DESC + PHONE_DESC_AMY + EMAIL_DESC_AMY + ADDRESS_DESC_AMY;
-        assertCommandFailure(command, Name.MESSAGE_CONSTRAINTS);
-
-        /* Case: invalid phone -> rejected */
-        command = AddCommand.COMMAND_WORD + NAME_DESC_AMY + INVALID_PHONE_DESC + EMAIL_DESC_AMY + ADDRESS_DESC_AMY;
-        assertCommandFailure(command, Phone.MESSAGE_CONSTRAINTS);
-
-        /* Case: invalid email -> rejected */
-        command = AddCommand.COMMAND_WORD + NAME_DESC_AMY + PHONE_DESC_AMY + INVALID_EMAIL_DESC + ADDRESS_DESC_AMY;
-        assertCommandFailure(command, Email.MESSAGE_CONSTRAINTS);
-
-        /* Case: invalid address -> rejected */
-        command = AddCommand.COMMAND_WORD + NAME_DESC_AMY + PHONE_DESC_AMY + EMAIL_DESC_AMY + INVALID_ADDRESS_DESC;
-        assertCommandFailure(command, Address.MESSAGE_CONSTRAINTS);
-
-        /* Case: invalid tag -> rejected */
-        command = AddCommand.COMMAND_WORD + NAME_DESC_AMY + PHONE_DESC_AMY + EMAIL_DESC_AMY + ADDRESS_DESC_AMY
-            + INVALID_TAG_DESC;
-        assertCommandFailure(command, Tag.MESSAGE_CONSTRAINTS);
     }
 
     /**

@@ -134,7 +134,7 @@ public class ParserUtil {
         requireNonNull(face);
         String trimmedFace = face.trim();
         if (!Face.isValidFace(trimmedFace)) {
-            throw new ParseException(Email.MESSAGE_CONSTRAINTS);
+            throw new ParseException(Face.MESSAGE_CONSTRAINTS);
         }
         return new Face(trimmedFace);
     }
