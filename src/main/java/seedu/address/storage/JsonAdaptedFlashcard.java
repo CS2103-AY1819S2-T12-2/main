@@ -65,7 +65,7 @@ class JsonAdaptedFlashcard {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Face.class.getSimpleName()));
         }
         if (!Face.isValidFace(frontFace)) {
-            throw new IllegalValueException(Name.MESSAGE_CONSTRAINTS);
+            throw new IllegalValueException(Face.MESSAGE_CONSTRAINTS);
         }
         final Face modelFrontFace = new Face(frontFace);
 
@@ -74,7 +74,7 @@ class JsonAdaptedFlashcard {
             throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Face.class.getSimpleName()));
         }
         if (!Face.isValidFace(backFace)) {
-            throw new IllegalValueException(Name.MESSAGE_CONSTRAINTS);
+            throw new IllegalValueException(Face.MESSAGE_CONSTRAINTS);
         }
         final Face modelBackFace = new Face(backFace);
 

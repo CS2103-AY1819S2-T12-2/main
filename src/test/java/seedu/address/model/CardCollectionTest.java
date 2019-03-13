@@ -28,7 +28,6 @@ public class CardCollectionTest {
 
     @Rule
     public ExpectedException thrown = ExpectedException.none();
-
     private final CardCollection cardCollection = new CardCollection();
 
     @Test
@@ -51,14 +50,14 @@ public class CardCollectionTest {
 
     @Test
     public void resetData_withDuplicateFlashcards_throwsDuplicateFlashcardException() {
-//        // Two flashcards with the same identity fields
-//        Flashcard editedAlice = new FlashcardBuilder(ALICE).withAddress(VALID_ADDRESS_BOB).withTags(VALID_TAG_HUSBAND)
-//            .build();
-//        List<Flashcard> newFlashcards = Arrays.asList(ALICE, editedAlice);
-//        CardCollectionStub newData = new CardCollectionStub(newFlashcards);
-//
-//        thrown.expect(DuplicateFlashcardException.class);
-//        cardCollection.resetData(newData);
+        // Two flashcards with the same identity fields
+        Flashcard editedGood = new FlashcardBuilder(GOOD).withTags(VALID_TAG_CHINESE)
+            .build();
+        List<Flashcard> newFlashcards = Arrays.asList(GOOD, editedGood);
+        CardCollectionStub newData = new CardCollectionStub(newFlashcards);
+
+        thrown.expect(DuplicateFlashcardException.class);
+        cardCollection.resetData(newData);
     }
 
     @Test
