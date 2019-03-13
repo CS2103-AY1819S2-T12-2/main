@@ -1,15 +1,13 @@
 package seedu.address.logic.commands;
 
-import static seedu.address.testutil.TypicalFlashcards.getTypicalCardCollection;
-
 import static org.junit.Assert.assertEquals;
+import static seedu.address.testutil.TypicalFlashcards.getTypicalCardCollection;
 
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import seedu.address.logic.CommandHistory;
-
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
