@@ -3,7 +3,10 @@ package seedu.address.model;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_FRONTFACE_HITBAG;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_FLASHCARDS;
+import static seedu.address.testutil.TypicalFlashcards.GOOD;
+import static seedu.address.testutil.TypicalFlashcards.HITBAG;
 
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -89,40 +92,40 @@ public class ModelManagerTest {
 
     @Test
     public void hasFlashcard_flashcardNotInCardCollection_returnsFalse() {
-//        assertFalse(modelManager.hasFlashcard(ALICE));
+        assertFalse(modelManager.hasFlashcard(GOOD));
     }
 
     @Test
     public void hasFlashcard_flashcardInCardCollection_returnsTrue() {
-//        modelManager.addFlashcard(ALICE);
-//        assertTrue(modelManager.hasFlashcard(ALICE));
+        modelManager.addFlashcard(GOOD);
+        assertTrue(modelManager.hasFlashcard(GOOD));
     }
 
     @Test
     public void deleteFlashcard_flashcardIsSelectedAndFirstFlashcardInFilteredFlashcardList_selectionCleared() {
-//        modelManager.addFlashcard(ALICE);
-//        modelManager.setSelectedFlashcard(ALICE);
-//        modelManager.deleteFlashcard(ALICE);
-//        assertEquals(null, modelManager.getSelectedFlashcard());
+        modelManager.addFlashcard(GOOD);
+        modelManager.setSelectedFlashcard(GOOD);
+        modelManager.deleteFlashcard(GOOD);
+        assertEquals(null, modelManager.getSelectedFlashcard());
     }
 
     @Test
     public void deleteFlashcard_flashcardIsSelectedAndSecondFlashcardInFilteredFlashcardList_firstFlashcardSelected() {
-//        modelManager.addFlashcard(ALICE);
-//        modelManager.addFlashcard(BOB);
-//        assertEquals(Arrays.asList(ALICE, BOB), modelManager.getFilteredFlashcardList());
-//        modelManager.setSelectedFlashcard(BOB);
-//        modelManager.deleteFlashcard(BOB);
-//        assertEquals(ALICE, modelManager.getSelectedFlashcard());
+        modelManager.addFlashcard(GOOD);
+        modelManager.addFlashcard(HITBAG);
+        assertEquals(Arrays.asList(GOOD, HITBAG), modelManager.getFilteredFlashcardList());
+        modelManager.setSelectedFlashcard(HITBAG);
+        modelManager.deleteFlashcard(HITBAG);
+        assertEquals(GOOD, modelManager.getSelectedFlashcard());
     }
 
     @Test
     public void setFlashcard_flashcardIsSelected_selectedFlashcardUpdated() {
-//        modelManager.addFlashcard(ALICE);
-//        modelManager.setSelectedFlashcard(ALICE);
-//        Flashcard updatedAlice = new FlashcardBuilder(ALICE).withEmail(VALID_EMAIL_BOB).build();
-//        modelManager.setFlashcard(ALICE, updatedAlice);
-//        assertEquals(updatedAlice, modelManager.getSelectedFlashcard());
+        modelManager.addFlashcard(GOOD);
+        modelManager.setSelectedFlashcard(GOOD);
+        Flashcard updatedAlice = new FlashcardBuilder(GOOD).withFrontFace(VALID_FRONTFACE_HITBAG).build();
+        modelManager.setFlashcard(GOOD, updatedAlice);
+        assertEquals(updatedAlice, modelManager.getSelectedFlashcard());
     }
 
     @Test
@@ -133,52 +136,52 @@ public class ModelManagerTest {
 
     @Test
     public void setSelectedFlashcard_flashcardNotInFilteredFlashcardList_throwsFlashcardNotFoundException() {
-//        thrown.expect(FlashcardNotFoundException.class);
-//        modelManager.setSelectedFlashcard(ALICE);
+        thrown.expect(FlashcardNotFoundException.class);
+        modelManager.setSelectedFlashcard(GOOD);
     }
 
     @Test
     public void setSelectedFlashcard_flashcardInFilteredFlashcardList_setsSelectedFlashcard() {
-//        modelManager.addFlashcard(ALICE);
-//        assertEquals(Collections.singletonList(ALICE), modelManager.getFilteredFlashcardList());
-//        modelManager.setSelectedFlashcard(ALICE);
-//        assertEquals(ALICE, modelManager.getSelectedFlashcard());
+        modelManager.addFlashcard(GOOD);
+        assertEquals(Collections.singletonList(GOOD), modelManager.getFilteredFlashcardList());
+        modelManager.setSelectedFlashcard(GOOD);
+        assertEquals(GOOD, modelManager.getSelectedFlashcard());
     }
 
     @Test
     public void equals() {
-//        CardCollection cardCollection = new CardCollectionBuilder().withFlashcard(ALICE).withFlashcard(BENSON).build();
-//        CardCollection differentCardCollection = new CardCollection();
-//        UserPrefs userPrefs = new UserPrefs();
-//
-//        // same values -> returns true
-//        modelManager = new ModelManager(cardCollection, userPrefs);
-//        ModelManager modelManagerCopy = new ModelManager(cardCollection, userPrefs);
-//        assertTrue(modelManager.equals(modelManagerCopy));
-//
-//        // same object -> returns true
-//        assertTrue(modelManager.equals(modelManager));
-//
-//        // null -> returns false
-//        assertFalse(modelManager.equals(null));
-//
-//        // different types -> returns false
-//        assertFalse(modelManager.equals(5));
-//
-//        // different cardCollection -> returns false
-//        assertFalse(modelManager.equals(new ModelManager(differentCardCollection, userPrefs)));
-//
-//        // different filteredList -> returns false
-//        String[] keywords = ALICE.getName().fullName.split("\\s+");
-//        modelManager.updateFilteredFlashcardList(new NameContainsKeywordsPredicate(Arrays.asList(keywords)));
-//        assertFalse(modelManager.equals(new ModelManager(cardCollection, userPrefs)));
-//
-//        // resets modelManager to initial state for upcoming tests
-//        modelManager.updateFilteredFlashcardList(PREDICATE_SHOW_ALL_FLASHCARDS);
-//
-//        // different userPrefs -> returns false
-//        UserPrefs differentUserPrefs = new UserPrefs();
-//        differentUserPrefs.setCardCollectionFilePath(Paths.get("differentFilePath"));
-//        assertFalse(modelManager.equals(new ModelManager(cardCollection, differentUserPrefs)));
+        CardCollection cardCollection = new CardCollectionBuilder().withFlashcard(GOOD).withFlashcard(HITBAG).build();
+        CardCollection differentCardCollection = new CardCollection();
+        UserPrefs userPrefs = new UserPrefs();
+
+        // same values -> returns true
+        modelManager = new ModelManager(cardCollection, userPrefs);
+        ModelManager modelManagerCopy = new ModelManager(cardCollection, userPrefs);
+        assertTrue(modelManager.equals(modelManagerCopy));
+
+        // same object -> returns true
+        assertTrue(modelManager.equals(modelManager));
+
+        // null -> returns false
+        assertFalse(modelManager.equals(null));
+
+        // different types -> returns false
+        assertFalse(modelManager.equals(5));
+
+        // different cardCollection -> returns false
+        assertFalse(modelManager.equals(new ModelManager(differentCardCollection, userPrefs)));
+
+        // different filteredList -> returns false
+        String[] keywords = GOOD.getFrontFace().text.split("\\s+");
+        modelManager.updateFilteredFlashcardList(new NameContainsKeywordsPredicate(Arrays.asList(keywords)));
+        assertFalse(modelManager.equals(new ModelManager(cardCollection, userPrefs)));
+
+        // resets modelManager to initial state for upcoming tests
+        modelManager.updateFilteredFlashcardList(PREDICATE_SHOW_ALL_FLASHCARDS);
+
+        // different userPrefs -> returns false
+        UserPrefs differentUserPrefs = new UserPrefs();
+        differentUserPrefs.setCardCollectionFilePath(Paths.get("differentFilePath"));
+        assertFalse(modelManager.equals(new ModelManager(cardCollection, differentUserPrefs)));
     }
 }
