@@ -1,6 +1,7 @@
 package seedu.address.model.flashcard;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.util.AppUtil.checkArgument;
 
 import java.util.Objects;
 
@@ -28,6 +29,7 @@ public class Face {
      */
     public Face(String text) {
         requireNonNull(text);
+        checkArgument(isValidFace(text), MESSAGE_CONSTRAINTS);
         this.text = text;
     }
 
