@@ -26,7 +26,7 @@ public class TypicalFlashcards {
     public static final Flashcard EAT = new FlashcardBuilder().withFrontFace("Eat")
         .withBackFace("吃").withTags("chinese").build();
     public static final Flashcard NEWTON = new FlashcardBuilder().withFrontFace("Newton's 3rd Law")
-        .withBackFace("idk").withTags("alevel", "physics").withStatistics(0,10).build();
+        .withBackFace("idk").withTags("alevel", "physics").withStatistics(0, 10).build();
     public static final Flashcard EMAIL = new FlashcardBuilder().withFrontFace("Robin's email")
         .withBackFace("robincyu96@gmail.com").withStatistics(100, 100).build();
 

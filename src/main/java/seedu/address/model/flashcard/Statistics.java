@@ -8,8 +8,8 @@ import java.util.Scanner;
  */
 public class Statistics {
     public static final String VALIDATION_REGEX = "\\d+ out of \\d+ attempts.$";
-    public static final String MESSAGE_CONSTRAINTS = "Statistics string format must be in the form of: " +
-            "`<number of success attempt> out of <total number of attempts> attempts.`";
+    public static final String MESSAGE_CONSTRAINTS = "Statistics string format must be in the form of: "
+            + "`<number of success attempt> out of <total number of attempts> attempts.`";
 
     private int attemptNumber;
     private int successAttempt;

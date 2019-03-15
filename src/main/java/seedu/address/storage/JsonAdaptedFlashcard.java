@@ -83,7 +83,8 @@ class JsonAdaptedFlashcard {
         final Face modelBackFace = new Face(backFace);
 
         if (statistics == null) {
-            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT, Statistics.class.getSimpleName()));
+            throw new IllegalValueException(String.format(MISSING_FIELD_MESSAGE_FORMAT,
+                    Statistics.class.getSimpleName()));
         }
         if (!Statistics.isValidStatistics(statistics)) {
             throw new IllegalValueException(Statistics.MESSAGE_CONSTRAINTS);
