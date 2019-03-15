@@ -20,7 +20,6 @@ public class StatsCommand extends Command {
     public static final String COMMAND_WORD = "stats";
 
     public static final String MESSAGE_STATISTICS_FORMAT = "Success rate: %.2f %%.";
-    public static final String MESSAGE_WIP = "Not Yet Implemented";
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Display the success rate from quiz mode. "
             + "Parameters: ";
 

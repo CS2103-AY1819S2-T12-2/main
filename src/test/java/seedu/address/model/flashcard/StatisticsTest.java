@@ -60,7 +60,7 @@ public class StatisticsTest {
         // missing parts
         assertFalse(Statistics.isValidStatistics("2 success out 3 attempts."));
         assertFalse(Statistics.isValidStatistics("2 success of 3 attempts."));
-        assertFalse(Statistics.isValidStatistics("2 out of 3 attempts."));
+        assertFalse(Statistics.isValidStatistics("2 out of 3 attempt."));
         assertFalse(Statistics.isValidStatistics("out of 3 attempts."));
         assertFalse(Statistics.isValidStatistics("out of attempts."));
         assertFalse(Statistics.isValidStatistics("2 success out of 3 attempt."));
@@ -73,13 +73,12 @@ public class StatisticsTest {
         // extra character(s)
         assertFalse(Statistics.isValidStatistics("2 success out of 3 attempts. "));
         assertFalse(Statistics.isValidStatistics("2 success out of 3 attempts.   "));
-        assertFalse(Statistics.isValidStatistics("2 success out of 3 attempts. I am good at this."));
+        assertFalse(Statistics.isValidStatistics("3 success out of 3 attempts. I am good at this."));
 
         // valid Statistics
-        assertTrue(Statistics.isValidStatistics("2 success out of 3 attempts."));
-        assertTrue(Statistics.isValidStatistics("100 success out of 100 attempts."));
-        assertTrue(Statistics.isValidStatistics("20 success out of 30 attempts."));
-        assertTrue(Statistics.isValidStatistics("1238 success out of 3392 attempts."));
-        assertTrue(Statistics.isValidStatistics("1238 success out of 3392 attempts."));
+        assertTrue(Statistics.isValidStatistics("2 out of 3 attempts."));
+        assertTrue(Statistics.isValidStatistics("100 out of 100 attempts."));
+        assertTrue(Statistics.isValidStatistics("20 out of 30 attempts."));
+        assertTrue(Statistics.isValidStatistics("1238 out of 3392 attempts."));
     }
 }

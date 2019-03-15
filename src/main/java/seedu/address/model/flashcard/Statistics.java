@@ -7,7 +7,9 @@ import java.util.Scanner;
  * Represents a Flashcard's statistics on how well the user does in the quiz mode.
  */
 public class Statistics {
-    public static final String VALIDATION_REGEX = "\\d+ success out of \\d+ attempts.$";
+    public static final String VALIDATION_REGEX = "\\d+ out of \\d+ attempts.$";
+    public static final String MESSAGE_CONSTRAINTS = "Statistics string format must be in the form of: " +
+            "`<number of success attempt> out of <total number of attempts> attempts.`";
 
     private int attemptNumber;
     private int successAttempt;
@@ -28,7 +30,6 @@ public class Statistics {
     public Statistics(String fromString) {
         Scanner sc = new Scanner(fromString);
         successAttempt = sc.nextInt();
-        sc.next(); // string: success
         sc.next(); // string: out
         sc.next(); // string: of
         attemptNumber = sc.nextInt();
@@ -97,6 +98,6 @@ public class Statistics {
 
     @Override
     public String toString() {
-        return String.format("%d success out of %d attempts.", successAttempt, attemptNumber);
+        return String.format("%d out of %d attempts.", successAttempt, attemptNumber);
     }
 }

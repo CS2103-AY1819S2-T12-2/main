@@ -26,10 +26,6 @@ public class Flashcard {
     /**
      * Every field must be present and not null.
      */
-    public Flashcard(Face frontFace, Face backFace, Set<Tag> tags) {
-        this(frontFace, backFace, new Statistics(), tags);
-    }
-
     public Flashcard(Face frontFace, Face backFace, Statistics statistics, Set<Tag> tags) {
         requireAllNonNull(frontFace, backFace, statistics, tags);
         this.frontFace = frontFace;
