@@ -3,11 +3,9 @@ package seedu.address.testutil;
 import java.util.HashSet;
 import java.util.Set;
 
-import seedu.address.model.flashcard.Address;
-import seedu.address.model.flashcard.Email;
+import seedu.address.model.flashcard.Face;
 import seedu.address.model.flashcard.Flashcard;
-import seedu.address.model.flashcard.Name;
-import seedu.address.model.flashcard.Phone;
+import seedu.address.model.flashcard.Statistics;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.util.SampleDataUtil;
 
@@ -16,41 +14,45 @@ import seedu.address.model.util.SampleDataUtil;
  */
 public class FlashcardBuilder {
 
-    public static final String DEFAULT_NAME = "Alice Pauline";
-    public static final String DEFAULT_PHONE = "85355255";
-    public static final String DEFAULT_EMAIL = "alice@gmail.com";
-    public static final String DEFAULT_ADDRESS = "123, Jurong West Ave 6, #08-111";
+    public static final String DEFAULT_FRONTFACE = "Lorem";
+    public static final String DEFAULT_BACKFACE = "Ipsum";
 
-    private Name name;
-    private Phone phone;
-    private Email email;
-    private Address address;
+    private Face frontFace;
+    private Face backFace;
     private Set<Tag> tags;
+    private Statistics statistics;
 
     public FlashcardBuilder() {
-        name = new Name(DEFAULT_NAME);
-        phone = new Phone(DEFAULT_PHONE);
-        email = new Email(DEFAULT_EMAIL);
-        address = new Address(DEFAULT_ADDRESS);
+        frontFace = new Face(DEFAULT_FRONTFACE);
+        backFace = new Face(DEFAULT_BACKFACE);
         tags = new HashSet<>();
+        statistics = new Statistics();
     }
 
     /**
      * Initializes the FlashcardBuilder with the data of {@code flashcardToCopy}.
      */
     public FlashcardBuilder(Flashcard flashcardToCopy) {
-        name = flashcardToCopy.getName();
-        phone = flashcardToCopy.getPhone();
-        email = flashcardToCopy.getEmail();
-        address = flashcardToCopy.getAddress();
+        frontFace = flashcardToCopy.getFrontFace();
+        backFace = flashcardToCopy.getBackFace();
         tags = new HashSet<>(flashcardToCopy.getTags());
+        statistics = flashcardToCopy.getStatistics();
+    }
+
+
+    /**
+     * Sets the {@code frontFace} of the {@code Flashcard} that we are building.
+     */
+    public FlashcardBuilder withFrontFace(String frontFace) {
+        this.frontFace = new Face(frontFace);
+        return this;
     }
 
     /**
-     * Sets the {@code Name} of the {@code Flashcard} that we are building.
+     * Sets the {@code backFace} of the {@code Flashcard} that we are building.
      */
-    public FlashcardBuilder withName(String name) {
-        this.name = new Name(name);
+    public FlashcardBuilder withBackFace(String backFace) {
+        this.backFace = new Face(backFace);
         return this;
     }
 
@@ -63,31 +65,15 @@ public class FlashcardBuilder {
     }
 
     /**
-     * Sets the {@code Address} of the {@code Flashcard} that we are building.
+     * Sets the {@code statistics} of the {@code Flashcard} that we are building.
      */
-    public FlashcardBuilder withAddress(String address) {
-        this.address = new Address(address);
-        return this;
-    }
-
-    /**
-     * Sets the {@code Phone} of the {@code Flashcard} that we are building.
-     */
-    public FlashcardBuilder withPhone(String phone) {
-        this.phone = new Phone(phone);
-        return this;
-    }
-
-    /**
-     * Sets the {@code Email} of the {@code Flashcard} that we are building.
-     */
-    public FlashcardBuilder withEmail(String email) {
-        this.email = new Email(email);
+    public FlashcardBuilder withStatistics(int success, int attempts) {
+        this.statistics = new Statistics(success, attempts);
         return this;
     }
 
     public Flashcard build() {
-        return new Flashcard(name, phone, email, address, tags);
+        return new Flashcard(frontFace, backFace, statistics, tags);
     }
 
 }

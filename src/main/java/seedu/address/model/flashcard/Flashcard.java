@@ -10,46 +10,40 @@ import java.util.Set;
 import seedu.address.model.tag.Tag;
 
 /**
- * Represents a Flashcard in the card collection.
- * Guarantees: details are present and not null, field values are validated, immutable.
+ * Represents a Flashcard in the card collection. Guarantees: details are present and not null, field values are
+ * validated, immutable.
  */
 public class Flashcard {
 
     // Identity fields
-    private final Name name;
-    private final Phone phone;
-    private final Email email;
+    private final Face frontFace;
+    private final Face backFace;
 
     // Data fields
-    private final Address address;
     private final Set<Tag> tags = new HashSet<>();
+    private final Statistics statistics;
 
     /**
      * Every field must be present and not null.
      */
-    public Flashcard(Name name, Phone phone, Email email, Address address, Set<Tag> tags) {
-        requireAllNonNull(name, phone, email, address, tags);
-        this.name = name;
-        this.phone = phone;
-        this.email = email;
-        this.address = address;
+    public Flashcard(Face frontFace, Face backFace, Statistics statistics, Set<Tag> tags) {
+        requireAllNonNull(frontFace, backFace, statistics, tags);
+        this.frontFace = frontFace;
+        this.backFace = backFace;
+        this.statistics = statistics;
         this.tags.addAll(tags);
     }
 
-    public Name getName() {
-        return name;
+    public Statistics getStatistics() {
+        return statistics;
     }
 
-    public Phone getPhone() {
-        return phone;
+    public Face getFrontFace() {
+        return frontFace;
     }
 
-    public Email getEmail() {
-        return email;
-    }
-
-    public Address getAddress() {
-        return address;
+    public Face getBackFace() {
+        return backFace;
     }
 
     /**
@@ -70,49 +64,41 @@ public class Flashcard {
         }
 
         return otherFlashcard != null
-            && otherFlashcard.getName().equals(getName())
-            && (otherFlashcard.getPhone().equals(getPhone()) || otherFlashcard.getEmail().equals(getEmail()));
+                && otherFlashcard.getFrontFace().equals(getFrontFace())
+                && otherFlashcard.getBackFace().equals(getBackFace());
     }
 
     /**
-     * Returns true if both flashcards have the same identity and data fields.
-     * This defines a stronger notion of equality between two flashcards.
+     * Returns true if both flashcards have the same identity and data fields. This defines a stronger notion of
+     * equality between two flashcards.
      */
     @Override
-    public boolean equals(Object other) {
-        if (other == this) {
+    public boolean equals(Object o) {
+        if (this == o) {
             return true;
         }
-
-        if (!(other instanceof Flashcard)) {
+        if (!(o instanceof Flashcard)) {
             return false;
         }
-
-        Flashcard otherFlashcard = (Flashcard) other;
-        return otherFlashcard.getName().equals(getName())
-            && otherFlashcard.getPhone().equals(getPhone())
-            && otherFlashcard.getEmail().equals(getEmail())
-            && otherFlashcard.getAddress().equals(getAddress())
-            && otherFlashcard.getTags().equals(getTags());
+        Flashcard flashcard = (Flashcard) o;
+        return getFrontFace().equals(flashcard.getFrontFace())
+                && getBackFace().equals(flashcard.getBackFace())
+                && getTags().equals(flashcard.getTags());
     }
 
     @Override
     public int hashCode() {
-        // use this method for custom fields hashing instead of implementing your own
-        return Objects.hash(name, phone, email, address, tags);
+        return Objects.hash(getFrontFace(), getBackFace(), getTags());
     }
 
     @Override
     public String toString() {
         final StringBuilder builder = new StringBuilder();
-        builder.append(getName())
-            .append(" Phone: ")
-            .append(getPhone())
-            .append(" Email: ")
-            .append(getEmail())
-            .append(" Address: ")
-            .append(getAddress())
-            .append(" Tags: ");
+        builder.append("Front: ")
+                .append(getFrontFace().text)
+                .append(" Back: ")
+                .append(getBackFace().text)
+                .append(" Tags: ");
         getTags().forEach(builder::append);
         return builder.toString();
     }
