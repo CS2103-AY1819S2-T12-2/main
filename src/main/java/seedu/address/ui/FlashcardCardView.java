@@ -13,7 +13,7 @@ import seedu.address.model.flashcard.Flashcard;
  */
 public class FlashcardCardView extends UiPart<Region> {
 
-    private static final String FXML = "FlashcardCardViewNew.fxml";
+    private static final String FXML = "FlashcardCardView.fxml";
 
     public final Flashcard flashcard;
 
