@@ -9,7 +9,7 @@ import javafx.scene.control.ListView;
 import seedu.address.model.flashcard.Flashcard;
 
 /**
- * Provides a handle for {@code FlashcardListPanel} containing the list of {@code FlashcardCard}.
+ * Provides a handle for {@code FlashcardListPanel} containing the list of {@code FlashcardListCard}.
  */
 public class FlashcardListPanelHandle extends NodeHandle<ListView<Flashcard>> {
     public static final String FLASHCARD_LIST_VIEW_ID = "#flashcardListView";
@@ -92,7 +92,7 @@ public class FlashcardListPanelHandle extends NodeHandle<ListView<Flashcard>> {
     }
 
     /**
-     * Selects the {@code FlashcardCard} at {@code index} in the list.
+     * Selects the {@code FlashcardListCard} at {@code index} in the list.
      */
     public void select(int index) {
         getRootNode().getSelectionModel().select(index);
@@ -125,7 +125,7 @@ public class FlashcardListPanelHandle extends NodeHandle<ListView<Flashcard>> {
     }
 
     /**
-     * Remembers the selected {@code FlashcardCard} in the list.
+     * Remembers the selected {@code FlashcardListCard} in the list.
      */
     public void rememberSelectedFlashcardCard() {
         List<Flashcard> selectedItems = getRootNode().getSelectionModel().getSelectedItems();
@@ -138,7 +138,7 @@ public class FlashcardListPanelHandle extends NodeHandle<ListView<Flashcard>> {
     }
 
     /**
-     * Returns true if the selected {@code FlashcardCard} is different from the value remembered by the most recent
+     * Returns true if the selected {@code FlashcardListCard} is different from the value remembered by the most recent
      * {@code rememberSelectedFlashcardCard()} call.
      */
     public boolean isSelectedFlashcardCardChanged() {
