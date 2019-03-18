@@ -4,8 +4,8 @@ import java.util.Objects;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
+import javafx.scene.layout.StackPane;
 import seedu.address.model.flashcard.Flashcard;
 
 /**
@@ -13,12 +13,12 @@ import seedu.address.model.flashcard.Flashcard;
  */
 public class FlashcardCardView extends UiPart<Region> {
 
-    private static final String FXML = "FlashcardCardView.fxml";
+    private static final String FXML = "FlashcardCardViewNew.fxml";
 
     public final Flashcard flashcard;
 
     @FXML
-    private HBox cardPane;
+    private StackPane cardPane;
     @FXML
     private Label frontFace;
     @FXML
