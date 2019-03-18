@@ -8,6 +8,9 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.Region;
 import seedu.address.model.flashcard.Flashcard;
 
+/**
+ * A UI component that displays information of a {@code Flashcard} as a card view.
+ */
 public class FlashcardCardView extends UiPart<Region> {
 
     private static final String FXML = "FlashcardCardView.fxml";
@@ -37,14 +40,12 @@ public class FlashcardCardView extends UiPart<Region> {
             return false;
         }
         FlashcardCardView that = (FlashcardCardView) o;
-        return flashcard.equals(that.flashcard) &&
-            cardPane.equals(that.cardPane) &&
-            frontFace.equals(that.frontFace) &&
-            backFace.equals(that.backFace);
+        return frontFace.getText().equals(that.frontFace.getText())
+            && backFace.getText().equals(that.backFace.getText());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(flashcard, cardPane, frontFace, backFace);
+        return Objects.hash(frontFace, backFace);
     }
 }

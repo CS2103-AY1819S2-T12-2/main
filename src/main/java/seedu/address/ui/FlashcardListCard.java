@@ -8,7 +8,7 @@ import javafx.scene.layout.Region;
 import seedu.address.model.flashcard.Flashcard;
 
 /**
- * An UI component that displays information of a {@code Flashcard}.
+ * A UI component that displays information of a {@code Flashcard} for use in a list.
  */
 public class FlashcardListCard extends UiPart<Region> {
 

@@ -23,13 +23,13 @@ public class FlashcardListPanelHandle extends NodeHandle<ListView<Flashcard>> {
     }
 
     /**
-     * Returns a handle to the selected {@code FlashcardCardHandle}.
+     * Returns a handle to the selected {@code FlashcardListCardHandle}.
      * A maximum of 1 item can be selected at any time.
      *
      * @throws AssertionError        if no card is selected, or more than 1 card is selected.
      * @throws IllegalStateException if the selected card is currently not in the scene graph.
      */
-    public FlashcardCardHandle getHandleToSelectedCard() {
+    public FlashcardListCardHandle getHandleToSelectedCard() {
         List<Flashcard> selectedFlashcardList = getRootNode().getSelectionModel().getSelectedItems();
 
         if (selectedFlashcardList.size() != 1) {
@@ -37,7 +37,7 @@ public class FlashcardListPanelHandle extends NodeHandle<ListView<Flashcard>> {
         }
 
         return getAllCardNodes().stream()
-            .map(FlashcardCardHandle::new)
+            .map(FlashcardListCardHandle::new)
             .filter(handle -> handle.equals(selectedFlashcardList.get(0)))
             .findFirst()
             .orElseThrow(IllegalStateException::new);
@@ -71,9 +71,7 @@ public class FlashcardListPanelHandle extends NodeHandle<ListView<Flashcard>> {
             throw new IllegalArgumentException("Flashcard does not exist.");
         }
 
-        guiRobot.interact(() -> {
-            getRootNode().scrollTo(flashcard);
-        });
+        guiRobot.interact(() -> getRootNode().scrollTo(flashcard));
         guiRobot.pauseForHuman();
     }
 
@@ -85,9 +83,7 @@ public class FlashcardListPanelHandle extends NodeHandle<ListView<Flashcard>> {
             throw new IllegalArgumentException("Index is out of bounds.");
         }
 
-        guiRobot.interact(() -> {
-            getRootNode().scrollTo(index);
-        });
+        guiRobot.interact(() -> getRootNode().scrollTo(index));
         guiRobot.pauseForHuman();
     }
 
@@ -103,9 +99,9 @@ public class FlashcardListPanelHandle extends NodeHandle<ListView<Flashcard>> {
      *
      * @throws IllegalStateException if the selected card is currently not in the scene graph.
      */
-    public FlashcardCardHandle getFlashcardCardHandle(int index) {
+    public FlashcardListCardHandle getFlashcardCardHandle(int index) {
         return getAllCardNodes().stream()
-            .map(FlashcardCardHandle::new)
+            .map(FlashcardListCardHandle::new)
             .filter(handle -> handle.equals(getFlashcard(index)))
             .findFirst()
             .orElseThrow(IllegalStateException::new);
