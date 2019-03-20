@@ -18,14 +18,14 @@ public class NameContainsKeywordsPredicateTest {
         List<String> firstPredicateKeywordList = Collections.singletonList("first");
         List<String> secondPredicateKeywordList = Arrays.asList("first", "second");
 
-        NameContainsKeywordsPredicate firstPredicate = new NameContainsKeywordsPredicate(firstPredicateKeywordList);
-        NameContainsKeywordsPredicate secondPredicate = new NameContainsKeywordsPredicate(secondPredicateKeywordList);
+        FaceContainsKeywordsPredicate firstPredicate = new FaceContainsKeywordsPredicate(firstPredicateKeywordList);
+        FaceContainsKeywordsPredicate secondPredicate = new FaceContainsKeywordsPredicate(secondPredicateKeywordList);
 
         // same object -> returns true
         assertTrue(firstPredicate.equals(firstPredicate));
 
         // same values -> returns true
-        NameContainsKeywordsPredicate firstPredicateCopy = new NameContainsKeywordsPredicate(firstPredicateKeywordList);
+        FaceContainsKeywordsPredicate firstPredicateCopy = new FaceContainsKeywordsPredicate(firstPredicateKeywordList);
         assertTrue(firstPredicate.equals(firstPredicateCopy));
 
         // different types -> returns false
@@ -41,21 +41,21 @@ public class NameContainsKeywordsPredicateTest {
     @Test
     public void test_nameContainsKeywords_returnsTrue() {
         // One keyword
-        NameContainsKeywordsPredicate predicate = new NameContainsKeywordsPredicate(Collections.singletonList("Hello"));
+        FaceContainsKeywordsPredicate predicate = new FaceContainsKeywordsPredicate(Collections.singletonList("Hello"));
         assertTrue(predicate.test(new FlashcardBuilder().withFrontFace("Hello").build()));
 
         // Multiple keywords
-        predicate = new NameContainsKeywordsPredicate(Arrays.asList("Hello", "Hola"));
+        predicate = new FaceContainsKeywordsPredicate(Arrays.asList("Hello", "Hola"));
         assertTrue(predicate.test(new FlashcardBuilder().withFrontFace("Hello Hola").build()));
         assertTrue(predicate.test(new FlashcardBuilder().withBackFace("Hello Hola").build()));
 
         // Only one matching keyword
-        predicate = new NameContainsKeywordsPredicate(Arrays.asList("Hello", "Hola"));
+        predicate = new FaceContainsKeywordsPredicate(Arrays.asList("Hello", "Hola"));
         assertTrue(predicate.test(new FlashcardBuilder().withFrontFace("Halo Hola").build()));
         assertTrue(predicate.test(new FlashcardBuilder().withBackFace("Halo Hola").build()));
 
         // Mixed-case keywords
-        predicate = new NameContainsKeywordsPredicate(Arrays.asList("hEllO", "hOla"));
+        predicate = new FaceContainsKeywordsPredicate(Arrays.asList("hEllO", "hOla"));
         assertTrue(predicate.test(new FlashcardBuilder().withFrontFace("Hello Holla").build()));
         assertTrue(predicate.test(new FlashcardBuilder().withBackFace("Hello Holla").build()));
     }
@@ -63,11 +63,11 @@ public class NameContainsKeywordsPredicateTest {
     @Test
     public void test_nameDoesNotContainKeywords_returnsFalse() {
         // Zero keywords
-        NameContainsKeywordsPredicate predicate = new NameContainsKeywordsPredicate(Collections.emptyList());
+        FaceContainsKeywordsPredicate predicate = new FaceContainsKeywordsPredicate(Collections.emptyList());
         assertFalse(predicate.test(new FlashcardBuilder().withFrontFace("Good").build()));
 
         // Non-matching keyword
-        predicate = new NameContainsKeywordsPredicate(Collections.singletonList("Bad"));
+        predicate = new FaceContainsKeywordsPredicate(Collections.singletonList("Bad"));
         assertFalse(predicate.test(new FlashcardBuilder().withFrontFace("Good").build()));
     }
 }
