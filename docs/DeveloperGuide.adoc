@@ -323,6 +323,19 @@ The quiz command contains a predicate member that is used to filter which cards 
 
 In essence, the behaviour of the quiz command is similar to that of `select x` where x is randomly picked among filtered cards, except that the backface of the card will not be shown to the user. Currently, the randomly picking cards is using a  uniform random distribution that does not take into account how well the user does previously. However, in the next versions we will be using weighted random distribution by using the `Statistics` class.
 
+The feedback on the quiz from the user is handled by a separate command which then updates the card's statistics based on how well the user does. The effect is similar to an `EditCommand`, but it only edits the statistics within the flashcard.
+
+==== Design Considerations
+
+===== Aspect: The quiz GUI
+
+* **Alternative 1 (current choice):** Use the same window as the `MainWindow`.
+** Pros: Easy to implement and can use the original command box for quiz feedback.
+** Cons: Need to be able to swap the `MainWindow`'s components when the quiz starts in order to replace the list view with feedback and quiz state.
+* **Alternative 2:** Use a separate window for quiz mode.
+** Pros: Quiz logic separate from `MainWindow`. Easily customizable and more flexible.
+** Cons: Requires a separate command box for the quiz mode window.
+
 // end::quiz[]
 
 // tag::findfeature[]
