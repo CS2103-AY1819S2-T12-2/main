@@ -9,8 +9,8 @@ import java.util.List;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import seedu.address.model.flashcard.Flashcard;
 import seedu.address.model.flashcard.FaceContainsKeywordsPredicate;
+import seedu.address.model.flashcard.Flashcard;
 
 /**
  * Enters quiz mode

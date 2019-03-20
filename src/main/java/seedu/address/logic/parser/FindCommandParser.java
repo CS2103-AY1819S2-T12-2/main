@@ -11,8 +11,8 @@ import java.util.stream.Stream;
 
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.flashcard.FlashcardContainsKeywordsPredicate;
 import seedu.address.model.flashcard.Face;
+import seedu.address.model.flashcard.FlashcardContainsKeywordsPredicate;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -45,14 +45,14 @@ public class FindCommandParser implements Parser<FindCommand> {
 
         for (Face frontFace : frontFaceKeywordSet) {
             String[] frontFaceTextSplit = frontFace.text.split("\\s+");
-            for(String frontFaceKeyword : frontFaceTextSplit) {
+            for (String frontFaceKeyword : frontFaceTextSplit) {
                 frontFaceKeywords.add(frontFaceKeyword);
             }
         }
 
         for (Face backFace : backFaceKeywordSet) {
             String[] backFaceTextSplit = backFace.text.split("\\s+");
-            for(String backFaceKeyword : backFaceTextSplit) {
+            for (String backFaceKeyword : backFaceTextSplit) {
                 backFaceKeywords.add(backFaceKeyword);
             }
         }
@@ -61,7 +61,8 @@ public class FindCommandParser implements Parser<FindCommand> {
             tagKeywords.add(tag.tagName);
         }
 
-        return new FindCommand(new FlashcardContainsKeywordsPredicate(frontFaceKeywords, backFaceKeywords, tagKeywords));
+        return new FindCommand(
+                new FlashcardContainsKeywordsPredicate(frontFaceKeywords, backFaceKeywords, tagKeywords));
     }
 
     /**

@@ -22,10 +22,10 @@ public class FlashcardContainsKeywordsPredicate implements Predicate<Flashcard> 
 
     @Override
     public boolean test(Flashcard flashcard) {
-        FaceContainsKeywordsPredicate frontFacePredicate
-                = new FaceContainsKeywordsPredicate(frontFaceKeywords, IS_FRONT_FACE);
-        FaceContainsKeywordsPredicate backFacePredicate
-                = new FaceContainsKeywordsPredicate(backFaceKeywords, !IS_FRONT_FACE);
+        FaceContainsKeywordsPredicate frontFacePredicate =
+                new FaceContainsKeywordsPredicate(frontFaceKeywords, IS_FRONT_FACE);
+        FaceContainsKeywordsPredicate backFacePredicate =
+                new FaceContainsKeywordsPredicate(backFaceKeywords, !IS_FRONT_FACE);
         TagContainsKeywordsPredicate tagPredicate = new TagContainsKeywordsPredicate(tagKeywords);
 
         return (frontFacePredicate.test(flashcard) || backFacePredicate.test(flashcard)

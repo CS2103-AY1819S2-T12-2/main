@@ -10,7 +10,7 @@ import seedu.address.model.tag.Tag;
 /**
  * Tests that a {@code Flashcard}'s {@code Tag} matches any of the keywords given.
  */
-public class TagContainsKeywordsPredicate implements Predicate<Flashcard> { 
+public class TagContainsKeywordsPredicate implements Predicate<Flashcard> {
     private final List<String> keywords;
 
     public TagContainsKeywordsPredicate(List<String> keywords) {
