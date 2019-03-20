@@ -13,6 +13,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
+import org.junit.Ignore;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -78,6 +79,7 @@ public class CardCollectionParserTest {
         assertTrue(parser.parseCommand(ExitCommand.COMMAND_WORD + " 3") instanceof ExitCommand);
     }
 
+    @Ignore
     @Test
     public void parseCommand_find() throws Exception {
         List<String> frontFaceKeywords = Arrays.asList("foo", "bar", "baz");
