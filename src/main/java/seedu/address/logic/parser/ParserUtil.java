@@ -32,7 +32,7 @@ public class ParserUtil {
         }
         return Index.fromOneBased(Integer.parseInt(trimmedIndex));
     }
-    
+
     /**
      * Parses a {@code String tag} into a {@code Tag}.
      * Leading and trailing whitespaces will be trimmed.
@@ -73,5 +73,17 @@ public class ParserUtil {
             throw new ParseException(Face.MESSAGE_CONSTRAINTS);
         }
         return new Face(trimmedFace);
+    }
+
+    /**
+     * Parses {@code Collection<String> faces} into a {@code Set<Face>}.
+     */
+    public static Set<Face> parseFaces(Collection<String> faces) throws ParseException {
+        requireNonNull(faces);
+        final Set<Face> faceSet = new HashSet<>();
+        for (String faceText : faces) {
+            faceSet.add(parseFace(faceText));
+        }
+        return faceSet;
     }
 }

@@ -1,20 +1,18 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.CliSyntax.PREFIX_NAME;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_BACK_FACE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_FRONT_FACE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Set;
 import java.util.stream.Stream;
 
 import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
-import seedu.address.model.flashcard.FindCommandPredicate;
-import seedu.address.model.flashcard.Name;
-import seedu.address.model.flashcard.NameContainsKeywordsPredicate;
-import seedu.address.model.flashcard.TagContainsKeywordsPredicate;
+import seedu.address.model.flashcard.FlashcardContainsKeywordsPredicate;
+import seedu.address.model.flashcard.Face;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -30,34 +28,40 @@ public class FindCommandParser implements Parser<FindCommand> {
      */
     public FindCommand parse(String args) throws ParseException {
         ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(args, PREFIX_NAME, PREFIX_TAG);
+                ArgumentTokenizer.tokenize(args, PREFIX_FRONT_FACE, PREFIX_BACK_FACE, PREFIX_TAG);
 
-        if (!arePrefixesPresent(argMultimap, PREFIX_NAME) && !arePrefixesPresent(argMultimap, PREFIX_TAG)
-                || !argMultimap.getPreamble().isEmpty()) {
+        if (!arePrefixesPresent(argMultimap, PREFIX_FRONT_FACE) && !arePrefixesPresent(argMultimap, PREFIX_BACK_FACE)
+                && !arePrefixesPresent(argMultimap, PREFIX_TAG) || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
         }
 
-        Set<Name> nameList = ParserUtil.parseNames(argMultimap.getAllValues(PREFIX_NAME));
-        Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
+        Set<Face> frontFaceKeywordSet = ParserUtil.parseFaces(argMultimap.getAllValues(PREFIX_FRONT_FACE));
+        Set<Face> backFaceKeywordSet = ParserUtil.parseFaces(argMultimap.getAllValues(PREFIX_BACK_FACE));
+        Set<Tag> tagKeywordSet = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
 
-        ArrayList<String> nameKeywords = new ArrayList<>();
+        ArrayList<String> frontFaceKeywords = new ArrayList<>();
+        ArrayList<String> backFaceKeywords = new ArrayList<>();
         ArrayList<String> tagKeywords = new ArrayList<>();
 
-        for (Name name : nameList) {
-            String[] nameSplit = name.toString().split("\\s+");
-            for(String nameString : nameSplit) {
-                nameKeywords.add(nameString);
+        for (Face frontFace : frontFaceKeywordSet) {
+            String[] frontFaceTextSplit = frontFace.text.split("\\s+");
+            for(String frontFaceKeyword : frontFaceTextSplit) {
+                frontFaceKeywords.add(frontFaceKeyword);
             }
         }
 
-        for (Tag tag : tagList) {
-            String[] tagSplit = tag.toString().split("\\s+");
-            for(String tagString : tagSplit) {
-                tagKeywords.add(tagString);
+        for (Face backFace : backFaceKeywordSet) {
+            String[] backFaceTextSplit = backFace.text.split("\\s+");
+            for(String backFaceKeyword : backFaceTextSplit) {
+                backFaceKeywords.add(backFaceKeyword);
             }
         }
 
-        return new FindCommand(new FindCommandPredicate(nameKeywords, tagKeywords));
+        for (Tag tag : tagKeywordSet) {
+            tagKeywords.add(tag.tagName);
+        }
+
+        return new FindCommand(new FlashcardContainsKeywordsPredicate(frontFaceKeywords, backFaceKeywords, tagKeywords));
     }
 
     /**
