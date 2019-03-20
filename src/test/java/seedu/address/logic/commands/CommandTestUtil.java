@@ -9,14 +9,17 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.CardCollection;
 import seedu.address.model.Model;
+import seedu.address.model.flashcard.FaceContainsKeywordsPredicate;
 import seedu.address.model.flashcard.Flashcard;
-import seedu.address.model.flashcard.NameContainsKeywordsPredicate;
+import seedu.address.model.flashcard.FlashcardContainsKeywordsPredicate;
+import seedu.address.model.tag.Tag;
 import seedu.address.testutil.EditFlashcardDescriptorBuilder;
 
 /**
@@ -130,8 +133,14 @@ public class CommandTestUtil {
         Flashcard flashcard = model.getFilteredFlashcardList().get(targetIndex.getZeroBased());
         final String[] splitFront = flashcard.getFrontFace().text.split("\\s+");
         final String[] splitBack = flashcard.getBackFace().text.split("\\s+");
+        final Set<Tag> tagSet = flashcard.getTags();
+        ArrayList<String> splitTag = new ArrayList<>();
+        for (Tag tag : tagSet) {
+            splitTag.add(tag.tagName);
+        }
+
         model.updateFilteredFlashcardList(
-            new NameContainsKeywordsPredicate(Arrays.asList(splitFront[0], splitBack[0])));
+            new FlashcardContainsKeywordsPredicate(Arrays.asList(splitFront), Arrays.asList(splitBack), splitTag));
 
         assertEquals(1, model.getFilteredFlashcardList().size());
     }
