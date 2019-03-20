@@ -313,6 +313,35 @@ image::UndoRedoActivityDiagram.png[width="650"]
 ** Cons: Requires dealing with commands that have already been undone: We must remember to skip these commands. Violates Single Responsibility Principle and Separation of Concerns as `HistoryManager` now needs to do two different things.
 // end::undoredo[]
 
+// tag::statistics[]
+=== Statistics feature
+==== Current Implementation
+ 
+The current statistics logic is handled by `Statistics` and `StatsCommand`. 
+
+`Statistics` acts as a container to store the data for calculating success percentage from quiz mode. It stores `successAttempt` and `attemptNumber`.
+
+Additionally, `Statistics` implements the following operations: 
+
+* `Statistics#getSuccessRate()` -- Return the success rate.
+* `Statistics#quizAttempt(bool isSuccess)` -- Update the current statistics when there is an attempt in the quiz mode.
+* `Statistics#merge(Statistics other)` -- Return merged statistics of two given statistics, generally to be used to calculate the success rate from a bunch of flashcards with a particular tag.
+
+When a user queries a statistics by using command `stats`, `StatsCommand` is the one to calculate the statistics. Currently, `StatsCommand` only supports an overall success rate from all user's flashcards. It will asks `Model` to return all of the flashcards and then merge each `Statistics` from each flashcard to return an overall cummulative `Statistics`. 
+
+==== Design Considerations
+
+===== Aspect: How statistics executes
+
+* **Alternative 1 (current choice):** Each individual `Flashcard` has exactly one `Statistics` attribute.
+** Pros: Easy to implement.
+** Cons: May have performance issues in terms of memory usage.
+* **Alternative 2:** Flashcards are grouped by Tag, each of these groups store one overall `Statistics` attribute.
+** Pros: Will use less memory.
+** Cons: User has less flexibility in term of querying the statistics (User can not know a certain flashcard statistics)
+
+// end::statistics[]
+
 // tag::dataencryption[]
 === [Proposed] Data Encryption
 
