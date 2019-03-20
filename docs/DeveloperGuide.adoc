@@ -313,6 +313,16 @@ image::UndoRedoActivityDiagram.png[width="650"]
 ** Cons: Requires dealing with commands that have already been undone: We must remember to skip these commands. Violates Single Responsibility Principle and Separation of Concerns as `HistoryManager` now needs to do two different things.
 // end::undoredo[]
 
+// tag::quiz[]
+=== Quiz feature
+==== Current Implementation
+
+The current quiz mechanism is controlled by the `QuizCommand` class. It will then modify the selected flashcard on the card collection model. The UI will then detect the change in the selected flashcard, and will view the flashcard on the screen. 
+
+The quiz command contains a predicate member that is used to filter which cards is going to be shown on the quiz. The user can type in `quiz <tags>`, which will then start the quiz on cards that has the given tags. The quiz command will contain a predicate that will filter based on the tags.
+
+In essence, the behaviour of the quiz command is similar to that of `select x` where x is randomly picked among filtered cards, except that the backface of the card will not be shown to the user. Currently, the randomly picking cards is using a  uniform random distribution that does not take into account how well the user does previously. However, in the next versions we will be using weighted random distribution by using the `Statistics` class.
+
 // tag::dataencryption[]
 === [Proposed] Data Encryption
 
