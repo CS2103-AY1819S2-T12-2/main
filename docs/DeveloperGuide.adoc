@@ -359,13 +359,13 @@ specific attribute of the flashcard. If a match exists, the flashcard will be di
 // tag::statistics[]
 === Statistics feature
 ==== Current Implementation
- 
-The current statistics logic is handled by `Statistics` and `StatsCommand`. 
+
+The current statistics logic is handled by `Statistics` and `StatsCommand`.
 
 `Statistics` acts as a container to store the data for calculating success percentage from quiz mode. +
 It stores `successAttempt` and `attemptNumber`.
 
-Additionally, `Statistics` implements the following operations: 
+Additionally, `Statistics` implements the following operations:
 
 * `Statistics#getSuccessRate()` -- Return the success rate.
 * `Statistics#quizAttempt(bool isSuccess)` -- Update the current statistics when there is an attempt in the quiz mode.
