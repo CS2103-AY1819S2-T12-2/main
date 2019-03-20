@@ -6,12 +6,8 @@ import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_FRONT_FACE;
 import static seedu.address.testutil.TypicalFlashcards.EAT;
 import static seedu.address.testutil.TypicalFlashcards.GOOD;
-import static seedu.address.testutil.TypicalFlashcards.HELLO;
 import static seedu.address.testutil.TypicalFlashcards.KEYWORD_MATCHING_GOOD;
 import static seedu.address.testutil.TypicalFlashcards.NEWTON;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import org.junit.Test;
 
@@ -21,7 +17,6 @@ import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.RedoCommand;
 import seedu.address.logic.commands.UndoCommand;
 import seedu.address.model.Model;
-import seedu.address.model.tag.Tag;
 
 public class FindCommandSystemTest extends CardCollectionSystemTest {
 
