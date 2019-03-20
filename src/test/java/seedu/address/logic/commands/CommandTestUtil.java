@@ -16,7 +16,6 @@ import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.CardCollection;
 import seedu.address.model.Model;
-import seedu.address.model.flashcard.FaceContainsKeywordsPredicate;
 import seedu.address.model.flashcard.Flashcard;
 import seedu.address.model.flashcard.FlashcardContainsKeywordsPredicate;
 import seedu.address.model.tag.Tag;

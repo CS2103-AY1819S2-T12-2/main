@@ -32,7 +32,6 @@ import seedu.address.logic.commands.StatsCommand;
 import seedu.address.logic.commands.UndoCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.flashcard.Flashcard;
-import seedu.address.model.flashcard.FaceContainsKeywordsPredicate;
 import seedu.address.model.flashcard.FlashcardContainsKeywordsPredicate;
 import seedu.address.testutil.EditFlashcardDescriptorBuilder;
 import seedu.address.testutil.FlashcardBuilder;

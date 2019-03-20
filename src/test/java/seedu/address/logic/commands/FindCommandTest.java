@@ -107,14 +107,14 @@ public class FindCommandTest {
 
         for (Face frontFace : frontFaceKeywordSet) {
             String[] frontFaceTextSplit = frontFace.text.split("\\s+");
-            for(String frontFaceKeyword : frontFaceTextSplit) {
+            for (String frontFaceKeyword : frontFaceTextSplit) {
                 frontFaceKeywords.add(frontFaceKeyword);
             }
         }
 
         for (Face backFace : backFaceKeywordSet) {
             String[] backFaceTextSplit = backFace.text.split("\\s+");
-            for(String backFaceKeyword : backFaceTextSplit) {
+            for (String backFaceKeyword : backFaceTextSplit) {
                 backFaceKeywords.add(backFaceKeyword);
             }
         }

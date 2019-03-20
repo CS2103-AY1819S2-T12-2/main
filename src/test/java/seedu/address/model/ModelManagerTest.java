@@ -21,7 +21,6 @@ import org.junit.rules.ExpectedException;
 
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.flashcard.Flashcard;
-import seedu.address.model.flashcard.FaceContainsKeywordsPredicate;
 import seedu.address.model.flashcard.FlashcardContainsKeywordsPredicate;
 import seedu.address.model.flashcard.exceptions.FlashcardNotFoundException;
 import seedu.address.model.tag.Tag;
