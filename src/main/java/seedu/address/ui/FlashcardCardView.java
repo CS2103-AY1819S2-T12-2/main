@@ -1,9 +1,13 @@
 package seedu.address.ui;
 
+import java.io.File;
+
 import java.util.Objects;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.layout.Region;
 import javafx.scene.layout.StackPane;
 import seedu.address.model.flashcard.Flashcard;
@@ -23,12 +27,21 @@ public class FlashcardCardView extends UiPart<Region> {
     private Label frontFace;
     @FXML
     private Label backFace;
+    @FXML
+    private ImageView flashcardImage;
 
     public FlashcardCardView(Flashcard flashcard) {
         super(FXML);
         this.flashcard = flashcard;
         frontFace.setText(flashcard.getFrontFace().text);
         backFace.setText(flashcard.getBackFace().text);
+        /*
+        File file = new File("chitose_karasuma.jpg");
+        Image image = new Image(file.toURI().toString());
+        flashcardImage.setImage(image);
+        flashcardImage.setFitHeight(192);
+        flashcardImage.setPreserveRatio(true);
+        */
     }
 
     @Override
