@@ -1,20 +1,23 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.parser.CliSyntax.*;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_BACK_FACE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_FRONT_FACE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
 import java.util.ArrayList;
 import java.util.Set;
 import java.util.stream.Stream;
 
-import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.StatsCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.flashcard.Face;
 import seedu.address.model.flashcard.FlashcardContainsKeywordsPredicate;
-import seedu.address.model.flashcard.Statistics;
 import seedu.address.model.tag.Tag;
 
+/**
+ * Parses input arguments and creates a new StatsCommand object
+ */
 public class StatsCommandParser implements Parser<StatsCommand> {
     /**
      * Parses the given {@code String} of arguments in the context of the StatsCommand
