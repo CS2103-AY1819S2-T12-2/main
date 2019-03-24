@@ -21,7 +21,6 @@ public class FindCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Finds all flashcards which contain any of "
             + "the specified keywords (case-insensitive) based on prefix and displays them as a list with index numbers.\n"
             + "Parameters: "
-            + "Parameters: "
             + "[" + PREFIX_FRONT_FACE + "FRONTFACE] "
             + "[" + PREFIX_BACK_FACE + "BACKFACE] "
             + "[" + PREFIX_TAG + "TAG]...\n"
