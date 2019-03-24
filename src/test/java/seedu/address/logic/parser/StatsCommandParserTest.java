@@ -33,7 +33,7 @@ public class StatsCommandParserTest {
         assertParseSuccess(parser, " f/Alice Bob b/Charlie t/Robin", expectedStatsCommand);
 
         // multiple whitespaces between keywords
-        assertParseSuccess(parser, " \n f/Alice \n \t f/Bob  \t  b/Charlie \t  t/Robin \t", expectedStatsCommand);
+        assertParseSuccess(parser, "  f/Alice  \t f/Bob  \t  b/Charlie \t  t/Robin \t", expectedStatsCommand);
 
         // empty args
         expectedStatsCommand = new StatsCommand();
