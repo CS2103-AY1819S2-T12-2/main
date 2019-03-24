@@ -6,7 +6,6 @@ import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSucces
 
 import java.util.Arrays;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 import seedu.address.logic.commands.StatsCommand;
@@ -22,7 +21,6 @@ public class StatsCommandParserTest {
                 StatsCommand.MESSAGE_USAGE));
     }
 
-    @Ignore
     @Test
     public void parse_validArgs_returnsStatsCommand() {
         // no leading and trailing whitespaces
