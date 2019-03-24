@@ -1,6 +1,6 @@
 package seedu.address.logic.commands;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertEquals;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.StatsCommand.MESSAGE_STATISTICS_FORMAT;
 import static seedu.address.testutil.TypicalFlashcards.EMAIL;
@@ -55,11 +55,15 @@ public class StatsCommandTest {
     public void equals() {
         StatsCommand command = new StatsCommand();
 
-        // same object true
-        assertTrue(command.equals(command));
+        // no predicate stats
+        assertEquals(command, new StatsCommand());
 
-        // different object true
-        assertTrue(command.equals(new StatsCommand()));
+        // with predicate stats
+        FlashcardContainsKeywordsPredicate predicate1 = new FlashcardContainsKeywordsPredicate(
+                Arrays.asList("Klungs", "Robin"), Arrays.asList("Sergio"), Arrays.asList("Luca")
+        );
+
+        assertEquals(new StatsCommand(predicate1), new StatsCommand(predicate1));
     }
 
     private double getFilteredSuccessRateFromModel(Model model) {

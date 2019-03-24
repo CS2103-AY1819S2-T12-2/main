@@ -24,9 +24,12 @@ public class StatsCommandParserTest {
     @Test
     public void parse_validArgs_returnsStatsCommand() {
         // no leading and trailing whitespaces
-        StatsCommand expectedStatsCommand =
-                new StatsCommand(new FlashcardContainsKeywordsPredicate(Arrays.asList("Alice", "Bob"),
-                        Arrays.asList("Charlie"), Arrays.asList("Robin")));
+        FlashcardContainsKeywordsPredicate predicate = new FlashcardContainsKeywordsPredicate(
+                Arrays.asList("Alice", "Bob"), Arrays.asList("Charlie"), Arrays.asList("Robin"));
+
+        StatsCommand expectedStatsCommand = new StatsCommand(predicate);
+
+
         assertParseSuccess(parser, " f/Alice Bob b/Charlie t/Robin", expectedStatsCommand);
 
         // multiple whitespaces between keywords

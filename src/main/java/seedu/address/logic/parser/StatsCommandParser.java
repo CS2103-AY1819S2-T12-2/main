@@ -26,7 +26,7 @@ public class StatsCommandParser implements Parser<StatsCommand> {
      * @throws ParseException if the user input does not conform the expected format
      */
     public StatsCommand parse(String args) throws ParseException {
-        if (args.isEmpty()) {
+        if (args.trim().isEmpty()) {
             return new StatsCommand();
         }
 
