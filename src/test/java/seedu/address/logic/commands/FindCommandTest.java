@@ -20,7 +20,6 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Set;
 
-import org.junit.Ignore;
 import org.junit.Test;
 
 import seedu.address.logic.CommandHistory;
