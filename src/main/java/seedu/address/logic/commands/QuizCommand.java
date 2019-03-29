@@ -5,6 +5,7 @@ import static seedu.address.model.flashcard.FlashcardContainsKeywordsPredicate.I
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
@@ -28,12 +29,22 @@ public class QuizCommand extends Command {
         predicate = new FaceContainsKeywordsPredicate(Collections.emptyList(), IS_FRONT_FACE);
     }
 
+    private Flashcard getRandomFlashCard(Model model) {
+        Random random = new Random();
+
+        List<Flashcard> filteredPersonList = model.getFilteredFlashcardList();
+        Flashcard res;
+        do {
+            res = filteredPersonList.get(random.nextInt(filteredPersonList.size()));
+        } while (res.equals(model.getSelectedFlashcard()));
+        return res;
+    }
+
     @Override
     public CommandResult execute(Model model, CommandHistory history) throws CommandException {
         requireNonNull(model);
 
-        List<Flashcard> filteredPersonList = model.getFilteredFlashcardList();
-        Flashcard randomFlashcard = filteredPersonList.get((int) Math.floor(Math.random() * filteredPersonList.size()));
+        Flashcard randomFlashcard = getRandomFlashCard(model);
         model.setQuizMode(-1);
         model.setSelectedFlashcard(randomFlashcard);
         return new CommandResult(MESSAGE_QUIZ_START);
