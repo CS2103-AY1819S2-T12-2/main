@@ -19,14 +19,16 @@ public class CardViewPanel extends UiPart<Region> {
 
     private final Logger logger = LogsCenter.getLogger(getClass());
 
+    private int quizMode;
+
     @FXML
     private StackPane cardPlaceholder;
 
-    public CardViewPanel(ObservableValue<Flashcard> selectedPerson) {
+    public CardViewPanel(ObservableValue<Flashcard> selectedCard, ObservableValue<Integer> quizMode) {
         super(FXML);
 
-        // Load person page when selected person changes.
-        selectedPerson.addListener((observable, oldValue, newValue) -> {
+        // Reload page when selected card changes.
+        selectedCard.addListener((observable, oldValue, newValue) -> {
             if (newValue == null) {
                 loadDefaultPage();
                 return;
@@ -34,11 +36,16 @@ public class CardViewPanel extends UiPart<Region> {
             loadCardPage(newValue);
         });
 
+        quizMode.addListener(((observableValue, oldValue, newValue) -> {
+            this.quizMode = newValue;
+            loadDefaultPage();
+        }));
+
         loadDefaultPage();
     }
 
     private void loadCardPage(Flashcard flashcard) {
-        loadPage(new FlashcardCardView(flashcard));
+        loadPage(new FlashcardCardView(flashcard, quizMode));
     }
 
     /**

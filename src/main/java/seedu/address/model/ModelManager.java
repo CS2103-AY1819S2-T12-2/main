@@ -28,6 +28,7 @@ public class ModelManager implements Model {
     private final UserPrefs userPrefs;
     private final FilteredList<Flashcard> filteredFlashcards;
     private final SimpleObjectProperty<Flashcard> selectedFlashcard = new SimpleObjectProperty<>();
+    private final SimpleObjectProperty<Integer> quizMode = new SimpleObjectProperty<>();
 
     /**
      * Initializes a ModelManager with the given cardCollection and userPrefs.
@@ -181,6 +182,21 @@ public class ModelManager implements Model {
             throw new FlashcardNotFoundException();
         }
         selectedFlashcard.setValue(flashcard);
+    }
+
+    @Override
+    public ReadOnlyProperty<Integer> quizModeProperty() {
+        return quizMode;
+    }
+
+    @Override
+    public Integer getQuizMode() {
+        return quizMode.getValue();
+    }
+
+    @Override
+    public void setQuizMode(Integer quizMode) {
+        this.quizMode.setValue(quizMode);
     }
 
     /**

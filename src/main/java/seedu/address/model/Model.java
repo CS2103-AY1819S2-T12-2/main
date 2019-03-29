@@ -126,6 +126,11 @@ public interface Model {
     ReadOnlyProperty<Flashcard> selectedFlashcardProperty();
 
     /**
+     * Current quiz mode. -1 for front face, 1 for back face, 0 for non-quiz mode.
+     */
+    ReadOnlyProperty<Integer> quizModeProperty();
+
+    /**
      * Returns the selected flashcard in the filtered flashcard list.
      * null if no flashcard is selected.
      */
@@ -135,4 +140,14 @@ public interface Model {
      * Sets the selected flashcard in the filtered flashcard list.
      */
     void setSelectedFlashcard(Flashcard flashcard);
+
+    /**
+     * Returns the quiz mode.
+     */
+    Integer getQuizMode();
+
+    /**
+     * Sets the quiz mode.
+     */
+    void setQuizMode(Integer quizMode);
 }

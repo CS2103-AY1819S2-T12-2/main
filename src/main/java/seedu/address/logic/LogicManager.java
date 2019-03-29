@@ -102,7 +102,17 @@ public class LogicManager implements Logic {
     }
 
     @Override
+    public ReadOnlyProperty<Integer> quizModeProperty() {
+        return model.quizModeProperty();
+    }
+
+    @Override
     public void setSelectedFlashcard(Flashcard flashcard) {
         model.setSelectedFlashcard(flashcard);
+    }
+
+    @Override
+    public void setQuizMode(Integer quizMode) {
+        model.setQuizMode(quizMode);
     }
 }

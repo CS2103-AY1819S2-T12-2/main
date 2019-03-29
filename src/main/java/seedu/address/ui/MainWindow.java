@@ -132,7 +132,7 @@ public class MainWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
-        cardViewPanel = new CardViewPanel(logic.selectedFlashcardProperty());
+        cardViewPanel = new CardViewPanel(logic.selectedFlashcardProperty(), logic.quizModeProperty());
         cardViewPlaceholder.getChildren().add(cardViewPanel.getRoot());
 
         flashcardListPanel = new FlashcardListPanel(logic.getFilteredFlashcardList(), logic.selectedFlashcardProperty(),
