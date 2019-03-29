@@ -38,7 +38,6 @@ public class CardViewPanel extends UiPart<Region> {
 
         quizMode.addListener(((observableValue, oldValue, newValue) -> {
             this.quizMode = newValue;
-            loadDefaultPage();
         }));
 
         loadDefaultPage();

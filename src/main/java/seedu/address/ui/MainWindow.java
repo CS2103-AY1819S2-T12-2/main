@@ -151,6 +151,36 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     /**
+     * Sets up the listeners needed.
+     */
+    void setupListeners() {
+        logic.quizModeProperty().addListener(((observableValue, oldValue, newValue) -> onQuizModeChanged(newValue)));
+    }
+
+    /**
+     * Prepares view when quiz mode changes.
+     *
+     * @param newQuizMode the changed quiz mode
+     */
+    private void onQuizModeChanged(Integer newQuizMode) {
+        if (newQuizMode == 0) {
+            endQuizMode();
+        } else {
+            startQuizMode();
+        }
+    }
+
+    private void startQuizMode() {
+        flashcardListPanelPlaceholder.getChildren().clear();
+    }
+
+    private void endQuizMode() {
+        flashcardListPanel = new FlashcardListPanel(logic.getFilteredFlashcardList(), logic.selectedFlashcardProperty(),
+            logic::setSelectedFlashcard);
+        flashcardListPanelPlaceholder.getChildren().add(flashcardListPanel.getRoot());
+    }
+
+    /**
      * Sets the default size based on {@code guiSettings}.
      */
     private void setWindowDefaultSize(GuiSettings guiSettings) {

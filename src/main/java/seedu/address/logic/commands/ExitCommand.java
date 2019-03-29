@@ -17,6 +17,7 @@ public class ExitCommand extends Command {
     public CommandResult execute(Model model, CommandHistory history) {
         if (model.getQuizMode() != 0) {
             model.setQuizMode(0);
+            model.setSelectedFlashcard(null);
             return new CommandResult(MESSAGE_EXIT_QUIZ);
         }
         return new CommandResult(MESSAGE_EXIT_ACKNOWLEDGEMENT, false, true);

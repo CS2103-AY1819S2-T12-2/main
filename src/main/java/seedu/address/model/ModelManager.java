@@ -28,7 +28,7 @@ public class ModelManager implements Model {
     private final UserPrefs userPrefs;
     private final FilteredList<Flashcard> filteredFlashcards;
     private final SimpleObjectProperty<Flashcard> selectedFlashcard = new SimpleObjectProperty<>();
-    private final SimpleObjectProperty<Integer> quizMode = new SimpleObjectProperty<>();
+    private final SimpleObjectProperty<Integer> quizMode = new SimpleObjectProperty<>(0);
 
     /**
      * Initializes a ModelManager with the given cardCollection and userPrefs.
