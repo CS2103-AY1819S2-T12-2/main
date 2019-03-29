@@ -87,4 +87,5 @@ public interface Logic {
      */
     void setQuizMode(Integer quizMode);
 
+    ObservableList<Flashcard> getQuizFlashcards();
 }

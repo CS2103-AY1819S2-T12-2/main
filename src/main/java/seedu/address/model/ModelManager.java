@@ -4,7 +4,6 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.nio.file.Path;
-import java.util.List;
 import java.util.Objects;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
@@ -30,7 +29,7 @@ public class ModelManager implements Model {
     private final FilteredList<Flashcard> filteredFlashcards;
     private final SimpleObjectProperty<Flashcard> selectedFlashcard = new SimpleObjectProperty<>();
     private final SimpleObjectProperty<Integer> quizMode = new SimpleObjectProperty<>(0);
-    private List<Flashcard> quizFlashcards;
+    private ObservableList<Flashcard> quizFlashcards;
 
     /**
      * Initializes a ModelManager with the given cardCollection and userPrefs.
@@ -219,12 +218,12 @@ public class ModelManager implements Model {
     //=========== Quiz Mode =====================================================================================
 
     @Override
-    public List<Flashcard> getQuizFlashcards() {
+    public ObservableList<Flashcard> getQuizFlashcards() {
         return quizFlashcards;
     }
 
     @Override
-    public void setQuizFlashcards(List<Flashcard> flashcards) {
+    public void setQuizFlashcards(ObservableList<Flashcard> flashcards) {
         quizFlashcards = flashcards;
     }
 

@@ -1,7 +1,6 @@
 package seedu.address.model;
 
 import java.nio.file.Path;
-import java.util.List;
 import java.util.function.Predicate;
 
 import javafx.beans.property.ReadOnlyProperty;
@@ -155,14 +154,14 @@ public interface Model {
     /**
      * Gets the quiz mode flashcards.
      */
-    List<Flashcard> getQuizFlashcards();
+    ObservableList<Flashcard> getQuizFlashcards();
 
     /**
      * Sets the quiz mode flashcards.
      *
      * @param flashcards the flashcards that is going to be quizzed
      */
-    void setQuizFlashcards(List<Flashcard> flashcards);
+    void setQuizFlashcards(ObservableList<Flashcard> flashcards);
 
     /**
      * Shows a flashcard for quiz mode from quiz flashcards.

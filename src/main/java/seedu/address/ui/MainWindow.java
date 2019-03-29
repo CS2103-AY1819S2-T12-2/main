@@ -34,6 +34,7 @@ public class MainWindow extends UiPart<Stage> {
     // Independent Ui parts residing in this Ui container
     private CardViewPanel cardViewPanel;
     private FlashcardListPanel flashcardListPanel;
+    private QuizPanel quizPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
 
@@ -172,11 +173,12 @@ public class MainWindow extends UiPart<Stage> {
 
     private void startQuizMode() {
         flashcardListPanelPlaceholder.getChildren().clear();
+        quizPanel = new QuizPanel(logic.getQuizFlashcards());
+        flashcardListPanelPlaceholder.getChildren().add(quizPanel.getRoot());
     }
 
     private void endQuizMode() {
-        flashcardListPanel = new FlashcardListPanel(logic.getFilteredFlashcardList(), logic.selectedFlashcardProperty(),
-            logic::setSelectedFlashcard);
+        flashcardListPanelPlaceholder.getChildren().clear();
         flashcardListPanelPlaceholder.getChildren().add(flashcardListPanel.getRoot());
     }
 

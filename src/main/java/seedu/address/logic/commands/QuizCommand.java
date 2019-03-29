@@ -8,6 +8,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
+import javafx.collections.FXCollections;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
@@ -65,7 +66,7 @@ public class QuizCommand extends Command {
             throw new CommandException(MESSAGE_QUIZ_FAILURE_EMPTY);
         }
 
-        model.setQuizFlashcards(quizCards);
+        model.setQuizFlashcards(FXCollections.observableArrayList(quizCards));
         model.setQuizMode(-1);
         model.showNextQuizCard();
         return new CommandResult(MESSAGE_QUIZ_START);
