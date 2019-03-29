@@ -4,6 +4,7 @@ import static java.util.Objects.requireNonNull;
 import static seedu.address.commons.util.CollectionUtil.requireAllNonNull;
 
 import java.nio.file.Path;
+import java.util.List;
 import java.util.Objects;
 import java.util.function.Predicate;
 import java.util.logging.Logger;
@@ -29,6 +30,7 @@ public class ModelManager implements Model {
     private final FilteredList<Flashcard> filteredFlashcards;
     private final SimpleObjectProperty<Flashcard> selectedFlashcard = new SimpleObjectProperty<>();
     private final SimpleObjectProperty<Integer> quizMode = new SimpleObjectProperty<>(0);
+    private List<Flashcard> quizFlashcards;
 
     /**
      * Initializes a ModelManager with the given cardCollection and userPrefs.
@@ -137,7 +139,7 @@ public class ModelManager implements Model {
         filteredFlashcards.setPredicate(predicate);
     }
 
-    //=========== Undo/Redo =================================================================================
+    //=========== Undo/Redo ====================================================================================
 
     @Override
     public boolean canUndoCardCollection() {
@@ -164,7 +166,7 @@ public class ModelManager implements Model {
         versionedCardCollection.commit();
     }
 
-    //=========== Selected flashcard ===========================================================================
+    //=========== Selected flashcard ============================================================================
 
     @Override
     public ReadOnlyProperty<Flashcard> selectedFlashcardProperty() {
@@ -182,21 +184,6 @@ public class ModelManager implements Model {
             throw new FlashcardNotFoundException();
         }
         selectedFlashcard.setValue(flashcard);
-    }
-
-    @Override
-    public ReadOnlyProperty<Integer> quizModeProperty() {
-        return quizMode;
-    }
-
-    @Override
-    public Integer getQuizMode() {
-        return quizMode.getValue();
-    }
-
-    @Override
-    public void setQuizMode(Integer quizMode) {
-        this.quizMode.setValue(quizMode);
     }
 
     /**
@@ -228,6 +215,41 @@ public class ModelManager implements Model {
             }
         }
     }
+
+    //=========== Quiz Mode =====================================================================================
+
+    @Override
+    public List<Flashcard> getQuizFlashcards() {
+        return quizFlashcards;
+    }
+
+    @Override
+    public void setQuizFlashcards(List<Flashcard> flashcards) {
+        quizFlashcards = flashcards;
+    }
+
+    @Override
+    public ReadOnlyProperty<Integer> quizModeProperty() {
+        return quizMode;
+    }
+
+    @Override
+    public Integer getQuizMode() {
+        return quizMode.getValue();
+    }
+
+    @Override
+    public void setQuizMode(Integer quizMode) {
+        this.quizMode.setValue(quizMode);
+    }
+
+    @Override
+    public void showNextQuizCard() {
+        Flashcard flashcard = quizFlashcards.get(0);
+        setSelectedFlashcard(flashcard);
+        quizFlashcards.remove(0);
+    }
+
 
     @Override
     public boolean equals(Object obj) {
