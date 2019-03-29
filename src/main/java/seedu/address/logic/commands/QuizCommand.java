@@ -34,6 +34,7 @@ public class QuizCommand extends Command {
 
         List<Flashcard> filteredPersonList = model.getFilteredFlashcardList();
         Flashcard randomFlashcard = filteredPersonList.get((int) Math.floor(Math.random() * filteredPersonList.size()));
+        model.setQuizMode(-1);
         model.setSelectedFlashcard(randomFlashcard);
         return new CommandResult(MESSAGE_QUIZ_START);
     }
