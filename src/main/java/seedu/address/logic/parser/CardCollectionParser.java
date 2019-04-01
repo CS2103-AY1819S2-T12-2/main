@@ -21,6 +21,7 @@ import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.QuizCommand;
 import seedu.address.logic.commands.RedoCommand;
 import seedu.address.logic.commands.SelectCommand;
+import seedu.address.logic.commands.ShowCommand;
 import seedu.address.logic.commands.StatsCommand;
 import seedu.address.logic.commands.UndoCommand;
 import seedu.address.logic.commands.UploadCommand;
@@ -103,6 +104,9 @@ public class CardCollectionParser {
 
         case BadCommand.COMMAND_WORD:
             return new BadCommand();
+
+        case ShowCommand.COMMAND_WORD:
+            return new ShowCommand();
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);

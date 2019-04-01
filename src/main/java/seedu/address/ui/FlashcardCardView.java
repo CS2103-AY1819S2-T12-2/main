@@ -40,11 +40,7 @@ public class FlashcardCardView extends UiPart<Region> {
     public FlashcardCardView(Flashcard flashcard, int mode) {
         super(FXML);
         this.flashcard = flashcard;
-        if (mode != 1) {
-            frontFace.setText(flashcard.getFrontFace().text);
-        } else {
-            frontFace.setText("");
-        }
+        frontFace.setText(flashcard.getFrontFace().text);
         if (mode != -1) {
             backFace.setText(flashcard.getBackFace().text);
         } else {

@@ -22,6 +22,7 @@ public class QuizPanel extends UiPart<Region> {
 
     public QuizPanel(ObservableList<Flashcard> quizCards) {
         super(FXML);
+        cardsRemaining.setText(String.valueOf(quizCards.size() + 1));
         quizCards.addListener((ListChangeListener<Flashcard>) change ->
             cardsRemaining.setText(String.valueOf(change.getList().size() + 1)));
     }

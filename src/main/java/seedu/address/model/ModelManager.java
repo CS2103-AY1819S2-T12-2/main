@@ -244,6 +244,7 @@ public class ModelManager implements Model {
 
     @Override
     public void showNextQuizCard() {
+        quizMode.setValue(-1);
         Flashcard flashcard = quizFlashcards.get(0);
         setSelectedFlashcard(flashcard);
         quizFlashcards.remove(0);
