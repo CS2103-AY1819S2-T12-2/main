@@ -16,9 +16,6 @@ public class BadCommand extends Command {
     public static final String MESSAGE_BAD = "真可惜!";
     public static final String MESSAGE_FAILURE_NOT_QUIZ_MODE = "Cannot give feedback outside quiz mode";
 
-    public BadCommand() {
-    }
-
     @Override
     public CommandResult execute(Model model, CommandHistory history) throws CommandException {
         requireNonNull(model);

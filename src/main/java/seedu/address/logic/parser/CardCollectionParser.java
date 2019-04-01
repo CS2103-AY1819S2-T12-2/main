@@ -46,7 +46,7 @@ public class CardCollectionParser {
      * @throws ParseException if the user input does not conform the expected format
      */
     public Command parseCommand(String userInput) throws ParseException {
-        if (userInput.equals("")) {
+        if (userInput.isEmpty()) {
             return new SmartCommand();
         }
 

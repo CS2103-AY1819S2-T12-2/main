@@ -32,9 +32,7 @@ public class MainWindow extends UiPart<Stage> {
     private Logic logic;
 
     // Independent Ui parts residing in this Ui container
-    private CardViewPanel cardViewPanel;
     private FlashcardListPanel flashcardListPanel;
-    private QuizPanel quizPanel;
     private ResultDisplay resultDisplay;
     private HelpWindow helpWindow;
 
@@ -133,7 +131,7 @@ public class MainWindow extends UiPart<Stage> {
      * Fills up all the placeholders of this window.
      */
     void fillInnerParts() {
-        cardViewPanel = new CardViewPanel(logic.selectedFlashcardProperty(), logic.quizModeProperty());
+        CardViewPanel cardViewPanel = new CardViewPanel(logic.selectedFlashcardProperty(), logic.quizModeProperty());
         cardViewPlaceholder.getChildren().add(cardViewPanel.getRoot());
 
         flashcardListPanel = new FlashcardListPanel(logic.getFilteredFlashcardList(), logic.selectedFlashcardProperty(),
@@ -171,9 +169,13 @@ public class MainWindow extends UiPart<Stage> {
         }
     }
 
+    /**
+     * Starts a quiz mode.
+     */
     private void startQuizMode() {
         flashcardListPanelPlaceholder.getChildren().clear();
-        quizPanel = new QuizPanel(logic.getQuizFlashcards(), logic.quizGoodProperty(), logic.quizBadProperty());
+        QuizPanel quizPanel = new QuizPanel(logic.getQuizFlashcards(),
+            logic.quizGoodProperty(), logic.quizBadProperty());
         flashcardListPanelPlaceholder.getChildren().add(quizPanel.getRoot());
     }
 

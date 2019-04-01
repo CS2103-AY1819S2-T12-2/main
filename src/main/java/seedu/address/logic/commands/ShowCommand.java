@@ -16,9 +16,6 @@ public class ShowCommand extends Command {
     public static final String MESSAGE_SHOW = "Back face shown";
     public static final String MESSAGE_FAILURE_NOT_QUIZ_MODE = "Cannot show card outside quiz mode";
 
-    public ShowCommand() {
-    }
-
     @Override
     public CommandResult execute(Model model, CommandHistory history) throws CommandException {
         requireNonNull(model);

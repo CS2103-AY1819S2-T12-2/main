@@ -15,9 +15,6 @@ public class SmartCommand extends Command {
 
     private static final String MESSAGE_FAILURE = "";
 
-    public SmartCommand() {
-    }
-
     @Override
     public CommandResult execute(Model model, CommandHistory history) throws CommandException {
         requireNonNull(model);
