@@ -30,8 +30,8 @@ public class SmartCommandTest {
     }
 
     @Test
-    public void execute_notInQuiz_failure() throws CommandException {
-        assertCommandFailure(new ShowCommand(), model, commandHistory, ShowCommand.MESSAGE_FAILURE_NOT_QUIZ_MODE);
+    public void execute_notInQuiz_failure() {
+        assertCommandFailure(new SmartCommand(), model, commandHistory, "");
     }
 
 }
