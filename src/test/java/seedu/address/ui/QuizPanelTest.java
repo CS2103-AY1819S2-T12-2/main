@@ -13,8 +13,6 @@ import javafx.collections.ObservableList;
 import seedu.address.model.flashcard.Flashcard;
 
 public class QuizPanelTest extends GuiUnitTest {
-    private static final ObservableList<Flashcard> TYPICAL_FLASHCARDS =
-        FXCollections.observableList(getTypicalFlashcards());
 
     private static final ObservableValue<Integer> INTEGER_ZERO =
         new SimpleObjectProperty<>(0);
@@ -24,9 +22,13 @@ public class QuizPanelTest extends GuiUnitTest {
 
     @Test
     public void display() {
-        QuizPanel panel = new QuizPanel(TYPICAL_FLASHCARDS, INTEGER_ONE, INTEGER_ZERO);
+        ObservableList<Flashcard> typicalFlashcards =
+            FXCollections.observableList(getTypicalFlashcards());
+        QuizPanel panel = new QuizPanel(typicalFlashcards, INTEGER_ONE, INTEGER_ZERO);
         uiPartRule.setUiPart(panel);
-        assertCorrectDisplay(panel, TYPICAL_FLASHCARDS.size() + 1, 1, 0);
+        assertCorrectDisplay(panel, typicalFlashcards.size() + 1, 1, 0);
+        guiRobot.interact(() -> typicalFlashcards.remove(0));
+        assertCorrectDisplay(panel, typicalFlashcards.size() + 1, 1, 0);
     }
 
     /**
