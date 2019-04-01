@@ -21,7 +21,7 @@ public class QuizCommand extends Command {
 
     public static final String MESSAGE_QUIZ_START = "Quiz mode started. Good luck :)";
     public static final String MESSAGE_QUIZ_FAILURE_EMPTY = "Cannot start quiz mode on empty list";
-    private static final String MESSAGE_QUIZ_FAILURE_IN_QUIZ = "Cannot start quiz mode inside quiz mode";
+    public static final String MESSAGE_QUIZ_FAILURE_IN_QUIZ = "Cannot start quiz mode inside quiz mode";
 
     private List<Flashcard> getShuffledFlashCards(Model model) {
         Random random = new Random();

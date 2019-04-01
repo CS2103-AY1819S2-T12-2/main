@@ -1,6 +1,7 @@
 package seedu.address.logic.commands;
 
 import static org.junit.Assert.assertEquals;
+import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.testutil.TypicalFlashcards.getTypicalCardCollection;
 
 import org.junit.Test;
@@ -25,6 +26,21 @@ public class QuizCommandTest {
         command.execute(model, commandHistory);
         assertEquals((int) model.getQuizMode(), -1);
         assertEquals(model.getQuizFlashcards().size(), model.getFilteredFlashcardList().size() - 1);
+    }
+
+
+    @Test
+    public void execute_inQuizMode_failure() throws CommandException {
+        QuizCommand command = new QuizCommand();
+        model.setQuizMode(-1);
+        assertCommandFailure(command, model, commandHistory, QuizCommand.MESSAGE_QUIZ_FAILURE_IN_QUIZ);
+    }
+
+    @Test
+    public void execute_emptyList_failure() throws CommandException {
+        QuizCommand command = new QuizCommand();
+        model.updateFilteredFlashcardList((x) -> false);
+        assertCommandFailure(command, model, commandHistory, QuizCommand.MESSAGE_QUIZ_FAILURE_EMPTY);
     }
 
 }
