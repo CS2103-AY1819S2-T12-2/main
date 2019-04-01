@@ -1,7 +1,5 @@
 package seedu.address.logic.parser;
 
-import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-
 import java.io.File;
 
 import seedu.address.logic.commands.UploadCommand;
@@ -23,18 +21,19 @@ public class UploadCommandParser implements Parser<UploadCommand> {
      */
     public UploadCommand parse(String args) throws ParseException {
         String trimmedArgs = args.trim();
-        if (trimmedArgs.isEmpty()) {
-            throw new ParseException(
-                String.format(MESSAGE_INVALID_COMMAND_FORMAT, UploadCommand.MESSAGE_USAGE));
-        }
+//        if (trimmedArgs.isEmpty()) {
+//            throw new ParseException(
+//                String.format(MESSAGE_INVALID_COMMAND_FORMAT, UploadCommand.MESSAGE_USAGE));
+//        }
 
         File file = new File(trimmedArgs);
 
         if (!file.exists() || file.isDirectory()) {
             throw new ParseException(PATH_MESSAGE_CONSTRAINT);
-        } else if (!trimmedArgs.endsWith(".txt")) {
-            throw new ParseException(FILE_MESSAGE_CONSTRAINT);
         }
+//        else if (!trimmedArgs.endsWith(".txt")) {
+//            throw new ParseException(FILE_MESSAGE_CONSTRAINT);
+//        }
 
         return new UploadCommand(file);
     }
