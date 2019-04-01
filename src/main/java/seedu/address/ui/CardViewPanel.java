@@ -45,7 +45,9 @@ public class CardViewPanel extends UiPart<Region> {
     }
 
     private void loadCardPage(Flashcard flashcard) {
-        loadCard(new FlashcardCardView(flashcard, quizMode));
+        if (flashcard != null) {
+            loadCard(new FlashcardCardView(flashcard, quizMode));
+        }
     }
 
     /**
