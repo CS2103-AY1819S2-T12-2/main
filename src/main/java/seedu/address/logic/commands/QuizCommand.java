@@ -1,10 +1,8 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
-import static seedu.address.model.flashcard.FlashcardContainsKeywordsPredicate.IS_FRONT_FACE;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 import java.util.Random;
 
@@ -12,7 +10,6 @@ import javafx.collections.FXCollections;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
-import seedu.address.model.flashcard.FaceContainsKeywordsPredicate;
 import seedu.address.model.flashcard.Flashcard;
 
 /**
@@ -25,13 +22,6 @@ public class QuizCommand extends Command {
     public static final String MESSAGE_QUIZ_START = "Quiz mode started. Good luck :)";
     public static final String MESSAGE_QUIZ_FAILURE_EMPTY = "Cannot start quiz mode on empty list";
     private static final String MESSAGE_QUIZ_FAILURE_IN_QUIZ = "Cannot start quiz mode inside quiz mode";
-
-
-    private final FaceContainsKeywordsPredicate predicate;
-
-    public QuizCommand() {
-        predicate = new FaceContainsKeywordsPredicate(Collections.emptyList(), IS_FRONT_FACE);
-    }
 
     private List<Flashcard> getShuffledFlashCards(Model model) {
         Random random = new Random();
