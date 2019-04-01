@@ -8,6 +8,8 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_FRONT_FACE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_FLASHCARD;
 
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -34,6 +36,7 @@ import seedu.address.logic.commands.SelectCommand;
 import seedu.address.logic.commands.SmartCommand;
 import seedu.address.logic.commands.StatsCommand;
 import seedu.address.logic.commands.UndoCommand;
+import seedu.address.logic.commands.UploadCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.flashcard.Flashcard;
 import seedu.address.model.flashcard.FlashcardContainsKeywordsPredicate;
@@ -140,6 +143,13 @@ public class CardCollectionParserTest {
     public void parseCommand_undoCommandWord_returnsUndoCommand() throws Exception {
         assertTrue(parser.parseCommand(UndoCommand.COMMAND_WORD) instanceof UndoCommand);
         assertTrue(parser.parseCommand("undo 3") instanceof UndoCommand);
+    }
+
+    @Test
+    public void parseCommand_uploadCommandWord_returnUploadCommand() throws Exception {
+        Path testDataFolder = Paths.get("src", "test", "data", "uploadCommandTest");
+        String file = testDataFolder.resolve("upload.txt").toAbsolutePath().toString();
+        assertTrue(parser.parseCommand(UploadCommand.COMMAND_WORD + " " + file) instanceof UploadCommand);
     }
 
     @Test
