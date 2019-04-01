@@ -22,6 +22,7 @@ import seedu.address.logic.commands.QuizCommand;
 import seedu.address.logic.commands.RedoCommand;
 import seedu.address.logic.commands.SelectCommand;
 import seedu.address.logic.commands.ShowCommand;
+import seedu.address.logic.commands.SmartCommand;
 import seedu.address.logic.commands.StatsCommand;
 import seedu.address.logic.commands.UndoCommand;
 import seedu.address.logic.commands.UploadCommand;
@@ -45,6 +46,10 @@ public class CardCollectionParser {
      * @throws ParseException if the user input does not conform the expected format
      */
     public Command parseCommand(String userInput) throws ParseException {
+        if (userInput.equals("")) {
+            return new SmartCommand();
+        }
+
         final Matcher matcher = BASIC_COMMAND_FORMAT.matcher(userInput.trim());
         if (!matcher.matches()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, HelpCommand.MESSAGE_USAGE));
@@ -107,6 +112,9 @@ public class CardCollectionParser {
 
         case ShowCommand.COMMAND_WORD:
             return new ShowCommand();
+
+        case SmartCommand.COMMAND_WORD:
+            return new SmartCommand();
 
         default:
             throw new ParseException(MESSAGE_UNKNOWN_COMMAND);
