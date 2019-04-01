@@ -27,6 +27,8 @@ public class GoodCommand extends Command {
             throw new CommandException(MESSAGE_FAILURE_NOT_QUIZ_MODE);
         }
 
+        model.addGoodFeedback();
+
         if (model.getQuizFlashcards().isEmpty()) {
             return new ExitCommand().execute(model, history);
         }

@@ -120,4 +120,14 @@ public class LogicManager implements Logic {
     public void setQuizMode(Integer quizMode) {
         model.setQuizMode(quizMode);
     }
+
+    @Override
+    public ReadOnlyProperty<Integer> quizGoodProperty() {
+        return model.getQuizGood();
+    }
+
+    @Override
+    public ReadOnlyProperty<Integer> quizBadProperty() {
+        return model.getQuizBad();
+    }
 }

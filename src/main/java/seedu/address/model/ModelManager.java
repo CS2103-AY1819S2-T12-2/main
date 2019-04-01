@@ -29,6 +29,8 @@ public class ModelManager implements Model {
     private final FilteredList<Flashcard> filteredFlashcards;
     private final SimpleObjectProperty<Flashcard> selectedFlashcard = new SimpleObjectProperty<>();
     private final SimpleObjectProperty<Integer> quizMode = new SimpleObjectProperty<>(0);
+    private final SimpleObjectProperty<Integer> quizGood = new SimpleObjectProperty<>(0);
+    private final SimpleObjectProperty<Integer> quizBad = new SimpleObjectProperty<>(0);
     private ObservableList<Flashcard> quizFlashcards;
 
     /**
@@ -248,6 +250,32 @@ public class ModelManager implements Model {
         Flashcard flashcard = quizFlashcards.get(0);
         setSelectedFlashcard(flashcard);
         quizFlashcards.remove(0);
+    }
+
+    @Override
+    public ReadOnlyProperty<Integer> getQuizGood() {
+        return quizGood;
+    }
+
+    @Override
+    public ReadOnlyProperty<Integer> getQuizBad() {
+        return quizBad;
+    }
+
+    @Override
+    public void resetQuizStat() {
+        quizGood.setValue(0);
+        quizBad.setValue(0);
+    }
+
+    @Override
+    public void addGoodFeedback() {
+        quizGood.setValue(quizGood.getValue() + 1);
+    }
+
+    @Override
+    public void addBadFeedback() {
+        quizBad.setValue(quizBad.getValue() + 1);
     }
 
 

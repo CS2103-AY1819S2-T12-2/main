@@ -66,6 +66,7 @@ public class QuizCommand extends Command {
             throw new CommandException(MESSAGE_QUIZ_FAILURE_EMPTY);
         }
 
+        model.resetQuizStat();
         model.setQuizFlashcards(FXCollections.observableArrayList(quizCards));
         model.setQuizMode(-1);
         model.showNextQuizCard();

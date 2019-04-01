@@ -173,7 +173,7 @@ public class MainWindow extends UiPart<Stage> {
 
     private void startQuizMode() {
         flashcardListPanelPlaceholder.getChildren().clear();
-        quizPanel = new QuizPanel(logic.getQuizFlashcards());
+        quizPanel = new QuizPanel(logic.getQuizFlashcards(), logic.quizGoodProperty(), logic.quizBadProperty());
         flashcardListPanelPlaceholder.getChildren().add(quizPanel.getRoot());
     }
 

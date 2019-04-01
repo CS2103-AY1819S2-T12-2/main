@@ -167,4 +167,29 @@ public interface Model {
      * Shows a flashcard for quiz mode from quiz flashcards.
      */
     void showNextQuizCard();
+
+    /**
+     * @return the number of good feedback in the current quiz mode
+     */
+    ReadOnlyProperty<Integer> getQuizGood();
+
+    /**
+     * @return the number of bad feedback in the current quiz mode
+     */
+    ReadOnlyProperty<Integer> getQuizBad();
+
+    /**
+     * Resets the quiz statistics.
+     */
+    void resetQuizStat();
+
+    /**
+     * Adds good feedback.
+     */
+    void addGoodFeedback();
+
+    /**
+     * Adds bad feedback.
+     */
+    void addBadFeedback();
 }

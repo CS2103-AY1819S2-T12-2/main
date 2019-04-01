@@ -88,4 +88,16 @@ public interface Logic {
     void setQuizMode(Integer quizMode);
 
     ObservableList<Flashcard> getQuizFlashcards();
+
+    /**
+     * @return the number of good feedback in the current quiz
+     * @see seedu.address.model.Model#getQuizGood()
+     */
+    ReadOnlyProperty<Integer> quizGoodProperty();
+
+    /**
+     * @return the number of bad feedback in the current quiz
+     * @see seedu.address.model.Model#getQuizBad()
+     */
+    ReadOnlyProperty<Integer> quizBadProperty();
 }
