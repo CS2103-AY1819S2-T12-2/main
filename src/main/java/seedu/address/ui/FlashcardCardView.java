@@ -35,13 +35,13 @@ public class FlashcardCardView extends UiPart<Region> {
         this.flashcard = flashcard;
         frontFace.setText(flashcard.getFrontFace().text);
         backFace.setText(flashcard.getBackFace().text);
-        /*
-        File file = new File("chitose_karasuma.jpg");
-        Image image = new Image(file.toURI().toString());
-        flashcardImage.setImage(image);
-        flashcardImage.setFitHeight(192);
-        flashcardImage.setPreserveRatio(true);
-        */
+        if (flashcard.getImagePath().hasImagePath()) {
+            File file = new File(flashcard.getImagePath().getImagePath());
+            Image image = new Image(file.toURI().toString());
+            flashcardImage.setImage(image);
+            flashcardImage.setFitHeight(192);
+            flashcardImage.setPreserveRatio(true);
+        }
     }
 
     @Override
@@ -54,11 +54,12 @@ public class FlashcardCardView extends UiPart<Region> {
         }
         FlashcardCardView that = (FlashcardCardView) o;
         return frontFace.getText().equals(that.frontFace.getText())
-            && backFace.getText().equals(that.backFace.getText());
+            && backFace.getText().equals(that.backFace.getText())
+            && flashcardImage.equals(that.flashcardImage);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(frontFace, backFace);
+        return Objects.hash(frontFace, backFace, flashcardImage);
     }
 }

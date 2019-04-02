@@ -3,8 +3,9 @@ package seedu.address.logic.commands;
 import static java.util.Objects.requireNonNull;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_BACK_FACE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_FRONT_FACE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_IMAGE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
-import static seedu.address.model.Model.PREDICATE_SHOW_ALL_FLASHCARDS;
+//import static seedu.address.model.Model.PREDICATE_SHOW_ALL_FLASHCARDS;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -21,6 +22,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.flashcard.Face;
 import seedu.address.model.flashcard.Flashcard;
+import seedu.address.model.flashcard.ImagePath;
 import seedu.address.model.flashcard.Statistics;
 import seedu.address.model.tag.Tag;
 
@@ -37,6 +39,7 @@ public class EditCommand extends Command {
         + "Parameters: INDEX (must be a positive integer) "
         + "[" + PREFIX_FRONT_FACE + "FRONTFACE] "
         + "[" + PREFIX_BACK_FACE + "BACKFACE] "
+        + "[" + PREFIX_IMAGE + "IMAGE] "
         + "[" + PREFIX_TAG + "TAG]...\n"
         + "Example: " + COMMAND_WORD + " 1 "
         + PREFIX_FRONT_FACE + "Hola "
@@ -71,10 +74,11 @@ public class EditCommand extends Command {
 
         Face updatedFrontFace = editFlashcardDescriptor.getFrontFace().orElse(flashcardToEdit.getFrontFace());
         Face updatedBackFace = editFlashcardDescriptor.getBackFace().orElse(flashcardToEdit.getBackFace());
+        ImagePath updatedImagePath = editFlashcardDescriptor.getImagePath().orElse(flashcardToEdit.getImagePath());
         Set<Tag> updatedTags = editFlashcardDescriptor.getTags().orElse(flashcardToEdit.getTags());
 
         Statistics statistics = flashcardToEdit.getStatistics(); // statistics cannot be edited
-        return new Flashcard(updatedFrontFace, updatedBackFace, statistics, updatedTags);
+        return new Flashcard(updatedFrontFace, updatedBackFace, updatedImagePath, statistics, updatedTags);
     }
 
     @Override
@@ -94,7 +98,8 @@ public class EditCommand extends Command {
         }
 
         model.setFlashcard(flashcardToEdit, editedFlashcard);
-        model.updateFilteredFlashcardList(PREDICATE_SHOW_ALL_FLASHCARDS);
+        //this line seems to cause issues
+        //model.updateFilteredFlashcardList(PREDICATE_SHOW_ALL_FLASHCARDS);
         model.commitCardCollection();
         return new CommandResult(String.format(MESSAGE_EDIT_FLASHCARD_SUCCESS, editedFlashcard));
     }
@@ -124,6 +129,7 @@ public class EditCommand extends Command {
     public static class EditFlashcardDescriptor {
         private Face frontFace;
         private Face backFace;
+        private ImagePath imagePath;
         private Set<Tag> tags;
 
         public EditFlashcardDescriptor() {
@@ -136,6 +142,7 @@ public class EditCommand extends Command {
         public EditFlashcardDescriptor(EditFlashcardDescriptor toCopy) {
             setFrontFace(toCopy.frontFace);
             setBackFace(toCopy.backFace);
+            setImagePath(toCopy.imagePath);
             setTags(toCopy.tags);
         }
 
@@ -143,7 +150,7 @@ public class EditCommand extends Command {
          * Returns true if at least one field is edited.
          */
         public boolean isAnyFieldEdited() {
-            return CollectionUtil.isAnyNonNull(frontFace, backFace, tags);
+            return CollectionUtil.isAnyNonNull(frontFace, backFace, imagePath, tags);
         }
 
         public Optional<Face> getFrontFace() {
@@ -160,6 +167,14 @@ public class EditCommand extends Command {
 
         public void setBackFace(Face backFace) {
             this.backFace = backFace;
+        }
+
+        public Optional<ImagePath> getImagePath() {
+            return Optional.ofNullable(imagePath);
+        }
+
+        public void setImagePath(ImagePath imagePath) {
+            this.imagePath = imagePath;
         }
 
         /**
