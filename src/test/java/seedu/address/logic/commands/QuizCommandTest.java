@@ -4,6 +4,7 @@ import static org.junit.Assert.assertEquals;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.testutil.TypicalFlashcards.getTypicalCardCollection;
 
+import org.junit.Before;
 import org.junit.Test;
 
 import seedu.address.commons.core.QuizState;
@@ -18,8 +19,14 @@ import seedu.address.model.UserPrefs;
  */
 public class QuizCommandTest {
 
-    private Model model = new ModelManager(getTypicalCardCollection(), new UserPrefs());
-    private CommandHistory commandHistory = new CommandHistory();
+    private Model model;
+    private CommandHistory commandHistory;
+
+    @Before
+    public void setUp() {
+        model = new ModelManager(getTypicalCardCollection(), new UserPrefs());
+        commandHistory = new CommandHistory();
+    }
 
     @Test
     public void execute_quiz_success() throws CommandException {
