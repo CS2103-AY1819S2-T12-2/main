@@ -53,9 +53,18 @@ public class FlashcardCardView extends UiPart<Region> {
             return false;
         }
         FlashcardCardView that = (FlashcardCardView) o;
-        return frontFace.getText().equals(that.frontFace.getText())
-            && backFace.getText().equals(that.backFace.getText())
-            && flashcardImage.equals(that.flashcardImage);
+        if (flashcardImage.getImage() == null && that.flashcardImage.getImage() == null) {
+            return frontFace.getText().equals(that.frontFace.getText())
+                && backFace.getText().equals(that.backFace.getText());
+        } else if (flashcardImage.getImage() != null && that.flashcardImage == null) {
+            return false;
+        } else if (flashcardImage == null && that.flashcardImage.getImage() != null) {
+            return false;
+        } else {
+            return frontFace.getText().equals(that.frontFace.getText())
+                && backFace.getText().equals(that.backFace.getText())
+                && flashcardImage.getImage().equals(that.flashcardImage.getImage());
+        }
     }
 
     @Override

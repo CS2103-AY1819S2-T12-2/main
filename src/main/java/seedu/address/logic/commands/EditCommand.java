@@ -5,7 +5,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_BACK_FACE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_FRONT_FACE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_IMAGE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
-//import static seedu.address.model.Model.PREDICATE_SHOW_ALL_FLASHCARDS;
+import static seedu.address.model.Model.PREDICATE_SHOW_ALL_FLASHCARDS;
 
 import java.util.Collections;
 import java.util.HashSet;
@@ -98,8 +98,7 @@ public class EditCommand extends Command {
         }
 
         model.setFlashcard(flashcardToEdit, editedFlashcard);
-        //this line seems to cause issues
-        //model.updateFilteredFlashcardList(PREDICATE_SHOW_ALL_FLASHCARDS);
+        model.updateFilteredFlashcardList(PREDICATE_SHOW_ALL_FLASHCARDS);
         model.commitCardCollection();
         return new CommandResult(String.format(MESSAGE_EDIT_FLASHCARD_SUCCESS, editedFlashcard));
     }
@@ -203,14 +202,41 @@ public class EditCommand extends Command {
                 return false;
             }
             EditFlashcardDescriptor that = (EditFlashcardDescriptor) o;
-            return getFrontFace().equals(that.getFrontFace())
-                && getBackFace().equals(that.getBackFace())
-                && getTags().equals(that.getTags());
+
+            // Due to the strange nature of constructing these, it is necessary
+            // to check if the image path actually points to a valid image when
+            // comparing edit commands.
+            if (!getImagePath().isPresent() && !that.getImagePath().isPresent()) {
+                return getFrontFace().equals(that.getFrontFace())
+                    && getBackFace().equals(that.getBackFace())
+                    && getTags().equals(that.getTags());
+            } else if (getImagePath().isPresent() && !that.getImagePath().isPresent()) {
+                if (getImagePath().get().hasImagePath()) {
+                    return false;
+                } else {
+                    return getFrontFace().equals(that.getFrontFace())
+                        && getBackFace().equals(that.getBackFace())
+                        && getTags().equals(that.getTags());
+                }
+            } else if (!getImagePath().isPresent() && that.getImagePath().isPresent()) {
+                if (!that.getImagePath().get().hasImagePath()) {
+                    return false;
+                } else {
+                    return getFrontFace().equals(that.getFrontFace())
+                        && getBackFace().equals(that.getBackFace())
+                        && getTags().equals(that.getTags());
+                }
+            } else {
+                return getFrontFace().equals(that.getFrontFace())
+                    && getBackFace().equals(that.getBackFace())
+                    && getImagePath().equals(that.getImagePath())
+                    && getTags().equals(that.getTags());
+            }
         }
 
         @Override
         public int hashCode() {
-            return Objects.hash(getFrontFace(), getBackFace(), getTags());
+            return Objects.hash(getFrontFace(), getBackFace(), getImagePath(), getTags());
         }
     }
 }

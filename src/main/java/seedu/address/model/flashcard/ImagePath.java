@@ -11,6 +11,10 @@ import javax.imageio.ImageIO;
 public class ImagePath {
     private Optional<String> imagePath;
 
+    public ImagePath() {
+        this.imagePath = Optional.empty();
+    }
+
     public ImagePath(Optional<String> imagePath) {
         this.imagePath = imagePath;
     }
@@ -43,5 +47,29 @@ public class ImagePath {
      */
     public String getImagePath() throws NoSuchElementException {
         return imagePath.get();
+    }
+
+    /**
+     * Returns true if both flashcards have the same identity and data fields. This defines a stronger notion of
+     * equality between two flashcards.
+     */
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof ImagePath)) {
+            return false;
+        }
+        ImagePath imagePath = (ImagePath) o;
+        if (!this.hasImagePath() && !imagePath.hasImagePath()) {
+            return true;
+        } else if (!this.hasImagePath() && imagePath.hasImagePath()) {
+            return false;
+        } else if (this.hasImagePath() && !imagePath.hasImagePath()) {
+            return false;
+        } else {
+            return this.getImagePath().equals(imagePath.getImagePath());
+        }
     }
 }
