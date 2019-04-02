@@ -208,7 +208,8 @@ public class ModelManager implements Model {
             }
 
             boolean wasSelectedFlashcardRemoved = change.getRemoved().stream()
-                .anyMatch(removedFlashcard -> selectedFlashcard.getValue().isSameFlashcard(removedFlashcard));
+                .anyMatch(removedFlashcard -> selectedFlashcard.getValue().isSameFlashcard(removedFlashcard))
+                && !change.getAddedSubList().contains(selectedFlashcard.getValue());
             if (wasSelectedFlashcardRemoved) {
                 // Select the flashcard that came before it in the list,
                 // or clear the selection if there is no such flashcard.
