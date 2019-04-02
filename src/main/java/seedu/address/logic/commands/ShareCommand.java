@@ -24,8 +24,6 @@ import seedu.address.model.tag.Tag;
  */
 public class ShareCommand extends Command {
 
-    private final Logger logger = LogsCenter.getLogger(getClass());
-
     public static final String COMMAND_WORD = "share";
     public static final String FILE_NAME = "flashcards.txt";
 
@@ -37,6 +35,7 @@ public class ShareCommand extends Command {
     public static final String MESSAGE_SHARE_SUCCESS = "Successfully created ";
     public static final String MESSAGE_SHARE_FAILURE = "Could not create file at ";
 
+    private final Logger logger = LogsCenter.getLogger(getClass());
 
     private String path;
 
@@ -51,8 +50,7 @@ public class ShareCommand extends Command {
         boolean isSuccessful = generateFile(flashcardsToShare);
         if (isSuccessful) {
             return new CommandResult(MESSAGE_SHARE_SUCCESS + path + "\\" + FILE_NAME);
-        }
-        else {
+        } else {
             throw new CommandException(String.format(MESSAGE_SHARE_FAILURE, path));
         }
     }
