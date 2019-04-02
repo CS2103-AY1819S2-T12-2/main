@@ -6,6 +6,7 @@ import static seedu.address.testutil.TypicalFlashcards.getTypicalCardCollection;
 
 import org.junit.Test;
 
+import seedu.address.commons.core.QuizState;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
@@ -24,7 +25,7 @@ public class QuizCommandTest {
     public void execute_quiz_success() throws CommandException {
         QuizCommand command = new QuizCommand();
         command.execute(model, commandHistory);
-        assertEquals((int) model.getQuizMode(), -1);
+        assertEquals((int) model.getQuizMode(), QuizState.QUIZ_MODE_FRONT);
         assertEquals(model.getQuizFlashcards().size(), model.getFilteredFlashcardList().size() - 1);
     }
 
@@ -32,7 +33,7 @@ public class QuizCommandTest {
     @Test
     public void execute_inQuizMode_failure() throws CommandException {
         QuizCommand command = new QuizCommand();
-        model.setQuizMode(-1);
+        model.setQuizMode(QuizState.QUIZ_MODE_FRONT);
         assertCommandFailure(command, model, commandHistory, QuizCommand.MESSAGE_QUIZ_FAILURE_IN_QUIZ);
     }
 

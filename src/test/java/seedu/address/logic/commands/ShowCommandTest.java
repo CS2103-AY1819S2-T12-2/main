@@ -6,6 +6,7 @@ import static seedu.address.testutil.TypicalFlashcards.getTypicalCardCollection;
 
 import org.junit.Test;
 
+import seedu.address.commons.core.QuizState;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
@@ -23,9 +24,9 @@ public class ShowCommandTest {
     public void execute_inQuiz_success() throws CommandException {
         new QuizCommand().execute(model, commandHistory);
         new ShowCommand().execute(model, commandHistory);
-        assertEquals((int) model.getQuizMode(), 1);
+        assertEquals((int) model.getQuizMode(), QuizState.QUIZ_MODE_BOTH);
         new ShowCommand().execute(model, commandHistory);
-        assertEquals((int) model.getQuizMode(), 1);
+        assertEquals((int) model.getQuizMode(), QuizState.QUIZ_MODE_BOTH);
     }
 
     @Test

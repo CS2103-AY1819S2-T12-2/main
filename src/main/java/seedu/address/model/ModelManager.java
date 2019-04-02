@@ -15,6 +15,7 @@ import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.commons.core.QuizState;
 import seedu.address.model.flashcard.Flashcard;
 import seedu.address.model.flashcard.exceptions.FlashcardNotFoundException;
 
@@ -247,7 +248,7 @@ public class ModelManager implements Model {
 
     @Override
     public void showNextQuizCard() {
-        quizMode.setValue(-1);
+        quizMode.setValue(QuizState.QUIZ_MODE_FRONT);
         Flashcard flashcard = quizFlashcards.get(0);
         setSelectedFlashcard(flashcard);
         quizFlashcards.remove(0);

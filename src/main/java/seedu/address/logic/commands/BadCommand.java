@@ -13,7 +13,7 @@ public class BadCommand extends Command {
 
     public static final String COMMAND_WORD = "bad";
 
-    public static final String MESSAGE_BAD = "真可惜!";
+    public static final String MESSAGE_BAD = "Too bad :(";
     public static final String MESSAGE_FAILURE_NOT_QUIZ_MODE = "Cannot give feedback outside quiz mode";
 
     @Override

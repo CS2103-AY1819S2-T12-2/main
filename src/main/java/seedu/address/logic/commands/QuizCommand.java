@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Random;
 
 import javafx.collections.FXCollections;
+import seedu.address.commons.core.QuizState;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
@@ -21,7 +22,7 @@ public class QuizCommand extends Command {
 
     public static final String MESSAGE_QUIZ_START = "Quiz mode started. Good luck :)";
     public static final String MESSAGE_QUIZ_FAILURE_EMPTY = "Cannot start quiz mode on empty list";
-    public static final String MESSAGE_QUIZ_FAILURE_IN_QUIZ = "Cannot start quiz mode inside quiz mode";
+    public static final String MESSAGE_QUIZ_FAILURE_IN_QUIZ = "Already in quiz mode";
 
     private List<Flashcard> getShuffledFlashCards(Model model) {
         Random random = new Random();
@@ -46,7 +47,7 @@ public class QuizCommand extends Command {
     public CommandResult execute(Model model, CommandHistory history) throws CommandException {
         requireNonNull(model);
 
-        if (model.getQuizMode() != 0) {
+        if (model.getQuizMode() != QuizState.NOT_QUIZ_MODE) {
             throw new CommandException(MESSAGE_QUIZ_FAILURE_IN_QUIZ);
         }
 
@@ -58,7 +59,7 @@ public class QuizCommand extends Command {
 
         model.resetQuizStat();
         model.setQuizFlashcards(FXCollections.observableArrayList(quizCards));
-        model.setQuizMode(-1);
+        model.setQuizMode(QuizState.QUIZ_MODE_FRONT);
         model.showNextQuizCard();
         return new CommandResult(MESSAGE_QUIZ_START);
     }

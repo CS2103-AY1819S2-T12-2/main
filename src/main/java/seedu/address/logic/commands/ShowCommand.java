@@ -2,12 +2,13 @@ package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
 
+import seedu.address.commons.core.QuizState;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 
 /**
- * Good user feedback
+ * Shows the back face of a flashcard in quiz mode.
  */
 public class ShowCommand extends Command {
 
@@ -20,10 +21,10 @@ public class ShowCommand extends Command {
     public CommandResult execute(Model model, CommandHistory history) throws CommandException {
         requireNonNull(model);
 
-        if (model.getQuizMode() == 0) {
+        if (model.getQuizMode() == QuizState.NOT_QUIZ_MODE) {
             throw new CommandException(MESSAGE_FAILURE_NOT_QUIZ_MODE);
         }
-        model.setQuizMode(1);
+        model.setQuizMode(QuizState.QUIZ_MODE_BOTH);
         return new CommandResult(MESSAGE_SHOW);
     }
 }

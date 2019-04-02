@@ -6,6 +6,7 @@ import static seedu.address.testutil.TypicalFlashcards.getTypicalCardCollection;
 
 import org.junit.Test;
 
+import seedu.address.commons.core.QuizState;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
@@ -32,7 +33,7 @@ public class BadCommandTest {
         new QuizCommand().execute(model, commandHistory);
         model.getQuizFlashcards().clear();
         new BadCommand().execute(model, commandHistory);
-        assertEquals(0, (int) model.getQuizMode());
+        assertEquals(QuizState.NOT_QUIZ_MODE, (int) model.getQuizMode());
     }
 
 
