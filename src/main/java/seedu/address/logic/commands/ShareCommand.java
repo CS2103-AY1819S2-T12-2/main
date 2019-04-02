@@ -9,12 +9,13 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.List;
+import java.util.logging.Logger;
 
-import seedu.address.commons.core.Messages;
+import seedu.address.commons.core.LogsCenter;
 import seedu.address.logic.CommandHistory;
+import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.flashcard.Flashcard;
-import seedu.address.model.flashcard.FlashcardContainsKeywordsPredicate;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -23,42 +24,45 @@ import seedu.address.model.tag.Tag;
  */
 public class ShareCommand extends Command {
 
+    private final Logger logger = LogsCenter.getLogger(getClass());
+
     public static final String COMMAND_WORD = "share";
-    public static final String FILE_NAME = "flashcardsToShare.txt";
+    public static final String FILE_NAME = "flashcards.txt";
 
-    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Creates a text file consisting of a set of flashcards "
-            + "which contain any of the specified keywords (case-insensitive) based on prefix. \n"
+    public static final String MESSAGE_USAGE = COMMAND_WORD + ": Creates a text file containing flashcards currently "
+            + "being listed to a user defined directory.\n"
             + "Parameters: "
-            + PREFIX_FRONT_FACE + "FRONTFACE "
-            + PREFIX_BACK_FACE + "BACKFACE "
-            + "[" + PREFIX_TAG + "TAG]...\n"
-            + "Example: " + COMMAND_WORD + " "
-            + PREFIX_FRONT_FACE + "Hello Ciao"
-            + PREFIX_BACK_FACE + "Hola "
-            + PREFIX_TAG + "Chinese "
-            + PREFIX_TAG + "Spanish";
+            + "DIRECTORY_PATH (optional - leaving path empty will prompt the File Explorer)";
 
-    private final FlashcardContainsKeywordsPredicate predicate;
+    public static final String MESSAGE_SHARE_SUCCESS = "Successfully created ";
+    public static final String MESSAGE_SHARE_FAILURE = "Could not create file at ";
 
-    public ShareCommand(FlashcardContainsKeywordsPredicate predicate) {
-        this.predicate = predicate;
+
+    private String path;
+
+    public ShareCommand (String path) {
+        this.path = path;
     }
 
     @Override
-    public CommandResult execute(Model model, CommandHistory history) {
+    public CommandResult execute(Model model, CommandHistory history) throws CommandException {
         requireNonNull(model);
-        model.updateFilteredFlashcardList(predicate);
         List<Flashcard> flashcardsToShare = model.getFilteredFlashcardList();
-        generateFile(flashcardsToShare);
-        return new CommandResult(
-                String.format(Messages.MESSAGE_FLASHCARDS_LISTED_OVERVIEW, model.getFilteredFlashcardList().size()));
+        boolean isSuccessful = generateFile(flashcardsToShare);
+        if (isSuccessful) {
+            return new CommandResult(MESSAGE_SHARE_SUCCESS + path + "\\" + FILE_NAME);
+        }
+        else {
+            throw new CommandException(String.format(MESSAGE_SHARE_FAILURE, path));
+        }
     }
 
     /**
      * Creates a text file with the details of {@code flashcardsToShare}
      */
-    private void generateFile(List<Flashcard> flashcardsToShare) {
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(FILE_NAME))) {
+    private boolean generateFile(List<Flashcard> flashcardsToShare) {
+        final boolean isSuccessful = true;
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(path + "\\" + FILE_NAME))) {
 
             StringBuilder lineToAdd;
             for (Flashcard flashcard : flashcardsToShare) {
@@ -89,15 +93,9 @@ public class ShareCommand extends Command {
             }
 
         } catch (IOException e) {
-            e.printStackTrace();
+            logger.warning("IO failure creating file " + FILE_NAME);
+            return !isSuccessful;
         }
-
-    }
-
-    @Override
-    public boolean equals(Object other) {
-        return other == this // short circuit if same object
-                || (other instanceof ShareCommand // instanceof handles nulls
-                && predicate.equals(((ShareCommand) other).predicate)); // state check
+        return isSuccessful;
     }
 }
