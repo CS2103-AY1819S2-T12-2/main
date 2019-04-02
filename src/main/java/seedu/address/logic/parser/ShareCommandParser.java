@@ -7,10 +7,9 @@ import java.io.File;
 
 import java.util.logging.Logger;
 
-import javax.swing.filechooser.FileSystemView;
 import javax.swing.JFileChooser;
 import javax.swing.UIManager;
-
+import javax.swing.filechooser.FileSystemView;
 
 import seedu.address.commons.core.LogsCenter;
 import seedu.address.logic.commands.ShareCommand;
