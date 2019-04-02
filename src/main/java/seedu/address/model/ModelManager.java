@@ -272,12 +272,14 @@ public class ModelManager implements Model {
     public void addGoodFeedback() {
         selectedFlashcard.getValue().getStatistics().quizAttempt(true);
         quizGood.setValue(quizGood.getValue() + 1);
+        commitCardCollection();
     }
 
     @Override
     public void addBadFeedback() {
         selectedFlashcard.getValue().getStatistics().quizAttempt(false);
         quizBad.setValue(quizBad.getValue() + 1);
+        commitCardCollection();
     }
 
 
