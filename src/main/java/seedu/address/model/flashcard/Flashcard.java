@@ -61,7 +61,9 @@ public class Flashcard {
         return backFace;
     }
 
-    public ImagePath getImagePath() { return imagePath; }
+    public ImagePath getImagePath() {
+        return imagePath;
+    }
 
     /**
      * Returns an immutable tag set, which throws {@code UnsupportedOperationException}
