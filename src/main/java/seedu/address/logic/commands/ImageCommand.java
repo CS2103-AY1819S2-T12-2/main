@@ -1,6 +1,7 @@
 package seedu.address.logic.commands;
 
 import static java.util.Objects.requireNonNull;
+import static seedu.address.commons.core.Config.IMAGE_DIRECTORY;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -48,8 +49,7 @@ public class ImageCommand extends Command {
         requireNonNull(model);
 
         String fileName = toImport.getName();
-        //TODO: make this more general (don't hardcode images/)
-        File workingDirectoryFile = new File("images/".concat(fileName));
+        File workingDirectoryFile = new File(IMAGE_DIRECTORY.concat(fileName));
 
         if (workingDirectoryFile.exists()) {
             throw new CommandException(MESSAGE_DUPLICATE_NAME);
