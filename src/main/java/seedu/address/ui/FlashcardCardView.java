@@ -30,20 +30,6 @@ public class FlashcardCardView extends UiPart<Region> {
     @FXML
     private ImageView flashcardImage;
 
-    public FlashcardCardView(Flashcard flashcard) {
-        super(FXML);
-        this.flashcard = flashcard;
-        frontFace.setText(flashcard.getFrontFace().text);
-        backFace.setText(flashcard.getBackFace().text);
-        if (flashcard.getImagePath().hasImagePath()) {
-            File file = new File(flashcard.getImagePath().getImagePath());
-            Image image = new Image(file.toURI().toString());
-            flashcardImage.setImage(image);
-            flashcardImage.setFitHeight(192);
-            flashcardImage.setPreserveRatio(true);
-        }
-    }
-
     /**
      * Constructs a {@code FlashCardView} with the given mode.
      *
@@ -58,6 +44,13 @@ public class FlashcardCardView extends UiPart<Region> {
             backFace.setText(flashcard.getBackFace().text);
         } else {
             backFace.setText("");
+        }
+        if (flashcard.getImagePath().hasImagePath()) {
+            File file = new File(flashcard.getImagePath().getImagePath());
+            Image image = new Image(file.toURI().toString());
+            flashcardImage.setImage(image);
+            flashcardImage.setFitHeight(192);
+            flashcardImage.setPreserveRatio(true);
         }
     }
 
