@@ -8,8 +8,6 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_FRONT_FACE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.testutil.TypicalIndexes.INDEX_FIRST_FLASHCARD;
 
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -28,12 +26,10 @@ import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.GoodCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.HistoryCommand;
-import seedu.address.logic.commands.ImportCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.QuizCommand;
 import seedu.address.logic.commands.RedoCommand;
 import seedu.address.logic.commands.SelectCommand;
-import seedu.address.logic.commands.ShareCommand;
 import seedu.address.logic.commands.SmartCommand;
 import seedu.address.logic.commands.StatsCommand;
 import seedu.address.logic.commands.UndoCommand;
@@ -142,41 +138,6 @@ public class CardCollectionParserTest {
     public void parseCommand_undoCommandWord_returnsUndoCommand() throws Exception {
         assertTrue(parser.parseCommand(UndoCommand.COMMAND_WORD) instanceof UndoCommand);
         assertTrue(parser.parseCommand("undo 3") instanceof UndoCommand);
-    }
-
-    @Test
-    public void parseCommand_importCommandWord_returnImportCommand() {
-        Path testDataFolder = Paths.get("src", "test", "data", "uploadCommandTest");
-        String file = testDataFolder.resolve("upload.txt").toString();
-        // TODO: test does not pass on travis
-        try {
-            parser.parseCommand(ImportCommand.COMMAND_WORD + " " + file);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-    }
-
-    @Test
-    public void parseCommand_shareCommandWord_returnShareCommand() {
-        Path testDataFolder = Paths.get("src", "test", "data", "uploadCommandTest");
-        String file = testDataFolder.resolve("upload.txt").toString();
-        // TODO: test does not pass on travis
-        try {
-            parser.parseCommand(ShareCommand.COMMAND_WORD + " " + testDataFolder.toString());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        try {
-            parser.parseCommand(ShareCommand.COMMAND_WORD + " " + file);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        /*
-        try {
-            parser.parseCommand(ShareCommand.COMMAND_WORD);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }*/
     }
 
     @Test
