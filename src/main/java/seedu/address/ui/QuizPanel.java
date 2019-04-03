@@ -38,6 +38,11 @@ public class QuizPanel extends UiPart<Region> {
         quizBad.addListener(((observableValue, oldValue, newValue) -> bad.setText(String.valueOf(newValue))));
     }
 
+    /**
+     * Updates the cards remaining labels for Quiz Panel UI.
+     *
+     * @param size the number of cards remaining
+     */
     private void updateCardsRemaining(int size) {
         cardsRemaining.setText(String.valueOf(size));
         if (size == 1) {
