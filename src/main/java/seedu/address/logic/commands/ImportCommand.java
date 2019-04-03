@@ -20,8 +20,6 @@ import seedu.address.model.Model;
  */
 public class ImportCommand extends Command {
 
-    private final Logger logger = LogsCenter.getLogger(getClass());
-
     public static final String COMMAND_WORD = "import";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Uploads flashcards from a text file. \n"
@@ -33,6 +31,8 @@ public class ImportCommand extends Command {
             + "have already existed locally OR may be corrupted*";
     public static final String MESSAGE_IMPORT_ERROR = "Unable to import flashcards from ";
 
+
+    private final Logger logger = LogsCenter.getLogger(getClass());
 
     private final File toImport;
 
@@ -59,8 +59,14 @@ public class ImportCommand extends Command {
         }
     }
 
+    /**
+     * Reads flashcard declarations from {@code File} and uses the {@code AddCommand} to
+     * import these cards locally.
+     * Returns the number of flashcards successfully imported and the total number of flashcards read
+     */
     private Pair importCards(Model model, CommandHistory history) throws CommandException {
-        int numSuccessfullyImported = 0, totalFlashcardsRead = 0;
+        int numSuccessfullyImported = 0;
+        int totalFlashcardsRead = 0;
         try {
             BufferedReader br = new BufferedReader(new FileReader(toImport));
             String flashcardToAdd;
@@ -71,7 +77,9 @@ public class ImportCommand extends Command {
                     AddCommand command = parser.parse(flashcardToAdd);
                     command.execute(model, history);
                     numSuccessfullyImported++;
-                } catch (Exception e) { }
+                } catch (Exception e) {
+                    logger.info("Exception from adding flashcard using import command");
+                }
             }
         } catch (IOException ioe) {
             logger.warning("IO failure reading from file " + toImport.getName());
