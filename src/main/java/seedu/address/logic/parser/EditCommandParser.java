@@ -54,10 +54,15 @@ public class EditCommandParser implements Parser<EditCommand> {
         if (argMultimap.getValue(PREFIX_IMAGE).isPresent()) {
             String imagePathString = argMultimap.getValue(PREFIX_IMAGE).get();
             ImagePath imagePath = new ImagePath(Optional.of(imagePathString));
-            if (!imagePath.imageExistsAtPath()) {
+            if (!imagePath.getImagePath().isEmpty() && !imagePath.imageExistsAtPath()) {
                 throw new ParseException(MESSAGE_IMAGE_NOT_FOUND);
+            } else {
+                if (imagePath.getImagePath().isEmpty()) {
+                    editFlashcardDescriptor.setImagePath(new ImagePath(Optional.empty()));
+                } else {
+                    editFlashcardDescriptor.setImagePath(imagePath);
+                }
             }
-            editFlashcardDescriptor.setImagePath(imagePath);
         }
         parseTagsForEdit(argMultimap.getAllValues(PREFIX_TAG)).ifPresent(editFlashcardDescriptor::setTags);
 
