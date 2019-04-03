@@ -8,6 +8,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.util.List;
 import java.util.logging.Logger;
 
@@ -34,7 +35,7 @@ public class ShareCommand extends Command {
             + "DIRECTORY_PATH (optional - leaving path empty will prompt the File Explorer)";
 
     public static final String MESSAGE_SHARE_SUCCESS = "Successfully created ";
-    public static final String MESSAGE_SHARE_FAILURE = "Could not create file at ";
+    public static final String MESSAGE_SHARE_FAILURE = "Could not create file at %1$s";
     private static final String MESSAGE_IN_QUIZ = "Cannot share in quiz mode";
 
     private final Logger logger = LogsCenter.getLogger(getClass());
@@ -52,9 +53,10 @@ public class ShareCommand extends Command {
             throw new CommandException(MESSAGE_IN_QUIZ);
         }
         List<Flashcard> flashcardsToShare = model.getFilteredFlashcardList();
-        boolean isSuccessful = generateFile(flashcardsToShare);
+        String fileName = Paths.get(path).resolve(FILE_NAME).toFile().toString();
+        boolean isSuccessful = generateFile(flashcardsToShare, fileName);
         if (isSuccessful) {
-            return new CommandResult(MESSAGE_SHARE_SUCCESS + path + "\\" + FILE_NAME);
+            return new CommandResult(MESSAGE_SHARE_SUCCESS + fileName);
         } else {
             throw new CommandException(String.format(MESSAGE_SHARE_FAILURE, path));
         }
@@ -63,9 +65,9 @@ public class ShareCommand extends Command {
     /**
      * Creates a text file with the details of {@code flashcardsToShare}
      */
-    private boolean generateFile(List<Flashcard> flashcardsToShare) {
+    private boolean generateFile(List<Flashcard> flashcardsToShare, String fileName) {
         final boolean isSuccessful = true;
-        try (BufferedWriter bw = new BufferedWriter(new FileWriter(path + "\\" + FILE_NAME))) {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(fileName))) {
 
             StringBuilder lineToAdd;
             for (Flashcard flashcard : flashcardsToShare) {
