@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import seedu.address.commons.core.LogsCenter;
+import seedu.address.commons.core.QuizState;
 import seedu.address.logic.CommandHistory;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
@@ -34,6 +35,7 @@ public class ShareCommand extends Command {
 
     public static final String MESSAGE_SHARE_SUCCESS = "Successfully created ";
     public static final String MESSAGE_SHARE_FAILURE = "Could not create file at ";
+    private static final String MESSAGE_IN_QUIZ = "Cannot share in quiz mode";
 
     private final Logger logger = LogsCenter.getLogger(getClass());
 
@@ -46,6 +48,9 @@ public class ShareCommand extends Command {
     @Override
     public CommandResult execute(Model model, CommandHistory history) throws CommandException {
         requireNonNull(model);
+        if (model.getQuizMode() != QuizState.NOT_QUIZ_MODE) {
+            throw new CommandException(MESSAGE_IN_QUIZ);
+        }
         List<Flashcard> flashcardsToShare = model.getFilteredFlashcardList();
         boolean isSuccessful = generateFile(flashcardsToShare);
         if (isSuccessful) {
