@@ -28,6 +28,7 @@ import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.commands.GoodCommand;
 import seedu.address.logic.commands.HelpCommand;
 import seedu.address.logic.commands.HistoryCommand;
+import seedu.address.logic.commands.ImportCommand;
 import seedu.address.logic.commands.ListCommand;
 import seedu.address.logic.commands.QuizCommand;
 import seedu.address.logic.commands.RedoCommand;
@@ -36,7 +37,6 @@ import seedu.address.logic.commands.ShareCommand;
 import seedu.address.logic.commands.SmartCommand;
 import seedu.address.logic.commands.StatsCommand;
 import seedu.address.logic.commands.UndoCommand;
-import seedu.address.logic.commands.UploadCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.flashcard.Flashcard;
 import seedu.address.model.flashcard.FlashcardContainsKeywordsPredicate;
@@ -145,12 +145,12 @@ public class CardCollectionParserTest {
     }
 
     @Test
-    public void parseCommand_uploadCommandWord_returnUploadCommand() {
+    public void parseCommand_importCommandWord_returnImportCommand() {
         Path testDataFolder = Paths.get("src", "test", "data", "uploadCommandTest");
         String file = testDataFolder.resolve("upload.txt").toString();
         // TODO: test does not pass on travis
         try {
-            parser.parseCommand(UploadCommand.COMMAND_WORD + " " + file);
+            parser.parseCommand(ImportCommand.COMMAND_WORD + " " + file);
         } catch (ParseException e) {
             e.printStackTrace();
         }
