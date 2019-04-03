@@ -18,16 +18,19 @@
 <li><a href="#editing-a-flashcard-code-edit-code">3.3. Editing a flashcard : <code>edit</code></a></li>
 <li><a href="#locating-a-flashcard-by-keyword-code-find-code">3.4. Locating a Flashcard by keyword: <code>find</code></a></li>
 <li><a href="#deleting-a-flashcard-code-delete-code">3.5. Deleting a flashcard : <code>delete</code></a></li>
-<li><a href="#quiz-mode-code-quiz-code">3.6. Quiz mode : ​<code>quiz</code></a></li>
-<li><a href="#show-progress-statistics-code-s-tats-code">3.7. Show progress statistics : <code>s​tats</code></a></li>
-<li><a href="#share-flashcards-code-share-code">3.8. Share flashcards : <code>share</code></a></li>
-<li><a href="#upload-flashcards-code-upload-code">3.9. Upload flashcards : <code>upload</code></a></li>
-<li><a href="#clearing-all-entries-code-clear-code">3.10. Clearing all entries : <code>clear</code></a></li>
-<li><a href="#exiting-the-program-code-exit-code">3.11. Exiting the program : <code>exit</code></a></li>
-<li><a href="#saving-the-data">3.12. Saving the data</a></li>
-<li><a href="#share-flashcards-code-coming-in-v2-0-code">3.13. Share flashcards <code>[coming in v2.0]</code></a></li>
-<li><a href="#undoing-previous-command-code-coming-in-v2-0-code">3.14. Undoing previous command <code>[coming in v2.0]</code></a></li>
-<li><a href="#redoing-the-previously-undone-command-code-coming-in-v2-0-code">3.15. Redoing the previously undone command <code>[coming in v2.0]</code></a></li>
+<li><a href="#quiz-mode-code-quiz-code">3.6. Quiz mode : <code>quiz</code></a></li>
+<li><a href="#showing-back-face-of-flashcard-code-show-code">3.7. Showing back face of flashcard : <code>show</code></a></li>
+<li><a href="#giving-quiz-feedback-code-good-code-or-code-bad-code">3.8. Giving quiz feedback : <code>good</code> or <code>bad</code></a></li>
+<li><a href="#smart-command">3.9. Smart command</a></li>
+<li><a href="#show-progress-statistics-code-stats-code">3.10. Show progress statistics : <code>stats</code></a></li>
+<li><a href="#share-flashcards-code-share-code">3.11. Share flashcards : <code>share</code></a></li>
+<li><a href="#upload-flashcards-code-upload-code">3.12. Upload flashcards : <code>upload</code></a></li>
+<li><a href="#clearing-all-entries-code-clear-code">3.13. Clearing all entries : <code>clear</code></a></li>
+<li><a href="#exiting-code-exit-code">3.14. Exiting : <code>exit</code></a></li>
+<li><a href="#saving-the-data">3.15. Saving the data</a></li>
+<li><a href="#share-flashcards-code-coming-in-v2-0-code">3.16. Share flashcards <code>[coming in v2.0]</code></a></li>
+<li><a href="#undoing-previous-command-code-coming-in-v2-0-code">3.17. Undoing previous command <code>[coming in v2.0]</code></a></li>
+<li><a href="#redoing-the-previously-undone-command-code-coming-in-v2-0-code">3.18. Redoing the previously undone command <code>[coming in v2.0]</code></a></li>
 </ul>
 </li>
 <li><a href="#faq">4. FAQ</a></li>
@@ -336,20 +339,90 @@ Deletes the 1st flashcard in the results of the <code>find</code> command.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="quiz-mode-code-quiz-code"><a class="link" href="#quiz-mode-code-quiz-code">3.6. Quiz mode : ​<code>quiz</code></a></h3>
-<div class="paragraph">
-<p>Enter quiz mode. A card will be shown to the user one by one randomly with distribution based
-on accuracy of each flashcard. The user then can self-verify whether he/she correctly guess the other side of the flashcard.</p>
+<h3 id="quiz-mode-code-quiz-code"><a class="link" href="#quiz-mode-code-quiz-code">3.6. Quiz mode : <code>quiz</code></a></h3>
+<div class="imageblock">
+<div class="content">
+<img src="images/Ui-quiz.png" alt="Ui quiz" width="790">
+</div>
 </div>
 <div class="paragraph">
-<p>Format: <code>​quiz [t/TAG] []</code></p>
+<p>Enters quiz mode.<br>
+A card will be shown to you one by one randomly with distribution based on accuracy of each flashcard.<br>
+You can then self-verify whether you accurately recall the back side of the flashcard.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>quiz</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>Enters quiz mode. If no tags are given, all cards can be shown.</p>
+<p>Enters quiz mode with the cards on the filtered flashcard list panel.</p>
+</li>
+<li>
+<p>This will start a quiz session. The flashcard list panel on the left will change to a quiz panel.</p>
+</li>
+<li>
+<p>The quiz panel contains the number of cards remaining on the quiz, as well as the number of good and bad feedback received.</p>
+</li>
+<li>
+<p>The card view panel on the right will display the quizzed cards one by one, with the back face of the flashcard hidden.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="showing-back-face-of-flashcard-code-show-code"><a class="link" href="#showing-back-face-of-flashcard-code-show-code">3.7. Showing back face of flashcard : <code>show</code></a></h3>
+<div class="paragraph">
+<p>Shows the back face of the flashcard being quizzed.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>show</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>If the back face of the flashcard is already shown, this command will do nothing.</p>
+</li>
+<li>
+<p>Note that you can only use this command inside quiz mode.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="giving-quiz-feedback-code-good-code-or-code-bad-code"><a class="link" href="#giving-quiz-feedback-code-good-code-or-code-bad-code">3.8. Giving quiz feedback : <code>good</code> or <code>bad</code></a></h3>
+<div class="paragraph">
+<p>Gives user feedback on quiz mode.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>good</code> or <code>bad</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>In order to give feedback of how well you do in the quiz mode, you can type in either <code>good</code> or <code>bad</code> for each card in the quiz.</p>
+</li>
+<li>
+<p>After you type <code>good</code> or <code>bad</code>, Acquizition will record the feedback on the card shown, as well as incrementing the number of good and bad feedback.</p>
+</li>
+<li>
+<p>Acquizition will then proceed to show the next flashcard to be quizzed. If there are no cards left, it will exit quiz mode.</p>
+</li>
+<li>
+<p>This command is usually, but not necessarily, used after the <code>show</code> command. That is, after you look at the back face of the flashcard, you can dictate how well you recall the back face of the flashcard.</p>
+</li>
+<li>
+<p>Note that you can only use this command inside quiz mode.</p>
 </li>
 </ul>
 </div>
@@ -361,19 +434,92 @@ on accuracy of each flashcard. The user then can self-verify whether he/she corr
 <div class="ulist">
 <ul>
 <li>
-<p><code>quiz t/chinese</code></p>
+<p><code>quiz</code><br>
+<code>good</code><br>
+This will increment the number of good feedback of the card shown, thus, the success rate of this card will increase.<br>
+Then, the next card in the quiz queue will be shown.</p>
+</li>
+<li>
+<p><code>quiz</code><br>
+<code>show</code><br>
+<code>bad</code><br>
+This will increment the number of bad feedback of the card shown, thus, the success rate of this card will decrease.<br>
+Then, the next card in the quiz queue will be shown.</p>
+</li>
+<li>
+<p><code>quiz</code><br>
+<code>good</code><br>
+<code>&#8230;&#8203;</code><br>
+<code>good</code><br>
+Suppose this is the last card to show inside quiz mode. Acquizition will record the statistics of the quiz mode and exit the quiz mode.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="show-progress-statistics-code-s-tats-code"><a class="link" href="#show-progress-statistics-code-s-tats-code">3.7. Show progress statistics : <code>s​tats</code></a></h3>
+<h3 id="smart-command"><a class="link" href="#smart-command">3.9. Smart command</a></h3>
 <div class="paragraph">
-<p>Show statistics for the cards with the given tag, or all cards if tag is not specified, including
+<p>Sometimes, it is troublesome having to always type in alternating <code>show</code> and <code>good</code> inside quiz mode.<br>
+We introduce a smart command that cleverly chooses the appropriate command to run.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>&lt;enter&gt;</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>To initiate a smart command, you just need to press enter.</p>
+</li>
+<li>
+<p>If you are in quiz mode, and the back face of the quizzed card is not yet shown, smart command will execute a <code>show</code> command.</p>
+</li>
+<li>
+<p>If you are in quiz mode, and the back face of the quizzed card has been shown, smart command will execute a <code>good</code> command.</p>
+</li>
+<li>
+<p>This dramatically reduces your time to navigate through the quiz!</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>quiz</code><br>
+<code>&lt;enter&gt;</code><br>
+<code>&lt;enter&gt;</code><br>
+This will first show the back face of the card, then will mark the card as good.</p>
+</li>
+<li>
+<p><code>quiz</code><br>
+<code>&lt;enter&gt;</code><br>
+<code>bad</code><br>
+This will show the back face of the card, then will mark the card as bad.</p>
+</li>
+<li>
+<p><code>quiz</code><br>
+<code>&lt;enter&gt;</code><br>
+<code>&#8230;&#8203;</code><br>
+<code>&lt;enter&gt;</code><br>
+This will go through all the cards in the quiz mode and mark them all as good.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="show-progress-statistics-code-stats-code"><a class="link" href="#show-progress-statistics-code-stats-code">3.10. Show progress statistics : <code>stats</code></a></h3>
+<div class="paragraph">
+<p>Shows statistics for the cards with the given tag, or all cards if tag is not specified, including
 accuracy, number of tries, etc.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>​stats [t/TAG]</code></p>
+<p>Format: <code>stats [t/TAG]</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -398,12 +544,12 @@ accuracy, number of tries, etc.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="share-flashcards-code-share-code"><a class="link" href="#share-flashcards-code-share-code">3.8. Share flashcards : <code>share</code></a></h3>
+<h3 id="share-flashcards-code-share-code"><a class="link" href="#share-flashcards-code-share-code">3.11. Share flashcards : <code>share</code></a></h3>
 <div class="paragraph">
 <p>Creates a text file containing a set of flashcards to be shared.</p>
 </div>
 <div class="paragraph">
-<p>Format: ​<code>share [f/KEYWORD]&#8230;&#8203; [b/KEYWORD]&#8230;&#8203; [t/KEYWORD]&#8230;&#8203;</code></p>
+<p>Format: <code>share [f/KEYWORD]&#8230;&#8203; [b/KEYWORD]&#8230;&#8203; [t/KEYWORD]&#8230;&#8203;</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -439,7 +585,7 @@ This will create a text file containing flashcards with the spanish tag OR with 
 </div>
 </div>
 <div class="sect2">
-<h3 id="upload-flashcards-code-upload-code"><a class="link" href="#upload-flashcards-code-upload-code">3.9. Upload flashcards : <code>upload</code></a></h3>
+<h3 id="upload-flashcards-code-upload-code"><a class="link" href="#upload-flashcards-code-upload-code">3.12. Upload flashcards : <code>upload</code></a></h3>
 <div class="paragraph">
 <p>Uploads a set of flashcards from a text file</p>
 </div>
@@ -472,21 +618,43 @@ This will create a text file containing flashcards with the spanish tag OR with 
 </div>
 </div>
 <div class="sect2">
-<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.10. Clearing all entries : <code>clear</code></a></h3>
+<h3 id="clearing-all-entries-code-clear-code"><a class="link" href="#clearing-all-entries-code-clear-code">3.13. Clearing all entries : <code>clear</code></a></h3>
 <div class="paragraph">
 <p>Clears all flashcards.<br>
 Format: <code>clear</code></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.11. Exiting the program : <code>exit</code></a></h3>
+<h3 id="exiting-code-exit-code"><a class="link" href="#exiting-code-exit-code">3.14. Exiting : <code>exit</code></a></h3>
 <div class="paragraph">
-<p>Exits the program.<br>
+<p>If you are in quiz mode, this will exit the quiz mode and displays the main window.
+Otherwise, it will exit the program.</p>
+</div>
+<div class="paragraph">
+<p>Exits quiz mode or program.<br>
 Format: <code>exit</code></p>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>quiz</code><br>
+<code>exit</code><br>
+This will exit the quiz mode.</p>
+</li>
+<li>
+<p><code>quiz</code><br>
+<code>exit</code><br>
+<code>exit</code><br>
+This will exit the quiz mode, then exit the program.</p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.12. Saving the data</a></h3>
+<h3 id="saving-the-data"><a class="link" href="#saving-the-data">3.15. Saving the data</a></h3>
 <div class="paragraph">
 <p><em>Acquizition</em> data are saved in the hard disk automatically after any command
 that changes the data.<br>
@@ -494,20 +662,20 @@ There is no need to save manually.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="share-flashcards-code-coming-in-v2-0-code"><a class="link" href="#share-flashcards-code-coming-in-v2-0-code">3.13. Share flashcards <code>[coming in v2.0]</code></a></h3>
+<h3 id="share-flashcards-code-coming-in-v2-0-code"><a class="link" href="#share-flashcards-code-coming-in-v2-0-code">3.16. Share flashcards <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p>Share a collection of flashcards specified by tags through email</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="undoing-previous-command-code-coming-in-v2-0-code"><a class="link" href="#undoing-previous-command-code-coming-in-v2-0-code">3.14. Undoing previous command <code>[coming in v2.0]</code></a></h3>
+<h3 id="undoing-previous-command-code-coming-in-v2-0-code"><a class="link" href="#undoing-previous-command-code-coming-in-v2-0-code">3.17. Undoing previous command <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p>Restores the flash card collection to the state before the previous <em>undoable</em>
 command was executed.<br></p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="redoing-the-previously-undone-command-code-coming-in-v2-0-code"><a class="link" href="#redoing-the-previously-undone-command-code-coming-in-v2-0-code">3.15. Redoing the previously undone command <code>[coming in v2.0]</code></a></h3>
+<h3 id="redoing-the-previously-undone-command-code-coming-in-v2-0-code"><a class="link" href="#redoing-the-previously-undone-command-code-coming-in-v2-0-code">3.18. Redoing the previously undone command <code>[coming in v2.0]</code></a></h3>
 <div class="paragraph">
 <p>Reverses the most recent <code>undo</code> command.</p>
 </div>
@@ -567,4 +735,4 @@ e.g. <code>find James Jake</code></p>
 </ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-03 13:47:40 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-03 13:55:36 UTC</div></div></div></body></html>
