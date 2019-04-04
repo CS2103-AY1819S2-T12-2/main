@@ -240,6 +240,28 @@ The `undo` command fails as there are no undoable commands executed previously.
 `undo` +
 Reverses the `clear` command, then reverses the `delete 1` command.
 
+=== Redoing the previously undone command : `redo`
+
+Reverses the most recent `undo` command.
+
+Format: `redo`
+
+Examples:
+
+* `delete 1` +
+`undo` (reverses the `delete 1` command) +
+`redo` (reapplies the `delete 1` command) +
+
+* `delete 1` +
+`redo` +
+The `redo` command fails as there are no `undo` commands executed previously.
+
+* `delete 1` +
+`clear` +
+`undo` (reverses the `clear` command) +
+`undo` (reverses the `delete 1` command) +
+`redo` (reapplies the `delete 1` command) +
+`redo` (reapplies the `clear` command) +
 
 [[ImportImage]]
 === Importing an image : `image`
@@ -396,7 +418,7 @@ Then, the next card in the quiz queue will be shown.
 `good` +
 Suppose this is the last card to show inside quiz mode. Acquizition will record the statistics of the quiz mode and exit the quiz mode.
 
-=== Smart command
+=== Smart command : kbd:[Enter]
 
 It can be troublesome to always have to type `show` and `good`. +
 You can use a _smart command_ that cleverly chooses the appropriate command to run.
