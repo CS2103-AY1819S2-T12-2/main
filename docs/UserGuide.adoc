@@ -172,6 +172,29 @@ This will find and list all the flashcards that have the _Chinese_ or _Japanese_
 * `find f/Hello b/Hello` +
 This will find and list all the flashcards whose front or back text contains the word _Hello_.
 
+=== Selecting a flashcard : `select`
+
+Selects the flashcard identified by the index number used in the displayed flashcard list.
+
+Format: `select INDEX`
+
+****
+* Selects a flashcard and display it on the flashcard view on the right pane.
+* The success rate of the selected flashcard will be shown on the command result box.
+* The index refers to the index number shown in the displayed person list.
+* The index must be a positive integer `1, 2, 3, …`
+* Alternatively, you can select a card by clicking it on the flashcard list panel.
+****
+
+Examples:
+
+* `list` +
+`select 2` +
+Selects the second flashcard in the list.
+* `find t/chinese` +
+`select 1` +
+Selects the first flashcard in the filtered list with chinese tag.
+
 [[ImportImage]]
 === Importing an image : `image`
 Adds an image into _Acquizition_'s internal directory.
