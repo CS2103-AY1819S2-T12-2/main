@@ -201,6 +201,17 @@ Selects the second flashcard in the list.
 `select 1` +
 Selects the first flashcard in the filtered list with chinese tag.
 
+=== Listing entered commands : `history`
+
+Lists all the commands that you have entered in reverse chronological order.
+
+Format: `history`
+
+[NOTE]
+====
+Pressing the kbd:[&uarr;] and kbd:[&darr;] arrows will display the previous and next input respectively in the command box.
+====
+
 [[ImportImage]]
 === Importing an image : `image`
 Adds an image into _Acquizition_'s internal directory.
