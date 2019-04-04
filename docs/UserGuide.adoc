@@ -212,6 +212,35 @@ Format: `history`
 Pressing the kbd:[&uarr;] and kbd:[&darr;] arrows will display the previous and next input respectively in the command box.
 ====
 
+=== Undoing previous command : `undo`
+
+Restores the card collection to the state before the previous undoable command was executed.
+
+Format: `undo`
+
+[NOTE]
+====
+Undoable commands: those commands that modify the card collection's content (`add`, `delete`, `edit`, `clear`, `good`, `bad`, and `import`).
+====
+
+Examples:
+
+* `delete 1` +
+`list` +
+`undo` +
+Reverses the `delete 1` command.
+* `select 1` +
+`list` +
+`quiz` +
+`exit` +
+The `undo` command fails as there are no undoable commands executed previously.
+* `delete 1` +
+`clear` +
+`undo` +
+`undo` +
+Reverses the `clear` command, then reverses the `delete 1` command.
+
+
 [[ImportImage]]
 === Importing an image : `image`
 Adds an image into _Acquizition_'s internal directory.
