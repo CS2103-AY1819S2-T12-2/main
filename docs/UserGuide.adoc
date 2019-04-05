@@ -185,7 +185,7 @@ Selects the flashcard identified by the index number used in the displayed flash
 Format: `select INDEX`
 
 ****
-* Selects a flashcard and display it on the flashcard view on the right pane.
+* Selects a flashcard and displays it on the flashcard view on the right pane.
 * The success rate of the selected flashcard will be shown on the command result box.
 * The index refers to the index number shown in the displayed person list.
 * The index must be a positive integer `1, 2, 3, …`
