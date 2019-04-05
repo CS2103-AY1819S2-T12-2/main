@@ -356,6 +356,7 @@ If you are in quiz mode, this exits quiz mode instead. See <<QuizExit>> for more
 
 Format: `exit`
 
+// tag::quiz[]
 [[FeaturesQuiz]]
 == Features (Quiz)
 
@@ -453,6 +454,7 @@ This will go through all the cards in the quiz mode and mark them all as good.
 Exits quiz mode prematurely if you are in quiz mode. +
 
 Format: `exit`
+// end::quiz[]
 
 == FAQ
 
@@ -465,6 +467,7 @@ explicitly save.
 it creates with the file that contains the data of your previous Aqquizition
 folder.
 
+// tag::command-summary[]
 == Command Summary
 
 === Card collection
@@ -497,3 +500,4 @@ e.g.`select 2`
 * *Show* : `show`
 * *Smart command* : kbd:[Enter]
 * *Exit quiz mode* : `exit`
+// end::command-summary[]
