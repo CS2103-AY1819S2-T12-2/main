@@ -18,7 +18,7 @@ public class StatsCommandParser implements Parser<StatsCommand> {
             return new StatsCommand();
         }
 
-        return new StatsCommand(ParserUtil.filterByKeyword(args));
+        return new StatsCommand(ParserUtil.filterByKeyword(args, StatsCommand.MESSAGE_USAGE));
     }
 
 

@@ -9,7 +9,6 @@ import java.util.stream.Stream;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.commons.util.StringUtil;
-import seedu.address.logic.commands.FindCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.flashcard.Face;
 import seedu.address.model.flashcard.FlashcardContainsKeywordsPredicate;
@@ -96,13 +95,14 @@ public class ParserUtil {
      *
      * @throws ParseException if the user input does not conform the expected format
      */
-    static FlashcardContainsKeywordsPredicate filterByKeyword(String args) throws ParseException {
+    static FlashcardContainsKeywordsPredicate filterByKeyword(String args, String messageUsage)
+            throws ParseException {
         ArgumentMultimap argMultimap;
         argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_FRONT_FACE, PREFIX_BACK_FACE, PREFIX_TAG);
 
         if (!arePrefixesPresent(argMultimap, PREFIX_FRONT_FACE) && !arePrefixesPresent(argMultimap, PREFIX_BACK_FACE)
                 && !arePrefixesPresent(argMultimap, PREFIX_TAG) || !argMultimap.getPreamble().isEmpty()) {
-            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, messageUsage));
         }
 
         Set<Face> frontFaceKeywordSet = ParserUtil.parseFaces(argMultimap.getAllValues(PREFIX_FRONT_FACE));
