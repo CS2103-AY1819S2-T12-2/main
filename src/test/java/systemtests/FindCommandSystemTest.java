@@ -2,7 +2,7 @@ package systemtests;
 
 import static org.junit.Assert.assertFalse;
 import static seedu.address.commons.core.Messages.MESSAGE_FLASHCARDS_LISTED_OVERVIEW;
-import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_FRONT_FACE;
 import static seedu.address.testutil.TypicalFlashcards.EAT;
 import static seedu.address.testutil.TypicalFlashcards.GOOD;
@@ -131,7 +131,7 @@ public class FindCommandSystemTest extends CardCollectionSystemTest {
 
         /* Case: mixed case command word -> rejected */
         command = "FiNd Hello";
-        assertCommandFailure(command, MESSAGE_UNKNOWN_COMMAND);
+        assertCommandFailure(command, String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
     }
 
     /**
