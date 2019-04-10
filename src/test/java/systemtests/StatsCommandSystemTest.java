@@ -1,17 +1,20 @@
 package systemtests;
 
 import static org.junit.Assert.assertFalse;
-import static seedu.address.commons.core.Messages.MESSAGE_FLASHCARDS_LISTED_OVERVIEW;
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_FRONT_FACE;
-import static seedu.address.testutil.TypicalFlashcards.*;
+import static seedu.address.testutil.TypicalFlashcards.EAT;
+import static seedu.address.testutil.TypicalFlashcards.GOOD;
+import static seedu.address.testutil.TypicalFlashcards.HELLO;
+import static seedu.address.testutil.TypicalFlashcards.KEYWORD_MATCHING_GOOD;
+import static seedu.address.testutil.TypicalFlashcards.NEWTON;
 
 import org.junit.Test;
 
 import seedu.address.commons.core.index.Index;
 import seedu.address.logic.commands.DeleteCommand;
-import seedu.address.logic.commands.StatsCommand;
 import seedu.address.logic.commands.RedoCommand;
+import seedu.address.logic.commands.StatsCommand;
 import seedu.address.logic.commands.UndoCommand;
 import seedu.address.model.Model;
 import seedu.address.model.flashcard.Flashcard;
@@ -21,7 +24,9 @@ public class StatsCommandSystemTest extends CardCollectionSystemTest {
 
     @Test
     public void stats() {
-        /* Case: find statistics of multiple flashcards in card collection, command with leading spaces and trailing spaces */
+        /* Case: find statistics of multiple flashcards in card collection, command with leading spaces and
+         * trailing spaces
+         */
         String command = "   " + StatsCommand.COMMAND_WORD + " " + PREFIX_FRONT_FACE + KEYWORD_MATCHING_GOOD + "   ";
         Model expectedModel = getModel();
         ModelHelper.setFilteredList(expectedModel, GOOD);
@@ -55,7 +60,9 @@ public class StatsCommandSystemTest extends CardCollectionSystemTest {
         assertCommandSuccess(command, expectedModel);
         assertSelectedCardUnchanged();
 
-        /* Case: find statistics of multiple flashcards in card collection, 2 matching keywords and 1 non-matching keyword */
+        /* Case: find statistics of multiple flashcards in card collection, 2 matching keywords and
+         * 1 non-matching keyword
+         */
         command = StatsCommand.COMMAND_WORD + " " + PREFIX_FRONT_FACE + "Newton's Eat Cow";
         assertCommandSuccess(command, expectedModel);
         assertSelectedCardUnchanged();

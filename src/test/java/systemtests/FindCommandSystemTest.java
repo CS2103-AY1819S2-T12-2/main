@@ -4,7 +4,11 @@ import static org.junit.Assert.assertFalse;
 import static seedu.address.commons.core.Messages.MESSAGE_FLASHCARDS_LISTED_OVERVIEW;
 import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_FRONT_FACE;
-import static seedu.address.testutil.TypicalFlashcards.*;
+import static seedu.address.testutil.TypicalFlashcards.EAT;
+import static seedu.address.testutil.TypicalFlashcards.GOOD;
+import static seedu.address.testutil.TypicalFlashcards.HELLO;
+import static seedu.address.testutil.TypicalFlashcards.KEYWORD_MATCHING_GOOD;
+import static seedu.address.testutil.TypicalFlashcards.NEWTON;
 
 import org.junit.Test;
 

@@ -1,7 +1,22 @@
 package seedu.address.logic.parser;
 
 import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
-import static seedu.address.logic.commands.CommandTestUtil.*;
+import static seedu.address.logic.commands.CommandTestUtil.BACKFACE_DESC_GOOD;
+import static seedu.address.logic.commands.CommandTestUtil.FRONTFACE_DESC_DUCK;
+import static seedu.address.logic.commands.CommandTestUtil.FRONTFACE_DESC_GOOD;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_BACKFACE_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_FRONTFACE_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_PREFIX_UNDEFINED;
+import static seedu.address.logic.commands.CommandTestUtil.INVALID_TAG_DESC;
+import static seedu.address.logic.commands.CommandTestUtil.PREAMBLE_NON_EMPTY;
+import static seedu.address.logic.commands.CommandTestUtil.PREAMBLE_WHITESPACE;
+import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_CHINESE;
+import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_INDONESIAN;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_BACKFACE_GOOD;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_FRONTFACE_DUCK;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_FRONTFACE_GOOD;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_CHINESE;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_INDONESIAN;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
