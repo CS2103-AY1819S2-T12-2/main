@@ -31,7 +31,7 @@ import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.flashcard.Face;
-import seedu.address.model.flashcard.FlashcardContainsKeywordsPredicate;
+import seedu.address.model.flashcard.FlashcardPredicate;
 import seedu.address.model.tag.Tag;
 
 /**
@@ -44,11 +44,11 @@ public class FindCommandTest {
 
     @Test
     public void equals() {
-        FlashcardContainsKeywordsPredicate firstPredicate =
-            new FlashcardContainsKeywordsPredicate(Collections.singletonList("firstFront"),
+        FlashcardPredicate firstPredicate =
+            new FlashcardPredicate(Collections.singletonList("firstFront"),
                     Collections.singletonList("firstBack"), Collections.singletonList("firstTag"));
-        FlashcardContainsKeywordsPredicate secondPredicate =
-                new FlashcardContainsKeywordsPredicate(Collections.singletonList("secondFront"),
+        FlashcardPredicate secondPredicate =
+                new FlashcardPredicate(Collections.singletonList("secondFront"),
                         Collections.singletonList("secondBack"), Collections.singletonList("secondTag"));
 
         FindCommand findFirstCommand = new FindCommand(firstPredicate);
@@ -74,7 +74,7 @@ public class FindCommandTest {
     @Test
     public void execute_zeroKeywords_noFlashcardFound() throws ParseException {
         String expectedMessage = String.format(MESSAGE_FLASHCARDS_LISTED_OVERVIEW, 0);
-        FlashcardContainsKeywordsPredicate predicate = preparePredicate(" ");
+        FlashcardPredicate predicate = preparePredicate(" ");
         FindCommand command = new FindCommand(predicate);
         expectedModel.updateFilteredFlashcardList(predicate);
         assertCommandSuccess(command, model, commandHistory, expectedMessage, expectedModel);
@@ -84,7 +84,7 @@ public class FindCommandTest {
     @Test
     public void execute_multipleFrontFaceKeywords_multipleFlashcardsFound() throws ParseException {
         String expectedMessage = String.format(MESSAGE_FLASHCARDS_LISTED_OVERVIEW, 3);
-        FlashcardContainsKeywordsPredicate predicate = preparePredicate(" " + PREFIX_FRONT_FACE
+        FlashcardPredicate predicate = preparePredicate(" " + PREFIX_FRONT_FACE
                 + "Hello Newton's email");
         FindCommand command = new FindCommand(predicate);
         expectedModel.updateFilteredFlashcardList(predicate);
@@ -95,7 +95,7 @@ public class FindCommandTest {
     @Test
     public void execute_multipleArgumentKeywords_multipleFlashcardsFound() throws ParseException {
         String expectedMessage = String.format(MESSAGE_FLASHCARDS_LISTED_OVERVIEW, 4);
-        FlashcardContainsKeywordsPredicate predicate = preparePredicate(" " + PREFIX_FRONT_FACE
+        FlashcardPredicate predicate = preparePredicate(" " + PREFIX_FRONT_FACE
                 + "Hola " + PREFIX_BACK_FACE + "吃 idk " + PREFIX_TAG + "indonesian");
         FindCommand command = new FindCommand(predicate);
         expectedModel.updateFilteredFlashcardList(predicate);
@@ -104,9 +104,9 @@ public class FindCommandTest {
     }
 
     /**
-     * Parses {@code userInput} into a {@code FlashcardContainsKeywordsPredicate}.
+     * Parses {@code userInput} into a {@code FlashcardPredicate}.
      */
-    private FlashcardContainsKeywordsPredicate preparePredicate(String userInput) throws ParseException {
+    private FlashcardPredicate preparePredicate(String userInput) throws ParseException {
         ArgumentMultimap argMultimap =
                 ArgumentTokenizer.tokenize(userInput, PREFIX_FRONT_FACE, PREFIX_BACK_FACE, PREFIX_TAG);
 
@@ -136,6 +136,6 @@ public class FindCommandTest {
             tagKeywords.add(tag.tagName);
         }
 
-        return new FlashcardContainsKeywordsPredicate(frontFaceKeywords, backFaceKeywords, tagKeywords);
+        return new FlashcardPredicate(frontFaceKeywords, backFaceKeywords, tagKeywords);
     }
 }

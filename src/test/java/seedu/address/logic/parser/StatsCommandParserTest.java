@@ -28,7 +28,7 @@ import org.junit.Test;
 
 import seedu.address.logic.commands.StatsCommand;
 import seedu.address.model.flashcard.Face;
-import seedu.address.model.flashcard.FlashcardContainsKeywordsPredicate;
+import seedu.address.model.flashcard.FlashcardPredicate;
 import seedu.address.model.tag.Tag;
 
 public class StatsCommandParserTest {
@@ -60,7 +60,7 @@ public class StatsCommandParserTest {
         ArrayList<String> backFaceKeywords = new ArrayList<>(Arrays.asList(VALID_BACKFACE_GOOD));
         ArrayList<String> tagKeywords = new ArrayList<>(Arrays.asList(VALID_TAG_INDONESIAN));
 
-        FlashcardContainsKeywordsPredicate expectedPredicate = new FlashcardContainsKeywordsPredicate(
+        FlashcardPredicate expectedPredicate = new FlashcardPredicate(
                 frontFaceKeywords, backFaceKeywords, tagKeywords);
 
         // whitespace only
@@ -76,7 +76,7 @@ public class StatsCommandParserTest {
 
         // multiple tags - all accepted
         tagKeywords.add(VALID_TAG_CHINESE);
-        FlashcardContainsKeywordsPredicate expectedPredicateMultipleTags = new FlashcardContainsKeywordsPredicate(
+        FlashcardPredicate expectedPredicateMultipleTags = new FlashcardPredicate(
                 frontFaceKeywords, backFaceKeywords, tagKeywords);
         assertParseSuccess(parser, FRONTFACE_DESC_GOOD + BACKFACE_DESC_GOOD
                 + TAG_DESC_INDONESIAN + TAG_DESC_CHINESE, new StatsCommand(expectedPredicateMultipleTags));
@@ -84,8 +84,8 @@ public class StatsCommandParserTest {
 
         // multiple frontFace keywords under same frontFace prefix
         frontFaceKeywords.add(VALID_FRONTFACE_DUCK);
-        FlashcardContainsKeywordsPredicate expectedPredicateMultipleFrontfaceKeywords =
-                new FlashcardContainsKeywordsPredicate(frontFaceKeywords, backFaceKeywords, tagKeywords);
+        FlashcardPredicate expectedPredicateMultipleFrontfaceKeywords =
+                new FlashcardPredicate(frontFaceKeywords, backFaceKeywords, tagKeywords);
         assertParseSuccess(parser, FRONTFACE_DESC_GOOD + " " + VALID_FRONTFACE_DUCK + BACKFACE_DESC_GOOD
                 + TAG_DESC_INDONESIAN, new StatsCommand(expectedPredicateMultipleFrontfaceKeywords));
     }
@@ -98,14 +98,14 @@ public class StatsCommandParserTest {
 
         // only frontFace keyword
         frontFaceKeywords.add(VALID_FRONTFACE_GOOD);
-        FlashcardContainsKeywordsPredicate expectedPredicateFrontFaceOnly = new FlashcardContainsKeywordsPredicate(
+        FlashcardPredicate expectedPredicateFrontFaceOnly = new FlashcardPredicate(
                 frontFaceKeywords, backFaceKeywords, tagKeywords);
         assertParseSuccess(parser, FRONTFACE_DESC_GOOD, new StatsCommand(expectedPredicateFrontFaceOnly));
         frontFaceKeywords.remove(0);
 
         // only backFace keyword with whitespace preamble
         backFaceKeywords.add(VALID_BACKFACE_GOOD);
-        FlashcardContainsKeywordsPredicate expectedPredicateBackFaceOnly = new FlashcardContainsKeywordsPredicate(
+        FlashcardPredicate expectedPredicateBackFaceOnly = new FlashcardPredicate(
                 frontFaceKeywords, backFaceKeywords, tagKeywords);
         assertParseSuccess(parser, PREAMBLE_WHITESPACE + BACKFACE_DESC_GOOD,
                 new StatsCommand(expectedPredicateBackFaceOnly));
@@ -113,7 +113,7 @@ public class StatsCommandParserTest {
 
         // only tag keyword
         tagKeywords.add(VALID_TAG_CHINESE);
-        FlashcardContainsKeywordsPredicate expectedPredicateTagOnly = new FlashcardContainsKeywordsPredicate(
+        FlashcardPredicate expectedPredicateTagOnly = new FlashcardPredicate(
                 frontFaceKeywords, backFaceKeywords, tagKeywords);
         assertParseSuccess(parser, TAG_DESC_CHINESE, new StatsCommand(expectedPredicateTagOnly));
         tagKeywords.remove(0);
@@ -121,8 +121,8 @@ public class StatsCommandParserTest {
         // only tag and frontFace
         tagKeywords.add(VALID_TAG_CHINESE);
         frontFaceKeywords.add(VALID_FRONTFACE_DUCK);
-        FlashcardContainsKeywordsPredicate expectedPredicateTagAndFrontFaceOnly =
-                new FlashcardContainsKeywordsPredicate(frontFaceKeywords, backFaceKeywords, tagKeywords);
+        FlashcardPredicate expectedPredicateTagAndFrontFaceOnly =
+                new FlashcardPredicate(frontFaceKeywords, backFaceKeywords, tagKeywords);
         assertParseSuccess(parser, TAG_DESC_CHINESE + FRONTFACE_DESC_DUCK,
                 new StatsCommand(expectedPredicateTagAndFrontFaceOnly));
     }

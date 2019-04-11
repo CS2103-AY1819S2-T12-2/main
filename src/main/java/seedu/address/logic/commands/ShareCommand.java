@@ -32,7 +32,7 @@ public class ShareCommand extends Command {
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Creates a text file containing flashcards currently "
             + "being listed to a user defined directory.\n"
             + "Parameters: "
-            + "DIRECTORY_PATH (optional - leaving path empty will prompt the File Explorer)";
+            + "DIRECTORY_PATH\n";
 
     public static final String MESSAGE_SHARE_SUCCESS = "Successfully created ";
     public static final String MESSAGE_SHARE_FAILURE = "Could not create file at %1$s";

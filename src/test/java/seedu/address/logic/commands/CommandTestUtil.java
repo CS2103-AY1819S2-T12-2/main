@@ -18,7 +18,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.CardCollection;
 import seedu.address.model.Model;
 import seedu.address.model.flashcard.Flashcard;
-import seedu.address.model.flashcard.FlashcardContainsKeywordsPredicate;
+import seedu.address.model.flashcard.FlashcardPredicate;
 import seedu.address.model.tag.Tag;
 import seedu.address.testutil.EditFlashcardDescriptorBuilder;
 
@@ -145,7 +145,7 @@ public class CommandTestUtil {
         }
 
         model.updateFilteredFlashcardList(
-            new FlashcardContainsKeywordsPredicate(Arrays.asList(splitFront), Arrays.asList(splitBack), splitTag));
+            new FlashcardPredicate(Arrays.asList(splitFront), Arrays.asList(splitBack), splitTag));
 
         assertEquals(1, model.getFilteredFlashcardList().size());
     }

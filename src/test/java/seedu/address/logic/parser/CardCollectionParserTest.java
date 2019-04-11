@@ -35,7 +35,7 @@ import seedu.address.logic.commands.StatsCommand;
 import seedu.address.logic.commands.UndoCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.flashcard.Flashcard;
-import seedu.address.model.flashcard.FlashcardContainsKeywordsPredicate;
+import seedu.address.model.flashcard.FlashcardPredicate;
 import seedu.address.testutil.EditFlashcardDescriptorBuilder;
 import seedu.address.testutil.FlashcardBuilder;
 import seedu.address.testutil.FlashcardUtil;
@@ -92,7 +92,7 @@ public class CardCollectionParserTest {
                     + PREFIX_FRONT_FACE + frontFaceKeywords.stream().collect(Collectors.joining(" ")) + " "
                     + PREFIX_BACK_FACE + backFaceKeywords.stream().collect(Collectors.joining(" ")) + " "
                     + PREFIX_TAG + tagKeywords.stream().collect(Collectors.joining(" ")));
-        assertEquals(new FindCommand(new FlashcardContainsKeywordsPredicate(frontFaceKeywords, backFaceKeywords,
+        assertEquals(new FindCommand(new FlashcardPredicate(frontFaceKeywords, backFaceKeywords,
                 tagKeywords)), command);
     }
 

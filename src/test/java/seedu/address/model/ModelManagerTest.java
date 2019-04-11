@@ -22,7 +22,7 @@ import org.junit.rules.ExpectedException;
 
 import seedu.address.commons.core.GuiSettings;
 import seedu.address.model.flashcard.Flashcard;
-import seedu.address.model.flashcard.FlashcardContainsKeywordsPredicate;
+import seedu.address.model.flashcard.FlashcardPredicate;
 import seedu.address.model.flashcard.exceptions.FlashcardNotFoundException;
 import seedu.address.model.tag.Tag;
 import seedu.address.testutil.CardCollectionBuilder;
@@ -183,7 +183,7 @@ public class ModelManagerTest {
         for (Tag tag : tagSet) {
             tagKeywords.add(tag.tagName);
         }
-        modelManager.updateFilteredFlashcardList(new FlashcardContainsKeywordsPredicate(
+        modelManager.updateFilteredFlashcardList(new FlashcardPredicate(
                 Arrays.asList(frontFaceKeywords), Arrays.asList(backFaceKeywords), tagKeywords));
         assertFalse(modelManager.equals(new ModelManager(cardCollection, userPrefs)));
 

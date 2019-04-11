@@ -19,7 +19,7 @@ import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
 import seedu.address.model.flashcard.Flashcard;
-import seedu.address.model.flashcard.FlashcardContainsKeywordsPredicate;
+import seedu.address.model.flashcard.FlashcardPredicate;
 import seedu.address.model.flashcard.Statistics;
 
 public class StatsCommandTest {
@@ -39,7 +39,7 @@ public class StatsCommandTest {
         assertCommandSuccess(new StatsCommand(), model, commandHistory, expectedCommandResult, expectedModel);
 
         // run stats command with some predicates.
-        FlashcardContainsKeywordsPredicate predicate = new FlashcardContainsKeywordsPredicate(
+        FlashcardPredicate predicate = new FlashcardPredicate(
                 Arrays.asList(HELLO.getFrontFace().text),
                 Arrays.asList(EMAIL.getBackFace().text),
                 Collections.emptyList());
@@ -59,7 +59,7 @@ public class StatsCommandTest {
         assertEquals(command, new StatsCommand());
 
         // with predicate stats
-        FlashcardContainsKeywordsPredicate predicate1 = new FlashcardContainsKeywordsPredicate(
+        FlashcardPredicate predicate1 = new FlashcardPredicate(
                 Arrays.asList("Klungs", "Robin"), Arrays.asList("Sergio"), Arrays.asList("Luca")
         );
 
