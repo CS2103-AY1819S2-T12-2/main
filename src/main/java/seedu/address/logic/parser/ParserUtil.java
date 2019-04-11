@@ -112,7 +112,8 @@ public class ParserUtil {
     public static double[] parseStatRange(String range) throws ParseException {
         requireNonNull(range);
         String trimmedRange = range.trim();
-        double lowerBound, upperBound;
+        double lowerBound;
+        double upperBound;
         if (trimmedRange.isEmpty()) {
             throw new ParseException(MESSAGE_INVALID_RANGE_FORMAT);
         }
@@ -148,7 +149,8 @@ public class ParserUtil {
                 PREFIX_SUCCESS_RATE_RANGE);
 
         if (!arePrefixesPresent(argMultimap, PREFIX_FRONT_FACE) && !arePrefixesPresent(argMultimap, PREFIX_BACK_FACE)
-                && !arePrefixesPresent(argMultimap, PREFIX_TAG) && !arePrefixesPresent(argMultimap, PREFIX_SUCCESS_RATE_RANGE)
+                && !arePrefixesPresent(argMultimap, PREFIX_TAG)
+                && !arePrefixesPresent(argMultimap, PREFIX_SUCCESS_RATE_RANGE)
                 || !argMultimap.getPreamble().isEmpty()) {
             throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, messageUsage));
         }
@@ -156,8 +158,8 @@ public class ParserUtil {
         Set<Face> frontFaceKeywordSet = ParserUtil.parseFaces(argMultimap.getAllValues(PREFIX_FRONT_FACE));
         Set<Face> backFaceKeywordSet = ParserUtil.parseFaces(argMultimap.getAllValues(PREFIX_BACK_FACE));
         Set<Tag> tagKeywordSet = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
-        double[] statRange = ParserUtil.parseStatRange(argMultimap.getValue(PREFIX_SUCCESS_RATE_RANGE).isPresent() ?
-                argMultimap.getValue(PREFIX_SUCCESS_RATE_RANGE).get() : MIN_BOUND + " " + MAX_BOUND);
+        double[] statRange = ParserUtil.parseStatRange(argMultimap.getValue(PREFIX_SUCCESS_RATE_RANGE).isPresent()
+                ? argMultimap.getValue(PREFIX_SUCCESS_RATE_RANGE).get() : MIN_BOUND + " " + MAX_BOUND);
 
         ArrayList<String> frontFaceKeywords = new ArrayList<>();
         ArrayList<String> backFaceKeywords = new ArrayList<>();
