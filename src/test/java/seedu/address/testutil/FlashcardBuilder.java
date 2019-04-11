@@ -7,6 +7,7 @@ import java.util.Set;
 import seedu.address.model.flashcard.Face;
 import seedu.address.model.flashcard.Flashcard;
 import seedu.address.model.flashcard.ImagePath;
+import seedu.address.model.flashcard.Proficiency;
 import seedu.address.model.flashcard.Statistics;
 import seedu.address.model.tag.Tag;
 import seedu.address.model.util.SampleDataUtil;
@@ -24,6 +25,7 @@ public class FlashcardBuilder {
     private ImagePath imagePath;
     private Set<Tag> tags;
     private Statistics statistics;
+    private Proficiency proficiency;
 
     public FlashcardBuilder() {
         frontFace = new Face(DEFAULT_FRONTFACE);
@@ -31,6 +33,7 @@ public class FlashcardBuilder {
         imagePath = new ImagePath();
         tags = new HashSet<>();
         statistics = new Statistics();
+        proficiency = new Proficiency();
     }
 
     /**
@@ -42,6 +45,7 @@ public class FlashcardBuilder {
         imagePath = flashcardToCopy.getImagePath();
         tags = new HashSet<>(flashcardToCopy.getTags());
         statistics = flashcardToCopy.getStatistics();
+        proficiency = flashcardToCopy.getProficiency();
     }
 
 
@@ -85,8 +89,16 @@ public class FlashcardBuilder {
         return this;
     }
 
+    /**
+     * Sets the {@code proficiency} of the {@code Flashcard} that we are building.
+     */
+    public FlashcardBuilder withProficiency(int timeLeftToReview, int proficiencyLevel) {
+        this.proficiency = new Proficiency(timeLeftToReview, proficiencyLevel);
+        return this;
+    }
+
     public Flashcard build() {
-        return new Flashcard(frontFace, backFace, imagePath, statistics, tags);
+        return new Flashcard(frontFace, backFace, imagePath, statistics, proficiency, tags);
     }
 
 }
