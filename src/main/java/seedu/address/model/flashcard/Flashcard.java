@@ -24,29 +24,37 @@ public class Flashcard {
     // Data fields
     private final Set<Tag> tags = new HashSet<>();
     private final Statistics statistics;
+    private final Proficiency proficiency;
 
     /**
      * Every field must be present and not null.
      */
-    public Flashcard(Face frontFace, Face backFace, Statistics statistics, Set<Tag> tags) {
-        requireAllNonNull(frontFace, backFace, statistics, tags);
+    public Flashcard(Face frontFace, Face backFace, Statistics statistics, Proficiency proficiency, Set<Tag> tags) {
+        requireAllNonNull(frontFace, backFace, statistics, proficiency, tags);
         this.frontFace = frontFace;
         this.backFace = backFace;
         this.imagePath = new ImagePath(Optional.empty());
         this.statistics = statistics;
+        this.proficiency = proficiency;
         this.tags.addAll(tags);
     }
 
     /**
      * Every field must be present and not null.
      */
-    public Flashcard(Face frontFace, Face backFace, ImagePath imagePath, Statistics statistics, Set<Tag> tags) {
-        requireAllNonNull(frontFace, backFace, statistics, tags);
+    public Flashcard(Face frontFace, Face backFace, ImagePath imagePath, Statistics statistics, Proficiency proficiency,
+                     Set<Tag> tags) {
+        requireAllNonNull(frontFace, backFace, statistics, tags, proficiency);
         this.frontFace = frontFace;
         this.backFace = backFace;
         this.imagePath = imagePath;
         this.statistics = statistics;
+        this.proficiency = proficiency;
         this.tags.addAll(tags);
+    }
+
+    public Proficiency getProficiency() {
+        return proficiency;
     }
 
     public Statistics getStatistics() {
@@ -104,12 +112,13 @@ public class Flashcard {
         return getFrontFace().equals(flashcard.getFrontFace())
                 && getBackFace().equals(flashcard.getBackFace())
                 && getImagePath().equals(flashcard.getImagePath())
-                && getTags().equals(flashcard.getTags());
+                && getTags().equals(flashcard.getTags())
+                && getProficiency().equals(flashcard.getProficiency());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getFrontFace(), getBackFace(), getImagePath(), getTags());
+        return Objects.hash(getFrontFace(), getBackFace(), getImagePath(), getTags(), getProficiency());
     }
 
     @Override
