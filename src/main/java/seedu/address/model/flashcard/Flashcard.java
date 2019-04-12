@@ -81,8 +81,10 @@ public class Flashcard {
         return Collections.unmodifiableSet(tags);
     }
 
-    public void quizAttempt(boolean isSuccess) {
-        getProficiency().quizAttempt(isSuccess);
+    public void quizAttempt(boolean isSuccess, boolean isQuizSRS) {
+        if (isQuizSRS) {
+            getProficiency().quizAttempt(isSuccess);
+        }
         getStatistics().quizAttempt(isSuccess);
     }
 

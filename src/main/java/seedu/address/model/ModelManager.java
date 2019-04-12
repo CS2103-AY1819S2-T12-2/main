@@ -57,14 +57,14 @@ public class ModelManager implements Model {
     //=========== UserPrefs ==================================================================================
 
     @Override
-    public void setUserPrefs(ReadOnlyUserPrefs userPrefs) {
-        requireNonNull(userPrefs);
-        this.userPrefs.resetData(userPrefs);
+    public ReadOnlyUserPrefs getUserPrefs() {
+        return userPrefs;
     }
 
     @Override
-    public ReadOnlyUserPrefs getUserPrefs() {
-        return userPrefs;
+    public void setUserPrefs(ReadOnlyUserPrefs userPrefs) {
+        requireNonNull(userPrefs);
+        this.userPrefs.resetData(userPrefs);
     }
 
     @Override
@@ -92,13 +92,13 @@ public class ModelManager implements Model {
     //=========== CardCollection ================================================================================
 
     @Override
-    public void setCardCollection(ReadOnlyCardCollection cardCollection) {
-        versionedCardCollection.resetData(cardCollection);
+    public ReadOnlyCardCollection getCardCollection() {
+        return versionedCardCollection;
     }
 
     @Override
-    public ReadOnlyCardCollection getCardCollection() {
-        return versionedCardCollection;
+    public void setCardCollection(ReadOnlyCardCollection cardCollection) {
+        versionedCardCollection.resetData(cardCollection);
     }
 
     @Override
@@ -200,8 +200,8 @@ public class ModelManager implements Model {
             }
 
             boolean wasSelectedFlashcardReplaced =
-                change.wasReplaced() && change.getAddedSize() == change.getRemovedSize()
-                    && change.getRemoved().contains(selectedFlashcard.getValue());
+                    change.wasReplaced() && change.getAddedSize() == change.getRemovedSize()
+                            && change.getRemoved().contains(selectedFlashcard.getValue());
             if (wasSelectedFlashcardReplaced) {
                 // Update selectedFlashcard to its new value.
                 int index = change.getRemoved().indexOf(selectedFlashcard.getValue());
@@ -210,8 +210,8 @@ public class ModelManager implements Model {
             }
 
             boolean wasSelectedFlashcardRemoved = change.getRemoved().stream()
-                .anyMatch(removedFlashcard -> selectedFlashcard.getValue().isSameFlashcard(removedFlashcard))
-                && !change.getAddedSubList().contains(selectedFlashcard.getValue());
+                    .anyMatch(removedFlashcard -> selectedFlashcard.getValue().isSameFlashcard(removedFlashcard))
+                    && !change.getAddedSubList().contains(selectedFlashcard.getValue());
             if (wasSelectedFlashcardRemoved) {
                 // Select the flashcard that came before it in the list,
                 // or clear the selection if there is no such flashcard.
@@ -248,11 +248,6 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public void setIsQuizSRS(Boolean isQuizSRS) {
-        this.isQuizSRS.setValue(isQuizSRS);
-    }
-
-    @Override
     public void showNextQuizCard() {
         quizMode.setValue(QuizState.QUIZ_MODE_FRONT);
         Flashcard flashcard = quizFlashcards.get(0);
@@ -271,7 +266,14 @@ public class ModelManager implements Model {
     }
 
     @Override
-    public ReadOnlyProperty<Boolean> getIsQuizSRS() { return isQuizSRS; }
+    public ReadOnlyProperty<Boolean> getIsQuizSRS() {
+        return isQuizSRS;
+    }
+
+    @Override
+    public void setIsQuizSRS(Boolean isQuizSRS) {
+        this.isQuizSRS.setValue(isQuizSRS);
+    }
 
     @Override
     public void resetQuizStat() {
@@ -281,18 +283,14 @@ public class ModelManager implements Model {
 
     @Override
     public void addGoodFeedback() {
-        if (isQuizSRS.getValue()) {
-            selectedFlashcard.getValue().quizAttempt(true);
-        }
+        selectedFlashcard.getValue().quizAttempt(true, isQuizSRS.getValue());
         quizGood.setValue(quizGood.getValue() + 1);
         commitCardCollection();
     }
 
     @Override
     public void addBadFeedback() {
-        if (isQuizSRS.getValue()) {
-            selectedFlashcard.getValue().quizAttempt(false);
-        }
+        selectedFlashcard.getValue().quizAttempt(false, isQuizSRS.getValue());
         quizBad.setValue(quizBad.getValue() + 1);
         commitCardCollection();
     }
@@ -313,9 +311,9 @@ public class ModelManager implements Model {
         // state check
         ModelManager other = (ModelManager) obj;
         return versionedCardCollection.equals(other.versionedCardCollection)
-            && userPrefs.equals(other.userPrefs)
-            && filteredFlashcards.equals(other.filteredFlashcards)
-            && Objects.equals(selectedFlashcard.get(), other.selectedFlashcard.get());
+                && userPrefs.equals(other.userPrefs)
+                && filteredFlashcards.equals(other.filteredFlashcards)
+                && Objects.equals(selectedFlashcard.get(), other.selectedFlashcard.get());
     }
 
 }
