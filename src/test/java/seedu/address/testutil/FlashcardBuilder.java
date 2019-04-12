@@ -1,5 +1,6 @@
 package seedu.address.testutil;
 
+import java.util.Calendar;
 import java.util.HashSet;
 import java.util.Optional;
 import java.util.Set;
@@ -92,7 +93,9 @@ public class FlashcardBuilder {
     /**
      * Sets the {@code proficiency} of the {@code Flashcard} that we are building.
      */
-    public FlashcardBuilder withProficiency(int timeLeftToReview, int proficiencyLevel) {
+    public FlashcardBuilder withProficiency(int daysLeftToReview, int proficiencyLevel) {
+        Calendar timeLeftToReview = Calendar.getInstance();
+        timeLeftToReview.add(Calendar.DATE, daysLeftToReview);
         this.proficiency = new Proficiency(timeLeftToReview, proficiencyLevel);
         return this;
     }

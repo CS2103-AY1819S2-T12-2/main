@@ -230,6 +230,11 @@ public class AddCommandTest {
         }
 
         @Override
+        public void setIsQuizSRS(Boolean isQuizSRS) {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
         public void showNextQuizCard() {
             throw new AssertionError("This method should not be called.");
         }
@@ -241,6 +246,11 @@ public class AddCommandTest {
 
         @Override
         public ReadOnlyProperty<Integer> getQuizBad() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public ReadOnlyProperty<Boolean> getIsQuizSRS() {
             throw new AssertionError("This method should not be called.");
         }
 
