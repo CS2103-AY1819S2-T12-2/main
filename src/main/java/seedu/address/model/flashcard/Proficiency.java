@@ -1,5 +1,6 @@
 package seedu.address.model.flashcard;
 
+import java.util.Calendar;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -7,35 +8,33 @@ import java.util.Scanner;
  * Represents a Flashcard's proficiency level on how well the user does in the quiz mode.
  */
 public class Proficiency {
-    public static final String VALIDATION_REGEX = "review in \\d+ proficiency level \\d+$";
+    public static final String VALIDATION_REGEX = "inactive until \\d+ proficiency level \\d+$";
     public static final String MESSAGE_CONSTRAINTS = "Proficiency string format must be in the form of: "
-            + "review in <quiz left until review> proficiency <proficiency level>`";
+            + "inactive until <date until card can be reviewed> proficiency <proficiency level>`";
 
-    private int timeUntilReview;
+    private Calendar timeUntilReview;
     private int proficiencyLevel;
 
-    public Proficiency(int timeUntilReview, int proficiencyLevel) {
-        if (timeUntilReview > proficiencyLevel) {
-            throw new IllegalArgumentException("timeUntilReview higher than proficiencyLevel");
-        }
-        if (timeUntilReview < 0) {
-            throw new IllegalArgumentException("timeUntilReview cannot be negative");
+    public Proficiency(Calendar timeUntilReview, int proficiencyLevel) {
+        if (proficiencyLevel < 0) {
+            throw new IllegalArgumentException("Proficiency level cannot be negative");
         }
         this.timeUntilReview = timeUntilReview;
         this.proficiencyLevel = proficiencyLevel;
     }
 
     public Proficiency() {
-        this.timeUntilReview = 0;
+        this.timeUntilReview = Calendar.getInstance();
         this.proficiencyLevel = 0;
     }
 
     public Proficiency(String fromString) {
         Scanner sc = new Scanner(fromString);
 
-        sc.next(); // string: review
-        sc.next(); // string: in
-        timeUntilReview = sc.nextInt();
+        sc.next(); // string: inactive
+        sc.next(); // string: until
+        timeUntilReview = Calendar.getInstance();
+        timeUntilReview.setTimeInMillis(sc.nextLong());
         sc.next(); // string: proficiency
         sc.next(); // string: level
         proficiencyLevel = sc.nextInt();
@@ -50,18 +49,15 @@ public class Proficiency {
         }
 
         Proficiency dummy = new Proficiency(test);
-        return dummy.timeUntilReview <= dummy.proficiencyLevel && dummy.timeUntilReview >= 0;
+        return dummy.proficiencyLevel >= 0;
     }
 
     /**
-     * @return True if this flashcard is reviewed in the current session, else update the time until review.
+     * @return True if this flashcard can be reviewed in the current session.
      */
     public boolean isIncludedInCurrentQuiz() {
-        if (timeUntilReview == 0) {
-            return true;
-        }
-        timeUntilReview--;
-        return false;
+        Calendar now = Calendar.getInstance();
+        return !now.before(timeUntilReview);
     }
 
     /**
@@ -75,7 +71,11 @@ public class Proficiency {
         } else {
             proficiencyLevel = 0;
         }
-        timeUntilReview = proficiencyLevel;
+        Calendar now = Calendar.getInstance();
+        if (proficiencyLevel != 0) {
+            now.add(Calendar.DATE, proficiencyLevel);
+        }
+        timeUntilReview.setTimeInMillis(now.getTimeInMillis());
     }
 
 
@@ -89,12 +89,17 @@ public class Proficiency {
     public boolean equals(Object other) {
         return other == this // short circuit if same object
                 || (other instanceof Proficiency // instanceof handles nulls
-                && timeUntilReview == ((Proficiency) other).timeUntilReview
+                && isAlmostEqualCalendar(timeUntilReview, ((Proficiency) other).timeUntilReview)
                 && proficiencyLevel == ((Proficiency) other).proficiencyLevel); // state check
     }
 
     @Override
     public String toString() {
-        return String.format("review in %d proficiency level %d", timeUntilReview, proficiencyLevel);
+        return String.format("inactive until %d proficiency level %d", timeUntilReview.getTimeInMillis(), proficiencyLevel);
+    }
+
+    private boolean isAlmostEqualCalendar(Calendar a, Calendar b) {
+        int oneHourInMillis = 3600 * 1000;
+        return Math.abs(a.getTimeInMillis() - b.getTimeInMillis()) < oneHourInMillis;
     }
 }
