@@ -122,8 +122,8 @@ public class LogicManager implements Logic {
     }
 
     @Override
-    public void setIsQuizSRS(Boolean isQuizSRS) {
-        model.setIsQuizSRS(isQuizSRS);
+    public void setIsQuizSrs(Boolean isQuizSrs) {
+        model.setIsQuizSrs(isQuizSrs);
     }
 
     @Override
@@ -137,7 +137,7 @@ public class LogicManager implements Logic {
     }
 
     @Override
-    public ReadOnlyProperty<Boolean> isQuizSRSProperty() {
-        return model.getIsQuizSRS();
+    public ReadOnlyProperty<Boolean> isQuizSrsProperty() {
+        return model.getIsQuizSrs();
     }
 }

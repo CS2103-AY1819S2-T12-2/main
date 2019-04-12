@@ -81,8 +81,13 @@ public class Flashcard {
         return Collections.unmodifiableSet(tags);
     }
 
-    public void quizAttempt(boolean isSuccess, boolean isQuizSRS) {
-        if (isQuizSRS) {
+    /**
+     * update the statistics and SRS info based on the result of the quiz.
+     * @param isSuccess success in quiz mode.
+     * @param isQuizSrs is it srs mode in the quiz.
+     */
+    public void quizAttempt(boolean isSuccess, boolean isQuizSrs) {
+        if (isQuizSrs) {
             getProficiency().quizAttempt(isSuccess);
         }
         getStatistics().quizAttempt(isSuccess);

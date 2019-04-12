@@ -30,12 +30,12 @@ public class QuizPanel extends UiPart<Region> {
     private Label bad;
 
     public QuizPanel(ObservableList<Flashcard> quizCards, ObservableValue<Integer> quizGood,
-                     ObservableValue<Integer> quizBad, ObservableValue<Boolean> isQuizSRS) {
+                     ObservableValue<Integer> quizBad, ObservableValue<Boolean> isQuizSrs) {
         super(FXML);
         updateCardsRemaining(quizCards.size() + 1);
         quizCards.addListener((ListChangeListener<Flashcard>) change ->
             updateCardsRemaining(change.getList().size() + 1));
-        updateMode(isQuizSRS);
+        updateMode(isQuizSrs);
         good.setText(String.valueOf(quizGood.getValue()));
         bad.setText(String.valueOf(quizBad.getValue()));
         quizGood.addListener(((observableValue, oldValue, newValue) -> good.setText(String.valueOf(newValue))));
@@ -58,10 +58,10 @@ public class QuizPanel extends UiPart<Region> {
 
     /**
      * set the mode label in quiz panel.
-     * @param isQuizSRS true if indicating SRS Mode, false if Review Mode.
+     * @param isQuizSrs true if indicating SRS Mode, false if Review Mode.
      */
-    private void updateMode(ObservableValue<Boolean> isQuizSRS) {
-        if (isQuizSRS.getValue()) {
+    private void updateMode(ObservableValue<Boolean> isQuizSrs) {
+        if (isQuizSrs.getValue()) {
             mode.setText("Quiz Mode");
         } else {
             mode.setText("Review Mode");

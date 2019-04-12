@@ -3,6 +3,9 @@ package seedu.address.logic.parser;
 import seedu.address.logic.commands.QuizCommand;
 import seedu.address.logic.parser.exceptions.ParseException;
 
+/**
+ * Parses input arguments and creates a new QuizCommand object.
+ */
 public class QuizCommandParser {
     /**
      * Parses the given {@code String} of arguments in the context of the StatsCommand
@@ -17,14 +20,14 @@ public class QuizCommandParser {
 
         switch (args.trim().toLowerCase()) {
 
-            case "review":
-                return new QuizCommand(false);
+        case "review":
+            return new QuizCommand(false);
 
-            case "srs":
-                return new QuizCommand(true);
+        case "srs":
+            return new QuizCommand(true);
 
-            default:
-                throw new ParseException(QuizCommand.MESSAGE_QUIZ_FAILURE_UNKNOWN_MODE);
+        default:
+            throw new ParseException(QuizCommand.MESSAGE_QUIZ_FAILURE_UNKNOWN_MODE);
         }
 
     }

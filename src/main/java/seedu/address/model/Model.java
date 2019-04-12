@@ -154,7 +154,7 @@ public interface Model {
     /**
      * Sets the SRS mode.
      */
-    void setIsQuizSRS(Boolean isQuizSRS);
+    void setIsQuizSrs(Boolean isQuizSrs);
 
     /**
      * Gets the quiz mode flashcards.
@@ -186,7 +186,7 @@ public interface Model {
     /**
      * @return is the current quiz session uses SRS mode.
      */
-    ReadOnlyProperty<Boolean> getIsQuizSRS();
+    ReadOnlyProperty<Boolean> getIsQuizSrs();
 
     /**
      * Resets the quiz statistics.

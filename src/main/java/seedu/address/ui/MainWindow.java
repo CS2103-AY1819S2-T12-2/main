@@ -185,7 +185,7 @@ public class MainWindow extends UiPart<Stage> {
     private void startQuizMode() {
         flashcardListPanelPlaceholder.getChildren().clear();
         QuizPanel quizPanel = new QuizPanel(logic.getQuizFlashcards(),
-            logic.quizGoodProperty(), logic.quizBadProperty(), logic.isQuizSRSProperty());
+            logic.quizGoodProperty(), logic.quizBadProperty(), logic.isQuizSrsProperty());
         flashcardListPanelPlaceholder.getChildren().add(quizPanel.getRoot());
     }
 

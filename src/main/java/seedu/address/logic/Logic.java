@@ -88,11 +88,11 @@ public interface Logic {
     void setQuizMode(Integer quizMode);
 
     /**
-     * Sets the SRS mode
+     * Sets the Spaced Repetition System Model. mode
      *
-     * @see seedu.address.model.Model#setIsQuizSRS(Boolean)
+     * @see seedu.address.model.Model#setIsQuizSrs(Boolean)
      */
-    void setIsQuizSRS(Boolean isQuizSRS);
+    void setIsQuizSrs(Boolean isQuizSrs);
 
     ObservableList<Flashcard> getQuizFlashcards();
 
@@ -110,7 +110,7 @@ public interface Logic {
 
     /**
      * @return true if SRS mode activated, else review mode.
-     * @see seedu.address.model.Model#getIsQuizSRS()
+     * @see seedu.address.model.Model#getIsQuizSrs()
      */
-    ReadOnlyProperty<Boolean> isQuizSRSProperty();
+    ReadOnlyProperty<Boolean> isQuizSrsProperty();
 }

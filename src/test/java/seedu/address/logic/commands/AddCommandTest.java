@@ -230,7 +230,7 @@ public class AddCommandTest {
         }
 
         @Override
-        public void setIsQuizSRS(Boolean isQuizSRS) {
+        public void setIsQuizSrs(Boolean isQuizSrs) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -250,7 +250,7 @@ public class AddCommandTest {
         }
 
         @Override
-        public ReadOnlyProperty<Boolean> getIsQuizSRS() {
+        public ReadOnlyProperty<Boolean> getIsQuizSrs() {
             throw new AssertionError("This method should not be called.");
         }
 

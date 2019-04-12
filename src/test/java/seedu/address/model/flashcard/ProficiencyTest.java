@@ -12,42 +12,42 @@ import org.junit.Test;
 import seedu.address.testutil.Assert;
 
 public class ProficiencyTest {
-    private final Calendar NOW = Calendar.getInstance();
-    private final Calendar YESTERDAY = Calendar.getInstance();
-    private final Calendar TOMORROW = Calendar.getInstance();
-    private final Calendar TWO_DAYS_FROM_NOW = Calendar.getInstance();
+    private Calendar now = Calendar.getInstance();
+    private Calendar yesterday = Calendar.getInstance();
+    private Calendar tomorrow = Calendar.getInstance();
+    private Calendar twoDaysFromNow = Calendar.getInstance();
 
     @Before
     public void setUp() {
-        TOMORROW.add(Calendar.DATE, 1);
+        tomorrow.add(Calendar.DATE, 1);
 
-        TWO_DAYS_FROM_NOW.add(Calendar.DATE, 2);
+        twoDaysFromNow.add(Calendar.DATE, 2);
 
-        YESTERDAY.add(Calendar.DATE, -1);
+        yesterday.add(Calendar.DATE, -1);
     }
 
     @Test
     public void constructor_successLessThanAttempt_throwsIllegalArgumentException() {
-        Assert.assertThrows(IllegalArgumentException.class, () -> new Proficiency(YESTERDAY, -32));
-        Assert.assertThrows(IllegalArgumentException.class, () -> new Proficiency(NOW, -1));
+        Assert.assertThrows(IllegalArgumentException.class, () -> new Proficiency(yesterday, -32));
+        Assert.assertThrows(IllegalArgumentException.class, () -> new Proficiency(now, -1));
     }
 
     @Test
     public void isIncludedInCurrentQuiz() {
-        assertFalse(new Proficiency(TOMORROW, 31).isIncludedInCurrentQuiz());
-        assertFalse(new Proficiency(TOMORROW, 1).isIncludedInCurrentQuiz());
+        assertFalse(new Proficiency(tomorrow, 31).isIncludedInCurrentQuiz());
+        assertFalse(new Proficiency(tomorrow, 1).isIncludedInCurrentQuiz());
 
         assertTrue(new Proficiency().isIncludedInCurrentQuiz());
-        assertTrue(new Proficiency(YESTERDAY, 100).isIncludedInCurrentQuiz());
+        assertTrue(new Proficiency(yesterday, 100).isIncludedInCurrentQuiz());
     }
 
     @Test
     public void quizAttempt() {
-        Proficiency proficiency = new Proficiency(NOW, 1);
+        Proficiency proficiency = new Proficiency(now, 1);
         proficiency.quizAttempt(true);
-        assertEquals(new Proficiency(TWO_DAYS_FROM_NOW, 2), proficiency);
+        assertEquals(new Proficiency(twoDaysFromNow, 2), proficiency);
 
-        proficiency = new Proficiency(YESTERDAY, 3);
+        proficiency = new Proficiency(yesterday, 3);
         proficiency.quizAttempt(false);
         assertEquals(new Proficiency(), proficiency);
     }

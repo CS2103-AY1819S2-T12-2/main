@@ -95,7 +95,8 @@ public class Proficiency {
 
     @Override
     public String toString() {
-        return String.format("inactive until %d proficiency level %d", timeUntilReview.getTimeInMillis(), proficiencyLevel);
+        return String.format("inactive until %d proficiency level %d", timeUntilReview.getTimeInMillis(),
+                proficiencyLevel);
     }
 
     private boolean isAlmostEqualCalendar(Calendar a, Calendar b) {

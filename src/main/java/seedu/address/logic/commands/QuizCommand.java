@@ -29,15 +29,15 @@ public class QuizCommand extends Command {
     public static final String MESSAGE_QUIZ_FAILURE_UNKNOWN_MODE = "Cannot start quiz mode on empty list";
     public static final String MESSAGE_QUIZ_FAILURE_IN_QUIZ = "Already in quiz mode";
 
-    public final boolean isQuizSRS;
+    public final boolean isQuizSrs;
 
 
     public QuizCommand() {
-        this.isQuizSRS = false;
+        this.isQuizSrs = false;
     }
 
-    public QuizCommand(boolean isQuizSRS) {
-        this.isQuizSRS = isQuizSRS;
+    public QuizCommand(boolean isQuizSrs) {
+        this.isQuizSrs = isQuizSrs;
     }
 
     private List<Flashcard> getShuffledFlashCards(Model model) {
@@ -59,7 +59,7 @@ public class QuizCommand extends Command {
         return quizCards;
     }
 
-    private List<Flashcard> getSRSFlashCards(List<Flashcard> cards) {
+    private List<Flashcard> getSrsFlashCards(List<Flashcard> cards) {
         return cards.stream()
                 .filter(Flashcard::isIncludedInCurrentQuiz)
                 .collect(Collectors.toList());
@@ -79,8 +79,8 @@ public class QuizCommand extends Command {
             throw new CommandException(MESSAGE_QUIZ_FAILURE_EMPTY);
         }
 
-        if (isQuizSRS) {
-            quizCards = getSRSFlashCards(quizCards);
+        if (isQuizSrs) {
+            quizCards = getSrsFlashCards(quizCards);
             if (quizCards.isEmpty()) {
                 return new CommandResult(MESSAGE_QUIZ_NO_SCHEDULED_CARD);
             }
@@ -88,14 +88,14 @@ public class QuizCommand extends Command {
 
         model.resetQuizStat();
         model.setQuizFlashcards(FXCollections.observableArrayList(quizCards));
-        model.setIsQuizSRS(this.isQuizSRS);
+        model.setIsQuizSrs(this.isQuizSrs);
         model.setQuizMode(QuizState.QUIZ_MODE_FRONT);
         model.showNextQuizCard();
 
         String messageStart;
-        if (this.isQuizSRS)
+        if (this.isQuizSrs) {
             messageStart = MESSAGE_QUIZ_REVIEW_START;
-        else {
+        } else {
             messageStart = MESSAGE_QUIZ_SRS_START;
         }
         return new CommandResult(messageStart);
