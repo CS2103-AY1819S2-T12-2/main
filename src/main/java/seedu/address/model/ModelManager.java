@@ -32,6 +32,7 @@ public class ModelManager implements Model {
     private final SimpleObjectProperty<Integer> quizMode = new SimpleObjectProperty<>(0);
     private final SimpleObjectProperty<Integer> quizGood = new SimpleObjectProperty<>(0);
     private final SimpleObjectProperty<Integer> quizBad = new SimpleObjectProperty<>(0);
+    private final SimpleObjectProperty<Boolean> isQuizSRS = new SimpleObjectProperty<>(false);
     private ObservableList<Flashcard> quizFlashcards;
 
     /**
@@ -247,6 +248,11 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public void setIsQuizSRS(Boolean isQuizSRS) {
+        this.isQuizSRS.setValue(isQuizSRS);
+    }
+
+    @Override
     public void showNextQuizCard() {
         quizMode.setValue(QuizState.QUIZ_MODE_FRONT);
         Flashcard flashcard = quizFlashcards.get(0);
@@ -265,6 +271,9 @@ public class ModelManager implements Model {
     }
 
     @Override
+    public ReadOnlyProperty<Boolean> getIsQuizSRS() { return isQuizSRS; }
+
+    @Override
     public void resetQuizStat() {
         quizGood.setValue(0);
         quizBad.setValue(0);
@@ -272,14 +281,14 @@ public class ModelManager implements Model {
 
     @Override
     public void addGoodFeedback() {
-        selectedFlashcard.getValue().getStatistics().quizAttempt(true);
+        selectedFlashcard.getValue().quizAttempt(true);
         quizGood.setValue(quizGood.getValue() + 1);
         commitCardCollection();
     }
 
     @Override
     public void addBadFeedback() {
-        selectedFlashcard.getValue().getStatistics().quizAttempt(false);
+        selectedFlashcard.getValue().quizAttempt(false);
         quizBad.setValue(quizBad.getValue() + 1);
         commitCardCollection();
     }

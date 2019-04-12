@@ -81,6 +81,11 @@ public class Flashcard {
         return Collections.unmodifiableSet(tags);
     }
 
+    public void quizAttempt(boolean isSuccess) {
+        getProficiency().quizAttempt(isSuccess);
+        getStatistics().quizAttempt(isSuccess);
+    }
+
     /**
      * Returns true if both flashcards of the same name have at least one other identity field that is the same.
      * This defines a weaker notion of equality between two flashcards.
@@ -112,8 +117,7 @@ public class Flashcard {
         return getFrontFace().equals(flashcard.getFrontFace())
                 && getBackFace().equals(flashcard.getBackFace())
                 && getImagePath().equals(flashcard.getImagePath())
-                && getTags().equals(flashcard.getTags())
-                && getProficiency().equals(flashcard.getProficiency());
+                && getTags().equals(flashcard.getTags());
     }
 
     @Override

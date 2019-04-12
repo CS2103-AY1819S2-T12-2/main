@@ -152,6 +152,11 @@ public interface Model {
     void setQuizMode(Integer quizMode);
 
     /**
+     * Sets the SRS mode.
+     */
+    void setIsQuizSRS(Boolean isQuizSRS);
+
+    /**
      * Gets the quiz mode flashcards.
      */
     ObservableList<Flashcard> getQuizFlashcards();
@@ -177,6 +182,11 @@ public interface Model {
      * @return the number of bad feedback in the current quiz mode
      */
     ReadOnlyProperty<Integer> getQuizBad();
+
+    /**
+     * @return is the current quiz session uses SRS mode.
+     */
+    ReadOnlyProperty<Boolean> getIsQuizSRS();
 
     /**
      * Resets the quiz statistics.

@@ -1,6 +1,7 @@
 package seedu.address.model.util;
 
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -17,11 +18,13 @@ import seedu.address.model.tag.Tag;
  */
 public class SampleDataUtil {
     public static Flashcard[] getSampleFlashcards() {
+        Calendar tomorrow = Calendar.getInstance();
+        tomorrow.add(Calendar.DATE, 1);
         return new Flashcard[]{
                 new Flashcard(new Face("Hello"), new Face("Halo"),
                         new Statistics(), new Proficiency(), getTagSet("indonesian")),
                 new Flashcard(new Face("Hola"), new Face("你好"),
-                        new Statistics(5, 7), new Proficiency(1, 2), getTagSet("chinese", "spanish")),
+                        new Statistics(5, 7), new Proficiency(tomorrow, 2), getTagSet("chinese", "spanish")),
                 new Flashcard(new Face("Newton's 3rd law"), new Face("idk"),
                         new Statistics(0, 5), new Proficiency(), getTagSet("alevel", "physics"))
         };

@@ -87,6 +87,13 @@ public interface Logic {
      */
     void setQuizMode(Integer quizMode);
 
+    /**
+     * Sets the SRS mode
+     *
+     * @see seedu.address.model.Model#setIsQuizSRS(Boolean)
+     */
+    void setIsQuizSRS(Boolean isQuizSRS);
+
     ObservableList<Flashcard> getQuizFlashcards();
 
     /**
@@ -100,4 +107,10 @@ public interface Logic {
      * @see seedu.address.model.Model#getQuizBad()
      */
     ReadOnlyProperty<Integer> quizBadProperty();
+
+    /**
+     * @return true if SRS mode activated, else review mode.
+     * @see seedu.address.model.Model#getIsQuizSRS()
+     */
+    ReadOnlyProperty<Boolean> isQuizSRSProperty();
 }

@@ -122,6 +122,11 @@ public class LogicManager implements Logic {
     }
 
     @Override
+    public void setIsQuizSRS(Boolean isQuizSRS) {
+        model.setIsQuizSRS(isQuizSRS);
+    }
+
+    @Override
     public ReadOnlyProperty<Integer> quizGoodProperty() {
         return model.getQuizGood();
     }
@@ -129,5 +134,10 @@ public class LogicManager implements Logic {
     @Override
     public ReadOnlyProperty<Integer> quizBadProperty() {
         return model.getQuizBad();
+    }
+
+    @Override
+    public ReadOnlyProperty<Boolean> isQuizSRSProperty() {
+        return model.getIsQuizSRS();
     }
 }

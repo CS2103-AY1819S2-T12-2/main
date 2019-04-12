@@ -7,6 +7,7 @@ import static seedu.address.logic.parser.CliSyntax.PREFIX_FRONT_FACE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_IMAGE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 
+import java.util.Calendar;
 import java.util.Set;
 import java.util.stream.Stream;
 
@@ -47,7 +48,7 @@ public class AddCommandParser implements Parser<AddCommand> {
         }
         Set<Tag> tagList = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
         Statistics statistics = new Statistics(0, 0);
-        Proficiency proficiency = new Proficiency(0, 0);
+        Proficiency proficiency = new Proficiency(Calendar.getInstance(), 0);
         Flashcard flashcard = new Flashcard(frontFace, backFace, imagePath, statistics, proficiency, tagList);
 
         return new AddCommand(flashcard);
