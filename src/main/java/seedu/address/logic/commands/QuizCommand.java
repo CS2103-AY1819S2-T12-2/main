@@ -5,6 +5,7 @@ import static java.util.Objects.requireNonNull;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.stream.Collectors;
 
 import javafx.collections.FXCollections;
 import seedu.address.commons.core.QuizState;
@@ -22,6 +23,8 @@ public class QuizCommand extends Command {
 
     public static final String MESSAGE_QUIZ_REVIEW_START = "Review mode started. Good luck :)";
     public static final String MESSAGE_QUIZ_SRS_START = "Quiz mode started. Good luck :)";
+    public static final String MESSAGE_QUIZ_NO_SCHEDULED_CARD = "You have done well! there is no card to review, "
+            + "come back later.";
     public static final String MESSAGE_QUIZ_FAILURE_EMPTY = "Cannot start quiz mode on empty list";
     public static final String MESSAGE_QUIZ_FAILURE_UNKNOWN_MODE = "Cannot start quiz mode on empty list";
     public static final String MESSAGE_QUIZ_FAILURE_IN_QUIZ = "Already in quiz mode";
@@ -56,17 +59,11 @@ public class QuizCommand extends Command {
         return quizCards;
     }
 
-//    private List<Flashcard> getSRSFlashCards(List<Flashcard> cards) {
-//        List<Proficiency> proficiencies = cards.stream()
-//                .map(Flashcard::getProficiency)
-//                .collect(Collectors.toList());
-//
-//        Proficiency.normalize(proficiencies);
-//        return cards.stream()
-//                .filter(flashcard -> flashcard.getProficiency()
-//                        .isIncludedInCurrentQuiz())
-//                .collect(Collectors.toList());
-//    }
+    private List<Flashcard> getSRSFlashCards(List<Flashcard> cards) {
+        return cards.stream()
+                .filter(Flashcard::isIncludedInCurrentQuiz)
+                .collect(Collectors.toList());
+    }
 
     @Override
     public CommandResult execute(Model model, CommandHistory history) throws CommandException {
@@ -82,7 +79,12 @@ public class QuizCommand extends Command {
             throw new CommandException(MESSAGE_QUIZ_FAILURE_EMPTY);
         }
 
-//        quizCards = getSRSFlashCards(quizCards);
+        if (isQuizSRS) {
+            quizCards = getSRSFlashCards(quizCards);
+            if (quizCards.isEmpty()) {
+                return new CommandResult(MESSAGE_QUIZ_NO_SCHEDULED_CARD);
+            }
+        }
 
         model.resetQuizStat();
         model.setQuizFlashcards(FXCollections.observableArrayList(quizCards));

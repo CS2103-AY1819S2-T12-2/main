@@ -86,6 +86,10 @@ public class Flashcard {
         getStatistics().quizAttempt(isSuccess);
     }
 
+    public boolean isIncludedInCurrentQuiz() {
+        return getProficiency().isIncludedInCurrentQuiz();
+    }
+
     /**
      * Returns true if both flashcards of the same name have at least one other identity field that is the same.
      * This defines a weaker notion of equality between two flashcards.
