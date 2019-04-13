@@ -17,6 +17,7 @@ import seedu.address.logic.Logic;
 import seedu.address.logic.commands.CommandResult;
 import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.logic.parser.exceptions.ParseException;
+import seedu.address.model.flashcard.Flashcard;
 
 /**
  * The Main Window. Provides the basic application layout containing
@@ -142,7 +143,7 @@ public class MainWindow extends UiPart<Stage> {
         cardViewPlaceholder.getChildren().add(cardViewPanel.getRoot());
 
         flashcardListPanel = new FlashcardListPanel(logic.getFilteredFlashcardList(), logic.selectedFlashcardProperty(),
-            logic::setSelectedFlashcard);
+                this::setSelectedFlashcard);
         flashcardListPanelPlaceholder.getChildren().add(flashcardListPanel.getRoot());
 
         resultDisplay = new ResultDisplay();
@@ -154,6 +155,16 @@ public class MainWindow extends UiPart<Stage> {
 
         CommandBox commandBox = new CommandBox(this::executeCommand, logic.getHistory());
         commandBoxPlaceholder.getChildren().add(commandBox.getRoot());
+    }
+
+    private void setSelectedFlashcard(Flashcard flashcard) {
+        try {
+            int index = logic.getFilteredFlashcardList().indexOf(flashcard) + 1;
+            this.executeCommand(String.format("select %d", index));
+        } catch (CommandException | ParseException e) {
+            logger.warning("Fail to select a flashcard from UI");
+            e.printStackTrace();
+        }
     }
 
     /**
