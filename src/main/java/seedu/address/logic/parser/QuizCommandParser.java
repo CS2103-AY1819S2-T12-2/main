@@ -6,7 +6,7 @@ import seedu.address.logic.parser.exceptions.ParseException;
 /**
  * Parses input arguments and creates a new QuizCommand object.
  */
-public class QuizCommandParser {
+public class QuizCommandParser implements Parser<QuizCommand> {
     /**
      * Parses the given {@code String} of arguments in the context of the StatsCommand
      * and returns an QuizCommand object for execution.

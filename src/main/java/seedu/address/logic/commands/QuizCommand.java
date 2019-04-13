@@ -20,6 +20,8 @@ import seedu.address.model.flashcard.Flashcard;
 public class QuizCommand extends Command {
 
     public static final String COMMAND_WORD = "quiz";
+    public static final String REVIEW_MODE = "review";
+    public static final String SRS_MODE = "srs";
 
     public static final String MESSAGE_QUIZ_REVIEW_START = "Review mode started. Good luck :)";
     public static final String MESSAGE_QUIZ_SRS_START = "Quiz mode started. Good luck :)";
@@ -99,5 +101,12 @@ public class QuizCommand extends Command {
             messageStart = MESSAGE_QUIZ_SRS_START;
         }
         return new CommandResult(messageStart);
+    }
+
+    @Override
+    public boolean equals(Object other) {
+        return other == this // short circuit if same object
+                || (other instanceof QuizCommand // instanceof handles nulls
+                && isQuizSrs == ((QuizCommand) other).isQuizSrs);
     }
 }
