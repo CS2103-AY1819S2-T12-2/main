@@ -4,6 +4,9 @@ import static org.junit.Assert.assertEquals;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandFailure;
 import static seedu.address.testutil.TypicalFlashcards.getTypicalCardCollection;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -13,6 +16,7 @@ import seedu.address.logic.commands.exceptions.CommandException;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
 import seedu.address.model.UserPrefs;
+import seedu.address.model.flashcard.Flashcard;
 
 /**
  * Contains integration tests and unit tests for QuizCommand.
@@ -52,7 +56,7 @@ public class QuizCommandTest {
         command.execute(model, commandHistory);
         assertEquals((int) model.getQuizMode(), QuizState.QUIZ_MODE_FRONT);
         assertEquals(true, model.getIsQuizSrs().getValue());
-        assertEquals(model.getQuizFlashcards().size(), model.getFilteredFlashcardList().size() - 1);
+        assertEquals(model.getQuizFlashcards().size(), getAvailableSrsFlashcards().size() - 1);
     }
 
 
@@ -84,5 +88,12 @@ public class QuizCommandTest {
         command = new QuizCommand(true);
         model.updateFilteredFlashcardList((x) -> false);
         assertCommandFailure(command, model, commandHistory, QuizCommand.MESSAGE_QUIZ_FAILURE_EMPTY);
+    }
+
+    private List<Flashcard> getAvailableSrsFlashcards() {
+        List<Flashcard> cards = model.getFilteredFlashcardList();
+        return cards.stream()
+                .filter(Flashcard::isIncludedInCurrentQuiz)
+                .collect(Collectors.toList());
     }
 }
