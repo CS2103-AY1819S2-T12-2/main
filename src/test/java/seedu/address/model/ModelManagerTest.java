@@ -4,6 +4,8 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_FRONTFACE_HITBAG;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_MAX_BOUND;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_MIN_BOUND;
 import static seedu.address.model.Model.PREDICATE_SHOW_ALL_FLASHCARDS;
 import static seedu.address.testutil.TypicalFlashcards.GOOD;
 import static seedu.address.testutil.TypicalFlashcards.HITBAG;
@@ -183,8 +185,10 @@ public class ModelManagerTest {
         for (Tag tag : tagSet) {
             tagKeywords.add(tag.tagName);
         }
+        double[] successRateRange = {VALID_MIN_BOUND, VALID_MAX_BOUND};
+
         modelManager.updateFilteredFlashcardList(new FlashcardPredicate(
-                Arrays.asList(frontFaceKeywords), Arrays.asList(backFaceKeywords), tagKeywords));
+                Arrays.asList(frontFaceKeywords), Arrays.asList(backFaceKeywords), tagKeywords, successRateRange));
         assertFalse(modelManager.equals(new ModelManager(cardCollection, userPrefs)));
 
         // resets modelManager to initial state for upcoming tests

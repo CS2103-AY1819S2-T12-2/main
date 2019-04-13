@@ -13,10 +13,14 @@ import static seedu.address.logic.commands.CommandTestUtil.PREAMBLE_WHITESPACE;
 import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_CHINESE;
 import static seedu.address.logic.commands.CommandTestUtil.TAG_DESC_INDONESIAN;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_BACKFACE_GOOD;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_BOUND_75;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_FRONTFACE_DUCK;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_FRONTFACE_GOOD;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_MAX_BOUND;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_MIN_BOUND;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_CHINESE;
 import static seedu.address.logic.commands.CommandTestUtil.VALID_TAG_INDONESIAN;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_SUCCESS_RATE_RANGE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseFailure;
 import static seedu.address.logic.parser.CommandParserTestUtil.assertParseSuccess;
@@ -64,32 +68,36 @@ public class FindCommandParserTest {
         ArrayList<String> frontFaceKeywords = new ArrayList<>(Arrays.asList(VALID_FRONTFACE_GOOD));
         ArrayList<String> backFaceKeywords = new ArrayList<>(Arrays.asList(VALID_BACKFACE_GOOD));
         ArrayList<String> tagKeywords = new ArrayList<>(Arrays.asList(VALID_TAG_INDONESIAN));
+        double[] successRateRange = {VALID_MIN_BOUND, VALID_BOUND_75};
 
         FlashcardPredicate expectedPredicate = new FlashcardPredicate(
-                frontFaceKeywords, backFaceKeywords, tagKeywords);
+                frontFaceKeywords, backFaceKeywords, tagKeywords, successRateRange);
 
         // whitespace only preamble
         assertParseSuccess(parser, PREAMBLE_WHITESPACE + FRONTFACE_DESC_GOOD + BACKFACE_DESC_GOOD
-                + TAG_DESC_INDONESIAN, new FindCommand(expectedPredicate));
+                + TAG_DESC_INDONESIAN + " " + PREFIX_SUCCESS_RATE_RANGE + VALID_MIN_BOUND + " "
+                + VALID_BOUND_75, new FindCommand(expectedPredicate));
 
         // different ordering of args
-        assertParseSuccess(parser, TAG_DESC_INDONESIAN + BACKFACE_DESC_GOOD
-                + FRONTFACE_DESC_GOOD , new FindCommand(expectedPredicate));
+        assertParseSuccess(parser, TAG_DESC_INDONESIAN + " " + PREFIX_SUCCESS_RATE_RANGE + VALID_MIN_BOUND
+                + " " + VALID_BOUND_75 + BACKFACE_DESC_GOOD + FRONTFACE_DESC_GOOD , new FindCommand(expectedPredicate));
 
         // multiple tags - all accepted
         tagKeywords.add(VALID_TAG_CHINESE);
         FlashcardPredicate expectedPredicateMultipleTags = new FlashcardPredicate(
-                frontFaceKeywords, backFaceKeywords, tagKeywords);
+                frontFaceKeywords, backFaceKeywords, tagKeywords, successRateRange);
         assertParseSuccess(parser, FRONTFACE_DESC_GOOD + BACKFACE_DESC_GOOD
-                + TAG_DESC_INDONESIAN + TAG_DESC_CHINESE, new FindCommand(expectedPredicateMultipleTags));
+                + TAG_DESC_INDONESIAN + TAG_DESC_CHINESE + " " + PREFIX_SUCCESS_RATE_RANGE + VALID_MIN_BOUND + " "
+                + VALID_BOUND_75, new FindCommand(expectedPredicateMultipleTags));
         tagKeywords.remove(1);
 
         // multiple frontFace keywords under same frontFace prefix
         frontFaceKeywords.add(VALID_FRONTFACE_DUCK);
         FlashcardPredicate expectedPredicateMultipleFrontfaceKeywords =
-                new FlashcardPredicate(frontFaceKeywords, backFaceKeywords, tagKeywords);
+                new FlashcardPredicate(frontFaceKeywords, backFaceKeywords, tagKeywords, successRateRange);
         assertParseSuccess(parser, FRONTFACE_DESC_GOOD + " " + VALID_FRONTFACE_DUCK + BACKFACE_DESC_GOOD
-                + TAG_DESC_INDONESIAN, new FindCommand(expectedPredicateMultipleFrontfaceKeywords));
+                + TAG_DESC_INDONESIAN + " " + PREFIX_SUCCESS_RATE_RANGE + VALID_MIN_BOUND + " "
+                + VALID_BOUND_75, new FindCommand(expectedPredicateMultipleFrontfaceKeywords));
     }
 
     @Test
@@ -97,18 +105,19 @@ public class FindCommandParserTest {
         ArrayList<String> frontFaceKeywords = new ArrayList<>();
         ArrayList<String> backFaceKeywords = new ArrayList<>();
         ArrayList<String> tagKeywords = new ArrayList<>();
+        double[] successRateRange = {VALID_MIN_BOUND, VALID_MAX_BOUND};
 
         // only frontFace keyword
         frontFaceKeywords.add(VALID_FRONTFACE_GOOD);
         FlashcardPredicate expectedPredicateFrontFaceOnly = new FlashcardPredicate(
-                frontFaceKeywords, backFaceKeywords, tagKeywords);
+                frontFaceKeywords, backFaceKeywords, tagKeywords, successRateRange);
         assertParseSuccess(parser, FRONTFACE_DESC_GOOD, new FindCommand(expectedPredicateFrontFaceOnly));
         frontFaceKeywords.remove(0);
 
         // only backFace keyword with whitespace preamble
         backFaceKeywords.add(VALID_BACKFACE_GOOD);
         FlashcardPredicate expectedPredicateBackFaceOnly = new FlashcardPredicate(
-                frontFaceKeywords, backFaceKeywords, tagKeywords);
+                frontFaceKeywords, backFaceKeywords, tagKeywords, successRateRange);
         assertParseSuccess(parser, PREAMBLE_WHITESPACE + BACKFACE_DESC_GOOD,
                 new FindCommand(expectedPredicateBackFaceOnly));
         backFaceKeywords.remove(0);
@@ -116,7 +125,7 @@ public class FindCommandParserTest {
         // only tag keyword
         tagKeywords.add(VALID_TAG_CHINESE);
         FlashcardPredicate expectedPredicateTagOnly = new FlashcardPredicate(
-                frontFaceKeywords, backFaceKeywords, tagKeywords);
+                frontFaceKeywords, backFaceKeywords, tagKeywords, successRateRange);
         assertParseSuccess(parser, TAG_DESC_CHINESE, new FindCommand(expectedPredicateTagOnly));
         tagKeywords.remove(0);
 
@@ -124,7 +133,7 @@ public class FindCommandParserTest {
         tagKeywords.add(VALID_TAG_CHINESE);
         frontFaceKeywords.add(VALID_FRONTFACE_DUCK);
         FlashcardPredicate expectedPredicateTagAndFrontFaceOnly =
-                new FlashcardPredicate(frontFaceKeywords, backFaceKeywords, tagKeywords);
+                new FlashcardPredicate(frontFaceKeywords, backFaceKeywords, tagKeywords, successRateRange);
         assertParseSuccess(parser, TAG_DESC_CHINESE + FRONTFACE_DESC_DUCK,
                 new FindCommand(expectedPredicateTagAndFrontFaceOnly));
     }

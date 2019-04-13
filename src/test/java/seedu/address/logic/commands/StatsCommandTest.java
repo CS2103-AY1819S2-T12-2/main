@@ -1,6 +1,8 @@
 package seedu.address.logic.commands;
 
 import static org.junit.Assert.assertEquals;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_MAX_BOUND;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_MIN_BOUND;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.commands.StatsCommand.MESSAGE_STATISTICS_FORMAT;
 import static seedu.address.testutil.TypicalFlashcards.EMAIL;
@@ -39,10 +41,12 @@ public class StatsCommandTest {
         assertCommandSuccess(new StatsCommand(), model, commandHistory, expectedCommandResult, expectedModel);
 
         // run stats command with some predicates.
+        double[] successRateRange = {VALID_MIN_BOUND, VALID_MAX_BOUND};
         FlashcardPredicate predicate = new FlashcardPredicate(
                 Arrays.asList(HELLO.getFrontFace().text),
                 Arrays.asList(EMAIL.getBackFace().text),
-                Collections.emptyList());
+                Collections.emptyList(),
+                successRateRange);
 
         expectedModel.updateFilteredFlashcardList(predicate);
         successRate = getFilteredSuccessRateFromModel(expectedModel);
@@ -59,8 +63,9 @@ public class StatsCommandTest {
         assertEquals(command, new StatsCommand());
 
         // with predicate stats
+        double[] successRateRange = {VALID_MIN_BOUND, VALID_MAX_BOUND};
         FlashcardPredicate predicate1 = new FlashcardPredicate(
-                Arrays.asList("Klungs", "Robin"), Arrays.asList("Sergio"), Arrays.asList("Luca")
+                Arrays.asList("Klungs", "Robin"), Arrays.asList("Sergio"), Arrays.asList("Luca"), successRateRange
         );
 
         assertEquals(new StatsCommand(predicate1), new StatsCommand(predicate1));

@@ -1072,39 +1072,48 @@ Use case ends.
 
 *MSS*
 
-1.  User requests to find a card with some keywords and tags.
-2.  Acquizition shows a list of cards that contain all of the keyword and tags
+1.  User requests to find a set of cards containing some keywords and within a specified success rate range
+2.  _Acquizition_ shows a list of cards that contain any of the keywords and which also have a success rate within
+the specified range
 +
 Use case ends.
 
 [discrete]
-=== Use case: Export a collection of cards
+=== Use case: Share a collection of cards
 
 *MSS*
 
-1.  User requests to export a collection of cards
-2.  User specify some tags
-3.  Acquizition finds the cards with the given tags
-4.  User specify a file path and a file name
-5.  Acquizition writes the information about the cards to the file specified
+1.  User requests to find a set of cards
+2.  _Acquizition_ lists the cards
+3.  User requests to share the currently listed cards
+4.  User specifies the directory to save the cards
+5.  _Acquizition_ creates a text file containing the information about the cards
 +
 Use case ends.
 
 *Extensions*
 
 [none]
-* 3a. There is no card with the tags specified
+* 3a. There are no cards currently listed
 +
 [none]
-** 3a1. Acquizition shows an error message.
+** 3a1. _Acquizition_ shows an error message.
 +
 Use case ends.
 
 [none]
-* 5a. Acquizition has no permission to edit the file
+* 4a. The directory does not exist
 +
 [none]
-** 5a1. Acquizition shows an error message.
+** 4a1. _Acquizition_ shows an error message.
++
+Use case ends.
+
+[none]
+* 5a. _Acquizition_ has no permission to add the file
++
+[none]
+** 5a1. _Acquizition_ shows an error message.
 +
 Use case ends.
 
@@ -1113,9 +1122,9 @@ Use case ends.
 
 *MSS*
 
-1.  User requests to export a collection of cards
-2.  User specify a file path
-3.  Acquizition builds the cards from the given file.
+1.  User requests to import a set of flashcards
+2.  User specifies the path of the text file
+3.  _Acquizition_ adds the cards from the given file
 +
 Use case ends.
 
@@ -1133,6 +1142,14 @@ Use case ends.
 +
 [none]
 ** 3b1. Acquizition shows an error message.
++
+Use case ends.
+
+* 3c. Some of the cards are corrupted or already exist locally
++
+[none]
+** 3c1. _Acquizition_ adds cards which do not already exist and which are not corrupted.
+** 3c2. _Acquizition_ shows how many cards were successfully imported
 +
 Use case ends.
 

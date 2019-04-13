@@ -4,9 +4,14 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static seedu.address.commons.core.Messages.MESSAGE_FLASHCARDS_LISTED_OVERVIEW;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_BOUND_75;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_MAX_BOUND;
+import static seedu.address.logic.commands.CommandTestUtil.VALID_MIN_BOUND;
 import static seedu.address.logic.commands.CommandTestUtil.assertCommandSuccess;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_BACK_FACE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_FRONT_FACE;
+import static seedu.address.logic.parser.CliSyntax.PREFIX_SUCCESS_RATE_RANGE;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_TAG;
 import static seedu.address.testutil.TypicalFlashcards.EAT;
 import static seedu.address.testutil.TypicalFlashcards.EMAIL;
@@ -19,6 +24,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Set;
+import java.util.stream.Stream;
 
 import org.junit.Test;
 
@@ -26,6 +32,7 @@ import seedu.address.logic.CommandHistory;
 import seedu.address.logic.parser.ArgumentMultimap;
 import seedu.address.logic.parser.ArgumentTokenizer;
 import seedu.address.logic.parser.ParserUtil;
+import seedu.address.logic.parser.Prefix;
 import seedu.address.logic.parser.exceptions.ParseException;
 import seedu.address.model.Model;
 import seedu.address.model.ModelManager;
@@ -44,12 +51,14 @@ public class FindCommandTest {
 
     @Test
     public void equals() {
+        double[] successRateRange = {VALID_MIN_BOUND, VALID_BOUND_75};
         FlashcardPredicate firstPredicate =
             new FlashcardPredicate(Collections.singletonList("firstFront"),
-                    Collections.singletonList("firstBack"), Collections.singletonList("firstTag"));
+                    Collections.singletonList("firstBack"), Collections.singletonList("firstTag"), successRateRange);
         FlashcardPredicate secondPredicate =
                 new FlashcardPredicate(Collections.singletonList("secondFront"),
-                        Collections.singletonList("secondBack"), Collections.singletonList("secondTag"));
+                        Collections.singletonList("secondBack"), Collections.singletonList("secondTag"),
+                        successRateRange);
 
         FindCommand findFirstCommand = new FindCommand(firstPredicate);
         FindCommand findSecondCommand = new FindCommand(secondPredicate);
@@ -69,16 +78,6 @@ public class FindCommandTest {
 
         // different flashcard -> returns false
         assertFalse(findFirstCommand.equals(findSecondCommand));
-    }
-
-    @Test
-    public void execute_zeroKeywords_noFlashcardFound() throws ParseException {
-        String expectedMessage = String.format(MESSAGE_FLASHCARDS_LISTED_OVERVIEW, 0);
-        FlashcardPredicate predicate = preparePredicate(" ");
-        FindCommand command = new FindCommand(predicate);
-        expectedModel.updateFilteredFlashcardList(predicate);
-        assertCommandSuccess(command, model, commandHistory, expectedMessage, expectedModel);
-        assertEquals(Collections.emptyList(), model.getFilteredFlashcardList());
     }
 
     @Test
@@ -107,12 +106,21 @@ public class FindCommandTest {
      * Parses {@code userInput} into a {@code FlashcardPredicate}.
      */
     private FlashcardPredicate preparePredicate(String userInput) throws ParseException {
-        ArgumentMultimap argMultimap =
-                ArgumentTokenizer.tokenize(userInput, PREFIX_FRONT_FACE, PREFIX_BACK_FACE, PREFIX_TAG);
+        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(userInput, PREFIX_FRONT_FACE, PREFIX_BACK_FACE,
+                PREFIX_TAG, PREFIX_SUCCESS_RATE_RANGE);
+
+        if (!arePrefixesPresent(argMultimap, PREFIX_FRONT_FACE) && !arePrefixesPresent(argMultimap, PREFIX_BACK_FACE)
+                && !arePrefixesPresent(argMultimap, PREFIX_TAG)
+                && !arePrefixesPresent(argMultimap, PREFIX_SUCCESS_RATE_RANGE)
+                || !argMultimap.getPreamble().isEmpty()) {
+            throw new ParseException(String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
+        }
 
         Set<Face> frontFaceKeywordSet = ParserUtil.parseFaces(argMultimap.getAllValues(PREFIX_FRONT_FACE));
         Set<Face> backFaceKeywordSet = ParserUtil.parseFaces(argMultimap.getAllValues(PREFIX_BACK_FACE));
         Set<Tag> tagKeywordSet = ParserUtil.parseTags(argMultimap.getAllValues(PREFIX_TAG));
+        double[] statRange = ParserUtil.parseStatRange(argMultimap.getValue(PREFIX_SUCCESS_RATE_RANGE).isPresent()
+                ? argMultimap.getValue(PREFIX_SUCCESS_RATE_RANGE).get() : VALID_MIN_BOUND + " " + VALID_MAX_BOUND);
 
         ArrayList<String> frontFaceKeywords = new ArrayList<>();
         ArrayList<String> backFaceKeywords = new ArrayList<>();
@@ -120,22 +128,22 @@ public class FindCommandTest {
 
         for (Face frontFace : frontFaceKeywordSet) {
             String[] frontFaceTextSplit = frontFace.text.split("\\s+");
-            for (String frontFaceKeyword : frontFaceTextSplit) {
-                frontFaceKeywords.add(frontFaceKeyword);
-            }
+            frontFaceKeywords.addAll(Arrays.asList(frontFaceTextSplit));
         }
 
         for (Face backFace : backFaceKeywordSet) {
             String[] backFaceTextSplit = backFace.text.split("\\s+");
-            for (String backFaceKeyword : backFaceTextSplit) {
-                backFaceKeywords.add(backFaceKeyword);
-            }
+            backFaceKeywords.addAll(Arrays.asList(backFaceTextSplit));
         }
 
         for (Tag tag : tagKeywordSet) {
             tagKeywords.add(tag.tagName);
         }
 
-        return new FlashcardPredicate(frontFaceKeywords, backFaceKeywords, tagKeywords);
+        return new FlashcardPredicate(frontFaceKeywords, backFaceKeywords, tagKeywords, statRange);
+    }
+
+    private static boolean arePrefixesPresent(ArgumentMultimap argumentMultimap, Prefix... prefixes) {
+        return Stream.of(prefixes).allMatch(prefix -> argumentMultimap.getValue(prefix).isPresent());
     }
 }

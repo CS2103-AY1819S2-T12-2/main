@@ -142,10 +142,8 @@ public class ParserUtil {
      *
      * @throws ParseException if the user input does not conform the expected format
      */
-    static FlashcardPredicate filterByKeyword(String args, String messageUsage)
-            throws ParseException {
-        ArgumentMultimap argMultimap;
-        argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_FRONT_FACE, PREFIX_BACK_FACE, PREFIX_TAG,
+    static FlashcardPredicate filterByKeyword(String args, String messageUsage) throws ParseException {
+        ArgumentMultimap argMultimap = ArgumentTokenizer.tokenize(args, PREFIX_FRONT_FACE, PREFIX_BACK_FACE, PREFIX_TAG,
                 PREFIX_SUCCESS_RATE_RANGE);
 
         if (!arePrefixesPresent(argMultimap, PREFIX_FRONT_FACE) && !arePrefixesPresent(argMultimap, PREFIX_BACK_FACE)
@@ -179,8 +177,7 @@ public class ParserUtil {
             tagKeywords.add(tag.tagName);
         }
 
-        return new FlashcardPredicate(frontFaceKeywords, backFaceKeywords, tagKeywords,
-                statRange);
+        return new FlashcardPredicate(frontFaceKeywords, backFaceKeywords, tagKeywords, statRange);
     }
 
     /**

@@ -36,6 +36,7 @@ public class ShareCommand extends Command {
 
     public static final String MESSAGE_SHARE_SUCCESS = "Successfully created ";
     public static final String MESSAGE_SHARE_FAILURE = "Could not create file at %1$s";
+    public static final String MESSAGE_SHARE_FAILURE_EMPTY_LIST = "Cannot share an empty list ";
     private static final String MESSAGE_IN_QUIZ = "Cannot share in quiz mode";
 
     private final Logger logger = LogsCenter.getLogger(getClass());
@@ -53,6 +54,9 @@ public class ShareCommand extends Command {
             throw new CommandException(MESSAGE_IN_QUIZ);
         }
         List<Flashcard> flashcardsToShare = model.getFilteredFlashcardList();
+        if (flashcardsToShare.isEmpty()) {
+            throw new CommandException(MESSAGE_SHARE_FAILURE_EMPTY_LIST);
+        }
         String fileName = Paths.get(path).resolve(FILE_NAME).toFile().toString();
         boolean isSuccessful = generateFile(flashcardsToShare, fileName);
         if (isSuccessful) {
