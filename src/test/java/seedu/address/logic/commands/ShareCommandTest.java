@@ -27,9 +27,8 @@ public class ShareCommandTest {
 
     @Test
     public void execute_share_success() {
-        // TODO
         Path testDataFolder = Paths.get("src", "test", "data", "uploadCommandTest");
-        String file = testDataFolder.resolve("upload.txt").toString();
+        String file = testDataFolder.resolve("flashcardsCorrupted.txt").toString();
 
         try {
             new ShareCommand(testDataFolder.toString()).execute(model, commandHistory);
@@ -37,4 +36,29 @@ public class ShareCommandTest {
             e.printStackTrace();
         }
     }
+
+
+
+
+/*
+    //This test fails on Travis for some reason
+    //It works locally
+    @Ignore
+    @Test
+    public void execute_imageCommand_success() throws CommandException {
+        File imageToProduce = new File(IMAGE_DIRECTORY.concat(validFlashcard));
+        File imageToTest = new File("src\\test\\data\\images\\".concat(validFlashcard));
+        if (!imageToTest.exists()) {
+            logger.severe("Image ".concat(imageToTest.getAbsolutePath()).concat(" couldn't be found."));
+        }
+        if (imageToProduce.delete()) {
+            logger.warning("Image ".concat(imageToProduce.getAbsolutePath()).concat(" deleted."));
+        }
+        ImageCommand command = new ImageCommand(imageToTest);
+        command.execute(model, commandHistory);
+        assert(imageToProduce.exists());
+        if (!imageToProduce.delete()) {
+            logger.severe("Image ".concat(imageToProduce.getAbsolutePath()).concat(" couldn't be deleted."));
+        }
+    }*/
 }
