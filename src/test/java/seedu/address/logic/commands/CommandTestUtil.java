@@ -34,9 +34,10 @@ public class CommandTestUtil {
     public static final String VALID_BACKFACE_HITBAG = "打包";
     public static final String VALID_TAG_INDONESIAN = "indonesian";
     public static final String VALID_TAG_CHINESE = "chinese";
+    public static final String VALID_MIN_BOUND_STRING = "0";
+    public static final String VALID_MAX_BOUND_STRING = "100";
     public static final double VALID_MIN_BOUND = 0;
     public static final double VALID_MAX_BOUND = 100;
-    public static final double VALID_BOUND_25 = 25;
     public static final double VALID_BOUND_75 = 75;
 
     public static final Optional<String> VALID_IMAGE_NONE = Optional.empty();

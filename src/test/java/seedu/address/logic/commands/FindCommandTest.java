@@ -93,13 +93,24 @@ public class FindCommandTest {
 
     @Test
     public void execute_multipleArgumentKeywords_multipleFlashcardsFound() throws ParseException {
-        String expectedMessage = String.format(MESSAGE_FLASHCARDS_LISTED_OVERVIEW, 4);
+        String expectedMessage = String.format(MESSAGE_FLASHCARDS_LISTED_OVERVIEW, 3);
         FlashcardPredicate predicate = preparePredicate(" " + PREFIX_FRONT_FACE
-                + "Hola " + PREFIX_BACK_FACE + "吃 idk " + PREFIX_TAG + "indonesian");
+                + "Hola " + PREFIX_BACK_FACE + "吃 idk " + PREFIX_TAG + "indonesian "
+                + PREFIX_SUCCESS_RATE_RANGE + "0 75");
         FindCommand command = new FindCommand(predicate);
         expectedModel.updateFilteredFlashcardList(predicate);
         assertCommandSuccess(command, model, commandHistory, expectedMessage, expectedModel);
-        assertEquals(Arrays.asList(HELLO, HOLA, EAT, NEWTON), model.getFilteredFlashcardList());
+        assertEquals(Arrays.asList(HOLA, EAT, NEWTON), model.getFilteredFlashcardList());
+    }
+
+    @Test
+    public void execute_onlySucessRateRange_multipleFlashcardsFound() throws ParseException {
+        String expectedMessage = String.format(MESSAGE_FLASHCARDS_LISTED_OVERVIEW, 1);
+        FlashcardPredicate predicate = preparePredicate(" " + PREFIX_SUCCESS_RATE_RANGE + "1 75");
+        FindCommand command = new FindCommand(predicate);
+        expectedModel.updateFilteredFlashcardList(predicate);
+        assertCommandSuccess(command, model, commandHistory, expectedMessage, expectedModel);
+        assertEquals(Arrays.asList(HOLA), model.getFilteredFlashcardList());
     }
 
     /**
