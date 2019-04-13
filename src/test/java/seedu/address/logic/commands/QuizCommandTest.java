@@ -51,7 +51,7 @@ public class QuizCommandTest {
     }
 
     @Test
-    public void execute_quizSRS_success() throws CommandException {
+    public void execute_quizSrs_success() throws CommandException {
         QuizCommand command = new QuizCommand(true);
         command.execute(model, commandHistory);
         assertEquals((int) model.getQuizMode(), QuizState.QUIZ_MODE_FRONT);
