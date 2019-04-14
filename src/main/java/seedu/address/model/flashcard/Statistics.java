@@ -80,7 +80,7 @@ public class Statistics {
      */
     public Statistics merge(Statistics oth) {
         return new Statistics(
-            this.attemptNumber + oth.attemptNumber, this.successAttempt + oth.successAttempt);
+            this.successAttempt + oth.successAttempt, this.attemptNumber + oth.attemptNumber);
     }
 
     @Override

@@ -44,12 +44,12 @@ public class ProficiencyTest {
     @Test
     public void quizAttempt() {
         Proficiency proficiency = new Proficiency(now, 1);
-        proficiency.quizAttempt(true);
-        assertEquals(new Proficiency(twoDaysFromNow, 2), proficiency);
+        Proficiency result = proficiency.quizAttempt(true);
+        assertEquals(new Proficiency(twoDaysFromNow, 2), result);
 
         proficiency = new Proficiency(yesterday, 3);
-        proficiency.quizAttempt(false);
-        assertEquals(new Proficiency(), proficiency);
+        result = proficiency.quizAttempt(false);
+        assertEquals(new Proficiency(), result);
     }
 
 

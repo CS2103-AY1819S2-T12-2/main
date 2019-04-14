@@ -66,17 +66,17 @@ public class Proficiency {
      * @param isSuccess does the user guess the card from the quiz correctly.
      */
     public Proficiency quizAttempt(boolean isSuccess) {
-        int rPoficiencyLevel = proficiencyLevel;
+        int rProficiencyLevel = proficiencyLevel;
         if (isSuccess) {
-            rPoficiencyLevel++;
+            rProficiencyLevel++;
         } else {
-            rPoficiencyLevel = 0;
+            rProficiencyLevel = 0;
         }
         Calendar now = Calendar.getInstance();
-        if (rPoficiencyLevel != 0) {
-            now.add(Calendar.DATE, rPoficiencyLevel);
+        if (rProficiencyLevel != 0) {
+            now.add(Calendar.DATE, rProficiencyLevel);
         }
-        return new Proficiency(now, rPoficiencyLevel);
+        return new Proficiency(now, rProficiencyLevel);
     }
 
 
