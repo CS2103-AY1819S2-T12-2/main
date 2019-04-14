@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class Proficiency {
     public static final String VALIDATION_REGEX = "inactive until \\d+ proficiency level \\d+$";
     public static final String MESSAGE_CONSTRAINTS = "Proficiency string format must be in the form of: "
-            + "inactive until <date until card can be reviewed> proficiency <proficiency level>`";
+            + "inactive until <date until card can be reviewed> proficiency level <proficiency level>";
 
     private final Calendar timeUntilReview;
     private final int proficiencyLevel;

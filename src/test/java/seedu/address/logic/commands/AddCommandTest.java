@@ -313,7 +313,7 @@ public class AddCommandTest {
 
         @Override
         public void commitCardCollection(String commandText) {
-            // called bu {@code AddCommand#execute()}
+            // called by {@code AddCommand#execute()}
         }
 
         @Override
