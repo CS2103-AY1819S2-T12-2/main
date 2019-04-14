@@ -166,6 +166,7 @@ public class MainWindow extends UiPart<Stage> {
         String messageDisplay = String.format(MESSAGE_SELECT_FLASHCARD_SUCCESS, index,
             filteredFlashcardList.get(index - 1).getStatistics().getSuccessRate() * 100);
         resultDisplay.setFeedbackToUser(messageDisplay);
+        logic.setSelectedFlashcard(flashcard);
     }
 
     /**
