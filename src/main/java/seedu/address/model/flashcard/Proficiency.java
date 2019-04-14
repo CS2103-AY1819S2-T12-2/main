@@ -73,8 +73,8 @@ public class Proficiency {
             rPoficiencyLevel = 0;
         }
         Calendar now = Calendar.getInstance();
-        if (proficiencyLevel != 0) {
-            now.add(Calendar.DATE, proficiencyLevel);
+        if (rPoficiencyLevel != 0) {
+            now.add(Calendar.DATE, rPoficiencyLevel);
         }
         return new Proficiency(now, rPoficiencyLevel);
     }

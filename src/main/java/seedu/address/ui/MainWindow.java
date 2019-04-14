@@ -1,7 +1,10 @@
 package seedu.address.ui;
 
+import static seedu.address.logic.commands.SelectCommand.MESSAGE_SELECT_FLASHCARD_SUCCESS;
+
 import java.util.logging.Logger;
 
+import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
@@ -143,7 +146,7 @@ public class MainWindow extends UiPart<Stage> {
         cardViewPlaceholder.getChildren().add(cardViewPanel.getRoot());
 
         flashcardListPanel = new FlashcardListPanel(logic.getFilteredFlashcardList(), logic.selectedFlashcardProperty(),
-                this::setSelectedFlashcard);
+            this::setSelectedFlashcard);
         flashcardListPanelPlaceholder.getChildren().add(flashcardListPanel.getRoot());
 
         resultDisplay = new ResultDisplay();
@@ -158,13 +161,11 @@ public class MainWindow extends UiPart<Stage> {
     }
 
     private void setSelectedFlashcard(Flashcard flashcard) {
-        try {
-            int index = logic.getFilteredFlashcardList().indexOf(flashcard) + 1;
-            this.executeCommand(String.format("select %d", index));
-        } catch (CommandException | ParseException e) {
-            logger.warning("Failed to select a flashcard from UI");
-            e.printStackTrace();
-        }
+        ObservableList<Flashcard> filteredFlashcardList = logic.getFilteredFlashcardList();
+        int index = filteredFlashcardList.indexOf(flashcard) + 1;
+        String messageDisplay = String.format(MESSAGE_SELECT_FLASHCARD_SUCCESS, index,
+            filteredFlashcardList.get(index - 1).getStatistics().getSuccessRate() * 100);
+        resultDisplay.setFeedbackToUser(messageDisplay);
     }
 
     /**
