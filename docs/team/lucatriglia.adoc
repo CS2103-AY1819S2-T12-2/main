@@ -57,6 +57,8 @@ https://github.com/CS2103-AY1819S2-T12-2/main/pull/85[Tweak Import and Share Fun
 *** Reported bugs and suggestions for other teams in the class (examples:  https://github.com/nus-cs2103-AY1819S2/pe-dry-run/issues/719[1],
 https://github.com/nus-cs2103-AY1819S2/pe-dry-run/issues/875[2], https://github.com/nus-cs2103-AY1819S2/pe-dry-run/issues/400[3])
 
+A comprehensive summary of all the code contributed can be found https://nus-cs2103-ay1819s2.github.io/cs2103-dashboard/#=undefined&search=lucatriglia[here].
+
 == Contributions to the User Guide
 
 
