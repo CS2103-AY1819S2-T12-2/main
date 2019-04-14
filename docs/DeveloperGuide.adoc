@@ -215,7 +215,7 @@ The `Storage` component,
 [[Design-Commons]]
 === Common classes
 
-Classes used by multiple components are in the `seedu.cardcollection.commons` package.
+Classes used by multiple components are in the `seedu.address.commons` package.
 
 == Implementation
 
