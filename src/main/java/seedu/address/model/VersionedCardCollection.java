@@ -47,6 +47,7 @@ public class VersionedCardCollection extends CardCollection {
 
     private void removeStatesAfterCurrentPointer() {
         cardCollectionStateList.subList(currentStatePointer + 1, cardCollectionStateList.size()).clear();
+        commandHistory.subList(currentStatePointer + 1, commandHistory.size()).clear();
     }
 
     /**
