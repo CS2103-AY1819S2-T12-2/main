@@ -18,25 +18,31 @@ By: `Team T12-2`      Since: `Feb 2019`      Licence: `MIT`
 
 == Introduction
 
+Hey there!
+
 _Acquizition_ is a *desktop app* for easy language acquisition
-and memory retention. By analyzing your performance on recalling
-the flashcards, _Acquizition_ cleverly determines which flashcards
-should be tested to maximize recollection.
+using flashcards. It analyzes your performance on recalling words
+or phrases, and, based on how well you do, decides which word or
+phrase to show you next to maximize learning.
 
 Additionally, _Acquizition_ provides you with a user-friendly
-Graphical User Interface (GUI) to view your flashcards. If you can
-type quickly, you'll also enjoy the Command-Line Interface (CLI)
-that's streamlined for users like you.
+Graphical User Interface (GUI) to view your flashcards. It even
+supports images on the flashcards to make them more memorable. If
+you can type quickly, you will surely also enjoy the Command-Line
+Interface (CLI), streamlined for users like you.
 
-This user guide beings with an in-depth documentation on the _Acquizition_
-installation process. We structured the user guide to cater to your needs
-by answering common questions, rather than simply giving a list of commands
-and command formats.
+This user guide begins with an in-depth documentation on the
+_Acquizition_ installation process. We structured the user guide
+to cater to your needs by answering common questions, rather than
+simply giving a list of commands and command formats.
 
-However, you can still access the concise command summary at the end if you
-need it for reference.
+Of course, you can still access the concise command summary at the
+end of this document if you need it for reference.
 
-Time is money, so jump to <<Quick Start>> to get started immediately. Enjoy!
+Time is money, so jump to <<Quick Start>> to get started immediately.
+
+We hope you enjoy _Acquizition_, and we wish you the best in your
+language studies!
 
 == Quick Start
 
