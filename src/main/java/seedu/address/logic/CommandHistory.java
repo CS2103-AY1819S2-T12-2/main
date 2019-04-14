@@ -38,7 +38,9 @@ public class CommandHistory {
     /**
      * @return the last command that has been inputted.
      */
-    public String getLastCommand() { return unmodifiableUserInputHistory.get(unmodifiableUserInputHistory.size() - 1); }
+    public String getLastCommand() {
+        return unmodifiableUserInputHistory.get(unmodifiableUserInputHistory.size() - 1);
+    }
 
     @Override
     public boolean equals(Object obj) {
