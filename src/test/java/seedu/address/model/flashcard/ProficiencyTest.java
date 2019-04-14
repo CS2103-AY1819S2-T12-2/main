@@ -3,8 +3,13 @@ package seedu.address.model.flashcard;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import static seedu.address.model.flashcard.Proficiency.ACTIVE_IN_UNDER_A_MINUTE;
+import static seedu.address.model.flashcard.Proficiency.INACTIVE_UNTIL_IN_DAYS;
+import static seedu.address.model.flashcard.Proficiency.INACTIVE_UNTIL_IN_HOURS;
+import static seedu.address.model.flashcard.Proficiency.INACTIVE_UNTIL_IN_MINUTES;
 
 import java.util.Calendar;
+import java.util.concurrent.TimeUnit;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -16,6 +21,7 @@ public class ProficiencyTest {
     private Calendar yesterday = Calendar.getInstance();
     private Calendar tomorrow = Calendar.getInstance();
     private Calendar twoDaysFromNow = Calendar.getInstance();
+    private final long HALF_MINUTE = TimeUnit.SECONDS.toMillis(30);
 
     @Before
     public void setUp() {
@@ -83,5 +89,27 @@ public class ProficiencyTest {
         assertTrue(Proficiency.isValidProficiency("inactive until 10230 proficiency level 100"));
         assertTrue(Proficiency.isValidProficiency("inactive until 202 proficiency level 30"));
         assertTrue(Proficiency.isValidProficiency("inactive until 12338 proficiency level 3392"));
+    }
+
+    @Test
+    public void getQuizSrsStatus() {
+        assertQuizStatus(TimeUnit.SECONDS.toMillis(1), ACTIVE_IN_UNDER_A_MINUTE);
+
+        assertQuizStatus(TimeUnit.MINUTES.toMillis(2), String.format(INACTIVE_UNTIL_IN_MINUTES, 2));
+        assertQuizStatus(TimeUnit.MINUTES.toMillis(59), String.format(INACTIVE_UNTIL_IN_MINUTES, 59));
+
+        assertQuizStatus(TimeUnit.HOURS.toMillis(1), String.format(INACTIVE_UNTIL_IN_HOURS, 1));
+        assertQuizStatus(TimeUnit.HOURS.toMillis(23), String.format(INACTIVE_UNTIL_IN_HOURS, 23));
+
+        assertQuizStatus(TimeUnit.DAYS.toMillis(1), String.format(INACTIVE_UNTIL_IN_DAYS, 1));
+        assertQuizStatus(TimeUnit.DAYS.toMillis(20), String.format(INACTIVE_UNTIL_IN_DAYS, 20));
+
+    }
+
+    private void assertQuizStatus(long millis, String message ) {
+        millis += HALF_MINUTE;
+        Calendar now = Calendar.getInstance();
+        now.add(Calendar.MILLISECOND, (int) millis);
+        assertEquals(message, new Proficiency(now, 0).getQuizSrsStatus());
     }
 }
