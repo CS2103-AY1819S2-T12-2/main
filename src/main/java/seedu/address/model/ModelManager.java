@@ -288,13 +288,13 @@ public class ModelManager implements Model {
 
     @Override
     public void addGoodFeedback() {
-        selectedFlashcard.getValue().quizAttempt(true, isQuizSrs.getValue());
+        setFlashcard(selectedFlashcard.getValue(), selectedFlashcard.getValue().quizAttempt(true, isQuizSrs.getValue()));
         quizGood.setValue(quizGood.getValue() + 1);
     }
 
     @Override
     public void addBadFeedback() {
-        selectedFlashcard.getValue().quizAttempt(false, isQuizSrs.getValue());
+        setFlashcard(selectedFlashcard.getValue(), selectedFlashcard.getValue().quizAttempt(false, isQuizSrs.getValue()));
         quizBad.setValue(quizBad.getValue() + 1);
     }
 

@@ -12,8 +12,8 @@ public class Proficiency {
     public static final String MESSAGE_CONSTRAINTS = "Proficiency string format must be in the form of: "
             + "inactive until <date until card can be reviewed> proficiency <proficiency level>`";
 
-    private Calendar timeUntilReview;
-    private int proficiencyLevel;
+    private final Calendar timeUntilReview;
+    private final int proficiencyLevel;
 
     public Proficiency(Calendar timeUntilReview, int proficiencyLevel) {
         if (proficiencyLevel < 0) {
@@ -65,17 +65,18 @@ public class Proficiency {
      *
      * @param isSuccess does the user guess the card from the quiz correctly.
      */
-    public void quizAttempt(boolean isSuccess) {
+    public Proficiency quizAttempt(boolean isSuccess) {
+        int rPoficiencyLevel = proficiencyLevel;
         if (isSuccess) {
-            proficiencyLevel++;
+            rPoficiencyLevel++;
         } else {
-            proficiencyLevel = 0;
+            rPoficiencyLevel = 0;
         }
         Calendar now = Calendar.getInstance();
         if (proficiencyLevel != 0) {
             now.add(Calendar.DATE, proficiencyLevel);
         }
-        timeUntilReview.setTimeInMillis(now.getTimeInMillis());
+        return new Proficiency(now, rPoficiencyLevel);
     }
 
 

@@ -82,15 +82,19 @@ public class Flashcard {
     }
 
     /**
-     * update the statistics and SRS info based on the result of the quiz.
-     * @param isSuccess success in quiz mode.
-     * @param isQuizSrs is it srs mode in the quiz.
+     * Returns a flashcard with updated statistics and SRS info based on the result of the quiz.
+     *
+     * @param isSuccess success in quiz mode
+     * @param isQuizSrs is it srs mode in the quiz
+     * @return the modified flashcard
      */
-    public void quizAttempt(boolean isSuccess, boolean isQuizSrs) {
+    public Flashcard quizAttempt(boolean isSuccess, boolean isQuizSrs) {
+        Proficiency rProficiency = proficiency;
         if (isQuizSrs) {
-            getProficiency().quizAttempt(isSuccess);
+            rProficiency = rProficiency.quizAttempt(isSuccess);
         }
-        getStatistics().quizAttempt(isSuccess);
+        Statistics rStatistics = statistics.quizAttempt(isSuccess);
+        return new Flashcard(frontFace, backFace, imagePath, rStatistics, rProficiency, tags);
     }
 
     public boolean isIncludedInCurrentQuiz() {
