@@ -162,7 +162,7 @@ public class MainWindow extends UiPart<Stage> {
             int index = logic.getFilteredFlashcardList().indexOf(flashcard) + 1;
             this.executeCommand(String.format("select %d", index));
         } catch (CommandException | ParseException e) {
-            logger.warning("Fail to select a flashcard from UI");
+            logger.warning("Failed to select a flashcard from UI");
             e.printStackTrace();
         }
     }

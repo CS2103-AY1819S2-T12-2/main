@@ -25,7 +25,7 @@ public class QuizCommand extends Command {
 
     public static final String MESSAGE_QUIZ_REVIEW_START = "Review mode started. Good luck :)";
     public static final String MESSAGE_QUIZ_SRS_START = "Quiz mode started. Good luck :)";
-    public static final String MESSAGE_QUIZ_NO_SCHEDULED_CARD = "You have done well! there is no card to review, "
+    public static final String MESSAGE_QUIZ_NO_SCHEDULED_CARD = "You have done well! There is no card to review, "
             + "come back later.";
     public static final String MESSAGE_QUIZ_FAILURE_EMPTY = "Cannot start quiz mode on empty list";
     public static final String MESSAGE_QUIZ_FAILURE_UNKNOWN_MODE = "Cannot start quiz mode on empty list";
@@ -96,9 +96,9 @@ public class QuizCommand extends Command {
 
         String messageStart;
         if (this.isQuizSrs) {
-            messageStart = MESSAGE_QUIZ_REVIEW_START;
-        } else {
             messageStart = MESSAGE_QUIZ_SRS_START;
+        } else {
+            messageStart = MESSAGE_QUIZ_REVIEW_START;
         }
         return new CommandResult(messageStart);
     }
