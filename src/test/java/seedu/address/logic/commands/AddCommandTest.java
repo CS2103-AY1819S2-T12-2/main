@@ -175,12 +175,17 @@ public class AddCommandTest {
         }
 
         @Override
-        public void undoCardCollection() {
+        public String undoCardCollection() {
             throw new AssertionError("This method should not be called.");
         }
 
         @Override
-        public void redoCardCollection() {
+        public String redoCardCollection() {
+            throw new AssertionError("This method should not be called.");
+        }
+
+        @Override
+        public void commitCardCollection(String commandText) {
             throw new AssertionError("This method should not be called.");
         }
 
@@ -307,8 +312,8 @@ public class AddCommandTest {
         }
 
         @Override
-        public void commitCardCollection() {
-            // called by {@code AddCommand#execute()}
+        public void commitCardCollection(String commandText) {
+            // called bu {@code AddCommand#execute()}
         }
 
         @Override

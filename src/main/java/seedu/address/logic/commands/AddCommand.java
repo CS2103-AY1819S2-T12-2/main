@@ -20,16 +20,16 @@ public class AddCommand extends Command {
     public static final String COMMAND_WORD = "add";
 
     public static final String MESSAGE_USAGE = COMMAND_WORD + ": Adds a flashcard to the card collection. \n"
-        + "Parameters: "
-        + PREFIX_FRONT_FACE + "FRONTFACE "
-        + PREFIX_BACK_FACE + "BACKFACE "
-        + "[" + PREFIX_IMAGE + "IMAGE] "
-        + "[" + PREFIX_TAG + "TAG]...\n"
-        + "Example: " + COMMAND_WORD + " "
-        + PREFIX_FRONT_FACE + "Hello "
-        + PREFIX_BACK_FACE + "Halo "
-        + PREFIX_TAG + "friends "
-        + PREFIX_TAG + "owesMoney";
+            + "Parameters: "
+            + PREFIX_FRONT_FACE + "FRONTFACE "
+            + PREFIX_BACK_FACE + "BACKFACE "
+            + "[" + PREFIX_IMAGE + "IMAGE] "
+            + "[" + PREFIX_TAG + "TAG]...\n"
+            + "Example: " + COMMAND_WORD + " "
+            + PREFIX_FRONT_FACE + "Hello "
+            + PREFIX_BACK_FACE + "Halo "
+            + PREFIX_TAG + "friends "
+            + PREFIX_TAG + "owesMoney";
 
     public static final String MESSAGE_SUCCESS = "New flashcard added: %1$s";
     public static final String MESSAGE_DUPLICATE_FLASHCARD = "This flashcard already exists in the card collection";
@@ -58,7 +58,7 @@ public class AddCommand extends Command {
         }
 
         model.addFlashcard(toAdd);
-        model.commitCardCollection();
+        model.commitCardCollection(AddCommand.COMMAND_WORD);
         return new CommandResult(String.format(MESSAGE_SUCCESS, toAdd));
     }
 

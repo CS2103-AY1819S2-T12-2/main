@@ -51,7 +51,8 @@ public class LogicManager implements Logic {
             Command command = cardCollectionParser.parseCommand(commandText);
             commandResult = command.execute(model, history);
         } finally {
-            history.add(commandText);
+            if (!commandText.trim().isEmpty())
+                history.add(commandText);
         }
 
         if (cardCollectionModified) {

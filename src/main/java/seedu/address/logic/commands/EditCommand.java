@@ -106,7 +106,7 @@ public class EditCommand extends Command {
 
         model.updateFilteredFlashcardList(PREDICATE_SHOW_ALL_FLASHCARDS);
         model.setFlashcard(flashcardToEdit, editedFlashcard);
-        model.commitCardCollection();
+        model.commitCardCollection(EditCommand.COMMAND_WORD);
         return new CommandResult(String.format(MESSAGE_EDIT_FLASHCARD_SUCCESS, editedFlashcard));
     }
 
