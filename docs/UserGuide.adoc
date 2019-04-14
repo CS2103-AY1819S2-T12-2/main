@@ -154,6 +154,7 @@ Example:
 * `delete 2` +
 The second flashcard will be deleted.
 
+// tag::find[]
 === Finding flashcards by keyword(s): `find`
 
 Finds and lists all the flashcards whose front text, back text or collection tags
@@ -191,6 +192,7 @@ equal to 50%.
 * `find s/25 100` +
 This will find and list all the flashcards that have a success rate more than or equal to 25%
 and less than or equal to 100%.
+// end::find[]
 
 === Selecting a flashcard : `select`
 
@@ -318,6 +320,7 @@ This will show aggregate statistics for all flashcards that have the _Chinese_ o
 This will find and list all flashcards with _Kamusta_ in their front face then show aggregate
 statistics for all those flashcards.
 
+// tag::share[]
 === Exporting flashcards to a text file : `share`
 Creates a text file _flashcards.txt_ containing all the flashcards currently being listed.
 
@@ -344,9 +347,10 @@ the 7 flashcards in the file successfully imported.
 
 image::Ui-preImport.png[width="790"]
 image::Ui-postImport.png[width="790"]
+// end::share[]
 
 
-
+// tag::import[]
 === Importing flashcards from a text file : `import`
 Adds flashcards from a text file to your existing collection.
 
@@ -363,6 +367,7 @@ Example:
 
 * `import C:\Users\Alice\Desktop\flashcards.txt` +
 This will import the cards from _flashcards.txt_ to your collection.
+// end::import[]
 
 
 
