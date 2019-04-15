@@ -18,7 +18,7 @@ By: `Team T12-2`      Since: `Feb 2019`      Licence: `MIT`
 
 == Introduction
 
-Hey there!
+Hey there! image:mascot.png[width="120"]
 
 _Acquizition_ is a *desktop app* for easy language acquisition
 using flashcards. It analyzes your performance on recalling words
@@ -33,7 +33,7 @@ Interface (CLI), streamlined for users like you.
 
 This user guide begins with an in-depth documentation on the
 _Acquizition_ installation process. We structured the user guide
-to cater to your needs by answering common questions, rather than
+to cater to your needs by explaining common use cases, rather than
 simply giving a list of commands and command formats.
 
 Of course, you can still access the concise command summary at the
@@ -49,25 +49,25 @@ language studies!
 .  Make sure that you have **Java 9** or later installed on your computer.
     * On **Windows 10**, you can check your Java version by searching for _Apps & features_
     and looking for Java. +
-    image:java_version_windows.png[width="520"]
+    image:java_version_windows.png[width="790"]
     * On **Mac OS X 10.7 (Lion)** and above, you can check your Java version by searching
     for _System Preferences_ and looking for the Java icon, then clicking on it. +
-    image:java_version_mac.png[width="520"]
+    image:java_version_mac.png[width="790"]
     * This process may be different on other operating systems. Please search online for the relevant process.
 [NOTE]
 **Note:** If you do not have Java installed, or your version is outdated, you can
 download the latest version by following the instructions https://www.java.com/en/download/[here].
-.  Download the latest `acquizition.jar` file link:{repoURL}/releases[here].
-.  Copy the downloaded `.jar` file to the folder you want to use as the folder for the app.
+.  Download the latest `acquizition.zip` file link:{repoURL}/releases[here].
+.  Copy the downloaded `acquizition.zip` file to the directory of your choice, and extract the `acquizition.zip` file there.
 [TIP]
-**Tip:** We recommend making a folder called _Acquizition_ on your Desktop and placing the `.jar`
-file inside. This is because _Acquizition_ will generate some other files and folders in the same directory.
-.  Double-click the file to start _Acquizition_. The app should appear on your screen in a few
-seconds.
+**Tip:** Most operating systems should have built-in support for extracting `.zip` files. The process may differ between
+operating systems. Please search online for the relevant process.
+.  Locate the `acquizition.jar` file and double-click it to start _Acquizition_. The app should appear on your
+screen in a few seconds.
 [TIP]
 **Tip:** If you do not see anything after a few seconds, you may need to open _Acquizition_ through
 the command line. To do this, open the Command Prompt, Terminal or Linux Shell. Then, type `cd`,
-followed by a space, followed by the directory of the folder containing _Acquizition_, and press kbd:[Enter].
+followed by a space, followed by the directory of the folder containing `acquizition.jar`, and press kbd:[Enter].
 Then, type `java -jar acquizition.jar`, and press kbd:[Enter]. The app should appear on your screen in a few seconds.
 +
 image::Ui.png[width="790"]
@@ -289,6 +289,102 @@ To restore the list of all flashcards, simply use the `list` command.
 
 Type `list` and press kbd:[Enter].
 
+[[UndoCommand]]
+=== How do I undo the most recent command?
+
+You can undo a command by using the `undo` command.
+
+Type `undo` and press kbd:[Enter].
+
+[NOTE]
+**Note:** Not all commands can be undone. Only the following commands can be
+undone: `add`, `clear`, `delete`, `edit`, `import`, `quiz`. +
+Undo will cause the most recent _undoable_ command to be undone.
+
+Examples:
+
+* {blank}
+. `delete 1` +
+This deletes the first flashcard.
+. `list` +
+This lists all the flashcards.
+. `undo` +
+This will undo the most recent undoable command, which is `delete 1`. So, this will
+restore the deleted flashcard back as the first flashcard.
+* {blank}
+. `delete 2` +
+This deletes the second flashcard.
+. `delete 1` +
+This deletes the first flashcard.
+. `undo` +
+This will undo the most recent undoable command, which is `delete 1`. So, this will
+restore the deleted flashcard back as the first flashcard.
+. `undo` +
+This will undo the most recent undoable command, which is `delete 2`. So, this will
+restore the deleted flashcard back as the second flashcard.
+
+=== How do I redo the most recent undone command?
+
+You can redo an undone command by using the `redo` command. +
+
+Type `redo` and press kbd:[Enter].
+
+[NOTE]
+**Note:** The `redo` command only works if no new undoable command was made in between
+the time the the last `undo` command was made and the `redo` command is called.
+
+Examples:
+
+* {blank}
+. `delete 1` +
+This deletes the first flashcard.
+. `undo` +
+This will undo the most recent undoable command, which is `delete 1`. So, this will
+restore the deleted flashcard back as the first flashcard.
+. `redo` +
+This will redo the command the undo undid, which is `delete 1`. So, this will
+delete the first flashcard again.
+* {blank}
+. `delete 2` +
+This deletes the second flashcard.
+. `delete 1` +
+This deletes the first flashcard.
+. `undo` +
+This will undo the most recent undoable command, which is `delete 1`. So, this will
+restore the deleted flashcard back as the first flashcard.
+. `undo` +
+This will undo the most recent undoable command, which is `delete 2`. So, this will
+restore the deleted flashcard back as the second flashcard.
+. `redo` +
+This will redo the command the undo undid, which is `delete 2`. So, this will
+delete the second flashcard again.
+. `redo` +
+This will redo the command the undo undid, which is `delete 1`. So, this will
+delete the first flashcard again.
+
+=== How do I discard the results of the most recent quiz session?
+
+The quiz command updates the statistics of the flashcards, and you may want to
+void the results of the most recent quiz session and undo the updates to the cards'
+statistics.
+
+You can discard the results of the most recent quiz session by using the `undo`
+command right after a quiz session.
+
+[NOTE]
+**Note:** For more information about the `undo` command, see <<UndoCommand>>.
+
+=== How do I see the list of commands I have made?
+
+You can see the list of previous commands by using the `history` command. +
+
+Type `history` and press kbd:[Enter].
+
+[TIP]
+====
+**Tip:** Pressing the kbd:[&uarr;] and kbd:[&darr;] arrows will display the previous and next input respectively in the command box.
+====
+
 === How do I exit _Acquizition_?
 
 All good things must come to an end!
@@ -354,68 +450,6 @@ Selects the second flashcard in the list.
 * `find t/chinese` +
 `select 1` +
 Selects the first flashcard in the filtered list with chinese tag.
-
-=== Listing entered commands : `history`
-
-Lists all the commands that you have entered in reverse chronological order.
-
-Format: `history`
-
-[NOTE]
-====
-Pressing the kbd:[&uarr;] and kbd:[&darr;] arrows will display the previous and next input respectively in the command box.
-====
-
-=== Undoing previous command : `undo`
-
-Restores the flashcard collection to the state before the previous undoable command was executed.
-
-Format: `undo`
-
-[NOTE]
-====
-Undoable commands: those commands that modify the flashcard collection's content (`add`, `delete`, `edit`, `clear`, `good`, `bad`, and `import`).
-====
-
-Examples:
-
-* `delete 1` +
-`list` +
-`undo` +
-Reverses the `delete 1` command.
-* `select 1` +
-`list` +
-`quiz` +
-`exit` +
-The `undo` command fails as there are no undoable commands executed previously.
-* `delete 1` +
-`clear` +
-`undo` +
-`undo` +
-Reverses the `clear` command, then reverses the `delete 1` command.
-
-=== Redoing the previously undone command : `redo`
-
-Reverses the most recent `undo` command.
-
-Format: `redo`
-
-Examples:
-
-* `delete 1` +
-`undo` (reverses the `delete 1` command) +
-`redo` (reapplies the `delete 1` command) +
-
-* `delete 1` +
-`redo` +
-The `redo` command fails as there are no `undo` commands executed previously.
-
-* `delete 1` +
-`clear` +
-`undo` (reverses the `clear` command) +
-`undo` (reverses the `delete 1` command) +
-`redo` (reapplies the `delete 1` command) +
-`redo` (reapplies the `clear` command) +
 
 === Showing aggregate statistics : `stats`
 
