@@ -303,7 +303,6 @@ image::UndoRedoActivityDiagram.png[width="650"]
 
 // tag::quiz[]
 === Quiz feature
-==== Current Implementation
 
 The current quiz mechanism is controlled by the `QuizCommand` class. It will then modify the selected flashcard on the card collection model. The UI will then detect the change in the selected flashcard, and will view the flashcard on the screen.
 
@@ -325,6 +324,49 @@ The feedback on the quiz from the user is handled by a separate command which th
 ** Cons: Requires a separate command box for the quiz mode window.
 
 // end::quiz[]
+
+//tag::srs[]
+=== Spaced Repetition System (SRS) Feature
+SRS is an extension for quiz mode. The idea of SRS is for the app to keep track of when each flashcard can be tested. It allows the user to learn the flashcards effectively by showing more "hard to remember" flashcards more often.
+SRS is facilitated by `Proficiency` class. In this section, you will read the API from `Proficiency` class and the current implementation of SRS feature.
+
+==== Proficiency Class API
+`Proficiency` is an immutable attribute of `Flashcard` class. It keeps track the time a particular flashcard can be reviewed and the proficiency level to indicate how well user remember the flashcard. It stores two main data:
+
+* `timeUntilReview` -- a `Calendar` object to indicate the time a flashcard can be reviewed.
+* `proficiencyLevel`-- a non-negative integer to indicate the proficiency level of the user. Higher proficiency level means the user is more proficient.
+
+Additionally, `Proficiency` implements the following APIs:
+
+* `Proficiency#isIncludedInCurrentQuiz()` -- a method to check whether the current flashcard can be included in the current Quiz with SRS mode.
+* `Proficiency#quizAttempt(boolean isSuccess)` -- Returns a new `Proficiency` object that has the updated proficiency level and the next time a flashcard can be reviewed.
+* `Proficiency#getQuizSrsStatus()` -- Returns a string indicating when the flashcard can be reviewed.
+
+These operations are exposed in the higher level `Flashcard` API:
+
+ * `Flashcard#isIncludedInCurrentQuiz()`
+ * `Flashcard#quizAttempt(boolean isSuccess, boolean isQuizSrs)`
+ * `Flashcard#getQuizSrsStatus()`
+
+The way `Proficiency` updates is inspired by the Leitner System. Whenever a user successfully guesses a flashcard, the `proficiencyLevel` of that card is incremented by one and the current flashcard can only be reviewed after `proficiencyLevel` days in the future. For example, if the current flashcard's proficiency level is 3, and the user is successfully guessing this flashcard, the proficiency level will be updated to 4 and the card can only be reviewed after 4 days from now. If a user fails to guess the flashcard, the proficiency level will be dropped to zero and the card can be reviewed immediately.
+
+==== Current Implementation
+
+The notable difference between SRS and the vanilla quiz is how the app chooses the flashcards for the quiz and how the app updates the data of each flashcards.
+
+* when SRS mode is started, `QuizCommand` creates a list of flashcards to be quizzed; it consists of the current filtered flashcards that is filtered based on the card that can be included in the current quiz.
+
+* Next, `QuizCommand` will then pass the filtered list to `Model`, in which they will be stored. It also change the quiz state in the model and tells the model that the current quiz mode is SRS mode.
+
+* After the quiz session is done, `ExitCommand` is executed and it will check whether the quiz mode is SRS mode via `Model#getIsQuizSrs()`. If the mode is SRS, both proficiency and statistics of the flashcards will be updated, otherwise only the statistics of the flashcards are updated.
+
+The following is the sequence diagram illustrating when the quiz srs starts and ends.
+
+image::QuizStartSRSSequenceDiagram.png[width="800"]
+
+image::QuizEndSRSSequenceDiagram.png[width="800"]
+
+// enc::srs[]
 
 // tag::imagesupport[]
 === Image Support
@@ -359,7 +401,7 @@ implemented under the Logic component which in turn calls upon the Model compone
 the flashcards a user wishes to find.
 
 Users can filter the results based on several attributes of a flashcard including front face text, back face text,
-tags and success rate. Similar to the Add command, the input is expected to have predefined prefixes (`/f`, `/b`, `/t`, `/s`)
+tags and success rate. Similar to the Add command, the input is expected to have predefined prefixes (`f/`, `b/`, `t/`, `s/`)
 to specify the filter categories; followed by keywords on which a match is expected.
 The implementation as well as class interactions can be further explained with the
 following sequence diagram:
@@ -367,7 +409,7 @@ following sequence diagram:
 image::FindCommandSequenceDiagram1.png[width="800"]
 
 The `FindCommandParser` class takes the input string specified by the user and tokenizes it based on the prefixes to create
-a list of keywords associated with each of prefix. Unlike other prefixes, the `/s` prefix (which specifies the success rate range
+a list of keywords associated with each of prefix. Unlike other prefixes, the `s/` prefix (which specifies the success rate range
 which cards should be within), will not take a keyword as input. Instead, the range takes two doubles: lower bound and upper bound.
 
 After being parsed, these keyword lists, as well as the success rate range, are passed to construct a new `FlashcardPredicate` object which is
@@ -403,35 +445,40 @@ they correctly remember a keyword in either the front face text, back face text 
 // tag::statistics[]
 === Statistics feature
 
-The Statistics command is implemented under the Logic component which will calls the Model component to retrieve the flashcards the user wishes (based on user specified keywords) followed by the calculation of the statistics by aggregating the statistics from the retrieved flashcards. The implementation can be further explained with the aid of the following sequence diagram:
+The statistics command allows the user to filter his / her flashcards and calculate the success rate of the filtered flashcards based on the past attempts in quiz mode. In this section, you will read about `Statistics` class API followed by the current implementation of the `StatsCommand`.
 
-image::StatsCommandSequenceDiagram.png[width="800"]
+==== Statistics Class
 
-The `StatsCommandParser` class takes the input arguments specified by the user and tokenises them based on predefined
-flashcard prefixes to create a list of keywords associated with each of these prefixes (`/f`, `/b`, `/t`). These lists
-are passed to construct a new `FlashcardContainsKeywordPredicate` object which is then passed to the constructor of `StatsCommand`.
-The execution of the `FindCommand` calls upon the `Model` object to update the filtered flashcard list based on the predicate defined.
-This is done through the use of the test method in the predicate classes which evaluate matches between the keywords and a
-specific attribute of the flashcard. If a match exists, the flashcard will be displayed to the user.
+`Statistics` acts as an immutable container to store the data for calculating the success percentages from quiz mode. Each Flashcard object has exactly one `Statistics` attribute. `Statistics` stores two main data:
+
+* `successAttempt` -- the number of success attempt in quiz mode.
+* `attemptNumber`  -- the total number of attempt in quiz mode.
+
+Additionally, `Statistics` implements the following APIs:
+
+* `Statistics#getSuccessRate()` -- Return the success rate which is `successAttempt` divided by `attemptNumber`.
+* `Statistics#quizAttempt(bool isSuccess)` -- Returns a new statistics object that has the updated statistics based on the attempt from the quiz mode.
+* `Statistics#merge(Statistics other)` -- Return merged statistics of two given statistics, generally to be used to calculate the success rate from a bunch of flashcards.
+
+These operations (except the merge operation) are exposed in the higher level `Flashcard` API:
+
+ * `Flashcard#isIncludedInCurrentQuiz()`
+ * `Flashcard#quizAttempt(boolean isSuccess, boolean isQuizSrs)`
 
 ==== Current Implementation
 
-The current statistics logic is handled by `Statistics` and `StatsCommand`.
+Stats command is implemented under the `Logic` component which will calls the `Model` component to retrieve the flashcards the user wishes, followed by the calculation of the statistics by aggregating the statistics from the retrieved flashcards.
 
-`Statistics` acts as a container to store the data for calculating success percentages from quiz mode. +
-It stores `successAttempt` and `attemptNumber`.
+Users can filter the results based on several attributes of a flashcard including front face text, back face text, tags and success rate. Similar to the Add command, the input is expected to have predefined prefixes (`f/`, `b/`, `t/`, `s/`) to specify the filter categories; followed by keywords on which a match is expected.
 
-Additionally, `Statistics` implements the following operations:
+The implementation can be further explained with the aid of the following sequence diagram:
 
-* `Statistics#getSuccessRate()` -- Return the success rate.
-* `Statistics#quizAttempt(bool isSuccess)` -- Update the current statistics when there is an attempt in the quiz mode.
-* `Statistics#merge(Statistics other)` -- Return merged statistics of two given statistics, generally to be used to +
-calculate the success rate from a bunch of flashcards with a particular tag.
+image::StatsCommandSequenceDiagram.png[width="800"]
 
-When a user queries for statistics by using command `stats`, `StatsCommand` is the one to calculate the statistics. +
-Currently, `StatsCommand` only supports an overall success rate from all user's flashcards. It will ask `Model` to +
-return all of the flashcards and then merge each `Statistics` from each flashcard to return an overall cummulative +
-`Statistics`.
+The `StatsCommandParser` parses the input arguments in the same manner as `FindCommandParser`. `StatsCommandParser` passes the input string to `ParserUtil#filterByKeyword`, tokenize it and returns `FlashcardPredicate` for constructing `StatsCommand` object.
+
+During the execution, `StatsCommand` updates the filtered flashcard list based on the predicate defined earlier. Then, all statistics from the filtered flashcards are fetched and aggregated by using the `Statistics#merge` API. Lastly, the success rate of the cumulative statistics is returned and is printed for the user.
+
 
 ==== Design Considerations
 
