@@ -78,12 +78,11 @@
 <li><a href="#use-cases">Appendix D: Use Cases</a></li>
 <li><a href="#non-functional-requirements">Appendix E: Non Functional Requirements</a></li>
 <li><a href="#glossary">Appendix F: Glossary</a></li>
-<li><a href="#product-survey">Appendix G: Product Survey</a></li>
-<li><a href="#instructions-for-manual-testing">Appendix H: Instructions for Manual Testing</a>
+<li><a href="#instructions-for-manual-testing">Appendix G: Instructions for Manual Testing</a>
 <ul class="sectlevel2">
-<li><a href="#launch-and-shutdown">H.1. Launch and Shutdown</a></li>
-<li><a href="#deleting-a-flashcard">H.2. Deleting a flashcard</a></li>
-<li><a href="#saving-data">H.3. Saving data</a></li>
+<li><a href="#launch-and-shutdown">G.1. Launch and Shutdown</a></li>
+<li><a href="#deleting-a-flashcard">G.2. Deleting a flashcard</a></li>
+<li><a href="#saving-data">G.3. Saving data</a></li>
 </ul>
 </li>
 </ul>
@@ -973,12 +972,38 @@ Otherwise it will just exit the app normally.</p>
 <div class="sect3">
 <h4 id="current-implementation-3"><a class="link" href="#current-implementation-3">3.3.1. Current Implementation</a></h4>
 <div class="paragraph">
-<p><em>Not yet implemented. Will be implemented by v1.3.</em><br>
-When adding or editing a flashcard, the user is allowed to optionally specify a path to an image. <em>Acquizition</em> makes a
-copy to its working directory and stores the path to this local copy in the image.</p>
+<p>All images must first be <em>imported</em> into <em>Acquizition</em> through the use of the <code>image</code> command. This command
+makes a copy of an image into <em>Acquizition</em>'s local <code>image/</code> directory, and works as the following sequence
+diagram shows:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ImageSequenceDiagram.png" alt="ImageSequenceDiagram" width="800">
+</div>
 </div>
 <div class="paragraph">
-<p>Each image has an optional path to an image. This path is stored within a special folder in the working directory.</p>
+<p>Note that <code>image</code> does not go through VersionedCardCollection, as it does not affect any of the flashcards.
+It affects only a different file directory made specifically for the purpose of storing images. As a consequence,
+<code>image</code> is not an undoable command.</p>
+</div>
+<div class="paragraph">
+<p>Once an image has been imported, it can then be directly referenced in the <code>add</code> or <code>edit</code> commands by using the
+original file name. (For example, if one imported the image <code>C:\Users\Robin\Desktop\everest.jpg</code>, then it should be
+referred to in the future as <code>everest.jpg</code>.) <em>Acquizition</em> will simply check to see whether that image really exists in the <code>images/</code>
+folder.</p>
+</div>
+<div class="paragraph">
+<p>Each flashcard has an ImagePath, which is essentially a wrapper for an <code>Optional&lt;String&gt;</code>, but for convenience' sake also contains
+many file-related functions. This allows us to abstract away details of file handling and properly use SLAP.</p>
+</div>
+<div class="paragraph">
+<p>Altogether, the following shows the activity diagram for an end-user who wants to add a flashcard, considering all possible
+fields that could be added:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/AddFlashcardActivityDiagram.png" alt="AddFlashcardActivityDiagram" width="800">
+</div>
 </div>
 </div>
 <div class="sect3">
@@ -1011,6 +1036,41 @@ conflicts occurs on the working directory.</p>
 </li>
 <li>
 <p>Cons: Breaks when the images in the user&#8217;s directory are later deleted or moved.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="aspect-image-storage-version-control"><a class="link" href="#aspect-image-storage-version-control">Aspect: Image Storage Version Control</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Simply do not allow undo and redo of inserted images.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Simpler to implement.</p>
+</li>
+<li>
+<p>Cons: May be slightly unintuitive.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Make a version-controlled version of the images, similar to VersionedCardCollection,
+in order to make undo and redo possible.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: More intuitive behavior.</p>
+</li>
+<li>
+<p>Cons: Very complicated to implement, and may not be worth the effort. In the end, users can always
+remove flashcards directly by deleting images from the <code>images/</code> folder.</p>
 </li>
 </ul>
 </div>
@@ -1134,7 +1194,7 @@ calculate the success rate from a bunch of flashcards with a particular tag.</p>
 <div class="paragraph">
 <p>When a user queries for statistics by using command <code>stats</code>, <code>StatsCommand</code> is the one to calculate the statistics.<br>
 Currently, <code>StatsCommand</code> only supports an overall success rate from all user&#8217;s flashcards. It will ask <code>Model</code> to<br>
-return all of the flashcards and then merge each <code>Statistics</code> from each flashcard to return an overall cummulative<br>
+return all of the flashcards and then merge each <code>Statistics</code> from each flashcard to return an overall cumulative<br>
 <code>Statistics</code>.</p>
 </div>
 </div>
@@ -1281,7 +1341,7 @@ the command terminates.</p>
 <p>Pros: Reduce dependency between classes, meaning that the import command is able to function without the add command.</p>
 </li>
 <li>
-<p>Cons: Harder to implement and bypasses several project components to directly intect with the storage component. This does not follow the overall
+<p>Cons: Harder to implement and bypasses several project components to directly interact with the storage component. This does not follow the overall
 architectural design of the project.</p>
 </li>
 </ul>
@@ -2571,17 +2631,8 @@ for <code>RemarkCommandParser</code>.</p>
 <td class="tableblock halign-left valign-top"><p class="tableblock">upload flashcards shared with me</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">view, edit and be quizzed on these cards locally</p></td>
 </tr>
-<tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><code>* *</code></p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">inexperienced user</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">have an intuitive GUI</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">use the App without the command line</p></td>
-</tr>
 </tbody>
 </table>
-<div class="paragraph">
-<p><em>{More to be added}</em></p>
-</div>
 </div>
 </div>
 <div class="sect1">
@@ -2676,13 +2727,16 @@ the <code>user</code>, unless specified otherwise)</p>
 <div class="ulist none">
 <ul class="none">
 <li>
-<p>4a1. User inputs the path of the image.</p>
+<p>4a1. User specifies the path to an image through the import command.</p>
 </li>
 <li>
 <p>4a2. <em>Acquizition</em> makes a copy of the image to its working directory.</p>
 </li>
 <li>
-<p>4a3. <em>Acquizition</em> lists the card to its working directory.</p>
+<p>4a3. User edits the flashcard and uses the name of the imported image.</p>
+</li>
+<li>
+<p>4a4. The image is added to the flashcard.</p>
 </li>
 </ul>
 </div>
@@ -3005,44 +3059,7 @@ the specified range</p>
 </div>
 </div>
 <div class="sect1">
-<h2 id="product-survey"><a class="link" href="#product-survey">Appendix G: Product Survey</a></h2>
-<div class="sectionbody">
-<div class="paragraph">
-<p><strong>Product Name</strong></p>
-</div>
-<div class="paragraph">
-<p>Author: &#8230;&#8203;</p>
-</div>
-<div class="paragraph">
-<p>Pros:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>Cons:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-<li>
-<p>&#8230;&#8203;</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="instructions-for-manual-testing"><a class="link" href="#instructions-for-manual-testing">Appendix H: Instructions for Manual Testing</a></h2>
+<h2 id="instructions-for-manual-testing"><a class="link" href="#instructions-for-manual-testing">Appendix G: Instructions for Manual Testing</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
 <p>Given below are instructions to test the app manually.</p>
@@ -3060,7 +3077,7 @@ These instructions only provide a starting point for testers to work on; testers
 </table>
 </div>
 <div class="sect2">
-<h3 id="launch-and-shutdown"><a class="link" href="#launch-and-shutdown">H.1. Launch and Shutdown</a></h3>
+<h3 id="launch-and-shutdown"><a class="link" href="#launch-and-shutdown">G.1. Launch and Shutdown</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -3098,7 +3115,7 @@ Expected: The most recent window size and location is retained.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-a-flashcard"><a class="link" href="#deleting-a-flashcard">H.2. Deleting a flashcard</a></h3>
+<h3 id="deleting-a-flashcard"><a class="link" href="#deleting-a-flashcard">G.2. Deleting a flashcard</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -3130,7 +3147,7 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="saving-data"><a class="link" href="#saving-data">H.3. Saving data</a></h3>
+<h3 id="saving-data"><a class="link" href="#saving-data">G.3. Saving data</a></h3>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
@@ -3150,4 +3167,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 14:02:39 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 14:47:50 UTC</div></div></div></body></html>
