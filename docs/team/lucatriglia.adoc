@@ -42,7 +42,7 @@ implementations to make it as user centric as possible.
 ** Justification: This application is targeted at language students. As such, this feature would prove beneficial to
 users who wish to make use of another persons card collection without needing to manually re-create the flashcards.
 
-** Related code: https://github.com/CS2103-AY1819S2-T12-2/main/pull/12[Add Import Functionality], https://github.com/CS2103-AY1819S2-T12-2/main/pull/43[Add Share Functionality]
+** Related code: https://github.com/CS2103-AY1819S2-T12-2/main/pull/12[Add Import Functionality], https://github.com/CS2103-AY1819S2-T12-2/main/pull/43[Add Share Functionality],
 https://github.com/CS2103-AY1819S2-T12-2/main/pull/85[Tweak Import and Share Functionality]
 
 
