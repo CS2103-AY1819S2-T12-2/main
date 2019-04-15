@@ -517,7 +517,7 @@ calculate the success rate from a bunch of flashcards with a particular tag.
 
 When a user queries for statistics by using command `stats`, `StatsCommand` is the one to calculate the statistics. +
 Currently, `StatsCommand` only supports an overall success rate from all user's flashcards. It will ask `Model` to +
-return all of the flashcards and then merge each `Statistics` from each flashcard to return an overall cummulative +
+return all of the flashcards and then merge each `Statistics` from each flashcard to return an overall cumulative +
 `Statistics`.
 
 ==== Design Considerations
@@ -601,7 +601,7 @@ the command terminates.
 ** Cons: Increases dependency between the import command classes and the add command classes.
 * **Alternative 2:** Validate flashcards at file level and append new flashcard data directly to the storage file
 ** Pros: Reduce dependency between classes, meaning that the import command is able to function without the add command.
-** Cons: Harder to implement and bypasses several project components to directly intect with the storage component. This does not follow the overall
+** Cons: Harder to implement and bypasses several project components to directly interact with the storage component. This does not follow the overall
          architectural design of the project.
 
 // end::share_import[]
