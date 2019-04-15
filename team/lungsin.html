@@ -1,7 +1,25 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>Kwee Lung Sin - Project Portfolio</title><link rel="stylesheet" href="../stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">Acquizition</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/cs2103-ay1819s2-t12-2/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Kwee Lung Sin - Project Portfolio</h1></div><div id="content"><div class="sect1">
-<h2 id="project-addressbook-level-4"><a class="link" href="#project-addressbook-level-4">PROJECT: AddressBook - Level 4</a></h2>
+<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article toc2 toc-right"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">Acquizition</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/cs2103-ay1819s2-t12-2/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Kwee Lung Sin - Project Portfolio</h1><div id="toc" class="toc2"><div id="toctitle">Table of Contents</div><ul class="sectlevel1">
+<li><a href="#project-acquizition">PROJECT: Acquizition</a></li>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#summary-of-contributions">Summary of contributions</a></li>
+<li><a href="#contributions-to-the-user-guide">Contributions to the User Guide</a>
+<ul class="sectlevel2">
+<li><a href="#what-if-i-want-to-know-how-good-i-am-in-the-quiz-mode">What if I want to know how good I am in the quiz mode?</a></li>
+<li><a href="#i-memorized-some-flashcards-better-than-the-other-how-can-i-address-this">I memorized some flashcards better than the other, how can I address this?</a></li>
+<li><a href="#what-if-i-want-to-know-how-good-i-am-for-a-particular-card">What if I want to know how good I am for a particular card?</a></li>
+<li><a href="#what-if-i-want-to-when-can-i-review-a-particular-card-in-the-srs-mode">What if I want to when can I review a particular card in the SRS mode?</a></li>
+</ul>
+</li>
+<li><a href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a>
+<ul class="sectlevel2">
+<li><a href="#spaced-repetition-system-srs-feature">Spaced Repetition System (SRS) Feature</a></li>
+<li><a href="#statistics-feature">Statistics feature</a></li>
+</ul>
+</li>
+</ul></div></div><div id="content"><div class="sect1">
+<h2 id="project-acquizition"><a class="link" href="#project-acquizition">PROJECT: Acquizition</a></h2>
 <div class="sectionbody">
 <hr>
 </div>
@@ -10,7 +28,13 @@
 <h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>AddressBook - Level 4 is a desktop card collection application used for teaching Software Engineering principles. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.</p>
+<p>Acquizition is a desktop flashcard application for subject revision and language acquisition.</p>
+</div>
+<div class="paragraph">
+<p>Using a scientifically-grounded SRS (Spaced Repetition System), Acquizition maximizes memory retention by testing the terms most likely to be forgotten soon.</p>
+</div>
+<div class="paragraph">
+<p>Created with JavaFX, Acquizition has a sleek and intuitive GUI (Graphical User Interface) to streamline the experience for new users, but also sports a CLI (Command Line Interface) to maximize the efficiency of power users. It is written in Java and has around 14k LoC.</p>
 </div>
 </div>
 </div>
@@ -20,29 +44,72 @@
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: added <strong>the ability to undo/redo previous commands</strong></p>
+<p><strong>Major enhancement</strong>: added statistics mechanism*</p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: allows the user to undo all previous commands one at a time. Preceding undo commands can be reversed by using the redo command.</p>
+<p>What it does: allows each flashcard to have a success rate based on the quiz mode. The statistics can be seen by both the user and the app.</p>
 </li>
 <li>
-<p>Justification: This feature improves the product significantly because a user can make mistakes in commands and the app should provide a convenient way to rectify them.</p>
+<p>Justification: This feature improves the product significantly because it makes the user knows which card they are weak at. By storing statistics, the app becomes smarter in choosing cards to be quizzed.</p>
 </li>
 <li>
-<p>Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.</p>
+<p>Highlights: This enhancement affects the quiz command and can be used as a backbone of a recommendation system feature.</p>
 </li>
 <li>
-<p>Credits: <em>{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}</em></p>
+<p>Related code: <a href="https://github.com/CS2103-AY1819S2-T12-2/main/pull/13">Statistics Command</a>, <a href="https://github.com/CS2103-AY1819S2-T12-2/main/pull/40">Filter on Stats</a></p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Minor enhancement</strong>: added a history command that allows the user to navigate to previous commands using up/down keys.</p>
+<p><strong>Major enhancement</strong>: added Spaced Repetition System (SRS) mechanism*</p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: This system is an adaptive recommendation learning system. Here the SRS is designed as follow, each flashcard stores the proficiency level of the user and the time which it can&#8217;t be reviewed before that time. Each time a user successfully guess a flashcard, the proficiency level of that card is increased by one and the time interval is increased proportionally with proficiency level. If a user fail to guess the flashcard, the proficiency level is decreased to 0. Thus, this system creates an adaptive behaviour, where more hard to remember cards are more often reviewed than the easier one.</p>
 </li>
 <li>
-<p><strong>Code contributed</strong>: [<a href="https://github.com">Functional code</a>] [<a href="https://github.com">Test code</a>] <em>{give links to collated code files}</em></p>
+<p>Justification: This enhancement improves the product significantly because by using Spaced Repetition System, the learning  is more focused on the "more hard to remember" flashcards. Thus the user learns more effectively.</p>
+</li>
+<li>
+<p>Highlights: This system uses a learning technique called Spaced Repetition that incorporates increasing intervals of time between subsequent review of previously learned material in order to exploits the psychological spacing effect.</p>
+</li>
+<li>
+<p>Credits: This feature is inspired by <a href="https://en.wikipedia.org/wiki/Leitner_system">Leitner System</a></p>
+</li>
+<li>
+<p>Related code: <a href="https://github.com/CS2103-AY1819S2-T12-2/main/pull/86">SRS Mode</a>, <a href="https://github.com/CS2103-AY1819S2-T12-2/main/pull/91">Time until Review is Displayed in Select</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Minor enhancement</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Added a functionality in find command to use substring match instead of word match. This functionality is particularly useful for finding a tedious chinese / japanese sentence.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Related code: <a href="https://github.com/CS2103-AY1819S2-T12-2/main/pull/81">Find</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>added functionality in undo / redo to display the command that it undone / redone. This functionality is particularly useful for if the user wants to keep track what he / she undo or redo.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Related code: <a href="https://github.com/CS2103-AY1819S2-T12-2/main/pull/86">Undo/Redo</a></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
 </li>
 <li>
 <p><strong>Other contributions</strong>:</p>
@@ -53,7 +120,10 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Managed releases <code>v1.3</code> - <code>v1.5rc</code> (3 releases) on GitHub</p>
+<p>Setup github <a href="https://github.com/cs2103-ay1819s2-t12-2/main/issues?utf8=%E2%9C%93&amp;q=is%3Aissue+author%3Alungsin">issues</a></p>
+</li>
+<li>
+<p><a href="https://github.com/CS2103-AY1819S2-T12-2/main/pulls?utf8=%E2%9C%93&amp;q=is%3Apr+reviewed-by%3Alungsin+is%3Aclosed+">Reviewed and approved several PRs</a></p>
 </li>
 </ul>
 </div>
@@ -63,39 +133,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Updated the GUI color scheme (Pull requests <a href="https://github.com">#33</a>, <a href="https://github.com">#34</a>)</p>
-</li>
-<li>
-<p>Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests <a href="https://github.com">#36</a>, <a href="https://github.com">#38</a>)</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Documentation:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Did cosmetic tweaks to existing contents of the User Guide: <a href="https://github.com">#14</a></p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Community:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com">#12</a>, <a href="https://github.com">#32</a>, <a href="https://github.com">#19</a>, <a href="https://github.com">#42</a></p>
-</li>
-<li>
-<p>Contributed to forum discussions (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>, <a href="https://github.com">4</a>)</p>
-</li>
-<li>
-<p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>)</p>
-</li>
-<li>
-<p>Some parts of the history feature I added was adopted by several other class mates (<a href="https://github.com">1</a>, <a href="https://github.com">2</a>)</p>
+<p>Wrote additional tests for existing features to increase coverage</p>
 </li>
 </ul>
 </div>
@@ -105,21 +143,18 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Integrated a third party library (Natty) to the project (<a href="https://github.com">#42</a>)</p>
+<p>Integrated a third party library (Reposense) to the project (<a href="https://github.com/CS2103-AY1819S2-T12-2/main/pull/42">#42</a>)</p>
+</li>
+</ul>
+</div>
 </li>
 <li>
-<p>Integrated a new Github plugin (CircleCI) to the team repo</p>
+<p>Code contributed: [<a href="https://nus-cs2103-ay1819s2.github.io/cs2103-dashboard/#search=KWE">Reposense</a>]</p>
 </li>
 </ul>
 </div>
 </li>
 </ul>
-</div>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p><em>{you can add/remove categories in the list above}</em></p>
 </div>
 </div>
 </div>
@@ -136,6 +171,194 @@
 </tr>
 </tbody>
 </table>
+<div class="sect2">
+<h3 id="what-if-i-want-to-know-how-good-i-am-in-the-quiz-mode"><a class="link" href="#what-if-i-want-to-know-how-good-i-am-in-the-quiz-mode">What if I want to know how good I am in the quiz mode?</a></h3>
+<div class="paragraph">
+<p>You can know your success rate in quiz mode by using <code>stats</code> command.</p>
+</div>
+<div class="paragraph">
+<p>Type <code>stats [f/FRONT_TEXT]&#8230;&#8203; [b/BACK_TEXT]&#8230;&#8203; [t/TAG]​&#8230;&#8203;​</code> into the command box and
+press <kbd>Enter</kbd>.</p>
+</div>
+<div class="paragraph">
+<p>This command will display your success rate on a filtered list based on the front text, back text and tags.
+If you don&#8217;t specify anything, your success rate over the flashcards in your current filtered flashcards list is displayed instead.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<strong>Note:</strong> You can use <code>find</code> followed by <code>stats</code> to show aggregate statistics for all the flashcards found
+          and listed by the find command.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>stats t/Chinese t/Japanese</code><br>
+This will show aggregate statistics for all flashcards that have the <em>Chinese</em> or <em>Japanese</em> tag.</p>
+</li>
+<li>
+<p><code>find f/Kamusta</code><br>
+<code>stats</code><br>
+This will find and list all flashcards with <em>Kamusta</em> in their front face then show aggregate
+statistics for all those flashcards.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="i-memorized-some-flashcards-better-than-the-other-how-can-i-address-this"><a class="link" href="#i-memorized-some-flashcards-better-than-the-other-how-can-i-address-this">I memorized some flashcards better than the other, how can I address this?</a></h3>
+<div class="paragraph">
+<p>You can use our learning recommendation system. The system is called Spaced Repetition System or in short SRS. This system will schedule each flashcard a particular time to review. Additionally, based on your performance, SRS will adjust the frequency of the flashcards so that the "more hard to memorize" card will be shown more often.</p>
+</div>
+<div class="paragraph">
+<p>Type <code>quiz srs</code> into the command box and
+press <kbd>Enter</kbd>.</p>
+</div>
+<div class="paragraph">
+<p>This command will trigger the SRS mode in the quiz instead of the normal quiz mode. You can refer to the <a href="#Features (Quiz)">[Features (Quiz)]</a> for more info about vanilla quiz mode.</p>
+</div>
+<div class="paragraph">
+<p>After you finished a quiz session, our app will update your proficiency in each flashcard and schedule the next time you can review the card in SRS.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="what-if-i-want-to-know-how-good-i-am-for-a-particular-card"><a class="link" href="#what-if-i-want-to-know-how-good-i-am-for-a-particular-card">What if I want to know how good I am for a particular card?</a></h3>
+<div class="paragraph">
+<p>You can know your success rate for a particular card by using <code>select</code> command.</p>
+</div>
+<div class="paragraph">
+<p>Type <code>select INDEX</code> into the command box and
+press <kbd>Enter</kbd>.</p>
+</div>
+<div class="paragraph">
+<p>This command will select a flashcard and display it on the flashcard view on the right pane.
+You can see the statistics of the selected flashcard on the command result box.
+Alternatively, you can select a flashcard by clicking it on the flashcard list panel.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<strong>Note:</strong> The index refers to the index number shown in the displayed person list.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<strong>Note:</strong> The index must be a positive integer <code>1, 2, 3, …</code>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>list</code><br>
+<code>select 2</code><br>
+Selects the second flashcard in the list.</p>
+</li>
+<li>
+<p><code>find t/chinese</code><br>
+<code>select 1</code><br>
+Selects the first flashcard in the filtered list with chinese tag.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The figure below illustrates the select functionality.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/Select-Ui.png" alt="Select Ui" width="790">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="what-if-i-want-to-when-can-i-review-a-particular-card-in-the-srs-mode"><a class="link" href="#what-if-i-want-to-when-can-i-review-a-particular-card-in-the-srs-mode">What if I want to when can I review a particular card in the SRS mode?</a></h3>
+<div class="paragraph">
+<p>You can know when to review by using <code>select</code> command.</p>
+</div>
+<div class="paragraph">
+<p>Type <code>select INDEX</code> into the command box and
+press <kbd>Enter</kbd>.</p>
+</div>
+<div class="paragraph">
+<p>This command will select a flashcard and display it on the flashcard view on the right pane.
+You can see the time left of the selected flashcard on the command result box.
+Alternatively, you can select a flashcard by clicking it on the flashcard list panel.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<strong>Note:</strong> The index refers to the index number shown in the displayed person list.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<strong>Note:</strong> The index must be a positive integer <code>1, 2, 3, …</code>
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>list</code><br>
+<code>select 2</code><br>
+Selects the second flashcard in the list.</p>
+</li>
+<li>
+<p><code>find t/chinese</code><br>
+<code>select 1</code><br>
+Selects the first flashcard in the filtered list with chinese tag.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The figure below illustrates the select functionality.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/Select-Ui.png" alt="Select Ui" width="790">
+</div>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -152,145 +375,177 @@
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">Undo/Redo feature</a></h3>
-<div class="sect3">
-<h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
+<h3 id="spaced-repetition-system-srs-feature"><a class="link" href="#spaced-repetition-system-srs-feature">Spaced Repetition System (SRS) Feature</a></h3>
 <div class="paragraph">
-<p>The undo/redo mechanism is facilitated by <code>VersionedCardCollection</code>.
-It extends <code>CardCollection</code> with an undo/redo history, stored internally as a <code>cardCollectionStateList</code> and <code>currentStatePointer</code>.
-Additionally, it implements the following operations:</p>
+<p>SRS is an extension for quiz mode. The idea of SRS is for the app to keep track of when each flashcard can be tested. It allows the user to learn the flashcards effectively by showing more "hard to remember" flashcards more often.
+SRS is facilitated by <code>Proficiency</code> class. In this section, you will read the API from <code>Proficiency</code> class and the current implementation of SRS feature.</p>
+</div>
+<div class="sect3">
+<h4 id="proficiency-class-api"><a class="link" href="#proficiency-class-api">Proficiency Class API</a></h4>
+<div class="paragraph">
+<p><code>Proficiency</code> is an immutable attribute of <code>Flashcard</code> class. It keeps track the time a particular flashcard can be reviewed and the proficiency level to indicate how well user remember the flashcard. It stores two main data:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>VersionedCardCollection#commit()</code>&#8201;&#8212;&#8201;Saves the current card collection state in its history.</p>
+<p><code>timeUntilReview</code>&#8201;&#8212;&#8201;a <code>Calendar</code> object to indicate the time a flashcard can be reviewed.</p>
 </li>
 <li>
-<p><code>VersionedCardCollection#undo()</code>&#8201;&#8212;&#8201;Restores the previous card collection state from its history.</p>
-</li>
-<li>
-<p><code>VersionedCardCollection#redo()</code>&#8201;&#8212;&#8201;Restores a previously undone card collection state from its history.</p>
+<p><code>proficiencyLevel</code>-- a non-negative integer to indicate the proficiency level of the user. Higher proficiency level means the user is more proficient.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p>These operations are exposed in the <code>Model</code> interface as <code>Model#commitCardCollection()</code>, <code>Model#undoCardCollection()</code> and <code>Model#redoCardCollection()</code> respectively.</p>
+<p>Additionally, <code>Proficiency</code> implements the following APIs:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Proficiency#isIncludedInCurrentQuiz()</code>&#8201;&#8212;&#8201;a method to check whether the current flashcard can be included in the current Quiz with SRS mode.</p>
+</li>
+<li>
+<p><code>Proficiency#quizAttempt(boolean isSuccess)</code>&#8201;&#8212;&#8201;Returns a new <code>Proficiency</code> object that has the updated proficiency level and the next time a flashcard can be reviewed.</p>
+</li>
+<li>
+<p><code>Proficiency#getQuizSrsStatus()</code>&#8201;&#8212;&#8201;Returns a string indicating when the flashcard can be reviewed.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p>Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.</p>
+<p>These operations are exposed in the higher level <code>Flashcard</code> API:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Flashcard#isIncludedInCurrentQuiz()</code></p>
+</li>
+<li>
+<p><code>Flashcard#quizAttempt(boolean isSuccess, boolean isQuizSrs)</code></p>
+</li>
+<li>
+<p><code>Flashcard#getQuizSrsStatus()</code></p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p>Step 1. The user launches the application for the first time. The <code>VersionedCardCollection</code> will be initialized with the initial card collection state, and the <code>currentStatePointer</code> pointing to that single card collection state.</p>
+<p>The way <code>Proficiency</code> updates is inspired by the Leitner System. Whenever a user successfully guesses a flashcard, the <code>proficiencyLevel</code> of that card is incremented by one and the current flashcard can only be reviewed after <code>proficiencyLevel</code> days in the future. For example, if the current flashcard&#8217;s proficiency level is 3, and the user is successfully guessing this flashcard, the proficiency level will be updated to 4 and the card can only be reviewed after 4 days from now. If a user fails to guess the flashcard, the proficiency level will be dropped to zero and the card can be reviewed immediately.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
+<div class="paragraph">
+<p>The notable difference between SRS and the vanilla quiz is how the app chooses the flashcards for the quiz and how the app updates the data of each flashcards.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>when SRS mode is started, <code>QuizCommand</code> creates a list of flashcards to be quizzed; it consists of the current filtered flashcards that is filtered based on the card that can be included in the current quiz.</p>
+</li>
+<li>
+<p>Next, <code>QuizCommand</code> will then pass the filtered list to <code>Model</code>, in which they will be stored. It also change the quiz state in the model and tells the model that the current quiz mode is SRS mode.</p>
+</li>
+<li>
+<p>After the quiz session is done, <code>ExitCommand</code> is executed and it will check whether the quiz mode is SRS mode via <code>Model#getIsQuizSrs()</code>. If the mode is SRS, both proficiency and statistics of the flashcards will be updated, otherwise only the statistics of the flashcards are updated.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The following is the sequence diagram illustrating when the quiz srs starts and ends.</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/UndoRedoStartingStateListDiagram.png" alt="UndoRedoStartingStateListDiagram" width="800">
+<img src="../images/QuizStartSRSSequenceDiagram.png" alt="QuizStartSRSSequenceDiagram" width="800">
 </div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="statistics-feature"><a class="link" href="#statistics-feature">Statistics feature</a></h3>
+<div class="paragraph">
+<p>The statistics command allows the user to filter his / her flashcards and calculate the success rate of the filtered flashcards based on the past attempts in quiz mode. In this section, you will read about <code>Statistics</code> class API followed by the current implementation of the <code>StatsCommand</code>.</p>
+</div>
+<div class="sect3">
+<h4 id="statistics-class"><a class="link" href="#statistics-class">Statistics Class</a></h4>
+<div class="paragraph">
+<p><code>Statistics</code> acts as an immutable container to store the data for calculating the success percentages from quiz mode. Each Flashcard object has exactly one <code>Statistics</code> attribute. <code>Statistics</code> stores two main data:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>successAttempt</code>&#8201;&#8212;&#8201;the number of success attempt in quiz mode.</p>
+</li>
+<li>
+<p><code>attemptNumber</code> &#8201;&#8212;&#8201;the total number of attempt in quiz mode.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p>Step 2. The user executes <code>delete 5</code> command to delete the 5th flashcard in the card collection. The <code>delete</code> command calls <code>Model#commitCardCollection()</code>, causing the modified state of the card collection after the <code>delete 5</code> command executes to be saved in the <code>cardCollectionStateList</code>, and the <code>currentStatePointer</code> is shifted to the newly inserted card collection state.</p>
+<p>Additionally, <code>Statistics</code> implements the following APIs:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Statistics#getSuccessRate()</code>&#8201;&#8212;&#8201;Return the success rate which is <code>successAttempt</code> divided by <code>attemptNumber</code>.</p>
+</li>
+<li>
+<p><code>Statistics#quizAttempt(bool isSuccess)</code>&#8201;&#8212;&#8201;Returns a new statistics object that has the updated statistics based on the attempt from the quiz mode.</p>
+</li>
+<li>
+<p><code>Statistics#merge(Statistics other)</code>&#8201;&#8212;&#8201;Return merged statistics of two given statistics, generally to be used to calculate the success rate from a bunch of flashcards.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>These operations (except the merge operation) are exposed in the higher level <code>Flashcard</code> API:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>Flashcard#isIncludedInCurrentQuiz()</code></p>
+</li>
+<li>
+<p><code>Flashcard#quizAttempt(boolean isSuccess, boolean isQuizSrs)</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect3">
+<h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">Current Implementation</a></h4>
+<div class="paragraph">
+<p>Stats command is implemented under the <code>Logic</code> component which will calls the <code>Model</code> component to retrieve the flashcards the user wishes, followed by the calculation of the statistics by aggregating the statistics from the retrieved flashcards.</p>
+</div>
+<div class="paragraph">
+<p>Users can filter the results based on several attributes of a flashcard including front face text, back face text, tags and success rate. Similar to the Add command, the input is expected to have predefined prefixes (<code>f/</code>, <code>b/</code>, <code>t/</code>, <code>s/</code>) to specify the filter categories; followed by keywords on which a match is expected.</p>
+</div>
+<div class="paragraph">
+<p>The implementation can be further explained with the aid of the following sequence diagram:</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/UndoRedoNewCommand1StateListDiagram.png" alt="UndoRedoNewCommand1StateListDiagram" width="800">
+<img src="../images/StatsCommandSequenceDiagram.png" alt="StatsCommandSequenceDiagram" width="800">
 </div>
 </div>
 <div class="paragraph">
-<p>Step 3. The user executes <code>add f/Hello &#8230;&#8203;</code> to add a new flashcard. The <code>add</code> command also calls <code>Model#commitCardCollection()</code>, causing another modified card collection state to be saved into the <code>cardCollectionStateList</code>.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoNewCommand2StateListDiagram.png" alt="UndoRedoNewCommand2StateListDiagram" width="800">
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If a command fails its execution, it will not call <code>Model#commitCardCollection()</code>, so the card collection state will not be saved into the <code>cardCollectionStateList</code>.
-</td>
-</tr>
-</table>
+<p>The <code>StatsCommandParser</code> parses the input arguments in the same manner as <code>FindCommandParser</code>. <code>StatsCommandParser</code> passes the input string to <code>ParserUtil#filterByKeyword</code>, tokenize it and returns <code>FlashcardPredicate</code> for constructing <code>StatsCommand</code> object.</p>
 </div>
 <div class="paragraph">
-<p>Step 4. The user now decides that adding the flashcard was a mistake, and decides to undo that action by executing the <code>undo</code> command. The <code>undo</code> command will call <code>Model#undoCardCollection()</code>, which will shift the <code>currentStatePointer</code> once to the left, pointing it to the previous card collection state, and restores the card collection to that state.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoExecuteUndoStateListDiagram.png" alt="UndoRedoExecuteUndoStateListDiagram" width="800">
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If the <code>currentStatePointer</code> is at index 0, pointing to the initial card collection state, then there are no previous card collection states to restore. The <code>undo</code> command uses <code>Model#canUndoCardCollection()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the undo.
-</td>
-</tr>
-</table>
+<p>During the execution, <code>StatsCommand</code> updates the filtered flashcard list based on the predicate defined earlier. Then, all statistics from the filtered flashcards are fetched and aggregated by using the <code>Statistics#merge</code> API. Lastly, the success rate of the cumulative statistics is returned and is printed for the user.</p>
 </div>
 <div class="paragraph">
-<p>The following sequence diagram shows how the undo operation works:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoSequenceDiagram.png" alt="UndoRedoSequenceDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>The <code>redo</code> command does the opposite&#8201;&#8212;&#8201;it calls <code>Model#redoCardCollection()</code>, which shifts the <code>currentStatePointer</code> once to the right, pointing to the previously undone state, and restores the card collection to that state.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If the <code>currentStatePointer</code> is at index <code>cardCollectionStateList.size() - 1</code>, pointing to the latest card collection state, then there are no undone card collection states to restore. The <code>redo</code> command uses <code>Model#canRedoCardCollection()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Step 5. The user then decides to execute the command <code>list</code>. Commands that do not modify the card collection, such as <code>list</code>, will usually not call <code>Model#commitCardCollection()</code>, <code>Model#undoCardCollection()</code> or <code>Model#redoCardCollection()</code>. Thus, the <code>cardCollectionStateList</code> remains unchanged.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoNewCommand3StateListDiagram.png" alt="UndoRedoNewCommand3StateListDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>Step 6. The user executes <code>clear</code>, which calls <code>Model#commitCardCollection()</code>. Since the <code>currentStatePointer</code> is not pointing at the end of the <code>cardCollectionStateList</code>, all card collection states after the <code>currentStatePointer</code> will be purged. We designed it this way because it no longer makes sense to redo the <code>add f/Hello &#8230;&#8203;</code> command. This is the behavior that most modern desktop applications follow.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoNewCommand4StateListDiagram.png" alt="UndoRedoNewCommand4StateListDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>The following activity diagram summarizes what happens when a user executes a new command:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoActivityDiagram.png" alt="UndoRedoActivityDiagram" width="650">
-</div>
+<p>When a user queries for statistics by using command <code>stats</code>, <code>StatsCommand</code> is the one to calculate the statistics.<br>
+Currently, <code>StatsCommand</code> only supports an overall success rate from all user&#8217;s flashcards. It will ask <code>Model</code> to<br>
+return all of the flashcards and then merge each <code>Statistics</code> from each flashcard to return an overall cumulative<br>
+<code>Statistics</code>.</p>
 </div>
 </div>
 <div class="sect3">
 <h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
 <div class="sect4">
-<h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
+<h5 id="aspect-how-statistics-executes"><a class="link" href="#aspect-how-statistics-executes">Aspect: How statistics executes</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Saves the entire card collection.</p>
+<p><strong>Alternative 1 (current choice):</strong> Each individual <code>Flashcard</code> has exactly one <code>Statistics</code> attribute.</p>
 <div class="ulist">
 <ul>
 <li>
@@ -303,47 +558,14 @@ If the <code>currentStatePointer</code> is at index <code>cardCollectionStateLis
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Individual command knows how to undo/redo by itself.</p>
+<p><strong>Alternative 2:</strong> Flashcards are grouped by Tag, each of these groups store one overall <code>Statistics</code> attribute.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Will use less memory (e.g. for <code>delete</code>, just save the flashcard being deleted).</p>
+<p>Pros: Will use less memory.</p>
 </li>
 <li>
-<p>Cons: We must ensure that the implementation of each individual command are correct.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect4">
-<h5 id="aspect-data-structure-to-support-the-undo-redo-commands"><a class="link" href="#aspect-data-structure-to-support-the-undo-redo-commands">Aspect: Data structure to support the undo/redo commands</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Use a list to store the history of card collection states.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easy for new Computer Science student undergraduates to understand, who are likely to be the new incoming developers of our project.</p>
-</li>
-<li>
-<p>Cons: Logic is duplicated twice. For example, when a new command is executed, we must remember to update both <code>HistoryManager</code> and <code>VersionedCardCollection</code>.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Use <code>HistoryManager</code> for undo/redo</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: We do not need to maintain a separate list, and just reuse what is already in the codebase.</p>
-</li>
-<li>
-<p>Cons: Requires dealing with commands that have already been undone: We must remember to skip these commands. Violates Single Responsibility Principle and Separation of Concerns as <code>HistoryManager</code> now needs to do two different things.</p>
+<p>Cons: User has less flexibility in term of querying the statistics (User cannot know the statistics of a certain flashcard)</p>
 </li>
 </ul>
 </div>
@@ -353,20 +575,5 @@ If the <code>currentStatePointer</code> is at index <code>cardCollectionStateLis
 </div>
 </div>
 </div>
-<div class="sect2">
-<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">[Proposed] Data Encryption</a></h3>
-<div class="paragraph">
-<p><em>{Explain here how the data encryption feature will be implemented}</em></p>
 </div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="project-powerpointlabs"><a class="link" href="#project-powerpointlabs">PROJECT: PowerPointLabs</a></h2>
-<div class="sectionbody">
-<hr>
-<div class="paragraph">
-<p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
-</div>
-</div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 15:24:28 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 15:51:51 UTC</div></div></div></body></html>

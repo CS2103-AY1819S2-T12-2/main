@@ -157,19 +157,19 @@
 <h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
 <div class="paragraph">
 <p>The undo/redo mechanism is facilitated by <code>VersionedCardCollection</code>.
-It extends <code>CardCollection</code> with an undo/redo history, stored internally as a <code>cardCollectionStateList</code> and <code>currentStatePointer</code>.
+It extends <code>CardCollection</code> with an undo/redo history, stored internally as a <code>cardCollectionStateList</code>, <code>commandHistory</code> and <code>currentStatePointer</code>.
 Additionally, it implements the following operations:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>VersionedCardCollection#commit()</code>&#8201;&#8212;&#8201;Saves the current card collection state in its history.</p>
+<p>VersionedCardCollection#commit(String commandText)`&#8201;&#8212;&#8201;Saves the current card collection state in its history, with <code>commandText</code> be the command that change the state.</p>
 </li>
 <li>
-<p><code>VersionedCardCollection#undo()</code>&#8201;&#8212;&#8201;Restores the previous card collection state from its history.</p>
+<p><code>VersionedCardCollection#undo()</code>&#8201;&#8212;&#8201;Restores the previous card collection state from its history and return the string represent the command that is undone.</p>
 </li>
 <li>
-<p><code>VersionedCardCollection#redo()</code>&#8201;&#8212;&#8201;Restores a previously undone card collection state from its history.</p>
+<p><code>VersionedCardCollection#redo()</code>&#8201;&#8212;&#8201;Restores a previously undone card collection state from its history and return the string represent the command that is redid.</p>
 </li>
 </ul>
 </div>
@@ -180,7 +180,7 @@ Additionally, it implements the following operations:</p>
 <p>Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.</p>
 </div>
 <div class="paragraph">
-<p>Step 1. The user launches the application for the first time. The <code>VersionedCardCollection</code> will be initialized with the initial card collection state, and the <code>currentStatePointer</code> pointing to that single card collection state.</p>
+<p>Step 1. The user launches the application for the first time. The <code>VersionedCardCollection</code> will be initialized with the initial card collection state, the initial command history, and the <code>currentStatePointer</code> pointing to that single card collection state.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -188,7 +188,7 @@ Additionally, it implements the following operations:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Step 2. The user executes <code>delete 5</code> command to delete the 5th flashcard in the card collection. The <code>delete</code> command calls <code>Model#commitCardCollection()</code>, causing the modified state of the card collection after the <code>delete 5</code> command executes to be saved in the <code>cardCollectionStateList</code>, and the <code>currentStatePointer</code> is shifted to the newly inserted card collection state.</p>
+<p>Step 2. The user executes <code>delete 5</code> command to delete the 5th flashcard in the card collection. The <code>delete</code> command calls <code>Model#commitCardCollection()</code>, causing the modified state of the card collection after the <code>delete 5</code> command executes to be saved in the <code>cardCollectionStateList</code>, String <code>delete</code> is added to the <code>commandHistory</code> and the <code>currentStatePointer</code> is shifted to the newly inserted card collection state.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -196,7 +196,7 @@ Additionally, it implements the following operations:</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Step 3. The user executes <code>add f/Hello &#8230;&#8203;</code> to add a new flashcard. The <code>add</code> command also calls <code>Model#commitCardCollection()</code>, causing another modified card collection state to be saved into the <code>cardCollectionStateList</code>.</p>
+<p>Step 3. The user executes <code>add f/Hello &#8230;&#8203;</code> to add a new flashcard. The <code>add</code> command also calls <code>Model#commitCardCollection()</code>, causing another modified card collection state to be saved into the <code>cardCollectionStateList</code> and string <code>add</code> is added to <code>commandHistory</code>.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -216,7 +216,7 @@ If a command fails its execution, it will not call <code>Model#commitCardCollect
 </table>
 </div>
 <div class="paragraph">
-<p>Step 4. The user now decides that adding the flashcard was a mistake, and decides to undo that action by executing the <code>undo</code> command. The <code>undo</code> command will call <code>Model#undoCardCollection()</code>, which will shift the <code>currentStatePointer</code> once to the left, pointing it to the previous card collection state, and restores the card collection to that state.</p>
+<p>Step 4. The user now decides that adding the flashcard was a mistake, and decides to undo that action by executing the <code>undo</code> command. The <code>undo</code> command will call <code>Model#undoCardCollection()</code>, which will shift the <code>currentStatePointer</code> once to the left, pointing it to the previous card collection state, and restores the card collection to that state. Then, <code>Model#undoCardCollection()</code> returns the command that is undone.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -244,7 +244,7 @@ If the <code>currentStatePointer</code> is at index 0, pointing to the initial c
 </div>
 </div>
 <div class="paragraph">
-<p>The <code>redo</code> command does the opposite&#8201;&#8212;&#8201;it calls <code>Model#redoCardCollection()</code>, which shifts the <code>currentStatePointer</code> once to the right, pointing to the previously undone state, and restores the card collection to that state.</p>
+<p>The <code>redo</code> command does the opposite&#8201;&#8212;&#8201;it calls <code>Model#redoCardCollection()</code>, which shifts the <code>currentStatePointer</code> once to the right, pointing to the previously undone state, restores the card collection to that state, and returns the redid command from command history.</p>
 </div>
 <div class="admonitionblock note">
 <table>
@@ -259,7 +259,7 @@ If the <code>currentStatePointer</code> is at index <code>cardCollectionStateLis
 </table>
 </div>
 <div class="paragraph">
-<p>Step 5. The user then decides to execute the command <code>list</code>. Commands that do not modify the card collection, such as <code>list</code>, will usually not call <code>Model#commitCardCollection()</code>, <code>Model#undoCardCollection()</code> or <code>Model#redoCardCollection()</code>. Thus, the <code>cardCollectionStateList</code> remains unchanged.</p>
+<p>Step 5. The user then decides to execute the command <code>list</code>. Commands that do not modify the card collection, such as <code>list</code>, will usually not call <code>Model#commitCardCollection()</code>, <code>Model#undoCardCollection()</code> or <code>Model#redoCardCollection()</code>. Thus, the <code>cardCollectionStateList</code> and <code>commandHistory</code> remains unchanged.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -267,7 +267,7 @@ If the <code>currentStatePointer</code> is at index <code>cardCollectionStateLis
 </div>
 </div>
 <div class="paragraph">
-<p>Step 6. The user executes <code>clear</code>, which calls <code>Model#commitCardCollection()</code>. Since the <code>currentStatePointer</code> is not pointing at the end of the <code>cardCollectionStateList</code>, all card collection states after the <code>currentStatePointer</code> will be purged. We designed it this way because it no longer makes sense to redo the <code>add f/Hello &#8230;&#8203;</code> command. This is the behavior that most modern desktop applications follow.</p>
+<p>Step 6. The user executes <code>clear</code>, which calls <code>Model#commitCardCollection()</code>. Since the <code>currentStatePointer</code> is not pointing at the end of the <code>cardCollectionStateList</code>, all card collection states and all command histories after the <code>currentStatePointer</code> will be purged. We designed it this way because it no longer makes sense to redo the <code>add f/Hello &#8230;&#8203;</code> command. This is the behavior that most modern desktop applications follow.</p>
 </div>
 <div class="imageblock">
 <div class="content">
@@ -369,4 +369,4 @@ If the <code>currentStatePointer</code> is at index <code>cardCollectionStateLis
 <p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 15:24:28 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 15:51:51 UTC</div></div></div></body></html>
