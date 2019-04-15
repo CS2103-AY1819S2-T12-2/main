@@ -1,130 +1,202 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>Robin Christopher Cham Yu - Project Portfolio</title><link rel="stylesheet" href="../stylesheets/gh-pages.css">
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>Robin Christopher Yu - Project Portfolio</title><link rel="stylesheet" href="../stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">Acquizition</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/cs2103-ay1819s2-t12-2/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Robin Christopher Cham Yu - Project Portfolio</h1></div><div id="content"><div class="sect1">
-<h2 id="project-addressbook-level-4"><a class="link" href="#project-addressbook-level-4">PROJECT: AddressBook - Level 4</a></h2>
+<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">Acquizition</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/cs2103-ay1819s2-t12-2/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Robin Christopher Yu - Project Portfolio</h1><div id="toc" class="toc"><div id="toctitle">Table of Contents</div><ul class="sectlevel1">
+<li><a href="#project-portfolio-introduction">1. Project Portfolio: Introduction</a></li>
+<li><a href="#summary-of-contributions">2. Summary of contributions</a>
+<ul class="sectlevel2">
+<li><a href="#code-contributions">2.1. Code Contributions</a></li>
+<li><a href="#user-guide-contributions">2.2. User Guide Contributions</a></li>
+<li><a href="#developer-guide-contributions">2.3. Developer Guide Contributions</a></li>
+</ul>
+</li>
+<li><a href="#excerpts-from-the-user-guide">3. Excerpts from the User Guide</a></li>
+<li><a href="#excerpts-from-the-developer-guide">4. Excerpts from the Developer Guide</a>
+<ul class="sectlevel2">
+<li><a href="#image-support">4.1. Image Support</a></li>
+</ul>
+</li>
+<li><a href="#learning-outcomes">5. Learning Outcomes</a></li>
+</ul></div></div><div id="content"><div id="preamble">
 <div class="sectionbody">
-<hr>
+<div class="imageblock" style="text-align: left">
+<div class="content">
+<img src="../images/robincyu.png" alt="robincyu" width="200">
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
+<h2 id="project-portfolio-introduction"><a class="link" href="#project-portfolio-introduction">1. Project Portfolio: Introduction</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>AddressBook - Level 4 is a desktop card collection application used for teaching Software Engineering principles. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.</p>
+<p>As an undergraduate student at the National University of Singapore (NUS) taking the communication and software engineering modules CS2101 and CS2103T, I
+worked on <em>Acquizition</em>, an application borne out of <em>AddressBook Level 4</em>, for the better half of a semester.</p>
 </div>
+<div class="paragraph">
+<p><em>Acquizition</em> is a desktop flashcard application for language acquisition. It sports the following major features:</p>
 </div>
-</div>
-<div class="sect1">
-<h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h2>
-<div class="sectionbody">
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: added <strong>the ability to undo/redo previous commands</strong></p>
-<div class="ulist">
-<ul>
-<li>
-<p>What it does: allows the user to undo all previous commands one at a time. Preceding undo commands can be reversed by using the redo command.</p>
+<p>A fully-fledged <strong>quiz</strong> functionality, equipped with a scientifically-grounded spaced repetition system (SRS) to maximize
+retention rates.</p>
 </li>
 <li>
-<p>Justification: This feature improves the product significantly because a user can make mistakes in commands and the app should provide a convenient way to rectify them.</p>
+<p>Comprehensive <strong>statistics</strong>, both by card individually and by tag in aggregate.</p>
 </li>
 <li>
-<p>Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.</p>
+<p>Support for adding <strong>images</strong> onto flashcards in order to further strengthen connections between concepts in a way words
+alone cannot do.</p>
 </li>
 <li>
-<p>Credits: <em>{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}</em></p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Minor enhancement</strong>: added a history command that allows the user to navigate to previous commands using up/down keys.</p>
-</li>
-<li>
-<p><strong>Code contributed</strong>: [<a href="https://github.com">Functional code</a>] [<a href="https://github.com">Test code</a>] <em>{give links to collated code files}</em></p>
-</li>
-<li>
-<p><strong>Other contributions</strong>:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Project management:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Managed releases <code>v1.3</code> - <code>v1.5rc</code> (3 releases) on GitHub</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Enhancements to existing features:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Updated the GUI color scheme (Pull requests <a href="https://github.com">#33</a>, <a href="https://github.com">#34</a>)</p>
-</li>
-<li>
-<p>Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests <a href="https://github.com">#36</a>, <a href="https://github.com">#38</a>)</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Documentation:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Did cosmetic tweaks to existing contents of the User Guide: <a href="https://github.com">#14</a></p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Community:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com">#12</a>, <a href="https://github.com">#32</a>, <a href="https://github.com">#19</a>, <a href="https://github.com">#42</a></p>
-</li>
-<li>
-<p>Contributed to forum discussions (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>, <a href="https://github.com">4</a>)</p>
-</li>
-<li>
-<p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>)</p>
-</li>
-<li>
-<p>Some parts of the history feature I added was adopted by several other class mates (<a href="https://github.com">1</a>, <a href="https://github.com">2</a>)</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Tools:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Integrated a third party library (Natty) to the project (<a href="https://github.com">#42</a>)</p>
-</li>
-<li>
-<p>Integrated a new Github plugin (CircleCI) to the team repo</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
+<p>Convenient <strong>sharing</strong> of flashcards amongst friends studying the same language.</p>
 </li>
 </ul>
 </div>
 <div class="paragraph">
-<p><em>{you can add/remove categories in the list above}</em></p>
+<p>These features were, of course, not all developed by me. You may be more interested in what I have
+contributed as an individual.</p>
+</div>
+<div class="paragraph">
+<p>In this case, I hope to use this project portfolio to make it clear to you exactly what my contributions to this project
+were.</p>
+</div>
+<div class="paragraph">
+<p>I hope to demonstrate to you my contributions to the following aspects of <em>Acquizition</em>:</p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>Code Contributions</p>
+</li>
+<li>
+<p>User Guide Contributions</p>
+</li>
+<li>
+<p>Developer Guide Contributions</p>
+</li>
+</ol>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="contributions-to-the-user-guide"><a class="link" href="#contributions-to-the-user-guide">Contributions to the User Guide</a></h2>
+<h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">2. Summary of contributions</a></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="code-contributions"><a class="link" href="#code-contributions">2.1. Code Contributions</a></h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Major contribution</strong>: I developed in its entirety the ability to insert images into flashcards.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>This feature improves the product quite significantly, as the ability to add images allows one
+to more directly relate concepts to vocabularies.</p>
+</li>
+<li>
+<p>Implementing this feature required a focus on user-centric design, as I thought about how to
+implement it such that it would be most intuitive to an end-user.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>In the process, many alternatives were considered and scrapped. For example, adding images to
+<em>Acquizition</em> required importing the images first. This seemed more intuitive than making the flashcard
+depend on files on the user&#8217;s computer, and images suddenly not working when these image files were
+moved.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>The implementation was also not straightforward; full image support required modifying both
+the Graphical User Interface (GUI) aspect, to show the image, and the file storage aspect, to store
+the images. These two tend to be particularly hard to work with, as they tend to have lots of dependencies
+that need to be carefully considered.<br></p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<strong>Code:</strong> <a href="https://github.com/CS2103-AY1819S2-T12-2/main/pull/50">[PR] Image support</a><br>
+<strong>Code:</strong> <a href="https://github.com/CS2103-AY1819S2-T12-2/main/pull/92">[PR] Image support fixes</a><br>
+</td>
+</tr>
+</table>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Minor contribution</strong>: I kick-started development by refactoring the majority of the code, removing a vast majority of the
+references to AddressBook Level 4.<br></p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<strong>Code:</strong> <a href="https://github.com/CS2103-AY1819S2-T12-2/main/pull/14">[PR] Refactor AddressBook to CardCollection, Person to Flashcard</a>
+</td>
+</tr>
+</table>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="user-guide-contributions"><a class="link" href="#user-guide-contributions">2.2. User Guide Contributions</a></h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Major contribution</strong>: I overhauled the User Guide in order to make it more user-friendly.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>I restructured the way in which commands were introduced (directly addressing end-user&#8217;s issues rather than listing each command individually).</p>
+</li>
+<li>
+<p>I rewrote the "Introduction" and "Quick Start" sections to be more inviting, including illustrations and screenshots to further emphasize
+user-friendliness.</p>
+</li>
+<li>
+<p>I used <em>tips</em> and <em>notes</em> to attract the reader&#8217;s attention to important points.</p>
+</li>
+<li>
+<p>I added the user guide sections for issues related to image support.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="developer-guide-contributions"><a class="link" href="#developer-guide-contributions">2.3. Developer Guide Contributions</a></h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Major contribution</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>I added the developer guide sections for developing code related to image support.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="excerpts-from-the-user-guide"><a class="link" href="#excerpts-from-the-user-guide">3. Excerpts from the User Guide</a></h2>
 <div class="sectionbody">
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
@@ -132,14 +204,14 @@
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">These are the excerpts of the User Guide that I have contributed. They reflect what I have learned in writing documentation that targets end-users.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 <div class="sect1">
-<h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
+<h2 id="excerpts-from-the-developer-guide"><a class="link" href="#excerpts-from-the-developer-guide">4. Excerpts from the Developer Guide</a></h2>
 <div class="sectionbody">
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
@@ -147,170 +219,79 @@
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">These are the excerpts of the Developer Guide that I have contributed. They reflect what I have learned in writing technical documentation and the technical depth of my contributions to the project.</p></td>
 </tr>
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">Undo/Redo feature</a></h3>
+<h3 id="image-support"><a class="link" href="#image-support">4.1. Image Support</a></h3>
 <div class="sect3">
-<h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
+<h4 id="current-implementation"><a class="link" href="#current-implementation">4.1.1. Current Implementation</a></h4>
 <div class="paragraph">
-<p>The undo/redo mechanism is facilitated by <code>VersionedCardCollection</code>.
-It extends <code>CardCollection</code> with an undo/redo history, stored internally as a <code>cardCollectionStateList</code>, <code>commandHistory</code> and <code>currentStatePointer</code>.
-Additionally, it implements the following operations:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p>VersionedCardCollection#commit(String commandText)`&#8201;&#8212;&#8201;Saves the current card collection state in its history, with <code>commandText</code> be the command that change the state.</p>
-</li>
-<li>
-<p><code>VersionedCardCollection#undo()</code>&#8201;&#8212;&#8201;Restores the previous card collection state from its history and return the string represent the command that is undone.</p>
-</li>
-<li>
-<p><code>VersionedCardCollection#redo()</code>&#8201;&#8212;&#8201;Restores a previously undone card collection state from its history and return the string represent the command that is redid.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>These operations are exposed in the <code>Model</code> interface as <code>Model#commitCardCollection()</code>, <code>Model#undoCardCollection()</code> and <code>Model#redoCardCollection()</code> respectively.</p>
-</div>
-<div class="paragraph">
-<p>Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.</p>
-</div>
-<div class="paragraph">
-<p>Step 1. The user launches the application for the first time. The <code>VersionedCardCollection</code> will be initialized with the initial card collection state, the initial command history, and the <code>currentStatePointer</code> pointing to that single card collection state.</p>
+<p>All images must first be <em>imported</em> into <em>Acquizition</em> through the use of the <code>image</code> command. This command
+makes a copy of an image into <em>Acquizition</em>'s local <code>image/</code> directory, and works as the following sequence
+diagram shows:</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/UndoRedoStartingStateListDiagram.png" alt="UndoRedoStartingStateListDiagram" width="800">
+<img src="../images/ImageSequenceDiagram.png" alt="ImageSequenceDiagram" width="800">
 </div>
 </div>
 <div class="paragraph">
-<p>Step 2. The user executes <code>delete 5</code> command to delete the 5th flashcard in the card collection. The <code>delete</code> command calls <code>Model#commitCardCollection()</code>, causing the modified state of the card collection after the <code>delete 5</code> command executes to be saved in the <code>cardCollectionStateList</code>, String <code>delete</code> is added to the <code>commandHistory</code> and the <code>currentStatePointer</code> is shifted to the newly inserted card collection state.</p>
+<p>Note that <code>image</code> does not go through VersionedCardCollection, as it does not affect any of the flashcards.
+It affects only a different file directory made specifically for the purpose of storing images. As a consequence,
+<code>image</code> is not an undoable command.</p>
+</div>
+<div class="paragraph">
+<p>Once an image has been imported, it can then be directly referenced in the <code>add</code> or <code>edit</code> commands by using the
+original file name. (For example, if one imported the image <code>C:\Users\Robin\Desktop\everest.jpg</code>, then it should be
+referred to in the future as <code>everest.jpg</code>.) <em>Acquizition</em> will simply check to see whether that image really exists in the <code>images/</code>
+folder.</p>
+</div>
+<div class="paragraph">
+<p>Each flashcard has an ImagePath, which is essentially a wrapper for an <code>Optional&lt;String&gt;</code>, but for convenience' sake also contains
+many file-related functions. This allows us to abstract away details of file handling and properly use SLAP.</p>
+</div>
+<div class="paragraph">
+<p>Altogether, the following shows the activity diagram for an end-user who wants to add a flashcard, considering all possible
+fields that could be added:</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/UndoRedoNewCommand1StateListDiagram.png" alt="UndoRedoNewCommand1StateListDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>Step 3. The user executes <code>add f/Hello &#8230;&#8203;</code> to add a new flashcard. The <code>add</code> command also calls <code>Model#commitCardCollection()</code>, causing another modified card collection state to be saved into the <code>cardCollectionStateList</code> and string <code>add</code> is added to <code>commandHistory</code>.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoNewCommand2StateListDiagram.png" alt="UndoRedoNewCommand2StateListDiagram" width="800">
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If a command fails its execution, it will not call <code>Model#commitCardCollection()</code>, so the card collection state will not be saved into the <code>cardCollectionStateList</code>.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Step 4. The user now decides that adding the flashcard was a mistake, and decides to undo that action by executing the <code>undo</code> command. The <code>undo</code> command will call <code>Model#undoCardCollection()</code>, which will shift the <code>currentStatePointer</code> once to the left, pointing it to the previous card collection state, and restores the card collection to that state. Then, <code>Model#undoCardCollection()</code> returns the command that is undone.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoExecuteUndoStateListDiagram.png" alt="UndoRedoExecuteUndoStateListDiagram" width="800">
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If the <code>currentStatePointer</code> is at index 0, pointing to the initial card collection state, then there are no previous card collection states to restore. The <code>undo</code> command uses <code>Model#canUndoCardCollection()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the undo.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>The following sequence diagram shows how the undo operation works:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoSequenceDiagram.png" alt="UndoRedoSequenceDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>The <code>redo</code> command does the opposite&#8201;&#8212;&#8201;it calls <code>Model#redoCardCollection()</code>, which shifts the <code>currentStatePointer</code> once to the right, pointing to the previously undone state, restores the card collection to that state, and returns the redid command from command history.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If the <code>currentStatePointer</code> is at index <code>cardCollectionStateList.size() - 1</code>, pointing to the latest card collection state, then there are no undone card collection states to restore. The <code>redo</code> command uses <code>Model#canRedoCardCollection()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Step 5. The user then decides to execute the command <code>list</code>. Commands that do not modify the card collection, such as <code>list</code>, will usually not call <code>Model#commitCardCollection()</code>, <code>Model#undoCardCollection()</code> or <code>Model#redoCardCollection()</code>. Thus, the <code>cardCollectionStateList</code> and <code>commandHistory</code> remains unchanged.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoNewCommand3StateListDiagram.png" alt="UndoRedoNewCommand3StateListDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>Step 6. The user executes <code>clear</code>, which calls <code>Model#commitCardCollection()</code>. Since the <code>currentStatePointer</code> is not pointing at the end of the <code>cardCollectionStateList</code>, all card collection states and all command histories after the <code>currentStatePointer</code> will be purged. We designed it this way because it no longer makes sense to redo the <code>add f/Hello &#8230;&#8203;</code> command. This is the behavior that most modern desktop applications follow.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoNewCommand4StateListDiagram.png" alt="UndoRedoNewCommand4StateListDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>The following activity diagram summarizes what happens when a user executes a new command:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoActivityDiagram.png" alt="UndoRedoActivityDiagram" width="650">
+<img src="../images/AddFlashcardActivityDiagram.png" alt="AddFlashcardActivityDiagram" width="800">
 </div>
 </div>
 </div>
 <div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<h4 id="design-considerations"><a class="link" href="#design-considerations">4.1.2. Design Considerations</a></h4>
 <div class="sect4">
-<h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
+<h5 id="aspect-image-storage"><a class="link" href="#aspect-image-storage">Aspect: Image Storage</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Saves the entire card collection.</p>
+<p><strong>Alternative 1 (current choice):</strong> Make a copy of the image from the user&#8217;s directory to <em>Acquizition</em>'s working
+directory when adding images.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Easy to implement.</p>
+<p>Pros: Works even when the images in the user&#8217;s directory are later deleted or moved.</p>
 </li>
 <li>
-<p>Cons: May have performance issues in terms of memory usage.</p>
+<p>Cons: Requires more memory and can result in a lot of redundant images, and requires manually ensuring that no naming
+conflicts occurs on the working directory.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Individual command knows how to undo/redo by itself.</p>
+<p><strong>Alternative 2:</strong> Link to the absolute path in the user&#8217;s directory when adding images.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Will use less memory (e.g. for <code>delete</code>, just save the flashcard being deleted).</p>
+<p>Pros: Simpler to implement.</p>
 </li>
 <li>
-<p>Cons: We must ensure that the implementation of each individual command are correct.</p>
+<p>Cons: Breaks when the images in the user&#8217;s directory are later deleted or moved.</p>
 </li>
 </ul>
 </div>
@@ -319,31 +300,33 @@ If the <code>currentStatePointer</code> is at index <code>cardCollectionStateLis
 </div>
 </div>
 <div class="sect4">
-<h5 id="aspect-data-structure-to-support-the-undo-redo-commands"><a class="link" href="#aspect-data-structure-to-support-the-undo-redo-commands">Aspect: Data structure to support the undo/redo commands</a></h5>
+<h5 id="aspect-image-storage-version-control"><a class="link" href="#aspect-image-storage-version-control">Aspect: Image Storage Version Control</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Use a list to store the history of card collection states.</p>
+<p><strong>Alternative 1 (current choice):</strong> Simply do not allow undo and redo of inserted images.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Easy for new Computer Science student undergraduates to understand, who are likely to be the new incoming developers of our project.</p>
+<p>Pros: Simpler to implement.</p>
 </li>
 <li>
-<p>Cons: Logic is duplicated twice. For example, when a new command is executed, we must remember to update both <code>HistoryManager</code> and <code>VersionedCardCollection</code>.</p>
+<p>Cons: May be slightly unintuitive.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Use <code>HistoryManager</code> for undo/redo</p>
+<p><strong>Alternative 2:</strong> Make a version-controlled version of the images, similar to VersionedCardCollection,
+in order to make undo and redo possible.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: We do not need to maintain a separate list, and just reuse what is already in the codebase.</p>
+<p>Pros: More intuitive behavior.</p>
 </li>
 <li>
-<p>Cons: Requires dealing with commands that have already been undone: We must remember to skip these commands. Violates Single Responsibility Principle and Separation of Concerns as <code>HistoryManager</code> now needs to do two different things.</p>
+<p>Cons: Very complicated to implement, and may not be worth the effort. In the end, users can always
+remove flashcards directly by deleting images from the <code>images/</code> folder.</p>
 </li>
 </ul>
 </div>
@@ -351,22 +334,22 @@ If the <code>currentStatePointer</code> is at index <code>cardCollectionStateLis
 </ul>
 </div>
 </div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">[Proposed] Data Encryption</a></h3>
-<div class="paragraph">
-<p><em>{Explain here how the data encryption feature will be implemented}</em></p>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="project-powerpointlabs"><a class="link" href="#project-powerpointlabs">PROJECT: PowerPointLabs</a></h2>
+<h2 id="learning-outcomes"><a class="link" href="#learning-outcomes">5. Learning Outcomes</a></h2>
 <div class="sectionbody">
-<hr>
-<div class="paragraph">
-<p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Able to work in a team with responsibilities of different part of code</p>
+</li>
+<li>
+<p>Learned how to implement features based on user stories</p>
+</li>
+</ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 15:56:39 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 16:00:09 UTC</div></div></div></body></html>
