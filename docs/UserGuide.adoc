@@ -398,6 +398,14 @@ Type `exit` and press kbd:[Enter].
 To exit _Acquizition_, use the `exit` command twice: once to exit quiz mode,
 then once to exit _Acquizition_.
 
+// tag::find[]
+=== Finding flashcards by keyword(s): `find`
+* `find t/Chinese t/Japanese` +
+This will find and list all the flashcards that have the _Chinese_ or _Japanese_ tag.
+* `find f/Hello b/Hello` +
+This will find and list all the flashcards whose front or back text contains the word _Hello_.
+// end::find[]
+
 // tag::stats[]
 === What if I want to know how good I am in the quiz mode?
 
@@ -530,6 +538,7 @@ This will find and list all the flashcards that have the _Chinese_ or _Japanese_
 * `find f/Hello b/Hello` +
 This will find and list all the flashcards whose front or back text contains the word _Hello_.
 
+// tag::share[]
 === Exporting flashcards to a text file : `share`
 Creates a text file containing a collection of flashcards to be shared.
 
@@ -555,7 +564,9 @@ the 7 flashcards in the file successfully imported.
 
 image::Ui-preImport.png[width="790"]
 image::Ui-postImport.png[width="790"]
+// end::share[]
 
+// tag::import[]
 === Importing flashcards from a text file : `import`
 Adds flashcards to your collection from a text file.
 
@@ -572,6 +583,7 @@ Examples:
 
 * `import C:\Users\Luca\Desktop\cards.txt` +
 This will import the flashcards from `cards.txt` to your collection.
+// end::import[]
 
 // tag::quiz[]
 [[FeaturesQuiz]]
@@ -582,8 +594,9 @@ This will import the flashcards from `cards.txt` to your collection.
 image::Ui-quiz.png[width="790"]
 
 Enters quiz mode. +
-A flashcard will be shown to you one by one randomly with distribution based on accuracy of each flashcard. +
-You can then self-verify whether you accurately recall the back side of the flashcard.
+The quiz mode will use the cards from the filtered card collection list +
+A flashcard will be shown to you one by one randomly based on accuracy of each flashcard. +
+You can then self-verify using `good` and `bad` commands whether you accurately recall the back side of the flashcard.
 
 Format: `quiz`
 
@@ -593,6 +606,12 @@ Format: `quiz`
 * The quiz panel contains the number of flashcards remaining on the quiz, as well as the number of good and bad feedback received.
 * The flashcard view panel on the right will display the quizzed flashcards one by one, with the back face of the flashcard hidden.
 ****
+
+Example:
+
+* `find t/chinese` +
+`quiz` +
+This will start a quiz mode with all flashcards with the chinese tag.
 
 === Showing back face of flashcard : `show`
 
