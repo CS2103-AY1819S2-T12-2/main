@@ -313,6 +313,10 @@ In essence, the behaviour of the quiz command is similar to that of `select x` w
 
 The feedback on the quiz from the user is handled by a separate command which then updates the card's statistics based on how well the user does. The effect is similar to an `EditCommand`, but it only edits the statistics within the flashcard.
 
+The following sequence diagram shows how the quiz operation works:
+
+image::QuizSequenceDiagram.png[width="1437"]
+
 ==== Design Considerations
 
 ===== Aspect: The quiz GUI
