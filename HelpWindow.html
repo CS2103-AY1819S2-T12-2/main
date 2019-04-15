@@ -13,22 +13,28 @@
 <li><a href="#quick-start">2. Quick Start</a></li>
 <li><a href="#Features">3. Features (Collection)</a>
 <ul class="sectlevel2">
-<li><a href="#viewing-help-code-help-code">3.1. Viewing help : <code>help</code></a></li>
-<li><a href="#adding-a-flashcard-code-add-code">3.2. Adding a flashcard: <code>add</code></a></li>
-<li><a href="#listing-all-flashcards-code-list-code">3.3. Listing all flashcards : <code>list</code></a></li>
-<li><a href="#editing-a-flashcard-code-edit-code">3.4. Editing a flashcard : <code>edit</code></a></li>
-<li><a href="#deleting-a-flashcard-code-delete-code">3.5. Deleting a flashcard : <code>delete</code></a></li>
-<li><a href="#finding-flashcards-by-keyword-s-code-find-code">3.6. Finding flashcards by keyword(s): <code>find</code></a></li>
-<li><a href="#selecting-a-flashcard-code-select-code">3.7. Selecting a flashcard : <code>select</code></a></li>
-<li><a href="#listing-entered-commands-code-history-code">3.8. Listing entered commands : <code>history</code></a></li>
-<li><a href="#undoing-previous-command-code-undo-code">3.9. Undoing previous command : <code>undo</code></a></li>
-<li><a href="#redoing-the-previously-undone-command-code-redo-code">3.10. Redoing the previously undone command : <code>redo</code></a></li>
-<li><a href="#ImportImage">3.11. Importing an image : <code>image</code></a></li>
-<li><a href="#showing-aggregate-statistics-code-stats-code">3.12. Showing aggregate statistics : <code>stats</code></a></li>
-<li><a href="#exporting-flashcards-to-a-text-file-code-share-code">3.13. Exporting flashcards to a text file : <code>share</code></a></li>
-<li><a href="#importing-flashcards-from-a-text-file-code-import-code">3.14. Importing flashcards from a text file : <code>import</code></a></li>
-<li><a href="#deleting-all-flashcards-code-clear-code">3.15. Deleting all flashcards : <code>clear</code></a></li>
-<li><a href="#exiting-the-program-code-exit-code">3.16. Exiting the program : <code>exit</code></a></li>
+<li><a href="#how-do-i-add-a-flashcard">3.1. How do I add a flashcard?</a></li>
+<li><a href="#AddCardImage">3.2. How do I add a flashcard with an image?</a></li>
+<li><a href="#DeleteCard">3.3. How do I delete a flashcard?</a></li>
+<li><a href="#how-do-i-delete-all-flashcards-at-once">3.4. How do I delete all flashcards at once?</a></li>
+<li><a href="#EditCard">3.5. How do I edit a flashcard?</a></li>
+<li><a href="#how-do-i-import-an-image">3.6. How do I import an image?</a></li>
+<li><a href="#how-do-i-insert-an-image-to-a-flashcard">3.7. How do I insert an image to a flashcard?</a></li>
+<li><a href="#how-do-i-remove-an-image-from-a-flashcard">3.8. How do I remove an image from a flashcard?</a></li>
+<li><a href="#how-do-i-insert-tags-to-a-flashcard">3.9. How do I insert tags to a flashcard?</a></li>
+<li><a href="#how-do-i-remove-tags-from-a-flashcard">3.10. How do I remove tags from a flashcard?</a></li>
+<li><a href="#how-do-i-restore-all-the-flashcards-to-the-currently-visible-list">3.11. How do I restore all the flashcards to the currently-visible list?</a></li>
+<li><a href="#UndoCommand">3.12. How do I undo the most recent command?</a></li>
+<li><a href="#how-do-i-redo-the-most-recent-undone-command">3.13. How do I redo the most recent undone command?</a></li>
+<li><a href="#how-do-i-discard-the-results-of-the-most-recent-quiz-session">3.14. How do I discard the results of the most recent quiz session?</a></li>
+<li><a href="#how-do-i-see-the-list-of-commands-i-have-made">3.15. How do I see the list of commands I have made?</a></li>
+<li><a href="#how-do-i-exit-em-acquizition-em">3.16. How do I exit <em>Acquizition</em>?</a></li>
+<li><a href="#what-if-i-want-to-bring-up-this-document-again">3.17. What if I want to bring up this document again?</a></li>
+<li><a href="#finding-flashcards-by-keyword-s-code-find-code">3.18. Finding flashcards by keyword(s): <code>find</code></a></li>
+<li><a href="#selecting-a-flashcard-code-select-code">3.19. Selecting a flashcard : <code>select</code></a></li>
+<li><a href="#showing-aggregate-statistics-code-stats-code">3.20. Showing aggregate statistics : <code>stats</code></a></li>
+<li><a href="#exporting-flashcards-to-a-text-file-code-share-code">3.21. Exporting flashcards to a text file : <code>share</code></a></li>
+<li><a href="#importing-flashcards-from-a-text-file-code-import-code">3.22. Importing flashcards from a text file : <code>import</code></a></li>
 </ul>
 </li>
 <li><a href="#FeaturesQuiz">4. Features (Quiz)</a>
@@ -43,8 +49,8 @@
 <li><a href="#faq">5. FAQ</a></li>
 <li><a href="#command-summary">6. Command Summary</a>
 <ul class="sectlevel2">
-<li><a href="#card-collection">6.1. Card collection</a></li>
-<li><a href="#quiz-mode">6.2. Quiz mode</a></li>
+<li><a href="#commands-collection">6.1. Commands (Collection)</a></li>
+<li><a href="#commands-quiz">6.2. Commands (Quiz)</a></li>
 </ul>
 </li>
 </ul>
@@ -54,22 +60,37 @@
 <h2 id="introduction"><a class="link" href="#introduction">1. Introduction</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
+<p>Hey there! <span class="image"><img src="images/mascot.png" alt="mascot" width="120"></span></p>
+</div>
+<div class="paragraph">
 <p><em>Acquizition</em> is a <strong>desktop app</strong> for easy language acquisition
-and memory retention. By analyzing your performance on recalling
-the flashcards, <em>Acquizition</em> cleverly determines which flashcards
-should be tested to maximize recollection.</p>
+using flashcards. It analyzes your performance on recalling words
+or phrases, and, based on how well you do, decides which word or
+phrase to show you next to maximize learning.</p>
 </div>
 <div class="paragraph">
 <p>Additionally, <em>Acquizition</em> provides you with a user-friendly
-Graphical User Interface (GUI) to view your flashcards. If you can
-type quickly, you&#8217;ll also enjoy the Command-Line Interface (CLI)
-that&#8217;s streamlined for users like you.</p>
+Graphical User Interface (GUI) to view your flashcards. It even
+supports images on the flashcards to make them more memorable. If
+you can type quickly, you will surely also enjoy the Command-Line
+Interface (CLI), streamlined for users like you.</p>
 </div>
 <div class="paragraph">
-<p>This user guide provides in-depth documentation on the <em>Acquizition</em>
-installation process, command format and Frequently
-Asked Questions (FAQs). Jump to <a href="#quick-start">Section 2, &#8220;Quick Start&#8221;</a>
-to get started. Enjoy!</p>
+<p>This user guide begins with an in-depth documentation on the
+<em>Acquizition</em> installation process. We structured the user guide
+to cater to your needs by explaining common use cases, rather than
+simply giving a list of commands and command formats.</p>
+</div>
+<div class="paragraph">
+<p>Of course, you can still access the concise command summary at the
+end of this document if you need it for reference.</p>
+</div>
+<div class="paragraph">
+<p>Time is money, so jump to <a href="#quick-start">Section 2, &#8220;Quick Start&#8221;</a> to get started immediately.</p>
+</div>
+<div class="paragraph">
+<p>We hope you enjoy <em>Acquizition</em>, and we wish you the best in your
+language studies!</p>
 </div>
 </div>
 </div>
@@ -79,17 +100,75 @@ to get started. Enjoy!</p>
 <div class="olist arabic">
 <ol class="arabic">
 <li>
-<p>Ensure you have Java version <code>9</code> or later installed in your computer.</p>
+<p>Make sure that you have <strong>Java 9</strong> or later installed on your computer.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>On <strong>Windows 10</strong>, you can check your Java version by searching for <em>Apps &amp; features</em>
+and looking for Java.<br>
+<span class="image"><img src="images/java_version_windows.png" alt="java version windows" width="790"></span></p>
 </li>
 <li>
-<p>Download the latest <code>acquizition.jar</code> <a href="https://github.com/cs2103-ay1819s2-t12-2/main/releases">here</a>.</p>
+<p>On <strong>Mac OS X 10.7 (Lion)</strong> and above, you can check your Java version by searching
+for <em>System Preferences</em> and looking for the Java icon, then clicking on it.<br>
+<span class="image"><img src="images/java_version_mac.png" alt="java version mac" width="790"></span></p>
 </li>
 <li>
-<p>Copy the file to the folder you want to use as the home folder for your
-cards collection.</p>
+<p>This process may be different on other operating systems. Please search online for the relevant process.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<strong>Note:</strong> If you do not have Java installed, or your version is outdated, you can
+download the latest version by following the instructions <a href="https://www.java.com/en/download/">here</a>.
+</td>
+</tr>
+</table>
+</div>
+</li>
+</ul>
+</div>
 </li>
 <li>
-<p>Double-click the file to start the app. The GUI should appear in a few seconds.</p>
+<p>Download the latest <code>acquizition.zip</code> file <a href="https://github.com/cs2103-ay1819s2-t12-2/main/releases">here</a>.</p>
+</li>
+<li>
+<p>Copy the downloaded <code>acquizition.zip</code> file to the directory of your choice, and extract the <code>acquizition.zip</code> file there.</p>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<strong>Tip:</strong> Most operating systems should have built-in support for extracting <code>.zip</code> files. The process may differ between
+operating systems. Please search online for the relevant process.
+</td>
+</tr>
+</table>
+</div>
+</li>
+<li>
+<p>Locate the <code>acquizition.jar</code> file and double-click it to start <em>Acquizition</em>. The app should appear on your
+screen in a few seconds.</p>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<strong>Tip:</strong> If you do not see anything after a few seconds, you may need to open <em>Acquizition</em> through
+the command line. To do this, open the Command Prompt, Terminal or Linux Shell. Then, type <code>cd</code>,
+followed by a space, followed by the directory of the folder containing <code>acquizition.jar</code>, and press <kbd>Enter</kbd>.
+Then, type <code>java -jar acquizition.jar</code>, and press <kbd>Enter</kbd>. The app should appear on your screen in a few seconds.
+</td>
+</tr>
+</table>
+</div>
 <div class="imageblock">
 <div class="content">
 <img src="images/Ui.png" alt="Ui" width="790">
@@ -97,11 +176,20 @@ cards collection.</p>
 </div>
 </li>
 <li>
-<p>Type the command in the command box and press <kbd>Enter</kbd> to execute it.<br>
-e.g. typing <strong><code>help</code></strong> and pressing <kbd>Enter</kbd> will open the help window.</p>
-</li>
-<li>
-<p>Try the following to get your feet wet!</p>
+<p>Try typing the following commands. Press <kbd>Enter</kbd> after typing a command to tell <em>Acquizition</em>
+to execute it.</p>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<strong>Note:</strong> Commands are <em>case-sensitive</em>: please type the commands <em>exactly</em> as shown!
+</td>
+</tr>
+</table>
+</div>
 <div class="ulist">
 <ul>
 <li>
@@ -117,7 +205,7 @@ Indonesia</em>.</p>
 <p><code>find b/Thank you</code> : lists all flashcards whose back face shows <em>Thank you</em>.</p>
 </li>
 <li>
-<p><code>delete 2</code> : deletes the second card in the collection.</p>
+<p><code>delete 2</code> : deletes the second flashcard in the collection.</p>
 </li>
 <li>
 <p><code>exit</code> : exits the app.</p>
@@ -149,7 +237,8 @@ each command.</p>
 <ul>
 <li>
 <p>Example: In <code>add f/FRONT_TEXT b/BACK TEXT</code>, <code>FRONT_TEXT</code> and <code>BACK_TEXT</code>
-should be replaced to, say, <code>add f/Kamusta b/Hello</code>.</p>
+should be replaced to, say, <code>Kamusta</code> and <code>Hello</code>. So, you could write
+<code>add f/Kamusta b/Hello</code>.</p>
 </li>
 </ul>
 </div>
@@ -186,49 +275,360 @@ b/BACK_TEXT</code>, you can also type them in the order <code>b/BACK_TEXT f/FRON
 </div>
 </div>
 <div class="sect2">
-<h3 id="viewing-help-code-help-code"><a class="link" href="#viewing-help-code-help-code">3.1. Viewing help : <code>help</code></a></h3>
+<h3 id="how-do-i-add-a-flashcard"><a class="link" href="#how-do-i-add-a-flashcard">3.1. How do I add a flashcard?</a></h3>
 <div class="paragraph">
-<p>Shows this document!</p>
+<p>You can add a flashcard by using the <code>add</code> command.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>help</code>.</p>
+<p>Type <code>​add f/FRONT_TEXT b/BACK_TEXT [i/IMAGE_NAME] [t/TAG]​&#8230;&#8203;​</code> into the command box and
+press <kbd>Enter</kbd>.</p>
+</div>
+<div class="paragraph">
+<p>The <code>FRONT_TEXT</code> is the prompt you see, and the <code>BACK_TEXT</code> is what you need to recall.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<strong>Tip:</strong> A flashcard can optionally have a single image on its front face. You should specify this
+image through the use of the <code>IMAGE_NAME</code>, which is the name of your image (with the extension)
+after importing it through the <code>image</code> command.<br>
+See <a href="#AddCardImage">Section 3.2, &#8220;How do I add a flashcard with an image?&#8221;</a> for more details.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<strong>Tip:</strong> Although tags are not strictly required, we highly recommend using them, especially if you intend
+to study multiple languages. Most of the other features in <em>Acquizition</em> are compatible with
+working with specific tags. For example, if you are learning both Chinese and Japanese and want to
+study only the Chinese flashcards, you can do that if you have tagged all the Chinese flashcards with, for
+example, <code>t/Chinese</code>.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<strong>Note:</strong> Tags must be alphanumeric; in particular, they cannot contain spaces. For example,
+<code>t/Bahasa Indonesia</code> is forbidden; use <code>t/BahasaIndonesia</code> instead.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><strong>Examples:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>add f/Kamusta b/Hello t/Tagalog</code><br>
+This adds a flashcard whose front face is <em>Kamusta</em>, whose back face is <em>Hello</em>, and has the
+tag <em>Tagalog</em>.</p>
+</li>
+<li>
+<p><code>add f/さようなら b/Goodbye i/goodbye.jpg t/Japanese t/Greetings</code><br>
+This adds a flashcard whose front face is <em>さようなら</em>, whose back face is <em>Goodbye</em>, has the image
+<code>goodbye.jpg</code> on its front face, and has the tags <em>Japanese</em> and <em>Greetings</em>.</p>
+</li>
+</ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="adding-a-flashcard-code-add-code"><a class="link" href="#adding-a-flashcard-code-add-code">3.2. Adding a flashcard: <code>add</code></a></h3>
+<h3 id="AddCardImage"><a class="link" href="#AddCardImage">3.2. How do I add a flashcard with an image?</a></h3>
 <div class="paragraph">
-<p>Adds a new flashcard to the collection.</p>
+<p><em>Acquizition</em> uses a local storage system to store your images. This means that to add an
+image, you first need to <em>import</em> it into <em>Acquizition</em>. This benefits you, because that means
+once you add an image to <em>Acquizition</em>, you can move or even delete the original image and
+Acquizition will still have a copy of your image!</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>​add f/[FRONT_TEXT] b/[BACK_TEXT] [i/IMAGE_PATH] [t/TAG]​&#8230;&#8203;​</code></p>
+<p>To import an image, you can use the <code>image</code> command.</p>
 </div>
-<div class="sidebarblock">
-<div class="content">
+<div class="paragraph">
+<p>Type <code>image IMAGE_PATH​</code> into the command box and press <kbd>Enter</kbd>.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<strong>Tip:</strong> What is an <code>IMAGE_PATH</code>? It is the <em>absolute path</em> to your image. For example, if you
+have an image called <code>everest.jpg</code> on your Desktop, the <code>IMAGE_PATH</code> might be <code>C:\Users\Robin\Desktop\everest.jpg</code>.<br>
+On Windows, you can get the absolute path by right-clicking on the image, selecting <em>Properties</em>, and copying the
+path under <em>Location:</em>. Then, append a backslash and the image filename (with the extension) to the end.<br>
+<span class="image"><img src="images/image_filepath.png" alt="image filepath" width="790"></span><br>
+In the image above, we see that the path under <em>Location:</em> is <code>C:\Users\Robin\Desktop</code>. We append a backslash <code>\</code>
+and the image filename <code>everest</code> with the extension <code>.jpg</code> to get the <code>IMAGE_PATH</code> which is
+<code>C:\Users\Robin\Desktop\everest.jpg</code>.<br>
+This process may be different on other operating systems. Please search online for the relevant process.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>After importing an image into <em>Acquizition</em>, you can now directly refer to the imported image by the filename
+(with the extension).</p>
+</div>
+<div class="paragraph">
+<p>Type <code>​add f/FRONT_TEXT b/BACK_TEXT i/IMAGE_NAME [t/TAG]​&#8230;&#8203;​</code> into the command box and
+press <kbd>Enter</kbd>. <code>IMAGE_NAME</code> is the filename of the image you just imported.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong></p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p>A flashcard can optionally have a single image attached to it. You should specify this
-image through the use of the <code>IMAGE_PATH</code>, which is a relative path provided by the <code>image</code> command.
-Note that you must first import the image through the <code>image</code> command. See <a href="#ImportImage">Section 3.11, &#8220;Importing an image : <code>image</code>&#8221;</a> for more details.</p>
+<p></p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>image C:\Users\Robin\Desktop\everest.jpg</code><br>
+This imports the image located at <code>C:\Users\Robin\Desktop</code> into <em>Acquizition</em>,
+as previously described.</p>
 </li>
 <li>
-<p>A flashcard can have any number of tags (including zero).</p>
+<p><code>add f/珠峰 b/Mount Everest i/everest.jpg t/Chinese</code><br>
+This adds a flashcard whose front face is <em>珠峰</em>, whose back face is <em>Mount Everest</em>, has the
+image <code>everest.jpg</code> (which we just imported) on its front face, and has the tag <em>Chinese</em>.</p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="DeleteCard"><a class="link" href="#DeleteCard">3.3. How do I delete a flashcard?</a></h3>
+<div class="paragraph">
+<p>You can delete a flashcard by using the <code>delete</code> command.</p>
+</div>
+<div class="paragraph">
+<p>Type <code>delete INDEX</code> and press <kbd>Enter</kbd>.</p>
+</div>
+<div class="paragraph">
+<p>Note that <code>INDEX</code> refers to the number of the card on the <em>currently-visible</em> list. This is the list
+you see on the left-side panel.</p>
+</div>
+<div class="paragraph">
+<p><strong>Example:</strong></p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p>We highly recommend using tags if you intend to study multiple subjects. This allows
-you to filter by tag later on, so you can study only the flashcards having a certain tag.</p>
+<p><code>delete 3</code><br>
+This deletes the third flashcard.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="how-do-i-delete-all-flashcards-at-once"><a class="link" href="#how-do-i-delete-all-flashcards-at-once">3.4. How do I delete all flashcards at once?</a></h3>
+<div class="paragraph">
+<p>If, for whatever reason, you want to delete all the flashcards at once, you can do so using the <code>clear</code> command.</p>
+</div>
+<div class="paragraph">
+<p>Type <code>clear</code> and press <kbd>Enter</kbd>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="EditCard"><a class="link" href="#EditCard">3.5. How do I edit a flashcard?</a></h3>
+<div class="paragraph">
+<p>You can edit a flashcard by using the <code>edit</code> command.</p>
+</div>
+<div class="paragraph">
+<p>Type <code>edit INDEX [f/FRONT_TEXT] [b/BACK_TEXT] [i/IMAGE_NAME] [t/TAG]​&#8230;&#8203;​</code> into the command box and
+press <kbd>Enter</kbd>.</p>
+</div>
+<div class="paragraph">
+<p>Note that <code>INDEX</code> refers to the number of the card on the <em>currently-visible</em> list. This is the list
+you see on the left-side panel.</p>
+</div>
+<div class="paragraph">
+<p>You must specify at least one of <code>[f/FRONT_TEXT]</code>, <code>[b/BACK_TEXT]</code>, <code>[i/IMAGE_NAME]</code>, and <code>[t/TAG]​</code>,
+and you can specify more than one. The edit command will change <em>only</em> the specified items, and leave
+all the others unchanged.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<strong>Note:</strong> When specifying one or more <code>TAG</code>(s), <em>all existing tags</em> will be removed. If you want to add a new tag,
+you must restate all the previous tags and add the new one.
+</td>
+</tr>
+</table>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<strong>Note:</strong> For more information about the <code>IMAGE_NAME</code>, see <a href="#AddCardImage">Section 3.2, &#8220;How do I add a flashcard with an image?&#8221;</a>.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p><strong>Examples:</strong></p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>edit 3 b/Hello</code><br>
+This changes the third card to have a back face <em>Hello</em>.</p>
 </li>
 <li>
-<p>Tags must be alphanumeric; in particular, they cannot contain spaces. For example,
-<code>t/Bahasa Indonesia</code> is forbidden; use <code>t/BahasaIndonesia</code> instead.</p>
+<p><code>edit 2 t/Navajo</code><br>
+This removes all the tags from the second card and adds the tag <em>Navajo</em>.</p>
+</li>
+<li>
+<p><code>edit 1 f/麒麟 b/きりん i/kirin.png t/Japanese t/Kanji</code><br>
+This changes the first card to have a front face <em>麒麟</em>, a back face <em>きりん</em>, the image <code>kirin.png</code>
+on its front face (we assume this has been previously imported), and the tags <em>Japanese</em> and <em>Kanji</em>.<br>
+Effectively, this changes the first card into a completely different card.<br>
+Note that the back face need not be English.</p>
 </li>
 </ul>
 </div>
-</li>
-</ul>
+</div>
+<div class="sect2">
+<h3 id="how-do-i-import-an-image"><a class="link" href="#how-do-i-import-an-image">3.6. How do I import an image?</a></h3>
+<div class="paragraph">
+<p>See <a href="#AddCardImage">Section 3.2, &#8220;How do I add a flashcard with an image?&#8221;</a>.</p>
 </div>
 </div>
+<div class="sect2">
+<h3 id="how-do-i-insert-an-image-to-a-flashcard"><a class="link" href="#how-do-i-insert-an-image-to-a-flashcard">3.7. How do I insert an image to a flashcard?</a></h3>
+<div class="paragraph">
+<p>To insert an image to an existing flashcard, use the <code>edit</code> command
+and specify the <code>IMAGE_NAME</code>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<strong>Note:</strong> You will need to <em>import</em> the image into <em>Acquizition</em> first. See <a href="#AddCardImage">Section 3.2, &#8220;How do I add a flashcard with an image?&#8221;</a>
+for an explanation of how this can be done.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="how-do-i-remove-an-image-from-a-flashcard"><a class="link" href="#how-do-i-remove-an-image-from-a-flashcard">3.8. How do I remove an image from a flashcard?</a></h3>
+<div class="paragraph">
+<p>To remove an image from a flashcard, use the <code>edit</code> command and specify an empty <code>IMAGE_NAME</code>.</p>
+</div>
+<div class="paragraph">
+<p>Specifically, type <code>edit INDEX b/</code> into the command box and press <kbd>Enter</kbd>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="how-do-i-insert-tags-to-a-flashcard"><a class="link" href="#how-do-i-insert-tags-to-a-flashcard">3.9. How do I insert tags to a flashcard?</a></h3>
+<div class="paragraph">
+<p>To insert tags into a flashcard, use the <code>edit</code> command and specify <em>all</em> the
+existing tags, followed by the tags you want to insert.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<strong>Note:</strong> For more information about the <code>edit</code> command, see <a href="#EditCard">Section 3.5, &#8220;How do I edit a flashcard?&#8221;</a>.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="how-do-i-remove-tags-from-a-flashcard"><a class="link" href="#how-do-i-remove-tags-from-a-flashcard">3.10. How do I remove tags from a flashcard?</a></h3>
+<div class="paragraph">
+<p>To remove <em>all</em> the tags from a flashcard, use the <code>edit</code> command and
+specify an empty <code>TAG</code>.</p>
+</div>
+<div class="paragraph">
+<p>Specifically, type <code>edit INDEX t/</code> into the command box and press <kbd>Enter</kbd>.</p>
+</div>
+<div class="paragraph">
+<p>To remove <em>only some</em> of the tags from a flashcard, use the <code>edit</code> command and
+specify the tags you want <em>to remain</em>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<strong>Note:</strong> For more information about the <code>edit</code> command, see <a href="#EditCard">Section 3.5, &#8220;How do I edit a flashcard?&#8221;</a>.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="how-do-i-restore-all-the-flashcards-to-the-currently-visible-list"><a class="link" href="#how-do-i-restore-all-the-flashcards-to-the-currently-visible-list">3.11. How do I restore all the flashcards to the currently-visible list?</a></h3>
+<div class="paragraph">
+<p>When using the <code>find</code> command, the currently-visible list of flashcards will
+change to show you the results. This will also affect the indices you should use
+when referring to the flashcards using the <code>edit</code> and <code>delete</code> commands.</p>
+</div>
+<div class="paragraph">
+<p>To restore the list of all flashcards, simply use the <code>list</code> command.</p>
+</div>
+<div class="paragraph">
+<p>Type <code>list</code> and press <kbd>Enter</kbd>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="UndoCommand"><a class="link" href="#UndoCommand">3.12. How do I undo the most recent command?</a></h3>
+<div class="paragraph">
+<p>You can undo a command by using the <code>undo</code> command.</p>
+</div>
+<div class="paragraph">
+<p>Type <code>undo</code> and press <kbd>Enter</kbd>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<strong>Note:</strong> Not all commands can be undone. Only the following commands can be
+undone: <code>add</code>, <code>clear</code>, <code>delete</code>, <code>edit</code>, <code>import</code>, <code>quiz</code>.<br>
+Undo will cause the most recent <em>undoable</em> command to be undone.
+</td>
+</tr>
+</table>
 </div>
 <div class="paragraph">
 <p>Examples:</p>
@@ -236,119 +636,228 @@ you to filter by tag later on, so you can study only the flashcards having a cer
 <div class="ulist">
 <ul>
 <li>
-<p><code>add f/Kamusta b/Hello t/Tagalog</code></p>
+<p></p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>delete 1</code><br>
+This deletes the first flashcard.</p>
 </li>
 <li>
-<p><code>add f/さようなら b/Goodbye i/images/goodbye.jpg t/Japanese t/Greetings</code></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="listing-all-flashcards-code-list-code"><a class="link" href="#listing-all-flashcards-code-list-code">3.3. Listing all flashcards : <code>list</code></a></h3>
-<div class="paragraph">
-<p>Shows a list of all flashcards in the card collection.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>list</code></p>
-</div>
-</div>
-<div class="sect2">
-<h3 id="editing-a-flashcard-code-edit-code"><a class="link" href="#editing-a-flashcard-code-edit-code">3.4. Editing a flashcard : <code>edit</code></a></h3>
-<div class="paragraph">
-<p>Edits a flashcard already in the collection.<br></p>
-</div>
-<div class="paragraph">
-<p>Format: ​<code>edit INDEX [f/FRONT_TEXT] [b/BACK_TEXT] [i/IMAGE_PATH] [t/TAG]&#8230;&#8203;​</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Edits the flashcard at the specified <code>INDEX</code>. The index refers to the index
-number shown in the list of all flashcards (1, 2, 3, &#8230;&#8203;).</p>
+<p><code>list</code><br>
+This lists all the flashcards.</p>
 </li>
 <li>
-<p>You can leave <code>IMAGE_PATH</code> empty to remove the image associated with a
-flashcard. That is, to remove an image, specify <code>i/</code>.</p>
+<p><code>undo</code><br>
+This will undo the most recent undoable command, which is <code>delete 1</code>. So, this will
+restore the deleted flashcard back as the first flashcard.</p>
+</li>
+</ol>
+</div>
 </li>
 <li>
-<p>When specifying a <code>TAG</code>, <em>all existing tags</em> will be removed. If you want to
-add a new tag, you must restate all the previous tags and add the new one.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Note that the tags will not be affected if you do not specify any <code>TAG</code>.</p>
-</li>
-<li>
-<p>Likewise, you can remove all the tags associated with a card by specifying
-<code>t/</code> with nothing afterwards.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>edit 2 f/Halo</code><br>
-The second flashcard will be edited and the front face will be updated to <em>Halo</em>.</p>
-</li>
-<li>
-<p><code>edit 3 i/ t/</code><br>
-The third flashcard will have its image and all its tags removed, if it had any.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="deleting-a-flashcard-code-delete-code"><a class="link" href="#deleting-a-flashcard-code-delete-code">3.5. Deleting a flashcard : <code>delete</code></a></h3>
-<div class="paragraph">
-<p>Deletes a flashcard already in the collection.<br></p>
-</div>
-<div class="paragraph">
-<p>Format: ​<code>delete INDEX</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>Deletes the flashcard at the specified <code>INDEX</code>. The index refers to the index
-number shown in the list of all flashcards (1, 2, 3, &#8230;&#8203;).</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Example:</p>
-</div>
-<div class="ulist">
-<ul>
+<p></p>
+<div class="olist arabic">
+<ol class="arabic">
 <li>
 <p><code>delete 2</code><br>
-The second flashcard will be deleted.</p>
+This deletes the second flashcard.</p>
+</li>
+<li>
+<p><code>delete 1</code><br>
+This deletes the first flashcard.</p>
+</li>
+<li>
+<p><code>undo</code><br>
+This will undo the most recent undoable command, which is <code>delete 1</code>. So, this will
+restore the deleted flashcard back as the first flashcard.</p>
+</li>
+<li>
+<p><code>undo</code><br>
+This will undo the most recent undoable command, which is <code>delete 2</code>. So, this will
+restore the deleted flashcard back as the second flashcard.</p>
+</li>
+</ol>
+</div>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="finding-flashcards-by-keyword-s-code-find-code"><a class="link" href="#finding-flashcards-by-keyword-s-code-find-code">3.6. Finding flashcards by keyword(s): <code>find</code></a></h3>
+<h3 id="how-do-i-redo-the-most-recent-undone-command"><a class="link" href="#how-do-i-redo-the-most-recent-undone-command">3.13. How do I redo the most recent undone command?</a></h3>
 <div class="paragraph">
-<p>Finds and lists all the flashcards whose front text, back text or collection tags
-contain <em>any</em> of the given keywords. You can also specify a success rate range which
-will filter the flashcards to have a success rate within the given range.</p>
+<p>You can redo an undone command by using the <code>redo</code> command.<br></p>
 </div>
 <div class="paragraph">
-<p>Format: ​<code>find [f/FRONT_FACE]&#8230;&#8203; [b/BACK_FACE]&#8230;&#8203; [t/TAG]&#8230;&#8203; [s/SUCCESS_RATE_RANGE]</code></p>
+<p>Type <code>redo</code> and press <kbd>Enter</kbd>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<strong>Note:</strong> The <code>redo</code> command only works if no new undoable command was made in between
+the time the the last <code>undo</code> command was made and the <code>redo</code> command is called.
+</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p></p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>delete 1</code><br>
+This deletes the first flashcard.</p>
+</li>
+<li>
+<p><code>undo</code><br>
+This will undo the most recent undoable command, which is <code>delete 1</code>. So, this will
+restore the deleted flashcard back as the first flashcard.</p>
+</li>
+<li>
+<p><code>redo</code><br>
+This will redo the command the undo undid, which is <code>delete 1</code>. So, this will
+delete the first flashcard again.</p>
+</li>
+</ol>
+</div>
+</li>
+<li>
+<p></p>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p><code>delete 2</code><br>
+This deletes the second flashcard.</p>
+</li>
+<li>
+<p><code>delete 1</code><br>
+This deletes the first flashcard.</p>
+</li>
+<li>
+<p><code>undo</code><br>
+This will undo the most recent undoable command, which is <code>delete 1</code>. So, this will
+restore the deleted flashcard back as the first flashcard.</p>
+</li>
+<li>
+<p><code>undo</code><br>
+This will undo the most recent undoable command, which is <code>delete 2</code>. So, this will
+restore the deleted flashcard back as the second flashcard.</p>
+</li>
+<li>
+<p><code>redo</code><br>
+This will redo the command the undo undid, which is <code>delete 2</code>. So, this will
+delete the second flashcard again.</p>
+</li>
+<li>
+<p><code>redo</code><br>
+This will redo the command the undo undid, which is <code>delete 1</code>. So, this will
+delete the first flashcard again.</p>
+</li>
+</ol>
+</div>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="how-do-i-discard-the-results-of-the-most-recent-quiz-session"><a class="link" href="#how-do-i-discard-the-results-of-the-most-recent-quiz-session">3.14. How do I discard the results of the most recent quiz session?</a></h3>
+<div class="paragraph">
+<p>The quiz command updates the statistics of the flashcards, and you may want to
+void the results of the most recent quiz session and undo the updates to the cards'
+statistics.</p>
+</div>
+<div class="paragraph">
+<p>You can discard the results of the most recent quiz session by using the <code>undo</code>
+command right after a quiz session.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<strong>Note:</strong> For more information about the <code>undo</code> command, see <a href="#UndoCommand">Section 3.12, &#8220;How do I undo the most recent command?&#8221;</a>.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="how-do-i-see-the-list-of-commands-i-have-made"><a class="link" href="#how-do-i-see-the-list-of-commands-i-have-made">3.15. How do I see the list of commands I have made?</a></h3>
+<div class="paragraph">
+<p>You can see the list of previous commands by using the <code>history</code> command.<br></p>
+</div>
+<div class="paragraph">
+<p>Type <code>history</code> and press <kbd>Enter</kbd>.</p>
+</div>
+<div class="admonitionblock tip">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-tip" title="Tip"></i>
+</td>
+<td class="content">
+<div class="paragraph">
+<p><strong>Tip:</strong> Pressing the <kbd>&uarr;</kbd> and <kbd>&darr;</kbd> arrows will display the previous and next input respectively in the command box.</p>
+</div>
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="how-do-i-exit-em-acquizition-em"><a class="link" href="#how-do-i-exit-em-acquizition-em">3.16. How do I exit <em>Acquizition</em>?</a></h3>
+<div class="paragraph">
+<p>All good things must come to an end!</p>
+</div>
+<div class="paragraph">
+<p>To exit <em>Acquizition</em>, use the <code>exit</code> command.</p>
+</div>
+<div class="paragraph">
+<p>Type <code>exit</code> and press <kbd>Enter</kbd>.</p>
+</div>
+<div class="admonitionblock note">
+<table>
+<tr>
+<td class="icon">
+<i class="fa icon-note" title="Note"></i>
+</td>
+<td class="content">
+<strong>Note:</strong> If you are in quiz mode, <code>exit</code> will exit quiz mode instead.<br>
+To exit <em>Acquizition</em>, use the <code>exit</code> command twice: once to exit quiz mode,
+then once to exit <em>Acquizition</em>.
+</td>
+</tr>
+</table>
+</div>
+</div>
+<div class="sect2">
+<h3 id="what-if-i-want-to-bring-up-this-document-again"><a class="link" href="#what-if-i-want-to-bring-up-this-document-again">3.17. What if I want to bring up this document again?</a></h3>
+<div class="paragraph">
+<p>You can bring up this document again using the <code>help</code> command.</p>
+</div>
+<div class="paragraph">
+<p>Type <code>help</code> and press <kbd>Enter</kbd>.</p>
+</div>
+</div>
+<div class="sect2">
+<h3 id="finding-flashcards-by-keyword-s-code-find-code"><a class="link" href="#finding-flashcards-by-keyword-s-code-find-code">3.18. Finding flashcards by keyword(s): <code>find</code></a></h3>
+<div class="paragraph">
+<p>Finds and lists all the flashcards whose front text, back text or collection tags
+contain <em>any</em> of the given keywords.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: ​<code>find [f/FRONT_FACE]&#8230;&#8203; [b/BACK_FACE]&#8230;&#8203; [t/TAG]&#8230;&#8203;</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -360,41 +869,19 @@ will filter the flashcards to have a success rate within the given range.</p>
 <li>
 <p>Multiple keywords can be specified for the front text, back text and tags by
 specifying multiple prefixes. For example, <code>find f/Kamusta f/Terima kasih</code> finds
-and lists <em>all</em> the flashcards whose front face contains the word <em>Kamusta</em> or <em>Terima</em> or <em>kasih</em>.</p>
+and lists <em>all</em> the flashcards whose front face contains the word <em>Kamusta</em> or <em>Terima</em> or <em>kasih</em>.<br>
+Keywords are not case sensitive: <code>f/Kamusta</code> will match <code>kamusta</code>, <code>kAmUsTa</code> or <code>KAMUSTA</code>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Multiple collection tags must be specified with multiple prefixes. <code>t/Tagalog Japanese</code> is invalid;
+<p>Multiple tags must specifically be specified with multiple prefixes. <code>t/Tagalog Japanese</code> is forbidden;
 use <code>t/Tagalog t/Japanese</code> instead.</p>
 </li>
 </ul>
 </div>
 </li>
-<li>
-<p>Keywords are not case sensitive: <code>f/Kamusta</code> will match <code>kamusta</code>, <code>kAmUsTa</code> or <code>KAMUSTA</code>.</p>
-</li>
-<li>
-<p>Specifying a success rate range will filter the flashcards to be listed to be within
-the specified range (inclusive) and is in the form of [s/LOWEBOUND UPPERBOUND] separated by a single space character.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Specifying a success rate range on its own with no other prefixes will display <em>all</em> flashcards
-having a success rate within that range.</p>
-</li>
 </ul>
 </div>
-</li>
-<li>
-<p>All prefixes must be followed by a keyword or value and cannot be left blank.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/Ui-find.png" alt="Ui find" width="790">
 </div>
 </div>
 <div class="paragraph">
@@ -410,21 +897,11 @@ This will find and list all the flashcards that have the <em>Chinese</em> or <em
 <p><code>find f/Hello b/Hello</code><br>
 This will find and list all the flashcards whose front or back text contains the word <em>Hello</em>.</p>
 </li>
-<li>
-<p><code>find t/chinese s/0 50</code><br>
-This will find and list all the flashcards that have the <em>Chinese</em> tag and which have a success rate less than or
-equal to 50%.</p>
-</li>
-<li>
-<p><code>find s/25 100</code><br>
-This will find and list all the flashcards that have a success rate more than or equal to 25%
-and less than or equal to 100%.</p>
-</li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="selecting-a-flashcard-code-select-code"><a class="link" href="#selecting-a-flashcard-code-select-code">3.7. Selecting a flashcard : <code>select</code></a></h3>
+<h3 id="selecting-a-flashcard-code-select-code"><a class="link" href="#selecting-a-flashcard-code-select-code">3.19. Selecting a flashcard : <code>select</code></a></h3>
 <div class="paragraph">
 <p>Selects the flashcard identified by the index number used in the displayed flashcard list.</p>
 </div>
@@ -448,7 +925,7 @@ and less than or equal to 100%.</p>
 <p>The index must be a positive integer <code>1, 2, 3, …</code></p>
 </li>
 <li>
-<p>Alternatively, you can select a card by clicking it on the flashcard list panel.</p>
+<p>Alternatively, you can select a flashcard by clicking it on the flashcard list panel.</p>
 </li>
 </ul>
 </div>
@@ -473,157 +950,10 @@ Selects the first flashcard in the filtered list with chinese tag.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="listing-entered-commands-code-history-code"><a class="link" href="#listing-entered-commands-code-history-code">3.8. Listing entered commands : <code>history</code></a></h3>
-<div class="paragraph">
-<p>Lists all the commands that you have entered in reverse chronological order.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>history</code></p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Pressing the <kbd>&uarr;</kbd> and <kbd>&darr;</kbd> arrows will display the previous and next input respectively in the command box.</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-</div>
-<div class="sect2">
-<h3 id="undoing-previous-command-code-undo-code"><a class="link" href="#undoing-previous-command-code-undo-code">3.9. Undoing previous command : <code>undo</code></a></h3>
-<div class="paragraph">
-<p>Restores the card collection to the state before the previous undoable command was executed.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>undo</code></p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-<div class="paragraph">
-<p>Undoable commands: those commands that modify the card collection&#8217;s content (<code>add</code>, <code>delete</code>, <code>edit</code>, <code>clear</code>, <code>good</code>, <code>bad</code>, and <code>import</code>).</p>
-</div>
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>delete 1</code><br>
-<code>list</code><br>
-<code>undo</code><br>
-Reverses the <code>delete 1</code> command.</p>
-</li>
-<li>
-<p><code>select 1</code><br>
-<code>list</code><br>
-<code>quiz</code><br>
-<code>exit</code><br>
-The <code>undo</code> command fails as there are no undoable commands executed previously.</p>
-</li>
-<li>
-<p><code>delete 1</code><br>
-<code>clear</code><br>
-<code>undo</code><br>
-<code>undo</code><br>
-Reverses the <code>clear</code> command, then reverses the <code>delete 1</code> command.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="redoing-the-previously-undone-command-code-redo-code"><a class="link" href="#redoing-the-previously-undone-command-code-redo-code">3.10. Redoing the previously undone command : <code>redo</code></a></h3>
-<div class="paragraph">
-<p>Reverses the most recent <code>undo</code> command.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>redo</code></p>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>delete 1</code><br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br>
-<code>redo</code> (reapplies the <code>delete 1</code> command)<br></p>
-</li>
-<li>
-<p><code>delete 1</code><br>
-<code>redo</code><br>
-The <code>redo</code> command fails as there are no <code>undo</code> commands executed previously.</p>
-</li>
-<li>
-<p><code>delete 1</code><br>
-<code>clear</code><br>
-<code>undo</code> (reverses the <code>clear</code> command)<br>
-<code>undo</code> (reverses the <code>delete 1</code> command)<br>
-<code>redo</code> (reapplies the <code>delete 1</code> command)<br>
-<code>redo</code> (reapplies the <code>clear</code> command)<br></p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="ImportImage"><a class="link" href="#ImportImage">3.11. Importing an image : <code>image</code></a></h3>
-<div class="paragraph">
-<p>Adds an image into <em>Acquizition</em>'s internal directory.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>image FILE_PATH</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>This imports an image into <em>Acquizition</em>'s internal directory. The image imported must not
-have the same name as an image already in the internal directory.</p>
-</li>
-<li>
-<p><code>FILE_PATH</code> must be an <em>absolute path</em> to the image.</p>
-</li>
-<li>
-<p>This command will also report the path you must reference your image when adding or
-editing your image through the <code>add</code> or <code>edit</code> commands.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Example:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>image C:\Users\Robin\Desktop\girlfriend.png</code><br>
-This will import the image <code>girlfriend.png</code> into <em>Acquizition</em>'s internal directory, and give
-you the path you must use to reference this image through the <code>add</code> or <code>edit</code> commands.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="showing-aggregate-statistics-code-stats-code"><a class="link" href="#showing-aggregate-statistics-code-stats-code">3.12. Showing aggregate statistics : <code>stats</code></a></h3>
+<h3 id="showing-aggregate-statistics-code-stats-code"><a class="link" href="#showing-aggregate-statistics-code-stats-code">3.20. Showing aggregate statistics : <code>stats</code></a></h3>
 <div class="paragraph">
 <p>Shows aggregate statistics for all the flashcards with any of the given tags.<br>
-If no tag is specified, it shows aggregate statistics for all cards currently in the list.</p>
+If no tag is specified, it shows aggregate statistics for all flashcards currently in the list.</p>
 </div>
 <div class="paragraph">
 <p>Format: <code>stats [t/TAG]&#8230;&#8203;</code></p>
@@ -633,7 +963,7 @@ If no tag is specified, it shows aggregate statistics for all cards currently in
 <div class="ulist">
 <ul>
 <li>
-<p>You can use <code>find</code> followed by <code>stats</code> to show aggregate statistics for all the cards found
+<p>You can use <code>find</code> followed by <code>stats</code> to show aggregate statistics for all the flashcards found
 and listed by the find command.</p>
 </li>
 </ul>
@@ -659,96 +989,30 @@ statistics for all those flashcards.</p>
 </div>
 </div>
 <div class="sect2">
-<h3 id="exporting-flashcards-to-a-text-file-code-share-code"><a class="link" href="#exporting-flashcards-to-a-text-file-code-share-code">3.13. Exporting flashcards to a text file : <code>share</code></a></h3>
+<h3 id="exporting-flashcards-to-a-text-file-code-share-code"><a class="link" href="#exporting-flashcards-to-a-text-file-code-share-code">3.21. Exporting flashcards to a text file : <code>share</code></a></h3>
 <div class="paragraph">
-<p>Creates a text file <em>flashcards.txt</em> containing all the flashcards currently being listed.</p>
+<p>Creates a text file containing a collection of flashcards to be shared.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>share DIRECTORY_PATH</code></p>
+<p>Format: <code>share [f/FRONT_FACE]&#8230;&#8203; [b/BACK_FACE]&#8230;&#8203; [t/TAG]&#8230;&#8203;</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>The text file created by the share command will be saved in the specified directory; you can then share
+<p>This creates a text file containing all the flashcards who match any of the
+front face, back face or tag keywords, in the same manner as <code>find</code>.</p>
+</li>
+<li>
+<p>The text file created by the share command will be saved locally in the main application directory; you should share
 this text file with your friends.</p>
 </li>
 <li>
-<p>Once your friends have a copy of the text file, they can import the flashcards using the <code>import</code> command.</p>
+<p>Once your friend has a copy of the text file, he can import the flashcards using the <code>import</code> command</p>
 </li>
 <li>
-<p><strong>Images are not shared.</strong></p>
-</li>
-<li>
-<p>Calling the share command multiple times on the same directory will overwrite the previous version of the file.</p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Examples:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>find t\Chinese</code><br>
-<code>share C:\Users\Alice\Desktop</code><br>
-This will create a text file called <em>flashcards.txt</em> at the specified location containing all the flashcards that
-have the <em>Chinese</em> tag.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>(Note that DIRECTORY_PATH is user specific)</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>In the illustrated example below, one of the cards in the text file already existed locally. So only 6 out of
-the 7 flashcards in the file successfully imported.</p>
-</li>
-</ul>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/Ui-preImport.png" alt="Ui preImport" width="790">
-</div>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="images/Ui-postImport.png" alt="Ui postImport" width="790">
-</div>
-</div>
-</div>
-<div class="sect2">
-<h3 id="importing-flashcards-from-a-text-file-code-import-code"><a class="link" href="#importing-flashcards-from-a-text-file-code-import-code">3.14. Importing flashcards from a text file : <code>import</code></a></h3>
-<div class="paragraph">
-<p>Adds flashcards from a text file to your existing collection.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>import FILE_PATH</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>This imports all the cards from a text file (produced by the <code>share</code> command) to your collection.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>This does not replace your existing card collection; it simply adds new cards from the text file.</p>
-</li>
-<li>
-<p>This command will also report the number of cards successfully imported.</p>
-</li>
-<li>
-<p>Unsuccessfully imported cards may have already existed locally or may be corrupted.</p>
-</li>
-</ul>
-</div>
+<p><strong>Images will not be shared.</strong></p>
 </li>
 </ul>
 </div>
@@ -760,29 +1024,60 @@ the 7 flashcards in the file successfully imported.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>import C:\Users\Alice\Desktop\flashcards.txt</code><br>
-This will import the cards from <em>flashcards.txt</em> to your collection.</p>
+<p><code>share t/Chinese</code><br>
+This will create a text file of all the flashcards that contain the <em>Chinese</em> tag.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="deleting-all-flashcards-code-clear-code"><a class="link" href="#deleting-all-flashcards-code-clear-code">3.15. Deleting all flashcards : <code>clear</code></a></h3>
+<h3 id="importing-flashcards-from-a-text-file-code-import-code"><a class="link" href="#importing-flashcards-from-a-text-file-code-import-code">3.22. Importing flashcards from a text file : <code>import</code></a></h3>
 <div class="paragraph">
-<p>Deletes all flashcards.</p>
+<p>Adds flashcards to your collection from a text file.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>clear</code></p>
+<p>Format: <code>import [FILE_PATH]</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>This imports all the flashcards from a text file (produced by <code>share</code>) to your collection.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>This does not replace your flashcard collection; it simply adds all the flashcards from the text file
+one-by-one.</p>
+</li>
+<li>
+<p>This command will also report the number of flashcards successfully imported.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>If no <code>FILE_PATH</code> is specified, you will be prompted to select it through the File Explorer.</p>
+</li>
+</ul>
 </div>
 </div>
-<div class="sect2">
-<h3 id="exiting-the-program-code-exit-code"><a class="link" href="#exiting-the-program-code-exit-code">3.16. Exiting the program : <code>exit</code></a></h3>
+</div>
 <div class="paragraph">
-<p>Exits the program if you are not in quiz mode.<br>
-If you are in quiz mode, this exits quiz mode instead. See <a href="#QuizExit">Section 4.5, &#8220;Exiting quiz mode : <code>exit</code>&#8221;</a> for more details.</p>
+<p>Examples:</p>
 </div>
-<div class="paragraph">
-<p>Format: <code>exit</code></p>
+<div class="ulist">
+<ul>
+<li>
+<p><code>import</code><br>
+This will prompt the File Explorer and you should select the text file containing the flashcards
+you want to import.</p>
+</li>
+<li>
+<p><code>import C:\Users\Luca\Desktop\cards.txt</code><br>
+This will import the flashcards from <code>cards.txt</code> to your collection.</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
@@ -799,7 +1094,7 @@ If you are in quiz mode, this exits quiz mode instead. See <a href="#QuizExit">S
 </div>
 <div class="paragraph">
 <p>Enters quiz mode.<br>
-A card will be shown to you one by one randomly with distribution based on accuracy of each flashcard.<br>
+A flashcard will be shown to you one by one randomly with distribution based on accuracy of each flashcard.<br>
 You can then self-verify whether you accurately recall the back side of the flashcard.</p>
 </div>
 <div class="paragraph">
@@ -810,16 +1105,16 @@ You can then self-verify whether you accurately recall the back side of the flas
 <div class="ulist">
 <ul>
 <li>
-<p>Enters quiz mode with the cards on the filtered flashcard list panel.</p>
+<p>Enters quiz mode with the flashcards on the filtered flashcard list panel.</p>
 </li>
 <li>
 <p>This will start a quiz session. The flashcard list panel on the left will change to a quiz panel.</p>
 </li>
 <li>
-<p>The quiz panel contains the number of cards remaining on the quiz, as well as the number of good and bad feedback received.</p>
+<p>The quiz panel contains the number of flashcards remaining on the quiz, as well as the number of good and bad feedback received.</p>
 </li>
 <li>
-<p>The card view panel on the right will display the quizzed cards one by one, with the back face of the flashcard hidden.</p>
+<p>The flashcard view panel on the right will display the quizzed flashcards one by one, with the back face of the flashcard hidden.</p>
 </li>
 </ul>
 </div>
@@ -862,13 +1157,13 @@ You can then self-verify whether you accurately recall the back side of the flas
 <div class="ulist">
 <ul>
 <li>
-<p>In order to give feedback of how well you do in the quiz mode, you can type in either <code>good</code> or <code>bad</code> for each card in the quiz.</p>
+<p>In order to give feedback of how well you do in the quiz mode, you can type in either <code>good</code> or <code>bad</code> for each flashcard in the quiz.</p>
 </li>
 <li>
-<p>After you type <code>good</code> or <code>bad</code>, Acquizition will record the feedback on the card shown, as well as incrementing the number of good and bad feedback.</p>
+<p>After you type <code>good</code> or <code>bad</code>, Acquizition will record the feedback on the flashcard shown, as well as incrementing the number of good and bad feedback.</p>
 </li>
 <li>
-<p>Acquizition will then proceed to show the next flashcard to be quizzed. If there are no cards left, it will exit quiz mode.</p>
+<p>Acquizition will then proceed to show the next flashcard to be quizzed. If there are no flashcards left, it will exit quiz mode.</p>
 </li>
 <li>
 <p>This command is usually, but not necessarily, used after the <code>show</code> command. That is, after you look at the back face of the flashcard, you can dictate how well you recall the back face of the flashcard.</p>
@@ -888,22 +1183,22 @@ You can then self-verify whether you accurately recall the back side of the flas
 <li>
 <p><code>quiz</code><br>
 <code>good</code><br>
-This will increment the number of good feedback of the card shown, thus, the success rate of this card will increase.<br>
-Then, the next card in the quiz queue will be shown.</p>
+This will increment the number of good feedback of the flashcard shown, thus, the success rate of this flashcard will increase.<br>
+Then, the next flashcard in the quiz queue will be shown.</p>
 </li>
 <li>
 <p><code>quiz</code><br>
 <code>show</code><br>
 <code>bad</code><br>
-This will increment the number of bad feedback of the card shown, thus, the success rate of this card will decrease.<br>
-Then, the next card in the quiz queue will be shown.</p>
+This will increment the number of bad feedback of the flashcard shown, thus, the success rate of this flashcard will decrease.<br>
+Then, the next flashcard in the quiz queue will be shown.</p>
 </li>
 <li>
 <p><code>quiz</code><br>
 <code>good</code><br>
 <code>&#8230;&#8203;</code><br>
 <code>good</code><br>
-Suppose this is the last card to show inside quiz mode. Acquizition will record the statistics of the quiz mode and exit the quiz mode.</p>
+Suppose this is the last flashcard to show inside quiz mode. Acquizition will record the statistics of the quiz mode and exit the quiz mode.</p>
 </li>
 </ul>
 </div>
@@ -925,10 +1220,10 @@ You can use a <em>smart command</em> that cleverly chooses the appropriate comma
 <p>To initiate a smart command, you just need to press enter.</p>
 </li>
 <li>
-<p>If you are in quiz mode, and the back face of the quizzed card is not yet shown, smart command will execute a <code>show</code> command.</p>
+<p>If you are in quiz mode, and the back face of the quizzed flashcard is not yet shown, smart command will execute a <code>show</code> command.</p>
 </li>
 <li>
-<p>If you are in quiz mode, and the back face of the quizzed card has been shown, smart command will execute a <code>good</code> command.</p>
+<p>If you are in quiz mode, and the back face of the quizzed flashcard has been shown, smart command will execute a <code>good</code> command.</p>
 </li>
 <li>
 <p>This dramatically reduces your time to navigate through the quiz!</p>
@@ -946,20 +1241,20 @@ You can use a <em>smart command</em> that cleverly chooses the appropriate comma
 <p><code>quiz</code><br>
 <kbd>Enter</kbd><br>
 <kbd>Enter</kbd><br>
-This will first show the back face of the card, then will mark the card as good.</p>
+This will first show the back face of the flashcard, then will mark the flashcard as good.</p>
 </li>
 <li>
 <p><code>quiz</code><br>
 <kbd>Enter</kbd><br>
 <code>bad</code><br>
-This will show the back face of the card, then will mark the card as bad.</p>
+This will show the back face of the flashcard, then will mark the flashcard as bad.</p>
 </li>
 <li>
 <p><code>quiz</code><br>
 <kbd>Enter</kbd><br>
 <code>&#8230;&#8203;</code><br>
 <kbd>Enter</kbd><br>
-This will go through all the cards in the quiz mode and mark them all as good.</p>
+This will go through all the flashcards in the quiz mode and mark them all as good.</p>
 </li>
 </ul>
 </div>
@@ -986,7 +1281,7 @@ explicitly save.</p>
 <div class="paragraph">
 <p><strong>Q</strong>: How do I transfer my data to another computer?<br>
 <strong>A</strong>: Install the app in the other computer and overwrite the empty data file
-it creates with the file that contains the data of your previous Aqquizition
+it creates with the file that contains the data of your previous Acquizition
 folder.</p>
 </div>
 </div>
@@ -995,67 +1290,62 @@ folder.</p>
 <h2 id="command-summary"><a class="link" href="#command-summary">6. Command Summary</a></h2>
 <div class="sectionbody">
 <div class="sect2">
-<h3 id="card-collection"><a class="link" href="#card-collection">6.1. Card collection</a></h3>
+<h3 id="commands-collection"><a class="link" href="#commands-collection">6.1. Commands (Collection)</a></h3>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Help</strong> : <code>help</code></p>
-</li>
-<li>
-<p><strong>Add</strong> <code>add f/[FRONT_TEXT] b/[BACK_TEXT] [i/IMAGE_PATH] [t/TAG]&#8230;&#8203;</code><br>
-e.g. <code>add f/さようなら b/Goodbye i/images/goodbye.jpg t/Japanese t/Greetings</code></p>
-</li>
-<li>
-<p><strong>List</strong> : <code>list</code></p>
+<p><strong>Add</strong> <code>add f/FRONT_TEXT b/BACK_TEXT [i/IMAGE_NAME] [t/TAG]&#8230;&#8203;</code><br></p>
 </li>
 <li>
 <p><strong>Clear</strong> : <code>clear</code></p>
 </li>
 <li>
-<p><strong>Delete</strong> : <code>delete INDEX</code><br>
-e.g. <code>delete 3</code></p>
+<p><strong>Delete</strong> : <code>delete INDEX</code><br></p>
 </li>
 <li>
-<p><strong>Edit</strong> : <code>edit INDEX [f/FRONT_TEXT] [b/BACK_TEXT] [i/IMAGE_PATH] [t/TAG]&#8230;&#8203;</code><br>
-e.g. <code>edit 2 f/Halo</code>, <code>edit 3 i/ t/</code></p>
+<p><strong>Edit</strong> : <code>edit INDEX [f/FRONT_TEXT] [b/BACK_TEXT] [i/IMAGE_NAME] [t/TAG]&#8230;&#8203;</code><br></p>
 </li>
 <li>
-<p><strong>Find</strong> : <code>find [f/FRONT_FACE]&#8230;&#8203; [b/BACK_FACE]&#8230;&#8203; [t/TAG]&#8230;&#8203; [s/0 50]</code><br>
-e.g. <code>find t/Chinese t/Japanese</code></p>
+<p><strong>Exit</strong> : <code>exit</code></p>
 </li>
 <li>
-<p><strong>Select</strong> : <code>select INDEX</code><br>
-e.g.<code>select 2</code></p>
+<p><strong>Find</strong> : <code>find [f/FRONT_FACE]&#8230;&#8203; [b/BACK_FACE]&#8230;&#8203; [t/TAG]&#8230;&#8203;</code><br></p>
+</li>
+<li>
+<p><strong>Help</strong> : <code>help</code></p>
 </li>
 <li>
 <p><strong>History</strong> : <code>history</code></p>
 </li>
 <li>
-<p><strong>Undo</strong> : <code>undo</code></p>
+<p><strong>Image</strong> : <code>image FILE_PATH</code></p>
+</li>
+<li>
+<p><strong>Import</strong> : <code>import [FILE_PATH]</code></p>
+</li>
+<li>
+<p><strong>List</strong> : <code>list</code></p>
 </li>
 <li>
 <p><strong>Redo</strong> : <code>redo</code></p>
 </li>
 <li>
-<p><strong>Image</strong> : <code>image FILE_PATH</code></p>
+<p><strong>Select</strong> : <code>select INDEX</code><br></p>
+</li>
+<li>
+<p><strong>Share</strong> : <code>share [f/FRONT_FACE]&#8230;&#8203; [b/BACK_FACE]&#8230;&#8203; [t/TAG]&#8230;&#8203;</code></p>
 </li>
 <li>
 <p><strong>Stats</strong> : <code>stats [t/TAG]&#8230;&#8203;</code></p>
 </li>
 <li>
-<p><strong>Share</strong> : <code>share DIRECTORY_PATH</code></p>
-</li>
-<li>
-<p><strong>Import</strong> : <code>import FILE_PATH</code></p>
-</li>
-<li>
-<p><strong>Exit</strong> : <code>exit</code></p>
+<p><strong>Undo</strong> : <code>undo</code></p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect2">
-<h3 id="quiz-mode"><a class="link" href="#quiz-mode">6.2. Quiz mode</a></h3>
+<h3 id="commands-quiz"><a class="link" href="#commands-quiz">6.2. Commands (Quiz)</a></h3>
 <div class="ulist">
 <ul>
 <li>
@@ -1080,4 +1370,4 @@ e.g.<code>select 2</code></p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 12:05:55 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 13:17:28 UTC</div></div></div></body></html>
