@@ -371,6 +371,18 @@ specific attribute of the flashcard. If a match exists, the flashcard will be di
 
 // tag::statistics[]
 === Statistics feature
+
+The Statistics command is implemented under the Logic component which will calls the Model component to retrieve the flashcards the user wishes (based on user specified keywords) followed by the calculation of the statistics by aggregating the statistics from the retrieved flashcards. The implementation can be further explained with the aid of the following sequence diagram:
+
+image::StatsCommandSequenceDiagram.png[width="800"]
+
+The `StatsCommandParser` class takes the input arguments specified by the user and tokenises them based on predefined
+flashcard prefixes to create a list of keywords associated with each of these prefixes (`/f`, `/b`, `/t`). These lists
+are passed to construct a new `FlashcardContainsKeywordPredicate` object which is then passed to the constructor of `StatsCommand`.
+The execution of the `FindCommand` calls upon the `Model` object to update the filtered flashcard list based on the predicate defined.
+This is done through the use of the test method in the predicate classes which evaluate matches between the keywords and a
+specific attribute of the flashcard. If a match exists, the flashcard will be displayed to the user.
+
 ==== Current Implementation
 
 The current statistics logic is handled by `Statistics` and `StatsCommand`.
