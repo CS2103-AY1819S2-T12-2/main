@@ -37,7 +37,7 @@ public class ShareCommand extends Command {
     public static final String MESSAGE_SHARE_SUCCESS = "Successfully created ";
     public static final String MESSAGE_SHARE_FAILURE = "Could not create file at %1$s";
     public static final String MESSAGE_SHARE_FAILURE_EMPTY_LIST = "Cannot share an empty list ";
-    private static final String MESSAGE_IN_QUIZ = "Cannot share in quiz mode";
+    private static final String MESSAGE_IN_QUIZ = "Cannot share in quiz mode.";
 
     private final Logger logger = LogsCenter.getLogger(getClass());
 
