@@ -25,7 +25,7 @@ public class SelectCommand extends Command {
         + "Example: " + COMMAND_WORD + " 1";
 
     public static final String MESSAGE_SELECT_FLASHCARD_SUCCESS = "Selected Flashcard: %1$s, %2$.2f%% success.\n"
-        + "In Quiz Status: %3$s";
+        + "SRS Status: %3$s";
     private static final String MESSAGE_IN_QUIZ = "Cannot select in quiz mode.";
 
     private final Index targetIndex;
