@@ -434,7 +434,7 @@ The following is the sequence diagram illustrating when the quiz srs starts and 
 
 image::QuizStartSRSSequenceDiagram.png[width="800"]
 
-// enc::srs[]
+// end::srs[]
 
 // tag::imagesupport[]
 === Image Support
