@@ -17,11 +17,11 @@ import org.junit.Test;
 import seedu.address.testutil.Assert;
 
 public class ProficiencyTest {
+    private long halfMinute = TimeUnit.SECONDS.toMillis(30);
     private Calendar now = Calendar.getInstance();
     private Calendar yesterday = Calendar.getInstance();
     private Calendar tomorrow = Calendar.getInstance();
     private Calendar twoDaysFromNow = Calendar.getInstance();
-    private final long HALF_MINUTE = TimeUnit.SECONDS.toMillis(30);
 
     @Before
     public void setUp() {
@@ -106,10 +106,14 @@ public class ProficiencyTest {
 
     }
 
-    private void assertQuizStatus(long millis, String message ) {
-        millis += HALF_MINUTE;
+    /**
+     * Create a Proficiency that inactive until `millis` milli seconds from now. Test if the expected message is
+     * printed.
+     */
+    private void assertQuizStatus(long millis, String expectedMessage) {
+        millis += halfMinute;
         Calendar now = Calendar.getInstance();
         now.add(Calendar.MILLISECOND, (int) millis);
-        assertEquals(message, new Proficiency(now, 0).getQuizSrsStatus());
+        assertEquals(expectedMessage, new Proficiency(now, 0).getQuizSrsStatus());
     }
 }
