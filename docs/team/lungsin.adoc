@@ -55,9 +55,11 @@ Created with JavaFX, Acquizition has a sleek and intuitive GUI (Graphical User I
 |_Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users._
 |===
 
+include::../UserGuide.adoc[tag=stats]
+
 include::../UserGuide.adoc[tag=srs]
 
-include::../UserGuide.adoc[tag=statistics]
+include::../UserGuide.adoc[tag=select]
 
 == Contributions to the Developer Guide
 
