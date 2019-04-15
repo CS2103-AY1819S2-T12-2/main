@@ -382,7 +382,7 @@ image::ExitQuizSequenceDiagram.png[width="1000"]
 *** Easy to implement and can use the original command box for quiz feedback.
 *** Can reuse the card view panel from the main window to use for quiz mode.
 ** Cons:
-*** Need to be able to swap the `MainWindow`'s components when the quiz starts in order to replace the card collection list view with the quiz panel.
+*** Need to be able to swap the `MainWindow` 's components when the quiz starts in order to replace the card collection list view with the quiz panel.
 * **Alternative 2:** Use a separate window for quiz mode.
 ** Pros:
 *** Quiz logic separate from `MainWindow`.

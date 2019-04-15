@@ -2,8 +2,17 @@
 :site-section: AboutUs
 :imagesDir: ../images
 :stylesDir: ../stylesheets
+:toc:
+:toc-title: Table of Contents
+:sectnums:
+
+image::sergiovieri.png[width="200", align="left"]
 
 == PROJECT: Acquizition
+
+This project portfolio documents my contributions towards Acquizition, a team project under a software engineering module in NUS, known as CS2103T.
+
+The purpose of this portfolio is to summarize the features that I have implemented, as well as some excerpts of the User and Developer Guide that I have written.
 
 ---
 
@@ -13,7 +22,7 @@ Acquizition is a desktop flashcard application for subject revision and language
 
 Using a scientifically-grounded SRS (Spaced Repetition System), Acquizition maximizes memory retention by testing the terms most likely to be forgotten soon.
 
-Created with JavaFX, Acquizition has a sleek and intuitive GUI (Graphical User Interface) to streamline the experience for new users, but also sports a CLI (Command Line Interface) to maximize the efficiency of power users. It is written in Java and has around 14k LoC.
+Created with JavaFX, Acquizition has a sleek and intuitive GUI (Graphical User Interface) to streamline the experience for new users, but also sports a CLI (Command Line Interface) to maximize the efficiency of power users. It is written in Java and has around 14k lines of code.
 
 == Summary of contributions
 
