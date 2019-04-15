@@ -530,8 +530,9 @@ This will import the flashcards from `cards.txt` to your collection.
 image::Ui-quiz.png[width="790"]
 
 Enters quiz mode. +
-A flashcard will be shown to you one by one randomly with distribution based on accuracy of each flashcard. +
-You can then self-verify whether you accurately recall the back side of the flashcard.
+The quiz mode will use the cards from the filtered card collection list +
+A flashcard will be shown to you one by one randomly based on accuracy of each flashcard. +
+You can then self-verify using `good` and `bad` commands whether you accurately recall the back side of the flashcard.
 
 Format: `quiz`
 
@@ -541,6 +542,12 @@ Format: `quiz`
 * The quiz panel contains the number of flashcards remaining on the quiz, as well as the number of good and bad feedback received.
 * The flashcard view panel on the right will display the quizzed flashcards one by one, with the back face of the flashcard hidden.
 ****
+
+Example:
+
+* `find t/chinese` +
+`quiz` +
+This will start a quiz mode with all flashcards with the chinese tag.
 
 === Showing back face of flashcard : `show`
 
