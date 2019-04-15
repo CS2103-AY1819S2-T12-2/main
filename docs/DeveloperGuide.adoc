@@ -305,17 +305,45 @@ image::UndoRedoActivityDiagram.png[width="650"]
 === Quiz feature
 ==== Current Implementation
 
-The current quiz mechanism is controlled by the `QuizCommand` class. It will then modify the selected flashcard on the card collection model. The UI will then detect the change in the selected flashcard, and will view the flashcard on the screen.
+===== Quiz
 
-The quiz command contains a predicate member that is used to filter which cards is going to be shown on the quiz. The user can type in `quiz <tags>`, which will then start the quiz on cards that has the given tags. The quiz command will contain a predicate that will filter based on the tags.
+The current quiz mechanism is controlled by the `QuizCommand` class.
+When executed, `QuizCommand` will create a list of flashcards to be quizzed,
+which is a sorted list of the current filtered flashcards. `QuizCommand` will then pass the sorted flashcards to `Model`,
+in which they will be stored.
 
-In essence, the behaviour of the quiz command is similar to that of `select x` where x is randomly picked among filtered cards, except that the backface of the card will not be shown to the user. Currently, the randomly picking cards is using a  uniform random distribution that does not take into account how well the user does previously. However, in the next versions we will be using weighted random distribution by using the `Statistics` class.
+When quiz first starts, `QuizCommand` will change the quiz state inside `Model`.
+`MainWindow` will detect this change, and replace the card collection panel on the left with a quiz panel.
+To show a card to the user, the quiz mode modifies the selected flashcard on the card collection model, just like how the `SelectCommand` works. The UI will then detect the change in the selected flashcard and will view the selected flashcard on the card view panel.
 
-The feedback on the quiz from the user is handled by a separate command which then updates the card's statistics based on how well the user does. The effect is similar to an `EditCommand`, but it only edits the statistics within the flashcard.
+The quiz command will quiz flashcards based on the current filtered list.
+The review mode of quiz sorts the cards based on a non-decreasing success rate of the flashcards, utilizing the `Statistics` class.
+If any two flashcards have the same success rate, they will be randomly shuffled.
+The SRS mode only chooses flashcards that is already time to show to the user.
 
 The following sequence diagram shows how the quiz operation works:
 
-image::QuizSequenceDiagram.png[width="1437"]
+image::QuizSequenceDiagram.png[width="800"]
+
+===== Show
+
+The `ShowCommand` is handled similarly with the `QuizCommand`. Instead of `MainWindow`, `CardViewPanel` listens to the change in quiz state mode inside `Model`. The `CardViewPanel` creates a new `FlashcardCardView` with the correct state (with back face hidden accordingly). Then, the displayed flashcard will be replaced. Below is the sequence diagram of how the show operation works:
+
+image::ShowSequenceDiagram.png[width="800"]
+
+===== Good/Bad
+
+The feedback on the quiz from the user is handled by a separate command (`GoodCommand` and `BadCommand`),
+which then updates the card's statistics based on how well the user does.
+
+It does not commit the changes of the flashcards until the quiz mode has ended.
+After storing the changes, the command will then show the next card to be quizzed, if there are any, or execute an `ExitCommand` otherwise.
+
+After `ExitCommand` is executed, the changes will be committed and saved to storage.
+
+The following sequence diagram shows how the `GoodCommand` works. The `BadCommand` is identical.
+
+image::GoodSequenceDiagram.png[width="800"]
 
 ==== Design Considerations
 
