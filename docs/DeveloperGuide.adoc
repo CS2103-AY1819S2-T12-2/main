@@ -378,14 +378,19 @@ image::ExitQuizSequenceDiagram.png[width="1000"]
 ===== Aspect: The quiz GUI
 
 * **Alternative 1 (current choice):** Use the same window as the `MainWindow`.
-** Pros: Easy to implement and can use the original command box for quiz feedback.
-Can reuse the card view panel from the main window to use for quiz mode.
-** Cons: Need to be able to swap the `MainWindow`'s components when the quiz starts in order to replace the card collection list view with the quiz panel.
+** Pros:
+*** Easy to implement and can use the original command box for quiz feedback.
+*** Can reuse the card view panel from the main window to use for quiz mode.
+** Cons:
+*** Need to be able to swap the `MainWindow`'s components when the quiz starts in order to replace the card collection list view with the quiz panel.
 * **Alternative 2:** Use a separate window for quiz mode.
-** Pros: Quiz logic separate from `MainWindow`. Easily customizable and more flexible. Much easier to handle GUI,
-since we only need to spawn a new window and close it afterwards.
-** Cons: Requires a separate command box for the quiz mode window.
-Also may need to be able to hide the main window so that users cannot see the card collection list.
+** Pros:
+*** Quiz logic separate from `MainWindow`.
+*** Easily customizable and more flexible.
+*** Much easier to handle GUI, since we only need to spawn a new window and close it afterwards.
+** Cons:
+*** Requires a separate command box for the quiz mode window.
+*** May need to be able to hide the main window so that users cannot see the card collection list.
 
 // end::quiz[]
 
