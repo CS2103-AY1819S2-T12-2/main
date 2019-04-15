@@ -1,7 +1,7 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>Luca Triglia - Project Portfolio</title><link rel="stylesheet" href="../stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
 <link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">Acquizition</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/cs2103-ay1819s2-t12-2/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Luca Triglia - Project Portfolio</h1></div><div id="content"><div class="sect1">
-<h2 id="project-addressbook-level-4"><a class="link" href="#project-addressbook-level-4">PROJECT: AddressBook - Level 4</a></h2>
+<h2 id="project-acquizition"><a class="link" href="#project-acquizition">PROJECT: ACQUIZITION</a></h2>
 <div class="sectionbody">
 <hr>
 </div>
@@ -10,7 +10,19 @@
 <h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>AddressBook - Level 4 is a desktop card collection application used for teaching Software Engineering principles. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.</p>
+<p><em>Acquizition</em> is a desktop flashcard application used for language acquisition and training.</p>
+</div>
+<div class="paragraph">
+<p>Through the use of a Spaced Repetition System, <em>Acquizition</em> maximises user retention
+by testing vocabulary most likely to be forgotten by a user.</p>
+</div>
+<div class="paragraph">
+<p>The application has an intuitive and simplistic interface, making it great for both inexperienced and more proficient computer users.</p>
+</div>
+<div class="paragraph">
+<p>Developed at the National University of Singapore, <em>Acquizition</em> was created as part of a software engineering team project (module code: CS2103T).
+As such, this application was not entirely developed by me. This portfolio serves to
+outline my own contributions towards the project.</p>
 </div>
 </div>
 </div>
@@ -20,29 +32,48 @@
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: added <strong>the ability to undo/redo previous commands</strong></p>
+<p><strong>Major enhancement</strong>: added <strong>the ability find specific flashcards</strong></p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: allows the user to undo all previous commands one at a time. Preceding undo commands can be reversed by using the redo command.</p>
+<p>What it does: allows the user to find and list flashcards based on specific properties such as front face text,
+back face text, tags and success rate.</p>
 </li>
 <li>
-<p>Justification: This feature improves the product significantly because a user can make mistakes in commands and the app should provide a convenient way to rectify them.</p>
+<p>Justification: This feature represents the core of the application, as many other commands like the quiz command
+depend on the find feature. For instance, if a user wants to be quizzed on chinese, the user must first find the corresponding chinese cards.</p>
 </li>
 <li>
-<p>Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.</p>
+<p>Highlights: This enhancement touches upon multiple components of the project architecture and as a result, was challenging
+to implement. Since many other features of the application depend on this functionality, I had to consider many design
+implementations to make it as user centric as possible.</p>
 </li>
 <li>
-<p>Credits: <em>{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}</em></p>
+<p>Credits: This feature was enhanced from the existing codebase of the CS2103T project.</p>
+</li>
+<li>
+<p>Related code: <a href="https://github.com/CS2103-AY1819S2-T12-2/main/pull/29">Enhance Find Command</a>, <a href="https://github.com/CS2103-AY1819S2-T12-2/main/pull/85">Find Command - Filter by Success Rate</a></p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Minor enhancement</strong>: added a history command that allows the user to navigate to previous commands using up/down keys.</p>
+<p><strong>Major enhancement</strong>: added <strong>the ability share and import flashcards</strong></p>
+<div class="ulist">
+<ul>
+<li>
+<p>What it does: allows the user to save locally created flashcards to a text file so that they can be distributed and used by other <em>Acquizition</em> users.</p>
 </li>
 <li>
-<p><strong>Code contributed</strong>: [<a href="https://github.com">Functional code</a>] [<a href="https://github.com">Test code</a>] <em>{give links to collated code files}</em></p>
+<p>Justification: This application is targeted at language students. As such, this feature would prove beneficial to
+users who wish to make use of another persons card collection without needing to manually re-create the flashcards.</p>
+</li>
+<li>
+<p>Related code: <a href="https://github.com/CS2103-AY1819S2-T12-2/main/pull/12">Add Import Functionality</a>, <a href="https://github.com/CS2103-AY1819S2-T12-2/main/pull/43">Add Share Functionality</a>,
+<a href="https://github.com/CS2103-AY1819S2-T12-2/main/pull/85">Tweak Import and Share Functionality</a></p>
+</li>
+</ul>
+</div>
 </li>
 <li>
 <p><strong>Other contributions</strong>:</p>
@@ -53,20 +84,10 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Managed releases <code>v1.3</code> - <code>v1.5rc</code> (3 releases) on GitHub</p>
-</li>
-</ul>
-</div>
+<p>Updated AboutUs and ContactUs project pages (Pull request <a href="https://github.com/CS2103-AY1819S2-T12-2/main/pull/1">#1</a>)</p>
 </li>
 <li>
-<p>Enhancements to existing features:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Updated the GUI color scheme (Pull requests <a href="https://github.com">#33</a>, <a href="https://github.com">#34</a>)</p>
-</li>
-<li>
-<p>Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests <a href="https://github.com">#36</a>, <a href="https://github.com">#38</a>)</p>
+<p>Created Project Portfolio Pages for each team member</p>
 </li>
 </ul>
 </div>
@@ -76,7 +97,7 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Did cosmetic tweaks to existing contents of the User Guide: <a href="https://github.com">#14</a></p>
+<p>Verified the quality of project documentation (User Guide and Developer Guide).</p>
 </li>
 </ul>
 </div>
@@ -86,29 +107,8 @@
 <div class="ulist">
 <ul>
 <li>
-<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com">#12</a>, <a href="https://github.com">#32</a>, <a href="https://github.com">#19</a>, <a href="https://github.com">#42</a></p>
-</li>
-<li>
-<p>Contributed to forum discussions (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>, <a href="https://github.com">4</a>)</p>
-</li>
-<li>
-<p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>)</p>
-</li>
-<li>
-<p>Some parts of the history feature I added was adopted by several other class mates (<a href="https://github.com">1</a>, <a href="https://github.com">2</a>)</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Tools:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Integrated a third party library (Natty) to the project (<a href="https://github.com">#42</a>)</p>
-</li>
-<li>
-<p>Integrated a new Github plugin (CircleCI) to the team repo</p>
+<p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com/nus-cs2103-AY1819S2/pe-dry-run/issues/719">1</a>,
+<a href="https://github.com/nus-cs2103-AY1819S2/pe-dry-run/issues/875">2</a>, <a href="https://github.com/nus-cs2103-AY1819S2/pe-dry-run/issues/400">3</a>)</p>
 </li>
 </ul>
 </div>
@@ -119,7 +119,7 @@
 </ul>
 </div>
 <div class="paragraph">
-<p><em>{you can add/remove categories in the list above}</em></p>
+<p>A comprehensive summary of all the code contributed can be found <a href="https://nus-cs2103-ay1819s2.github.io/cs2103-dashboard/#=undefined&amp;search=lucatriglia">here</a>.</p>
 </div>
 </div>
 </div>
@@ -132,10 +132,202 @@
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Maintaining a comprehensive and coherent User Guide is essential for any Software Engineering project.
+Given below are sections I contributed to the User Guide of Acquizition. They showcase my ability to write user-centric documentation.</em></p></td>
 </tr>
 </tbody>
 </table>
+<div class="sect2">
+<h3 id="finding-flashcards-by-keyword-s-code-find-code"><a class="link" href="#finding-flashcards-by-keyword-s-code-find-code">Finding flashcards by keyword(s): <code>find</code></a></h3>
+<div class="paragraph">
+<p>Finds and lists all the flashcards whose front text, back text or collection tags
+contain <em>any</em> of the given keywords. You can also specify a success rate range which
+will filter the flashcards to have a success rate within the given range.</p>
+</div>
+<div class="paragraph">
+<p>Format: ​<code>find [f/FRONT_FACE]&#8230;&#8203; [b/BACK_FACE]&#8230;&#8203; [t/TAG]&#8230;&#8203; [s/SUCCESS_RATE_RANGE]</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>You must specify at least <em>one</em> keyword.</p>
+</li>
+<li>
+<p>Multiple keywords can be specified for the front text, back text and tags by
+specifying multiple prefixes. For example, <code>find f/Kamusta f/Terima kasih</code> finds
+and lists <em>all</em> the flashcards whose front face contains the word <em>Kamusta</em> or <em>Terima</em> or <em>kasih</em>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Multiple collection tags must be specified with multiple prefixes. <code>t/Tagalog Japanese</code> is invalid;
+use <code>t/Tagalog t/Japanese</code> instead.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Keywords are not case sensitive: <code>f/Kamusta</code> will match <code>kamusta</code>, <code>kAmUsTa</code> or <code>KAMUSTA</code>.</p>
+</li>
+<li>
+<p>Specifying a success rate range will filter the flashcards to be listed to be within
+the specified range (inclusive) and is in the form of [s/LOWEBOUND UPPERBOUND] separated by a single space character.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Specifying a success rate range on its own with no other prefixes will display <em>all</em> flashcards
+having a success rate within that range.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>All prefixes must be followed by a keyword or value and cannot be left blank.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/Ui-find.png" alt="Ui find" width="790">
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>find t/Chinese t/Japanese</code><br>
+This will find and list all the flashcards that have the <em>Chinese</em> or <em>Japanese</em> tag.</p>
+</li>
+<li>
+<p><code>find f/Hello b/Hello</code><br>
+This will find and list all the flashcards whose front or back text contains the word <em>Hello</em>.</p>
+</li>
+<li>
+<p><code>find t/chinese s/0 50</code><br>
+This will find and list all the flashcards that have the <em>Chinese</em> tag and which have a success rate less than or
+equal to 50%.</p>
+</li>
+<li>
+<p><code>find s/25 100</code><br>
+This will find and list all the flashcards that have a success rate more than or equal to 25%
+and less than or equal to 100%.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="exporting-flashcards-to-a-text-file-code-share-code"><a class="link" href="#exporting-flashcards-to-a-text-file-code-share-code">Exporting flashcards to a text file : <code>share</code></a></h3>
+<div class="paragraph">
+<p>Creates a text file <em>flashcards.txt</em> containing all the flashcards currently being listed.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>share DIRECTORY_PATH</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>The text file created by the share command will be saved in the specified directory; you can then share
+this text file with your friends.</p>
+</li>
+<li>
+<p>Once your friends have a copy of the text file, they can import the flashcards using the <code>import</code> command.</p>
+</li>
+<li>
+<p><strong>Images are not shared.</strong></p>
+</li>
+<li>
+<p>Calling the share command multiple times on the same directory will overwrite the previous version of the file.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>find t\Chinese</code><br>
+<code>share C:\Users\Alice\Desktop</code><br>
+This will create a text file called <em>flashcards.txt</em> at the specified location containing all the flashcards that
+have the <em>Chinese</em> tag.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>(Note that DIRECTORY_PATH is user specific)</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>In the illustrated example below, one of the cards in the text file already existed locally. So only 6 out of
+the 7 flashcards in the file successfully imported.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/Ui-preImport.png" alt="Ui preImport" width="790">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/Ui-postImport.png" alt="Ui postImport" width="790">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="importing-flashcards-from-a-text-file-code-import-code"><a class="link" href="#importing-flashcards-from-a-text-file-code-import-code">Importing flashcards from a text file : <code>import</code></a></h3>
+<div class="paragraph">
+<p>Adds flashcards from a text file to your existing collection.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>import FILE_PATH</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>This imports all the cards from a text file (produced by the <code>share</code> command) to your collection.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>This does not replace your existing card collection; it simply adds new cards from the text file.</p>
+</li>
+<li>
+<p>This command will also report the number of cards successfully imported.</p>
+</li>
+<li>
+<p>Unsuccessfully imported cards may have already existed locally or may be corrupted.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>import C:\Users\Alice\Desktop\flashcards.txt</code><br>
+This will import the cards from <em>flashcards.txt</em> to your collection.</p>
+</li>
+</ul>
+</div>
+</div>
 </div>
 </div>
 <div class="sect1">
@@ -147,203 +339,85 @@
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide of Acquizition. They showcase my ability to write technical documentation
+targeted at developers and project managers. They also serve to show the technical depth of my contributions.</em></p></td>
 </tr>
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">Undo/Redo feature</a></h3>
+<h3 id="find-feature"><a class="link" href="#find-feature">Find Feature</a></h3>
 <div class="sect3">
 <h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
 <div class="paragraph">
-<p>The undo/redo mechanism is facilitated by <code>VersionedCardCollection</code>.
-It extends <code>CardCollection</code> with an undo/redo history, stored internally as a <code>cardCollectionStateList</code> and <code>currentStatePointer</code>.
-Additionally, it implements the following operations:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>VersionedCardCollection#commit()</code>&#8201;&#8212;&#8201;Saves the current card collection state in its history.</p>
-</li>
-<li>
-<p><code>VersionedCardCollection#undo()</code>&#8201;&#8212;&#8201;Restores the previous card collection state from its history.</p>
-</li>
-<li>
-<p><code>VersionedCardCollection#redo()</code>&#8201;&#8212;&#8201;Restores a previously undone card collection state from its history.</p>
-</li>
-</ul>
+<p>The find command allows users to find and list a specific set of flashcards. It is
+implemented under the Logic component which in turn calls upon the Model component to retrieve
+the flashcards a user wishes to find.</p>
 </div>
 <div class="paragraph">
-<p>These operations are exposed in the <code>Model</code> interface as <code>Model#commitCardCollection()</code>, <code>Model#undoCardCollection()</code> and <code>Model#redoCardCollection()</code> respectively.</p>
-</div>
-<div class="paragraph">
-<p>Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.</p>
-</div>
-<div class="paragraph">
-<p>Step 1. The user launches the application for the first time. The <code>VersionedCardCollection</code> will be initialized with the initial card collection state, and the <code>currentStatePointer</code> pointing to that single card collection state.</p>
+<p>Users can filter the results based on several attributes of a flashcard including front face text, back face text,
+tags and success rate. Similar to the Add command, the input is expected to have predefined prefixes (<code>/f</code>, <code>/b</code>, <code>/t</code>, <code>/s</code>)
+to specify the filter categories; followed by keywords on which a match is expected.
+The implementation as well as class interactions can be further explained with the
+following sequence diagram:</p>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="../images/UndoRedoStartingStateListDiagram.png" alt="UndoRedoStartingStateListDiagram" width="800">
+<img src="../images/FindCommandSequenceDiagram1.png" alt="FindCommandSequenceDiagram1" width="800">
 </div>
 </div>
 <div class="paragraph">
-<p>Step 2. The user executes <code>delete 5</code> command to delete the 5th flashcard in the card collection. The <code>delete</code> command calls <code>Model#commitCardCollection()</code>, causing the modified state of the card collection after the <code>delete 5</code> command executes to be saved in the <code>cardCollectionStateList</code>, and the <code>currentStatePointer</code> is shifted to the newly inserted card collection state.</p>
+<p>The <code>FindCommandParser</code> class takes the input string specified by the user and tokenizes it based on the prefixes to create
+a list of keywords associated with each of prefix. Unlike other prefixes, the <code>/s</code> prefix (which specifies the success rate range
+which cards should be within), will not take a keyword as input. Instead, the range takes two doubles: lower bound and upper bound.</p>
 </div>
-<div class="imageblock">
+<div class="paragraph">
+<p>After being parsed, these keyword lists, as well as the success rate range, are passed to construct a new <code>FlashcardPredicate</code> object which is
+then used to define the <code>FindCommand</code>. The execution of the <code>FindCommand</code> calls upon the <code>Model</code> object to update the
+filtered flashcard list based on the predicate defined. This is done through the use of the test method in the predicate classes
+which evaluate matches between the keywords and a specific attribute of the flashcard. A flashcard will be selected if it is within
+the success rate range and has matching keyword(s) in at least one of the three categories: front face text, back face text and tags.
+The logic of evaluation can be seen from the following code snippet:</p>
+</div>
+<div class="listingblock">
 <div class="content">
-<img src="../images/UndoRedoNewCommand1StateListDiagram.png" alt="UndoRedoNewCommand1StateListDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>Step 3. The user executes <code>add f/Hello &#8230;&#8203;</code> to add a new flashcard. The <code>add</code> command also calls <code>Model#commitCardCollection()</code>, causing another modified card collection state to be saved into the <code>cardCollectionStateList</code>.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoNewCommand2StateListDiagram.png" alt="UndoRedoNewCommand2StateListDiagram" width="800">
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If a command fails its execution, it will not call <code>Model#commitCardCollection()</code>, so the card collection state will not be saved into the <code>cardCollectionStateList</code>.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Step 4. The user now decides that adding the flashcard was a mistake, and decides to undo that action by executing the <code>undo</code> command. The <code>undo</code> command will call <code>Model#undoCardCollection()</code>, which will shift the <code>currentStatePointer</code> once to the left, pointing it to the previous card collection state, and restores the card collection to that state.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoExecuteUndoStateListDiagram.png" alt="UndoRedoExecuteUndoStateListDiagram" width="800">
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If the <code>currentStatePointer</code> is at index 0, pointing to the initial card collection state, then there are no previous card collection states to restore. The <code>undo</code> command uses <code>Model#canUndoCardCollection()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the undo.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>The following sequence diagram shows how the undo operation works:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoSequenceDiagram.png" alt="UndoRedoSequenceDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>The <code>redo</code> command does the opposite&#8201;&#8212;&#8201;it calls <code>Model#redoCardCollection()</code>, which shifts the <code>currentStatePointer</code> once to the right, pointing to the previously undone state, and restores the card collection to that state.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If the <code>currentStatePointer</code> is at index <code>cardCollectionStateList.size() - 1</code>, pointing to the latest card collection state, then there are no undone card collection states to restore. The <code>redo</code> command uses <code>Model#canRedoCardCollection()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Step 5. The user then decides to execute the command <code>list</code>. Commands that do not modify the card collection, such as <code>list</code>, will usually not call <code>Model#commitCardCollection()</code>, <code>Model#undoCardCollection()</code> or <code>Model#redoCardCollection()</code>. Thus, the <code>cardCollectionStateList</code> remains unchanged.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoNewCommand3StateListDiagram.png" alt="UndoRedoNewCommand3StateListDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>Step 6. The user executes <code>clear</code>, which calls <code>Model#commitCardCollection()</code>. Since the <code>currentStatePointer</code> is not pointing at the end of the <code>cardCollectionStateList</code>, all card collection states after the <code>currentStatePointer</code> will be purged. We designed it this way because it no longer makes sense to redo the <code>add f/Hello &#8230;&#8203;</code> command. This is the behavior that most modern desktop applications follow.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoNewCommand4StateListDiagram.png" alt="UndoRedoNewCommand4StateListDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>The following activity diagram summarizes what happens when a user executes a new command:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoActivityDiagram.png" alt="UndoRedoActivityDiagram" width="650">
+<pre>return ((frontFacePredicate.test(flashcard)
+        || backFacePredicate.test(flashcard)
+        || tagPredicate.test(flashcard))
+        &amp;&amp; (flashcard.getStatistics().getSuccessRate() * 100 &gt;= lowerBound
+        &amp;&amp; flashcard.getStatistics().getSuccessRate() * 100 &lt;= upperBound));</pre>
 </div>
 </div>
 </div>
 <div class="sect3">
 <h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
 <div class="sect4">
-<h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
+<h5 id="aspect-the-evaluation-of-keyword-matches"><a class="link" href="#aspect-the-evaluation-of-keyword-matches">Aspect: The evaluation of keyword matches</a></h5>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Saves the entire card collection.</p>
+<p><strong>Alternative 1 (current choice):</strong> has matching keyword(s) in at least one of the three categories: front face text,
+back face text and tags.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Easy to implement.</p>
+<p>Pros: Able to show cards in multiple categories when the input has multiple tags. Users will get the set of cards as long as
+they correctly remember a keyword in either the front face text, back face text or the tags of flashcards.</p>
 </li>
 <li>
-<p>Cons: May have performance issues in terms of memory usage.</p>
+<p>Cons: Cannot narrow down to choose the intersection of all filters.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Individual command knows how to undo/redo by itself.</p>
+<p><strong>Alternative 2:</strong> has matching keyword(s) in all specified categories.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Will use less memory (e.g. for <code>delete</code>, just save the flashcard being deleted).</p>
+<p>Pros: Able to show a very specific set of flashcards</p>
 </li>
 <li>
-<p>Cons: We must ensure that the implementation of each individual command are correct.</p>
-</li>
-</ul>
-</div>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect4">
-<h5 id="aspect-data-structure-to-support-the-undo-redo-commands"><a class="link" href="#aspect-data-structure-to-support-the-undo-redo-commands">Aspect: Data structure to support the undo/redo commands</a></h5>
-<div class="ulist">
-<ul>
-<li>
-<p><strong>Alternative 1 (current choice):</strong> Use a list to store the history of card collection states.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easy for new Computer Science student undergraduates to understand, who are likely to be the new incoming developers of our project.</p>
-</li>
-<li>
-<p>Cons: Logic is duplicated twice. For example, when a new command is executed, we must remember to update both <code>HistoryManager</code> and <code>VersionedCardCollection</code>.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Use <code>HistoryManager</code> for undo/redo</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: We do not need to maintain a separate list, and just reuse what is already in the codebase.</p>
-</li>
-<li>
-<p>Cons: Requires dealing with commands that have already been undone: We must remember to skip these commands. Violates Single Responsibility Principle and Separation of Concerns as <code>HistoryManager</code> now needs to do two different things.</p>
+<p>Cons: May not be able to find the wanted set of flashcards when some keywords are remembered wrongly.</p>
 </li>
 </ul>
 </div>
@@ -352,15 +426,292 @@ If the <code>currentStatePointer</code> is at index <code>cardCollectionStateLis
 </div>
 </div>
 </div>
-</div>
-</div>
-</div>
-<div class="sect1">
-<h2 id="project-powerpointlabs"><a class="link" href="#project-powerpointlabs">PROJECT: PowerPointLabs</a></h2>
-<div class="sectionbody">
-<hr>
+<div class="sect3">
+<h4 id="use-case-find-cards"><a class="link" href="#use-case-find-cards">Use case: Find cards</a></h4>
 <div class="paragraph">
-<p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to find a set of cards containing some keywords and within a specified success rate range</p>
+</li>
+<li>
+<p><em>Acquizition</em> shows a list of cards that contain any of the keywords and which also have a success rate within
+the specified range</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<h3 id="share-import-feature" class="discrete">Share &amp; Import feature</h3>
+</div>
+<div class="sect3">
+<h4 id="current-implementation-share"><a class="link" href="#current-implementation-share">Current Implementation: Share</a></h4>
+<div class="paragraph">
+<p>the share command is implemented under the Logic component and allows users to share the collection of flashcards currently being displayed.
+This is done by saving information of the cards to a text file; thereafter allowing users to manually distribute the
+file to others.</p>
+</div>
+<div class="paragraph">
+<p>The information which is saved by this command includes: front face text, back face text and
+tags of each flashcard.</p>
+</div>
+<div class="paragraph">
+<p>The share command takes <code>DIRECTORY_PATH</code> as the only argument, which specifies where the file should be saved.
+The user&#8217;s input is parsed by the <code>ShareCommandParser</code> class to make sure that the path specified exists and that it is
+indeed a directory. The current implementation of the share command does not allow users to specify what
+the file should be named. Instead, all files created by the command will be saved as <em>flashcards.txt</em>.</p>
+</div>
+<div class="paragraph">
+<p>Since the share command only shares flashcards currently being displayed, it will often be used in
+conjunction with the find command to update the model component before the share command is invoked by the user.
+For example, if a user wants to share only chinese cards, the user will first enter <code>find t/chinese</code> followed by
+<code>share DIRECTORY_PATH</code>.</p>
+</div>
+<div class="paragraph">
+<p>The structure of the text file created by the command can be explained with the aid of the following screenshot:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ShareCommandTextFile.png" alt="ShareCommandTextFile" width="800">
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 01:52:02 UTC</div></div></div></body></html>
+<div class="paragraph">
+<p>As shown form the screenshot, each line holds information for a single flashcard. The information is stored in the form
+of add command arguments to ultimately simplify the import process <em>(see import feature)</em>.</p>
+</div>
+<div class="paragraph">
+<p>It is important to note that the current implementation of the share command does not support the sharing of images.
+This means that a flashcard containing an image will lose its image once shared as only the front face text, back face text
+and tags are saved to the text file. However, sharing a card containing an image will not result in any error
+or exception being thrown. Furthermore, the statistics of each flashcard are not shared as this would not make practical sense.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="current-implementation-import"><a class="link" href="#current-implementation-import">Current Implementation: Import</a></h4>
+<div class="paragraph">
+<p>The import command is implemented under the logic component and allows users to add a collection of flashcards
+from a text file to their existing collection.</p>
+</div>
+<div class="paragraph">
+<p>The command takes <code>FILE_PATH</code> as the only argument which specifies the location of the file containing the cards to be imported.
+The user&#8217;s input is parsed by the <code>ImportCommandParser</code> class to make sure that the file specified exists and that it is
+a text file.</p>
+</div>
+<div class="paragraph">
+<p>The file used by the import command should be strictly limited to the file generated by the share command
+and should not be altered. Altering the file in any way may effect the ability of the import command to read
+in the cards correctly.</p>
+</div>
+<div class="paragraph">
+<p>The implementation of the import command can be better visualised with the aid of the following sequence diagram:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ImportCommandSequenceDiagram.png" alt="ImportCommandSequenceDiagram" width="800">
+</div>
+</div>
+<div class="paragraph">
+<p>As shown from the sequence diagram, the <code>ImportCommand</code> class will read each line of the text file and call the <code>AddCommandParser</code> class to verify
+the validity of the flashcard to be added. Once verified, the <code>execute</code> method of the <code>AddCommand</code> class will be
+invoked to add the flashcard to the existing collection.</p>
+</div>
+<div class="paragraph">
+<p>The import command will also keep track
+of how many flashcards were successfully added in order to provide feedback to the user once the execution of
+the command terminates.</p>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations-2"><a class="link" href="#design-considerations-2">Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-how-to-validate-flashcards"><a class="link" href="#aspect-how-to-validate-flashcards">Aspect: How to validate flashcards</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Validate flashcards at the Logic level using the <code>addCommandParser</code> class.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Keeps the command contained at the Logic level of the project and is easier to implement.</p>
+</li>
+<li>
+<p>Cons: Increases dependency between the import command classes and the add command classes.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Alternative 2:</strong> Validate flashcards at file level and append new flashcard data directly to the storage file</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros: Reduce dependency between classes, meaning that the import command is able to function without the add command.</p>
+</li>
+<li>
+<p>Cons: Harder to implement and bypasses several project components to directly intect with the storage component. This does not follow the overall
+architectural design of the project.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="use-case-share-a-collection-of-cards"><a class="link" href="#use-case-share-a-collection-of-cards">Use case: Share a collection of cards</a></h4>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to find a set of cards</p>
+</li>
+<li>
+<p><em>Acquizition</em> lists the cards</p>
+</li>
+<li>
+<p>User requests to share the currently listed cards</p>
+</li>
+<li>
+<p>User specifies the directory to save the cards</p>
+</li>
+<li>
+<p><em>Acquizition</em> creates a text file containing the information about the cards</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3a. There are no cards currently listed</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3a1. <em>Acquizition</em> shows an error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>4a. The directory does not exist</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>4a1. <em>Acquizition</em> shows an error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>5a. <em>Acquizition</em> has no permission to add the file</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>5a1. <em>Acquizition</em> shows an error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<h4 id="use-case-import-a-collection-of-cards" class="discrete">Use case: Import a collection of cards</h4>
+<div class="paragraph">
+<p><strong>MSS</strong></p>
+</div>
+<div class="olist arabic">
+<ol class="arabic">
+<li>
+<p>User requests to import a set of flashcards</p>
+</li>
+<li>
+<p>User specifies the path of the text file</p>
+</li>
+<li>
+<p><em>Acquizition</em> adds the cards from the given file</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ol>
+</div>
+<div class="paragraph">
+<p><strong>Extensions</strong></p>
+</div>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3a. Acquizition cannot read the file</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3a1. Acquizition shows an error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>3b. Acquizition doesn&#8217;t recognize the file format</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3b1. Acquizition shows an error message.</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>3c. Some of the cards are corrupted or already exist locally</p>
+<div class="ulist none">
+<ul class="none">
+<li>
+<p>3c1. <em>Acquizition</em> adds cards which do not already exist and which are not corrupted.</p>
+</li>
+<li>
+<p>3c2. <em>Acquizition</em> shows how many cards were successfully imported</p>
+<div class="paragraph">
+<p>Use case ends.</p>
+</div>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 05:41:22 UTC</div></div></div></body></html>

@@ -344,10 +344,11 @@ The second flashcard will be deleted.</p>
 <h3 id="finding-flashcards-by-keyword-s-code-find-code"><a class="link" href="#finding-flashcards-by-keyword-s-code-find-code">3.6. Finding flashcards by keyword(s): <code>find</code></a></h3>
 <div class="paragraph">
 <p>Finds and lists all the flashcards whose front text, back text or collection tags
-contain <em>any</em> of the given keywords.<br></p>
+contain <em>any</em> of the given keywords. You can also specify a success rate range which
+will filter the flashcards to have a success rate within the given range.</p>
 </div>
 <div class="paragraph">
-<p>Format: ​<code>find [f/FRONT_FACE]&#8230;&#8203; [b/BACK_FACE]&#8230;&#8203; [t/TAG]&#8230;&#8203;</code></p>
+<p>Format: ​<code>find [f/FRONT_FACE]&#8230;&#8203; [b/BACK_FACE]&#8230;&#8203; [t/TAG]&#8230;&#8203; [s/SUCCESS_RATE_RANGE]</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -359,19 +360,41 @@ contain <em>any</em> of the given keywords.<br></p>
 <li>
 <p>Multiple keywords can be specified for the front text, back text and tags by
 specifying multiple prefixes. For example, <code>find f/Kamusta f/Terima kasih</code> finds
-and lists <em>all</em> the flashcards whose front face contains the word <em>Kamusta</em> or <em>Terima</em> or <em>kasih</em>.<br>
-Keywords are not case sensitive: <code>f/Kamusta</code> will match <code>kamusta</code>, <code>kAmUsTa</code> or <code>KAMUSTA</code>.</p>
+and lists <em>all</em> the flashcards whose front face contains the word <em>Kamusta</em> or <em>Terima</em> or <em>kasih</em>.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Multiple tags must specifically be specified with multiple prefixes. <code>t/Tagalog Japanese</code> is forbidden;
+<p>Multiple collection tags must be specified with multiple prefixes. <code>t/Tagalog Japanese</code> is invalid;
 use <code>t/Tagalog t/Japanese</code> instead.</p>
 </li>
 </ul>
 </div>
 </li>
+<li>
+<p>Keywords are not case sensitive: <code>f/Kamusta</code> will match <code>kamusta</code>, <code>kAmUsTa</code> or <code>KAMUSTA</code>.</p>
+</li>
+<li>
+<p>Specifying a success rate range will filter the flashcards to be listed to be within
+the specified range (inclusive) and is in the form of [s/LOWEBOUND UPPERBOUND] separated by a single space character.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Specifying a success rate range on its own with no other prefixes will display <em>all</em> flashcards
+having a success rate within that range.</p>
+</li>
 </ul>
 </div>
+</li>
+<li>
+<p>All prefixes must be followed by a keyword or value and cannot be left blank.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/Ui-find.png" alt="Ui find" width="790">
 </div>
 </div>
 <div class="paragraph">
@@ -386,6 +409,16 @@ This will find and list all the flashcards that have the <em>Chinese</em> or <em
 <li>
 <p><code>find f/Hello b/Hello</code><br>
 This will find and list all the flashcards whose front or back text contains the word <em>Hello</em>.</p>
+</li>
+<li>
+<p><code>find t/chinese s/0 50</code><br>
+This will find and list all the flashcards that have the <em>Chinese</em> tag and which have a success rate less than or
+equal to 50%.</p>
+</li>
+<li>
+<p><code>find s/25 100</code><br>
+This will find and list all the flashcards that have a success rate more than or equal to 25%
+and less than or equal to 100%.</p>
 </li>
 </ul>
 </div>
@@ -628,73 +661,27 @@ statistics for all those flashcards.</p>
 <div class="sect2">
 <h3 id="exporting-flashcards-to-a-text-file-code-share-code"><a class="link" href="#exporting-flashcards-to-a-text-file-code-share-code">3.13. Exporting flashcards to a text file : <code>share</code></a></h3>
 <div class="paragraph">
-<p>Creates a text file containing a collection of flashcards to be shared.</p>
+<p>Creates a text file <em>flashcards.txt</em> containing all the flashcards currently being listed.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>share [f/FRONT_FACE]&#8230;&#8203; [b/BACK_FACE]&#8230;&#8203; [t/TAG]&#8230;&#8203;</code></p>
+<p>Format: <code>share DIRECTORY_PATH</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>This creates a text file containing all the flashcards who match any of the
-front face, back face or tag keywords, in the same manner as <code>find</code>.</p>
-</li>
-<li>
-<p>The text file created by the share command will be saved locally in the main application directory; you should share
+<p>The text file created by the share command will be saved in the specified directory; you can then share
 this text file with your friends.</p>
 </li>
 <li>
-<p>Once your friend has a copy of the text file, he can import the flashcards using the <code>import</code> command</p>
+<p>Once your friends have a copy of the text file, they can import the flashcards using the <code>import</code> command.</p>
 </li>
 <li>
-<p><strong>Images will not be shared.</strong></p>
-</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="paragraph">
-<p>Example:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>share t/Chinese</code><br>
-This will create a text file of all the flashcards that contain the <em>Chinese</em> tag.</p>
-</li>
-</ul>
-</div>
-</div>
-<div class="sect2">
-<h3 id="importing-flashcards-from-a-text-file-code-import-code"><a class="link" href="#importing-flashcards-from-a-text-file-code-import-code">3.14. Importing flashcards from a text file : <code>import</code></a></h3>
-<div class="paragraph">
-<p>Adds flashcards to your collection from a text file.</p>
-</div>
-<div class="paragraph">
-<p>Format: <code>import [FILE_PATH]</code></p>
-</div>
-<div class="sidebarblock">
-<div class="content">
-<div class="ulist">
-<ul>
-<li>
-<p>This imports all the cards from a text file (produced by <code>share</code>) to your collection.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>This does not replace your card collection; it simply adds all the cards from the text file
-one-by-one.</p>
+<p><strong>Images are not shared.</strong></p>
 </li>
 <li>
-<p>This command will also report the number of cards successfully imported.</p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>If no <code>FILE_PATH</code> is specified, you will be prompted to select it through the File Explorer.</p>
+<p>Calling the share command multiple times on the same directory will overwrite the previous version of the file.</p>
 </li>
 </ul>
 </div>
@@ -706,13 +693,75 @@ one-by-one.</p>
 <div class="ulist">
 <ul>
 <li>
-<p><code>import</code><br>
-This will prompt the File Explorer and you should select the text file containing the cards
-you want to import.</p>
+<p><code>find t\Chinese</code><br>
+<code>share C:\Users\Alice\Desktop</code><br>
+This will create a text file called <em>flashcards.txt</em> at the specified location containing all the flashcards that
+have the <em>Chinese</em> tag.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>(Note that DIRECTORY_PATH is user specific)</p>
+</li>
+</ul>
+</div>
 </li>
 <li>
-<p><code>import C:\Users\Luca\Desktop\cards.txt</code><br>
-This will import the cards from <code>cards.txt</code> to your collection.</p>
+<p>In the illustrated example below, one of the cards in the text file already existed locally. So only 6 out of
+the 7 flashcards in the file successfully imported.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/Ui-preImport.png" alt="Ui preImport" width="790">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/Ui-postImport.png" alt="Ui postImport" width="790">
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="importing-flashcards-from-a-text-file-code-import-code"><a class="link" href="#importing-flashcards-from-a-text-file-code-import-code">3.14. Importing flashcards from a text file : <code>import</code></a></h3>
+<div class="paragraph">
+<p>Adds flashcards from a text file to your existing collection.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>import FILE_PATH</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>This imports all the cards from a text file (produced by the <code>share</code> command) to your collection.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>This does not replace your existing card collection; it simply adds new cards from the text file.</p>
+</li>
+<li>
+<p>This command will also report the number of cards successfully imported.</p>
+</li>
+<li>
+<p>Unsuccessfully imported cards may have already existed locally or may be corrupted.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Example:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>import C:\Users\Alice\Desktop\flashcards.txt</code><br>
+This will import the cards from <em>flashcards.txt</em> to your collection.</p>
 </li>
 </ul>
 </div>
@@ -971,7 +1020,7 @@ e.g. <code>delete 3</code></p>
 e.g. <code>edit 2 f/Halo</code>, <code>edit 3 i/ t/</code></p>
 </li>
 <li>
-<p><strong>Find</strong> : <code>find [f/FRONT_FACE]&#8230;&#8203; [b/BACK_FACE]&#8230;&#8203; [t/TAG]&#8230;&#8203;</code><br>
+<p><strong>Find</strong> : <code>find [f/FRONT_FACE]&#8230;&#8203; [b/BACK_FACE]&#8230;&#8203; [t/TAG]&#8230;&#8203; [s/0 50]</code><br>
 e.g. <code>find t/Chinese t/Japanese</code></p>
 </li>
 <li>
@@ -994,10 +1043,10 @@ e.g.<code>select 2</code></p>
 <p><strong>Stats</strong> : <code>stats [t/TAG]&#8230;&#8203;</code></p>
 </li>
 <li>
-<p><strong>Share</strong> : <code>share [f/FRONT_FACE]&#8230;&#8203; [b/BACK_FACE]&#8230;&#8203; [t/TAG]&#8230;&#8203;</code></p>
+<p><strong>Share</strong> : <code>share DIRECTORY_PATH</code></p>
 </li>
 <li>
-<p><strong>Import</strong> : <code>import [FILE_PATH]</code></p>
+<p><strong>Import</strong> : <code>import FILE_PATH</code></p>
 </li>
 <li>
 <p><strong>Exit</strong> : <code>exit</code></p>
@@ -1031,4 +1080,4 @@ e.g.<code>select 2</code></p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 01:52:02 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 05:41:22 UTC</div></div></div></body></html>
