@@ -25,7 +25,7 @@ public class DeleteCommand extends Command {
         + "Example: " + COMMAND_WORD + " 1";
 
     public static final String MESSAGE_DELETE_FLASHCARD_SUCCESS = "Deleted Flashcard: %1$s";
-    private static final String MESSAGE_IN_QUIZ = "Cannot delete in quiz mode";
+    private static final String MESSAGE_IN_QUIZ = "Cannot delete in quiz mode.";
 
     private final Index targetIndex;
 
@@ -47,7 +47,7 @@ public class DeleteCommand extends Command {
 
         Flashcard flashcardToDelete = lastShownList.get(targetIndex.getZeroBased());
         model.deleteFlashcard(flashcardToDelete);
-        model.commitCardCollection();
+        model.commitCardCollection(DeleteCommand.COMMAND_WORD);
         return new CommandResult(String.format(MESSAGE_DELETE_FLASHCARD_SUCCESS, flashcardToDelete));
     }
 

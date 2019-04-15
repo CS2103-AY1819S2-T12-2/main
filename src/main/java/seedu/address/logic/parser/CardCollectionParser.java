@@ -59,7 +59,7 @@ public class CardCollectionParser {
 
         final String commandWord = matcher.group("commandWord");
         final String arguments = matcher.group("arguments");
-        switch (commandWord) {
+        switch (commandWord.toLowerCase()) {
 
         case AddCommand.COMMAND_WORD:
             return new AddCommandParser().parse(arguments);
@@ -110,7 +110,7 @@ public class CardCollectionParser {
             return new StatsCommandParser().parse(arguments);
 
         case QuizCommand.COMMAND_WORD:
-            return new QuizCommand();
+            return new QuizCommandParser().parse(arguments);
 
         case GoodCommand.COMMAND_WORD:
             return new GoodCommand();

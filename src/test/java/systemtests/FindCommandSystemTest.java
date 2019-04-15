@@ -2,10 +2,11 @@ package systemtests;
 
 import static org.junit.Assert.assertFalse;
 import static seedu.address.commons.core.Messages.MESSAGE_FLASHCARDS_LISTED_OVERVIEW;
-import static seedu.address.commons.core.Messages.MESSAGE_UNKNOWN_COMMAND;
+import static seedu.address.commons.core.Messages.MESSAGE_INVALID_COMMAND_FORMAT;
 import static seedu.address.logic.parser.CliSyntax.PREFIX_FRONT_FACE;
 import static seedu.address.testutil.TypicalFlashcards.EAT;
 import static seedu.address.testutil.TypicalFlashcards.GOOD;
+import static seedu.address.testutil.TypicalFlashcards.HELLO;
 import static seedu.address.testutil.TypicalFlashcards.KEYWORD_MATCHING_GOOD;
 import static seedu.address.testutil.TypicalFlashcards.NEWTON;
 
@@ -94,9 +95,9 @@ public class FindCommandSystemTest extends CardCollectionSystemTest {
         assertCommandSuccess(command, expectedModel);
         assertSelectedCardUnchanged();
 
-        /* Case: find flashcard in card collection, keyword is substring of name -> 0 flashcards found */
+        /* Case: find flashcard in card collection, keyword is substring of name -> 1 flashcards found */
         command = FindCommand.COMMAND_WORD + " " + PREFIX_FRONT_FACE + " Hell";
-        ModelHelper.setFilteredList(expectedModel);
+        ModelHelper.setFilteredList(expectedModel, HELLO);
         assertCommandSuccess(command, expectedModel);
         assertSelectedCardUnchanged();
 
@@ -130,7 +131,7 @@ public class FindCommandSystemTest extends CardCollectionSystemTest {
 
         /* Case: mixed case command word -> rejected */
         command = "FiNd Hello";
-        assertCommandFailure(command, MESSAGE_UNKNOWN_COMMAND);
+        assertCommandFailure(command, String.format(MESSAGE_INVALID_COMMAND_FORMAT, FindCommand.MESSAGE_USAGE));
     }
 
     /**

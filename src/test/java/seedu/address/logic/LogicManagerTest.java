@@ -71,7 +71,7 @@ public class LogicManagerTest {
     @Test
     public void execute_validCommand_success() {
         String listCommand = ListCommand.COMMAND_WORD;
-        assertCommandSuccess(listCommand, ListCommand.MESSAGE_SUCCESS, model);
+        assertCommandSuccess(listCommand, ListCommand.MESSAGE_EMPTY, model);
         assertHistoryCorrect(listCommand);
     }
 
@@ -89,7 +89,7 @@ public class LogicManagerTest {
         Flashcard expectedFlashcard = new FlashcardBuilder(GOOD).withTags().build();
         ModelManager expectedModel = new ModelManager();
         expectedModel.addFlashcard(expectedFlashcard);
-        expectedModel.commitCardCollection();
+        expectedModel.commitCardCollection(AddCommand.COMMAND_WORD);
         String expectedMessage = LogicManager.FILE_OPS_ERROR_MESSAGE + DUMMY_IO_EXCEPTION;
         assertCommandBehavior(CommandException.class, addCommand, expectedMessage, expectedModel);
         assertHistoryCorrect(addCommand);
