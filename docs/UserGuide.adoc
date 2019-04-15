@@ -404,6 +404,7 @@ You can bring up this document again using the `help` command.
 
 Type `help` and press kbd:[Enter].
 
+// tag::find[]
 === Finding flashcards by keyword(s): `find`
 
 Finds and lists all the flashcards whose front text, back text or collection tags
@@ -427,6 +428,7 @@ Examples:
 This will find and list all the flashcards that have the _Chinese_ or _Japanese_ tag.
 * `find f/Hello b/Hello` +
 This will find and list all the flashcards whose front or back text contains the word _Hello_.
+// end::find[]
 
 === Selecting a flashcard : `select`
 
@@ -472,6 +474,7 @@ This will show aggregate statistics for all flashcards that have the _Chinese_ o
 This will find and list all flashcards with _Kamusta_ in their front face then show aggregate
 statistics for all those flashcards.
 
+// tag::share[]
 === Exporting flashcards to a text file : `share`
 Creates a text file containing a collection of flashcards to be shared.
 
@@ -497,7 +500,9 @@ the 7 flashcards in the file successfully imported.
 
 image::Ui-preImport.png[width="790"]
 image::Ui-postImport.png[width="790"]
+// end::share[]
 
+// tag::import[]
 === Importing flashcards from a text file : `import`
 Adds flashcards to your collection from a text file.
 
@@ -514,6 +519,7 @@ Examples:
 
 * `import C:\Users\Luca\Desktop\cards.txt` +
 This will import the flashcards from `cards.txt` to your collection.
+// end::import[]
 
 // tag::quiz[]
 [[FeaturesQuiz]]
