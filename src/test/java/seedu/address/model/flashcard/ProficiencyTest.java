@@ -94,7 +94,8 @@ public class ProficiencyTest {
 
     @Test
     public void getQuizSrsStatus() {
-        assertQuizStatus(-halfMinute, NOW_ACTIVE);
+        assertQuizStatus(-TimeUnit.MINUTES.toMillis(1), NOW_ACTIVE);
+
         assertQuizStatus(TimeUnit.SECONDS.toMillis(1), ACTIVE_IN_UNDER_A_MINUTE);
 
         assertQuizStatus(TimeUnit.MINUTES.toMillis(2), String.format(INACTIVE_UNTIL_IN_MINUTES, 2));
