@@ -1,48 +1,145 @@
 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge"><![endif]--><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Asciidoctor 1.5.6.1"><title>Sergio Vieri - Project Portfolio</title><link rel="stylesheet" href="../stylesheets/gh-pages.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.5.0/css/font-awesome.min.css">
-<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">Acquizition</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/cs2103-ay1819s2-t12-2/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Sergio Vieri - Project Portfolio</h1></div><div id="content"><div class="sect1">
-<h2 id="project-addressbook-level-4"><a class="link" href="#project-addressbook-level-4">PROJECT: AddressBook - Level 4</a></h2>
+<link rel="stylesheet" href="../stylesheets/coderay-asciidoctor.css"></head><body class="article"><div id="site-header"><nav class="navbar navbar-light bg-light"><div class="container"><a class="navbar-brand" href="../index.html">Acquizition</a><ul class="navbar-nav"><li class="nav-item"><a class="nav-link" href="../UserGuide.html">User Guide</a></li><li class="nav-item"><a class="nav-link" href="../DeveloperGuide.html">Developer Guide</a></li><li class="nav-item"><a class="nav-link active" href="../AboutUs.html">About Us</a></li><li class="nav-item"><a class="nav-link" href="../ContactUs.html">Contact Us</a></li><li class="navitem"><a class="nav-link" href="https://github.com/cs2103-ay1819s2-t12-2/main"><span class="fa fa-github fa-lg" aria-hidden="true"></span>&nbsp;View on GitHub</a></li></ul></div></nav></div><div id="header"><h1>Sergio Vieri - Project Portfolio</h1><div id="toc" class="toc"><div id="toctitle">Table of Contents</div><ul class="sectlevel1">
+<li><a href="#project-acquizition">1. PROJECT: Acquizition</a></li>
+<li><a href="#overview">2. Overview</a></li>
+<li><a href="#summary-of-contributions">3. Summary of contributions</a></li>
+<li><a href="#contributions-to-the-user-guide">4. Contributions to the User Guide</a></li>
+<li><a href="#FeaturesQuiz">5. Features (Quiz)</a>
+<ul class="sectlevel2">
+<li><a href="#entering-quiz-mode-code-quiz-code">5.1. Entering quiz mode : <code>quiz</code></a></li>
+<li><a href="#showing-back-face-of-flashcard-code-show-code">5.2. Showing back face of flashcard : <code>show</code></a></li>
+<li><a href="#giving-feedback-code-good-code-or-code-bad-code">5.3. Giving feedback : <code>good</code> or <code>bad</code></a></li>
+<li><a href="#smart-command-kbd-enter-kbd">5.4. Smart command : <kbd>Enter</kbd></a></li>
+<li><a href="#QuizExit">5.5. Exiting quiz mode : <code>exit</code></a></li>
+</ul>
+</li>
+<li><a href="#command-summary">6. Command Summary</a>
+<ul class="sectlevel2">
+<li><a href="#commands-collection">6.1. Commands (Collection)</a></li>
+<li><a href="#commands-quiz">6.2. Commands (Quiz)</a></li>
+</ul>
+</li>
+<li><a href="#contributions-to-the-developer-guide">7. Contributions to the Developer Guide</a>
+<ul class="sectlevel2">
+<li><a href="#quiz-feature">7.1. Quiz feature</a></li>
+<li><a href="#Design-Ui">7.2. UI component</a></li>
+</ul>
+</li>
+<li><a href="#learning-outcomes">8. Learning Outcomes</a></li>
+</ul></div></div><div id="content"><div id="preamble">
 <div class="sectionbody">
+<div class="imageblock" style="text-align: left">
+<div class="content">
+<img src="../images/sergiovieri.png" alt="sergiovieri" width="200">
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="project-acquizition"><a class="link" href="#project-acquizition">1. PROJECT: Acquizition</a></h2>
+<div class="sectionbody">
+<div class="paragraph">
+<p>This project portfolio documents my contributions towards Acquizition, a team project under a software engineering module in NUS, known as CS2103T.</p>
+</div>
+<div class="paragraph">
+<p>The purpose of this portfolio is to summarize the features that I have implemented, as well as some excerpts of the User and Developer Guide that I have written.</p>
+</div>
 <hr>
 </div>
 </div>
 <div class="sect1">
-<h2 id="overview"><a class="link" href="#overview">Overview</a></h2>
+<h2 id="overview"><a class="link" href="#overview">2. Overview</a></h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p>AddressBook - Level 4 is a desktop card collection application used for teaching Software Engineering principles. The user interacts with it using a CLI, and it has a GUI created with JavaFX. It is written in Java, and has about 10 kLoC.</p>
+<p>Acquizition is a desktop flashcard application for subject revision and language acquisition.</p>
+</div>
+<div class="paragraph">
+<p>Using a scientifically-grounded SRS (Spaced Repetition System), Acquizition maximizes memory retention by testing the terms most likely to be forgotten soon.</p>
+</div>
+<div class="paragraph">
+<p>Created with JavaFX, Acquizition has a sleek and intuitive GUI (Graphical User Interface) to streamline the experience for new users, but also sports a CLI (Command Line Interface) to maximize the efficiency of power users. It is written in Java and has around 14k lines of code.</p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">Summary of contributions</a></h2>
+<h2 id="summary-of-contributions"><a class="link" href="#summary-of-contributions">3. Summary of contributions</a></h2>
 <div class="sectionbody">
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Major enhancement</strong>: added <strong>the ability to undo/redo previous commands</strong></p>
+<p><strong>Major enhancement</strong>: added <strong>the complete quiz mode</strong>, including the full GUI and quiz backend commands.<br>
+The quiz GUI includes the flashcard card view pane on the right, and the quiz panel on the left.<br>
+The quiz commands includes <code>quiz</code>, <code>good</code> feedback, <code>bad</code> feedback, and smart command.</p>
 <div class="ulist">
 <ul>
 <li>
-<p>What it does: allows the user to undo all previous commands one at a time. Preceding undo commands can be reversed by using the redo command.</p>
+<p>What it does: allows the user to conveniently test and keep track their understanding of the flashcards inside the card collection</p>
 </li>
 <li>
-<p>Justification: This feature improves the product significantly because a user can make mistakes in commands and the app should provide a convenient way to rectify them.</p>
+<p>Justification:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>This feature improves the product significantly as it is the main feature that Acquizition offers.</p>
 </li>
 <li>
-<p>Highlights: This enhancement affects existing commands and commands to be added in future. It required an in-depth analysis of design alternatives. The implementation too was challenging as it required changes to existing commands.</p>
+<p>It can do seamless swapping between the quiz UI and the card collection UI</p>
 </li>
 <li>
-<p>Credits: <em>{mention here if you reused any code/ideas from elsewhere or if a third-party library is heavily used in the feature so that a reader can make a more accurate judgement of how much effort went into the feature}</em></p>
+<p>It also contains a smart command feature where the user can quickly navigate through the cards without having to type redundant commands.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Minor enhancement</strong>: added a history command that allows the user to navigate to previous commands using up/down keys.</p>
+<p>Highlights:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>This enhancement required an in-depth analysis of design alternatives, since the quiz mode needs seamless swapping of the card collection GUI and the quiz mode GUI.</p>
 </li>
 <li>
-<p><strong>Code contributed</strong>: [<a href="https://github.com">Functional code</a>] [<a href="https://github.com">Test code</a>] <em>{give links to collated code files}</em></p>
+<p>The implementation too was challenging as separation of different modes and interaction of logic and dynamic UI parts is needed.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Credits: I learned and applied concepts from CS2103T and the existing codebase.</p>
+</li>
+<li>
+<p>Related code: <a href="https://github.com/CS2103-AY1819S2-T12-2/main/pull/46">Advanced Quiz Mode</a>, <a href="https://github.com/CS2103-AY1819S2-T12-2/main/pull/27">Flashcard Card View</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p><strong>Minor enhancement</strong>:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Replaces the menu bar with a much more intuitive toolbar. Since menu bar only supports exit and help, moving it to the toolbar with just those two buttons is more reasonable.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Related code: <a href="https://github.com/CS2103-AY1819S2-T12-2/main/pull/49">Toolbar</a></p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Modifies the existing person model to flashcard model, including all of its components.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Related code: <a href="https://github.com/CS2103-AY1819S2-T12-2/main/pull/22">Refactor Flashcard Fields</a></p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
 </li>
 <li>
 <p><strong>Other contributions</strong>:</p>
@@ -53,7 +150,10 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Managed releases <code>v1.3</code> - <code>v1.5rc</code> (3 releases) on GitHub</p>
+<p>Set up Github repository and <a href="https://github.com/cs2103-ay1819s2-t12-2/main/issues?utf8=%E2%9C%93&amp;q=is%3Aissue+author%3Asergiovieri">issues</a></p>
+</li>
+<li>
+<p><a href="https://github.com/CS2103-AY1819S2-T12-2/main/pulls?q=is%3Apr+reviewed-by%3Asergiovieri+is%3Aclosed">Reviewed and approved several PRs</a></p>
 </li>
 </ul>
 </div>
@@ -63,52 +163,29 @@
 <div class="ulist">
 <ul>
 <li>
-<p>Updated the GUI color scheme (Pull requests <a href="https://github.com">#33</a>, <a href="https://github.com">#34</a>)</p>
+<p>Updated the GUI color scheme</p>
 </li>
 <li>
-<p>Wrote additional tests for existing features to increase coverage from 88% to 92% (Pull requests <a href="https://github.com">#36</a>, <a href="https://github.com">#38</a>)</p>
+<p>Wrote additional tests for existing features to increase coverage</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p>Documentation:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Did cosmetic tweaks to existing contents of the User Guide: <a href="https://github.com">#14</a></p>
-</li>
-</ul>
-</div>
-</li>
-<li>
-<p>Community:</p>
-<div class="ulist">
-<ul>
-<li>
-<p>PRs reviewed (with non-trivial review comments): <a href="https://github.com">#12</a>, <a href="https://github.com">#32</a>, <a href="https://github.com">#19</a>, <a href="https://github.com">#42</a></p>
-</li>
-<li>
-<p>Contributed to forum discussions (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>, <a href="https://github.com">4</a>)</p>
-</li>
-<li>
-<p>Reported bugs and suggestions for other teams in the class (examples:  <a href="https://github.com">1</a>, <a href="https://github.com">2</a>, <a href="https://github.com">3</a>)</p>
-</li>
-<li>
-<p>Some parts of the history feature I added was adopted by several other class mates (<a href="https://github.com">1</a>, <a href="https://github.com">2</a>)</p>
-</li>
-</ul>
-</div>
+<p>Code contributed: <a href="https://nus-cs2103-ay1819s2.github.io/cs2103-dashboard/#search=Ser">Reposense</a></p>
 </li>
 <li>
 <p>Tools:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Integrated a third party library (Natty) to the project (<a href="https://github.com">#42</a>)</p>
+<p>Set Up Travis, AppVeyor, Coveralls, and Codacy</p>
 </li>
 <li>
-<p>Integrated a new Github plugin (CircleCI) to the team repo</p>
+<p>Set Up GithubPages</p>
+</li>
+<li>
+<p>Set the minimum requirements for code to be merged to master.</p>
 </li>
 </ul>
 </div>
@@ -117,14 +194,11 @@
 </div>
 </li>
 </ul>
-</div>
-<div class="paragraph">
-<p><em>{you can add/remove categories in the list above}</em></p>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="contributions-to-the-user-guide"><a class="link" href="#contributions-to-the-user-guide">Contributions to the User Guide</a></h2>
+<h2 id="contributions-to-the-user-guide"><a class="link" href="#contributions-to-the-user-guide">4. Contributions to the User Guide</a></h2>
 <div class="sectionbody">
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
@@ -132,14 +206,287 @@
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the User Guide. They showcase my ability to write documentation targeting end-users.</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">These are the excerpts of the User Guide that I have contributed. They reflect what I have learned in writing documentation that targets end-users.</p></td>
 </tr>
 </tbody>
 </table>
 </div>
 </div>
 <div class="sect1">
-<h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">Contributions to the Developer Guide</a></h2>
+<h2 id="FeaturesQuiz"><a class="link" href="#FeaturesQuiz">5. Features (Quiz)</a></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="entering-quiz-mode-code-quiz-code"><a class="link" href="#entering-quiz-mode-code-quiz-code">5.1. Entering quiz mode : <code>quiz</code></a></h3>
+<div class="imageblock">
+<div class="content">
+<img src="../images/Ui-quiz.png" alt="Ui quiz" width="790">
+</div>
+</div>
+<div class="paragraph">
+<p>Enters quiz mode.<br>
+A flashcard will be shown to you one by one randomly with distribution based on accuracy of each flashcard.<br>
+You can then self-verify whether you accurately recall the back side of the flashcard.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>quiz</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>Enters quiz mode with the flashcards on the filtered flashcard list panel.</p>
+</li>
+<li>
+<p>This will start a quiz session. The flashcard list panel on the left will change to a quiz panel.</p>
+</li>
+<li>
+<p>The quiz panel contains the number of flashcards remaining on the quiz, as well as the number of good and bad feedback received.</p>
+</li>
+<li>
+<p>The flashcard view panel on the right will display the quizzed flashcards one by one, with the back face of the flashcard hidden.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="showing-back-face-of-flashcard-code-show-code"><a class="link" href="#showing-back-face-of-flashcard-code-show-code">5.2. Showing back face of flashcard : <code>show</code></a></h3>
+<div class="paragraph">
+<p>Shows the back face of the flashcard being quizzed.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>show</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>If the back face of the flashcard is already shown, this command will do nothing.</p>
+</li>
+<li>
+<p>Note that you can only use this command inside quiz mode.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect2">
+<h3 id="giving-feedback-code-good-code-or-code-bad-code"><a class="link" href="#giving-feedback-code-good-code-or-code-bad-code">5.3. Giving feedback : <code>good</code> or <code>bad</code></a></h3>
+<div class="paragraph">
+<p>Gives user feedback on quiz mode.</p>
+</div>
+<div class="paragraph">
+<p>Format: <code>good</code> or <code>bad</code></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>In order to give feedback of how well you do in the quiz mode, you can type in either <code>good</code> or <code>bad</code> for each flashcard in the quiz.</p>
+</li>
+<li>
+<p>After you type <code>good</code> or <code>bad</code>, Acquizition will record the feedback on the flashcard shown, as well as incrementing the number of good and bad feedback.</p>
+</li>
+<li>
+<p>Acquizition will then proceed to show the next flashcard to be quizzed. If there are no flashcards left, it will exit quiz mode.</p>
+</li>
+<li>
+<p>This command is usually, but not necessarily, used after the <code>show</code> command. That is, after you look at the back face of the flashcard, you can dictate how well you recall the back face of the flashcard.</p>
+</li>
+<li>
+<p>Note that you can only use this command inside quiz mode.</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>quiz</code><br>
+<code>good</code><br>
+This will increment the number of good feedback of the flashcard shown, thus, the success rate of this flashcard will increase.<br>
+Then, the next flashcard in the quiz queue will be shown.</p>
+</li>
+<li>
+<p><code>quiz</code><br>
+<code>show</code><br>
+<code>bad</code><br>
+This will increment the number of bad feedback of the flashcard shown, thus, the success rate of this flashcard will decrease.<br>
+Then, the next flashcard in the quiz queue will be shown.</p>
+</li>
+<li>
+<p><code>quiz</code><br>
+<code>good</code><br>
+<code>&#8230;&#8203;</code><br>
+<code>good</code><br>
+Suppose this is the last flashcard to show inside quiz mode. Acquizition will record the statistics of the quiz mode and exit the quiz mode.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="smart-command-kbd-enter-kbd"><a class="link" href="#smart-command-kbd-enter-kbd">5.4. Smart command : <kbd>Enter</kbd></a></h3>
+<div class="paragraph">
+<p>It can be troublesome to always have to type <code>show</code> and <code>good</code>.<br>
+You can use a <em>smart command</em> that cleverly chooses the appropriate command to run.</p>
+</div>
+<div class="paragraph">
+<p>Format: <kbd>Enter</kbd></p>
+</div>
+<div class="sidebarblock">
+<div class="content">
+<div class="ulist">
+<ul>
+<li>
+<p>To initiate a smart command, you just need to press enter.</p>
+</li>
+<li>
+<p>If you are in quiz mode, and the back face of the quizzed flashcard is not yet shown, smart command will execute a <code>show</code> command.</p>
+</li>
+<li>
+<p>If you are in quiz mode, and the back face of the quizzed flashcard has been shown, smart command will execute a <code>good</code> command.</p>
+</li>
+<li>
+<p>This dramatically reduces your time to navigate through the quiz!</p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>Examples:</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>quiz</code><br>
+<kbd>Enter</kbd><br>
+<kbd>Enter</kbd><br>
+This will first show the back face of the flashcard, then will mark the flashcard as good.</p>
+</li>
+<li>
+<p><code>quiz</code><br>
+<kbd>Enter</kbd><br>
+<code>bad</code><br>
+This will show the back face of the flashcard, then will mark the flashcard as bad.</p>
+</li>
+<li>
+<p><code>quiz</code><br>
+<kbd>Enter</kbd><br>
+<code>&#8230;&#8203;</code><br>
+<kbd>Enter</kbd><br>
+This will go through all the flashcards in the quiz mode and mark them all as good.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="QuizExit"><a class="link" href="#QuizExit">5.5. Exiting quiz mode : <code>exit</code></a></h3>
+<div class="paragraph">
+<p>Exits quiz mode prematurely if you are in quiz mode.<br></p>
+</div>
+<div class="paragraph">
+<p>Format: <code>exit</code></p>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="command-summary"><a class="link" href="#command-summary">6. Command Summary</a></h2>
+<div class="sectionbody">
+<div class="sect2">
+<h3 id="commands-collection"><a class="link" href="#commands-collection">6.1. Commands (Collection)</a></h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Add</strong> <code>add f/FRONT_TEXT b/BACK_TEXT [i/IMAGE_NAME] [t/TAG]&#8230;&#8203;</code><br></p>
+</li>
+<li>
+<p><strong>Clear</strong> : <code>clear</code></p>
+</li>
+<li>
+<p><strong>Delete</strong> : <code>delete INDEX</code><br></p>
+</li>
+<li>
+<p><strong>Edit</strong> : <code>edit INDEX [f/FRONT_TEXT] [b/BACK_TEXT] [i/IMAGE_NAME] [t/TAG]&#8230;&#8203;</code><br></p>
+</li>
+<li>
+<p><strong>Exit</strong> : <code>exit</code></p>
+</li>
+<li>
+<p><strong>Find</strong> : <code>find [f/FRONT_FACE]&#8230;&#8203; [b/BACK_FACE]&#8230;&#8203; [t/TAG]&#8230;&#8203;</code><br></p>
+</li>
+<li>
+<p><strong>Help</strong> : <code>help</code></p>
+</li>
+<li>
+<p><strong>History</strong> : <code>history</code></p>
+</li>
+<li>
+<p><strong>Image</strong> : <code>image FILE_PATH</code></p>
+</li>
+<li>
+<p><strong>Import</strong> : <code>import [FILE_PATH]</code></p>
+</li>
+<li>
+<p><strong>List</strong> : <code>list</code></p>
+</li>
+<li>
+<p><strong>Redo</strong> : <code>redo</code></p>
+</li>
+<li>
+<p><strong>Select</strong> : <code>select INDEX</code><br></p>
+</li>
+<li>
+<p><strong>Share</strong> : <code>share [f/FRONT_FACE]&#8230;&#8203; [b/BACK_FACE]&#8230;&#8203; [t/TAG]&#8230;&#8203;</code></p>
+</li>
+<li>
+<p><strong>Stats</strong> : <code>stats [t/TAG]&#8230;&#8203;</code></p>
+</li>
+<li>
+<p><strong>Undo</strong> : <code>undo</code></p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect2">
+<h3 id="commands-quiz"><a class="link" href="#commands-quiz">6.2. Commands (Quiz)</a></h3>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Quiz</strong> : <code>quiz</code></p>
+</li>
+<li>
+<p><strong>Good feedback</strong> : <code>good</code></p>
+</li>
+<li>
+<p><strong>Bad feedback</strong> : <code>bad</code></p>
+</li>
+<li>
+<p><strong>Show</strong> : <code>show</code></p>
+</li>
+<li>
+<p><strong>Smart command</strong> : <kbd>Enter</kbd></p>
+</li>
+<li>
+<p><strong>Exit quiz mode</strong> : <code>exit</code></p>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="sect1">
+<h2 id="contributions-to-the-developer-guide"><a class="link" href="#contributions-to-the-developer-guide">7. Contributions to the Developer Guide</a></h2>
 <div class="sectionbody">
 <table class="tableblock frame-all grid-all spread">
 <colgroup>
@@ -147,203 +494,224 @@
 </colgroup>
 <tbody>
 <tr>
-<td class="tableblock halign-left valign-top"><p class="tableblock"><em>Given below are sections I contributed to the Developer Guide. They showcase my ability to write technical documentation and the technical depth of my contributions to the project.</em></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">These are the excerpts of the Developer Guide that I have contributed. They reflect what I have learned in writing technical documentation and the technical depth of my contributions to the project.</p></td>
 </tr>
 </tbody>
 </table>
 <div class="sect2">
-<h3 id="undo-redo-feature"><a class="link" href="#undo-redo-feature">Undo/Redo feature</a></h3>
+<h3 id="quiz-feature"><a class="link" href="#quiz-feature">7.1. Quiz feature</a></h3>
 <div class="sect3">
-<h4 id="current-implementation"><a class="link" href="#current-implementation">Current Implementation</a></h4>
-<div class="paragraph">
-<p>The undo/redo mechanism is facilitated by <code>VersionedCardCollection</code>.
-It extends <code>CardCollection</code> with an undo/redo history, stored internally as a <code>cardCollectionStateList</code> and <code>currentStatePointer</code>.
-Additionally, it implements the following operations:</p>
-</div>
-<div class="ulist">
-<ul>
-<li>
-<p><code>VersionedCardCollection#commit()</code>&#8201;&#8212;&#8201;Saves the current card collection state in its history.</p>
-</li>
-<li>
-<p><code>VersionedCardCollection#undo()</code>&#8201;&#8212;&#8201;Restores the previous card collection state from its history.</p>
-</li>
-<li>
-<p><code>VersionedCardCollection#redo()</code>&#8201;&#8212;&#8201;Restores a previously undone card collection state from its history.</p>
-</li>
-</ul>
-</div>
-<div class="paragraph">
-<p>These operations are exposed in the <code>Model</code> interface as <code>Model#commitCardCollection()</code>, <code>Model#undoCardCollection()</code> and <code>Model#redoCardCollection()</code> respectively.</p>
-</div>
-<div class="paragraph">
-<p>Given below is an example usage scenario and how the undo/redo mechanism behaves at each step.</p>
-</div>
-<div class="paragraph">
-<p>Step 1. The user launches the application for the first time. The <code>VersionedCardCollection</code> will be initialized with the initial card collection state, and the <code>currentStatePointer</code> pointing to that single card collection state.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoStartingStateListDiagram.png" alt="UndoRedoStartingStateListDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>Step 2. The user executes <code>delete 5</code> command to delete the 5th flashcard in the card collection. The <code>delete</code> command calls <code>Model#commitCardCollection()</code>, causing the modified state of the card collection after the <code>delete 5</code> command executes to be saved in the <code>cardCollectionStateList</code>, and the <code>currentStatePointer</code> is shifted to the newly inserted card collection state.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoNewCommand1StateListDiagram.png" alt="UndoRedoNewCommand1StateListDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>Step 3. The user executes <code>add f/Hello &#8230;&#8203;</code> to add a new flashcard. The <code>add</code> command also calls <code>Model#commitCardCollection()</code>, causing another modified card collection state to be saved into the <code>cardCollectionStateList</code>.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoNewCommand2StateListDiagram.png" alt="UndoRedoNewCommand2StateListDiagram" width="800">
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If a command fails its execution, it will not call <code>Model#commitCardCollection()</code>, so the card collection state will not be saved into the <code>cardCollectionStateList</code>.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Step 4. The user now decides that adding the flashcard was a mistake, and decides to undo that action by executing the <code>undo</code> command. The <code>undo</code> command will call <code>Model#undoCardCollection()</code>, which will shift the <code>currentStatePointer</code> once to the left, pointing it to the previous card collection state, and restores the card collection to that state.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoExecuteUndoStateListDiagram.png" alt="UndoRedoExecuteUndoStateListDiagram" width="800">
-</div>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If the <code>currentStatePointer</code> is at index 0, pointing to the initial card collection state, then there are no previous card collection states to restore. The <code>undo</code> command uses <code>Model#canUndoCardCollection()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the undo.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>The following sequence diagram shows how the undo operation works:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoSequenceDiagram.png" alt="UndoRedoSequenceDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>The <code>redo</code> command does the opposite&#8201;&#8212;&#8201;it calls <code>Model#redoCardCollection()</code>, which shifts the <code>currentStatePointer</code> once to the right, pointing to the previously undone state, and restores the card collection to that state.</p>
-</div>
-<div class="admonitionblock note">
-<table>
-<tr>
-<td class="icon">
-<i class="fa icon-note" title="Note"></i>
-</td>
-<td class="content">
-If the <code>currentStatePointer</code> is at index <code>cardCollectionStateList.size() - 1</code>, pointing to the latest card collection state, then there are no undone card collection states to restore. The <code>redo</code> command uses <code>Model#canRedoCardCollection()</code> to check if this is the case. If so, it will return an error to the user rather than attempting to perform the redo.
-</td>
-</tr>
-</table>
-</div>
-<div class="paragraph">
-<p>Step 5. The user then decides to execute the command <code>list</code>. Commands that do not modify the card collection, such as <code>list</code>, will usually not call <code>Model#commitCardCollection()</code>, <code>Model#undoCardCollection()</code> or <code>Model#redoCardCollection()</code>. Thus, the <code>cardCollectionStateList</code> remains unchanged.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoNewCommand3StateListDiagram.png" alt="UndoRedoNewCommand3StateListDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>Step 6. The user executes <code>clear</code>, which calls <code>Model#commitCardCollection()</code>. Since the <code>currentStatePointer</code> is not pointing at the end of the <code>cardCollectionStateList</code>, all card collection states after the <code>currentStatePointer</code> will be purged. We designed it this way because it no longer makes sense to redo the <code>add f/Hello &#8230;&#8203;</code> command. This is the behavior that most modern desktop applications follow.</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoNewCommand4StateListDiagram.png" alt="UndoRedoNewCommand4StateListDiagram" width="800">
-</div>
-</div>
-<div class="paragraph">
-<p>The following activity diagram summarizes what happens when a user executes a new command:</p>
-</div>
-<div class="imageblock">
-<div class="content">
-<img src="../images/UndoRedoActivityDiagram.png" alt="UndoRedoActivityDiagram" width="650">
-</div>
-</div>
-</div>
-<div class="sect3">
-<h4 id="design-considerations"><a class="link" href="#design-considerations">Design Considerations</a></h4>
+<h4 id="current-implementation"><a class="link" href="#current-implementation">7.1.1. Current Implementation</a></h4>
 <div class="sect4">
-<h5 id="aspect-how-undo-redo-executes"><a class="link" href="#aspect-how-undo-redo-executes">Aspect: How undo &amp; redo executes</a></h5>
+<h5 id="quiz"><a class="link" href="#quiz">Quiz</a></h5>
+<div class="paragraph">
+<p>The current quiz mechanism is controlled by the <code>QuizCommand</code> class.
+When executed, <code>QuizCommand</code> will create a list of flashcards to be quizzed,
+which is a sorted list of the current filtered flashcards. <code>QuizCommand</code> will then pass the sorted flashcards to <code>Model</code>,
+in which they will be stored.</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Saves the entire card collection.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easy to implement.</p>
+<p>When quiz first starts, <code>QuizCommand</code> will change the quiz state inside <code>Model</code>.</p>
 </li>
 <li>
-<p>Cons: May have performance issues in terms of memory usage.</p>
+<p><code>MainWindow</code> will detect this change, and replace the card collection panel on the left with a quiz panel.</p>
+</li>
+<li>
+<p>To show a card to the user, the quiz mode modifies the selected flashcard on the card collection model, just like how the <code>SelectCommand</code> works. The UI will then detect the change in the selected flashcard and will view the selected flashcard on the card view panel.</p>
+</li>
+<li>
+<p>The quiz command will quiz flashcards based on the current filtered list.</p>
+</li>
+<li>
+<p>The review mode of quiz sorts the cards based on a non-decreasing success rate of the flashcards, utilizing the <code>Statistics</code> class.</p>
+</li>
+<li>
+<p>If any two flashcards have the same success rate, they will be randomly shuffled.</p>
+</li>
+<li>
+<p>Meanwhile, the SRS mode only chooses flashcards that is already time to show to the user.</p>
 </li>
 </ul>
 </div>
-</li>
-<li>
-<p><strong>Alternative 2:</strong> Individual command knows how to undo/redo by itself.</p>
+<div class="paragraph">
+<p>The following sequence diagram shows how the quiz operation works:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/QuizSequenceDiagram.png" alt="QuizSequenceDiagram" width="800">
+</div>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Will use less memory (e.g. for <code>delete</code>, just save the flashcard being deleted).</p>
+<p>As illustrated in the diagram above, <code>MainWindow</code> detects the change by listening on the observable quiz state mode inside <code>Model</code>.</p>
 </li>
 <li>
-<p>Cons: We must ensure that the implementation of each individual command are correct.</p>
-</li>
-</ul>
-</div>
+<p>The <code>MainWindow</code> swaps the card collection list panel with the quiz panel by replacing the left panel placeholder with a new <code>UiPart</code> through <code>MainWindow#setLeftPanel</code>.</p>
 </li>
 </ul>
 </div>
 </div>
 <div class="sect4">
-<h5 id="aspect-data-structure-to-support-the-undo-redo-commands"><a class="link" href="#aspect-data-structure-to-support-the-undo-redo-commands">Aspect: Data structure to support the undo/redo commands</a></h5>
+<h5 id="show"><a class="link" href="#show">Show</a></h5>
+<div class="paragraph">
+<p>The <code>ShowCommand</code> is handled similarly with the <code>QuizCommand</code>.</p>
+</div>
 <div class="ulist">
 <ul>
 <li>
-<p><strong>Alternative 1 (current choice):</strong> Use a list to store the history of card collection states.</p>
-<div class="ulist">
-<ul>
-<li>
-<p>Pros: Easy for new Computer Science student undergraduates to understand, who are likely to be the new incoming developers of our project.</p>
+<p>Instead of <code>MainWindow</code>, <code>CardViewPanel</code> listens to the change in quiz state mode inside <code>Model</code>.</p>
 </li>
 <li>
-<p>Cons: Logic is duplicated twice. For example, when a new command is executed, we must remember to update both <code>HistoryManager</code> and <code>VersionedCardCollection</code>.</p>
+<p>The <code>CardViewPanel</code> creates a new <code>FlashcardCardView</code> with the correct state (with back face shown).</p>
+</li>
+<li>
+<p>Then, the displayed flashcard will be replaced.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Below is the sequence diagram of how the show operation works:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ShowSequenceDiagram.png" alt="ShowSequenceDiagram" width="800">
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="good-bad"><a class="link" href="#good-bad">Good/Bad</a></h5>
+<div class="paragraph">
+<p>The feedback on the quiz from the user is handled by a separate command (<code>GoodCommand</code> and <code>BadCommand</code>),
+which then updates the card&#8217;s statistics based on how well the user does.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>It does not commit the changes of the flashcards until the quiz mode has ended.</p>
+</li>
+<li>
+<p>After storing the changes, the command will then show the next card to be quizzed, if there are any, or execute an <code>ExitCommand</code> otherwise.</p>
+</li>
+<li>
+<p>After <code>ExitCommand</code> is executed, the changes will be committed and saved to storage.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>The following sequence diagram shows how the <code>GoodCommand</code> works. The <code>BadCommand</code> is identical.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/GoodSequenceDiagram.png" alt="GoodSequenceDiagram" width="800">
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="exit"><a class="link" href="#exit">Exit</a></h5>
+<div class="paragraph">
+<p>When exiting inside quiz mode, the <code>ExitCommand</code> will try to exit the quiz mode.
+Otherwise it will just exit the app normally.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>ExitCommand</code> will set the quiz mode to <code>QuizState#NOT_QUIZ_MODE</code>.</p>
+</li>
+<li>
+<p><code>MainWindow</code> will listen to this and update the left panel back to card collection list panel.</p>
+</li>
+<li>
+<p>Since the <code>GoodCommand</code> and <code>BadCommand</code> does not directly update the flashcards, <code>ExitCommand</code> needs to commit the changes.</p>
+</li>
+<li>
+<p>It will call <code>Model#commit()</code>, and this will set <code>cardCollectionModified</code> to true.</p>
+</li>
+<li>
+<p>After the command execution is finished, the <code>LogicManager</code> will call <code>Storage#saveCardCollection</code> to store the changes to file.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Below is the sequence diagram when exiting from a quiz mode:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="../images/ExitQuizSequenceDiagram.png" alt="ExitQuizSequenceDiagram" width="1000">
+</div>
+</div>
+</div>
+</div>
+<div class="sect3">
+<h4 id="design-considerations"><a class="link" href="#design-considerations">7.1.2. Design Considerations</a></h4>
+<div class="sect4">
+<h5 id="aspect-the-quiz-gui"><a class="link" href="#aspect-the-quiz-gui">Aspect: The quiz GUI</a></h5>
+<div class="ulist">
+<ul>
+<li>
+<p><strong>Alternative 1 (current choice):</strong> Use the same window as the <code>MainWindow</code>.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Easy to implement and can use the original command box for quiz feedback.</p>
+</li>
+<li>
+<p>Can reuse the card view panel from the main window to use for quiz mode.</p>
 </li>
 </ul>
 </div>
 </li>
 <li>
-<p><strong>Alternative 2:</strong> Use <code>HistoryManager</code> for undo/redo</p>
+<p>Cons:</p>
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: We do not need to maintain a separate list, and just reuse what is already in the codebase.</p>
+<p>Need to be able to swap the <code>MainWindow</code> 's components when the quiz starts in order to replace the card collection list view with the quiz panel.</p>
+</li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
 </li>
 <li>
-<p>Cons: Requires dealing with commands that have already been undone: We must remember to skip these commands. Violates Single Responsibility Principle and Separation of Concerns as <code>HistoryManager</code> now needs to do two different things.</p>
+<p><strong>Alternative 2:</strong> Use a separate window for quiz mode.</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Quiz logic separate from <code>MainWindow</code>.</p>
+</li>
+<li>
+<p>Easily customizable and more flexible.</p>
+</li>
+<li>
+<p>Much easier to handle GUI, since we only need to spawn a new window and close it afterwards.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Requires a separate command box for the quiz mode window.</p>
+</li>
+<li>
+<p>May need to be able to hide the main window so that users cannot see the card collection list.</p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
@@ -354,19 +722,53 @@ If the <code>currentStatePointer</code> is at index <code>cardCollectionStateLis
 </div>
 </div>
 <div class="sect2">
-<h3 id="proposed-data-encryption"><a class="link" href="#proposed-data-encryption">[Proposed] Data Encryption</a></h3>
+<h3 id="Design-Ui"><a class="link" href="#Design-Ui">7.2. UI component</a></h3>
+<div class="imageblock">
+<div class="content">
+<img src="../images/UiClassDiagram.png" alt="UiClassDiagram" width="600">
+</div>
+<div class="title">Figure 1. Structure of the UI Component</div>
+</div>
 <div class="paragraph">
-<p><em>{Explain here how the data encryption feature will be implemented}</em></p>
+<p><strong>API</strong> : <a href="{repoURL}/src/main/java/seedu/address/ui/Ui.java"><code>Ui.java</code></a></p>
+</div>
+<div class="paragraph">
+<p>The UI consists of a <code>MainWindow</code> that is made up of parts e.g.<code>CommandBox</code>, <code>ResultDisplay</code>, <code>FlashcardListPanel</code>, <code>StatusBarFooter</code>, <code>CardViewPanel</code> etc. All these, including the <code>MainWindow</code>, inherit from the abstract <code>UiPart</code> class.</p>
+</div>
+<div class="paragraph">
+<p>The <code>UI</code> component uses JavaFx UI framework. The layout of these UI parts are defined in matching <code>.fxml</code> files that are in the <code>src/main/resources/view</code> folder. For example, the layout of the <a href="{repoURL}/src/main/java/seedu/address/ui/MainWindow.java"><code>MainWindow</code></a> is specified in <a href="{repoURL}/src/main/resources/view/MainWindow.fxml"><code>MainWindow.fxml</code></a></p>
+</div>
+<div class="paragraph">
+<p>The <code>UI</code> component,</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Executes user commands using the <code>Logic</code> component.</p>
+</li>
+<li>
+<p>Listens for changes to <code>Model</code> data so that the UI can be updated with the modified data.</p>
+</li>
+<li>
+<p>Listens for changes to the quiz mode status, and updates the UI accordingly.</p>
+</li>
+</ul>
 </div>
 </div>
 </div>
 </div>
 <div class="sect1">
-<h2 id="project-powerpointlabs"><a class="link" href="#project-powerpointlabs">PROJECT: PowerPointLabs</a></h2>
+<h2 id="learning-outcomes"><a class="link" href="#learning-outcomes">8. Learning Outcomes</a></h2>
 <div class="sectionbody">
-<hr>
-<div class="paragraph">
-<p><em>{Optionally, you may include other projects in your portfolio.}</em></p>
+<div class="ulist">
+<ul>
+<li>
+<p>Able to work in a team with responsibilities of different part of code</p>
+</li>
+<li>
+<p>Learned how to implement features based on user stories</p>
+</li>
+</ul>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 13:17:28 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 14:02:39 UTC</div></div></div></body></html>

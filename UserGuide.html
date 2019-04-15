@@ -994,15 +994,14 @@ statistics for all those flashcards.</p>
 <p>Creates a text file containing a collection of flashcards to be shared.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>share [f/FRONT_FACE]&#8230;&#8203; [b/BACK_FACE]&#8230;&#8203; [t/TAG]&#8230;&#8203;</code></p>
+<p>Format: <code>share DIRECTORY_PATH</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
 <div class="ulist">
 <ul>
 <li>
-<p>This creates a text file containing all the flashcards who match any of the
-front face, back face or tag keywords, in the same manner as <code>find</code>.</p>
+<p>This creates a text file called <em>flashcards.txt</em> at the specified location.</p>
 </li>
 <li>
 <p>The text file created by the share command will be saved locally in the main application directory; you should share
@@ -1019,15 +1018,31 @@ this text file with your friends.</p>
 </div>
 </div>
 <div class="paragraph">
-<p>Example:</p>
+<p>Examples:</p>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p><code>share t/Chinese</code><br>
-This will create a text file of all the flashcards that contain the <em>Chinese</em> tag.</p>
+<p><code>find t/Chinese</code><br>
+<code>share C:\Users\Alice\Desktop</code><br>
+This will create a text file called <em>flashcards.txt</em> at the specified location containing all the flashcards that
+have the <em>Chinese</em> tag.</p>
+</li>
+<li>
+<p>In the illustrated example below, one of the cards in the text file already existed locally. So only 6 out of
+the 7 flashcards in the file successfully imported.</p>
 </li>
 </ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/Ui-preImport.png" alt="Ui preImport" width="790">
+</div>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/Ui-postImport.png" alt="Ui postImport" width="790">
+</div>
 </div>
 </div>
 <div class="sect2">
@@ -1036,7 +1051,7 @@ This will create a text file of all the flashcards that contain the <em>Chinese<
 <p>Adds flashcards to your collection from a text file.</p>
 </div>
 <div class="paragraph">
-<p>Format: <code>import [FILE_PATH]</code></p>
+<p>Format: <code>import FILE_PATH</code></p>
 </div>
 <div class="sidebarblock">
 <div class="content">
@@ -1056,9 +1071,6 @@ one-by-one.</p>
 </ul>
 </div>
 </li>
-<li>
-<p>If no <code>FILE_PATH</code> is specified, you will be prompted to select it through the File Explorer.</p>
-</li>
 </ul>
 </div>
 </div>
@@ -1068,11 +1080,6 @@ one-by-one.</p>
 </div>
 <div class="ulist">
 <ul>
-<li>
-<p><code>import</code><br>
-This will prompt the File Explorer and you should select the text file containing the flashcards
-you want to import.</p>
-</li>
 <li>
 <p><code>import C:\Users\Luca\Desktop\cards.txt</code><br>
 This will import the flashcards from <code>cards.txt</code> to your collection.</p>
@@ -1370,4 +1377,4 @@ folder.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 13:17:28 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 14:02:39 UTC</div></div></div></body></html>
