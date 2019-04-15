@@ -7,6 +7,7 @@ import static seedu.address.model.flashcard.Proficiency.ACTIVE_IN_UNDER_A_MINUTE
 import static seedu.address.model.flashcard.Proficiency.INACTIVE_UNTIL_IN_DAYS;
 import static seedu.address.model.flashcard.Proficiency.INACTIVE_UNTIL_IN_HOURS;
 import static seedu.address.model.flashcard.Proficiency.INACTIVE_UNTIL_IN_MINUTES;
+import static seedu.address.model.flashcard.Proficiency.NOW_ACTIVE;
 
 import java.util.Calendar;
 import java.util.concurrent.TimeUnit;
@@ -93,6 +94,7 @@ public class ProficiencyTest {
 
     @Test
     public void getQuizSrsStatus() {
+        assertQuizStatus(-halfMinute, NOW_ACTIVE);
         assertQuizStatus(TimeUnit.SECONDS.toMillis(1), ACTIVE_IN_UNDER_A_MINUTE);
 
         assertQuizStatus(TimeUnit.MINUTES.toMillis(2), String.format(INACTIVE_UNTIL_IN_MINUTES, 2));
