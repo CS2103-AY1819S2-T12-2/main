@@ -48,6 +48,7 @@ The quiz commands includes `quiz`, `good` feedback, `bad` feedback, and smart co
 *** Contributed to forum discussions (examples:  https://github.com[1], https://github.com[2], https://github.com[3], https://github.com[4])
 *** Reported bugs and suggestions for other teams in the class (examples:  https://github.com[1], https://github.com[2], https://github.com[3])
 *** Some parts of the history feature I added was adopted by several other class mates (https://github.com[1], https://github.com[2])
+** Code contributed: https://nus-cs2103-ay1819s2.github.io/cs2103-dashboard/#search=Ser[Reposense]
 ** Tools:
 *** Set Up Travis, AppVeyor, Coveralls, and Codacy
 *** Set Up GithubPages

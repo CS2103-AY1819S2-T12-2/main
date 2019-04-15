@@ -336,7 +336,7 @@ Format: `share DIRECTORY_PATH`
 
 Examples:
 
-* `find t\Chinese` +
+* `find t/Chinese` +
 `share C:\Users\Alice\Desktop` +
 This will create a text file called _flashcards.txt_ at the specified location containing all the flashcards that
 have the _Chinese_ tag.
