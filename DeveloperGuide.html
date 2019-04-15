@@ -749,17 +749,146 @@ If the <code>currentStatePointer</code> is at index <code>cardCollectionStateLis
 <h3 id="quiz-feature"><a class="link" href="#quiz-feature">3.2. Quiz feature</a></h3>
 <div class="sect3">
 <h4 id="current-implementation-2"><a class="link" href="#current-implementation-2">3.2.1. Current Implementation</a></h4>
+<div class="sect4">
+<h5 id="quiz"><a class="link" href="#quiz">Quiz</a></h5>
 <div class="paragraph">
-<p>The current quiz mechanism is controlled by the <code>QuizCommand</code> class. It will then modify the selected flashcard on the card collection model. The UI will then detect the change in the selected flashcard, and will view the flashcard on the screen.</p>
+<p>The current quiz mechanism is controlled by the <code>QuizCommand</code> class.
+When executed, <code>QuizCommand</code> will create a list of flashcards to be quizzed,
+which is a sorted list of the current filtered flashcards. <code>QuizCommand</code> will then pass the sorted flashcards to <code>Model</code>,
+in which they will be stored.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>When quiz first starts, <code>QuizCommand</code> will change the quiz state inside <code>Model</code>.</p>
+</li>
+<li>
+<p><code>MainWindow</code> will detect this change, and replace the card collection panel on the left with a quiz panel.</p>
+</li>
+<li>
+<p>To show a card to the user, the quiz mode modifies the selected flashcard on the card collection model, just like how the <code>SelectCommand</code> works. The UI will then detect the change in the selected flashcard and will view the selected flashcard on the card view panel.</p>
+</li>
+<li>
+<p>The quiz command will quiz flashcards based on the current filtered list.</p>
+</li>
+<li>
+<p>The review mode of quiz sorts the cards based on a non-decreasing success rate of the flashcards, utilizing the <code>Statistics</code> class.</p>
+</li>
+<li>
+<p>If any two flashcards have the same success rate, they will be randomly shuffled.</p>
+</li>
+<li>
+<p>Meanwhile, the SRS mode only chooses flashcards that is already time to show to the user.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p>The quiz command contains a predicate member that is used to filter which cards is going to be shown on the quiz. The user can type in <code>quiz &lt;tags&gt;</code>, which will then start the quiz on cards that has the given tags. The quiz command will contain a predicate that will filter based on the tags.</p>
+<p>The following sequence diagram shows how the quiz operation works:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/QuizSequenceDiagram.png" alt="QuizSequenceDiagram" width="800">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>As illustrated in the diagram above, <code>MainWindow</code> detects the change by listening on the observable quiz state mode inside <code>Model</code>.</p>
+</li>
+<li>
+<p>The <code>MainWindow</code> swaps the card collection list panel with the quiz panel by replacing the left panel placeholder with a new <code>UiPart</code> through <code>MainWindow#setLeftPanel</code>.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="sect4">
+<h5 id="show"><a class="link" href="#show">Show</a></h5>
+<div class="paragraph">
+<p>The <code>ShowCommand</code> is handled similarly with the <code>QuizCommand</code>.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Instead of <code>MainWindow</code>, <code>CardViewPanel</code> listens to the change in quiz state mode inside <code>Model</code>.</p>
+</li>
+<li>
+<p>The <code>CardViewPanel</code> creates a new <code>FlashcardCardView</code> with the correct state (with back face shown).</p>
+</li>
+<li>
+<p>Then, the displayed flashcard will be replaced.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p>In essence, the behaviour of the quiz command is similar to that of <code>select x</code> where x is randomly picked among filtered cards, except that the backface of the card will not be shown to the user. Currently, the randomly picking cards is using a  uniform random distribution that does not take into account how well the user does previously. However, in the next versions we will be using weighted random distribution by using the <code>Statistics</code> class.</p>
+<p>Below is the sequence diagram of how the show operation works:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ShowSequenceDiagram.png" alt="ShowSequenceDiagram" width="800">
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="good-bad"><a class="link" href="#good-bad">Good/Bad</a></h5>
+<div class="paragraph">
+<p>The feedback on the quiz from the user is handled by a separate command (<code>GoodCommand</code> and <code>BadCommand</code>),
+which then updates the card&#8217;s statistics based on how well the user does.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>It does not commit the changes of the flashcards until the quiz mode has ended.</p>
+</li>
+<li>
+<p>After storing the changes, the command will then show the next card to be quizzed, if there are any, or execute an <code>ExitCommand</code> otherwise.</p>
+</li>
+<li>
+<p>After <code>ExitCommand</code> is executed, the changes will be committed and saved to storage.</p>
+</li>
+</ul>
 </div>
 <div class="paragraph">
-<p>The feedback on the quiz from the user is handled by a separate command which then updates the card&#8217;s statistics based on how well the user does. The effect is similar to an <code>EditCommand</code>, but it only edits the statistics within the flashcard.</p>
+<p>The following sequence diagram shows how the <code>GoodCommand</code> works. The <code>BadCommand</code> is identical.</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/GoodSequenceDiagram.png" alt="GoodSequenceDiagram" width="800">
+</div>
+</div>
+</div>
+<div class="sect4">
+<h5 id="exit"><a class="link" href="#exit">Exit</a></h5>
+<div class="paragraph">
+<p>When exiting inside quiz mode, the <code>ExitCommand</code> will try to exit the quiz mode.
+Otherwise it will just exit the app normally.</p>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p><code>ExitCommand</code> will set the quiz mode to <code>QuizState#NOT_QUIZ_MODE</code>.</p>
+</li>
+<li>
+<p><code>MainWindow</code> will listen to this and update the left panel back to card collection list panel.</p>
+</li>
+<li>
+<p>Since the <code>GoodCommand</code> and <code>BadCommand</code> does not directly update the flashcards, <code>ExitCommand</code> needs to commit the changes.</p>
+</li>
+<li>
+<p>It will call <code>Model#commit()</code>, and this will set <code>cardCollectionModified</code> to true.</p>
+</li>
+<li>
+<p>After the command execution is finished, the <code>LogicManager</code> will call <code>Storage#saveCardCollection</code> to store the changes to file.</p>
+</li>
+</ul>
+</div>
+<div class="paragraph">
+<p>Below is the sequence diagram when exiting from a quiz mode:</p>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="images/ExitQuizSequenceDiagram.png" alt="ExitQuizSequenceDiagram" width="1000">
+</div>
+</div>
 </div>
 </div>
 <div class="sect3">
@@ -773,10 +902,27 @@ If the <code>currentStatePointer</code> is at index <code>cardCollectionStateLis
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Easy to implement and can use the original command box for quiz feedback.</p>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Easy to implement and can use the original command box for quiz feedback.</p>
 </li>
 <li>
-<p>Cons: Need to be able to swap the `MainWindow&#8217;s components when the quiz starts in order to replace the list view with feedback and quiz state.</p>
+<p>Can reuse the card view panel from the main window to use for quiz mode.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Need to be able to swap the `MainWindow&#8217;s components when the quiz starts in order to replace the card collection list view with the quiz panel.</p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
@@ -786,10 +932,33 @@ If the <code>currentStatePointer</code> is at index <code>cardCollectionStateLis
 <div class="ulist">
 <ul>
 <li>
-<p>Pros: Quiz logic separate from <code>MainWindow</code>. Easily customizable and more flexible.</p>
+<p>Pros:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Quiz logic separate from <code>MainWindow</code>.</p>
 </li>
 <li>
-<p>Cons: Requires a separate command box for the quiz mode window.</p>
+<p>Easily customizable and more flexible.</p>
+</li>
+<li>
+<p>Much easier to handle GUI, since we only need to spawn a new window and close it afterwards.</p>
+</li>
+</ul>
+</div>
+</li>
+<li>
+<p>Cons:</p>
+<div class="ulist">
+<ul>
+<li>
+<p>Requires a separate command box for the quiz mode window.</p>
+</li>
+<li>
+<p>May need to be able to hide the main window so that users cannot see the card collection list.</p>
+</li>
+</ul>
+</div>
 </li>
 </ul>
 </div>
@@ -2981,4 +3150,4 @@ Expected: Similar to previous.</p>
 </div>
 </div>
 </div>
-</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 05:41:22 UTC</div></div></div></body></html>
+</div></div><div id="footer"><div class="container"><div id="footer-text">Last updated 2019-04-15 10:29:48 UTC</div></div></div></body></html>
